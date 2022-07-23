@@ -3,20 +3,19 @@ import styled from "styled-components";
 import Image from "next/image";
 import SearchIcon from "../../../public/svg/grey-search-icon.svg";
 
-
 const BlogHeaderWrapper = styled.div`
-    width: 100vw;
-    height: 740px;
-    background: #b4b3b3;
-    position: relative;
+  width: 100vw;
+  height: 740px;
+  background: #b4b3b3;
+  position: relative;
 
-    .header-menu {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        overflow: hidden;
-        text-align: center;
-        top: 119px;
+  .header-menu {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    text-align: center;
+    top: 119px;
 
     h2 {
       font-family: "Poppins";
@@ -135,10 +134,10 @@ const BlogHeaderWrapper = styled.div`
     }
     .header-menu .blog-tags {
       position: relative;
-      top: -50px;
+      top: 50px;
     }
   }
-  @media screen and (max-width: 510px) {
+  @media screen and (max-width: 500px) {
     .header-menu .blog-searchbar {
       input {
         width: 365px;
@@ -162,40 +161,40 @@ const BlogHeaderWrapper = styled.div`
 `;
 
 const BlogHeader = () => {
-    return (
-      <>
-        <BlogHeaderWrapper>
-          <div className="header-menu">
-            <h2>The Crafted Blogs</h2>
-            <div className="blog-searchbar">
-              <Image src={SearchIcon} alt="search-icon" className="search-icon" />
-              <input type="text" placeholder="Search article" />
-              <button className="search-btn">Search</button>
-            </div>
-            <div className="blog-tags">
-              <p>Popular Tags :</p>
-              <div className="tags">
-                <a href="/">Design</a>
-                <a href="/">User Experience</a>
-                <a href="/">User Interfaces</a>
-              </div>
+  return (
+    <>
+      <BlogHeaderWrapper>
+        <div className="header-menu">
+          <h2>The Crafted Blogs</h2>
+          <div className="blog-searchbar">
+            <Image src={SearchIcon} alt="search-icon" className="search-icon" />
+            <input type="text" placeholder="Search article" />
+            <button className="search-btn">Search</button>
+          </div>
+          <div className="blog-tags">
+            <p>Popular Tags :</p>
+            <div className="tags">
+              <a href="/">Design</a>
+              <a href="/">User Experience</a>
+              <a href="/">User Interfaces</a>
             </div>
           </div>
-          <svg
-            width="1920"
-            height="175"
-            viewBox="0 0 1920 175"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M1920 175H0V0C320 53.3333 640 80 960 80C1280 80 1600 53.3333 1920 0V175Z"
-              fill="white"
-            />
-          </svg>
-        </BlogHeaderWrapper>
+        </div>
+        <svg
+          width="1920"
+          height="175"
+          viewBox="0 0 1920 175"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M1920 175H0V0C320 53.3333 640 80 960 80C1280 80 1600 53.3333 1920 0V175Z"
+            fill="white"
+          />
+        </svg>
+      </BlogHeaderWrapper>
     </>
   );
 };

@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Logo from "/public/svg/logo.svg";
+import CloseMenu from "/public/svg/close.svg";
+import MenuIcon from "/public/svg/menu.svg";
 import SearchIcon from "/public/svg/search-icon.svg";
 import CartIcon from "/public/svg/cart.svg";
 import EmailIcon from "/public/svg/email.svg";
 import styled from "styled-components";
+import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   height: 111px;
+  width: 100%;
   overflow-x: hidden;
+  align-items: center;
 
   .logo {
     height: 110px !important;
@@ -61,11 +67,99 @@ const HeaderWrapper = styled.div`
     justify-content: space-between;
     gap: 50px;
   }
+  /*Desktop View*/
+  .logo-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+  .nav-options {
+    padding-left: 25px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 50px;
+    list-style-type: none;
+  }
+  .mobile-option {
+    display: none;
+  }
+  .mobile-menu {
+    display: none;
+    visibility: hidden;
+  }
+  @media screen and (max-width: 1000px) {
+    .logo {
+      width: 45px;
+      height: 45px;
+    }
+    .nav-options {
+      display: flex;
+      width: 100%;
+      height: 350px;
+      position: absolute;
+      top: 80px;
+      left: -100%;
+      opacity: 0;
+      transition: all 0.5s ease;
+      flex-direction: column;
+      list-style-type: none;
+      grid-gap: 0px;
+    }
+    .nav-options.active {
+      left: 0;
+      height: 380px;
+      background: #fff;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 9;
+      align-content: center;
+      padding-left: 0px;
+      .tabs {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+
+    .menu-icon {
+      width: 45px;
+      height: 45px;
+      margin-right: 10px;
+    }
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 15px;
+      padding: 30px 0px;
+    }
+    .sign-up {
+      background: rgb(222, 9, 241);
+      border-radius: 3px;
+      color: white;
+      padding: 20px 0px;
+      width: 80%;
+      align-self: center;
+      border-radius: 3px;
+    }
+    .mobile-menu {
+      display: block;
+      visibility: visible;
+    }
+    .non {
+      display: none;
+    }
+  }
 
   @media screen and (max-width: 1230px) {
-    .tabs {
-      gap: 30px;
-    }
     .right-area {
       justify-content: center;
       flex-direction: column;
@@ -73,67 +167,63 @@ const HeaderWrapper = styled.div`
       gap: 10px;
     }
   }
-
-  ${'' /* @media screen and (max-width: 790px) {
-    flex-direction: column;
-    align-items: center;
-    height: 150px;
-    .tabs {
-      gap: 10px;
-    }
-    .right-area {
-      padding: 0px 70px;
-      padding-bottom: 10px;
-    }
-    .search {
-      width: 150px;
-    }
-    .tabs {
-      padding: 0px 30px;
-    }
-    .right-side-part {
-      right: 0;
-    }
-  }
-  @media screen and (max-width: 552px) {
-    height: 200px;
-
+  @media screen and (max-width: 712px) {
+    justify-content: space-evenly;
+    gap: 20px;
     .logo {
       padding-left: 10px !important;
     }
+    .right-side-part {
+      right: 0px;
+      width: 80%;
+    }
+  }
+
+  @media screen and (max-width: 552px) {
     .right-area {
       padding: 0px 0px 10px 0px;
     }
 
     .search {
       padding-left: 0px;
-      width: 150px;
+      width: 100% !important;
     }
     .tabs {
       font-size: 15px;
       align-items: center;
       padding: 0px 30px;
     }
-  } */}
+  }
 `;
 
 const Header = () => {
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
   return (
     <HeaderWrapper>
-      <Image src={Logo} alt="company-logo" className="logo" />
-      <div className="right-area">
+      <div className="logo-container">
+        <Image src={Logo} alt="company-logo" className="logo" />
+      </div>
+      <ul className={click ? "nav-options active" : "nav-options"}>
         <div className="tabs">
-          <div>Home</div>
-          <div>About Us</div>
-          <div>TCOMaC</div>
-          <div>Think Social</div>
-          <div>Blog</div>
-        {/* </div> */}
-        {/* <div className="right-side-part"> */}
-          <input placeholder="Search" className="search" />
-          <div className="search-icon">
-            <Image src={SearchIcon} alt="search-icon" />
-          </div>
+          <li className="option" onClick={closeMobileMenu}>
+            <a href="#">Home</a>
+          </li>
+          <li className="option" onClick={closeMobileMenu}>
+            <a href="#">About Us</a>
+          </li>
+          <li className="option" onClick={closeMobileMenu}>
+            <a href="#">TCOMaC</a>
+          </li>
+          <li className="option" onClick={closeMobileMenu}>
+            <a href="#">Think Social</a>
+          </li>
+          <li className="option" onClick={closeMobileMenu}>
+            <a href="#">Blog</a>
+          </li>
+        </div>
+        <li className="option mobile-option" onClick={closeMobileMenu}>
           <div className="icon">
             <Image src={CartIcon} alt="cart-icon" />
           </div>
@@ -141,7 +231,29 @@ const Header = () => {
             <Image src={EmailIcon} alt="email-icon" />
           </div>
           <button className="login-button">Login</button>
+        </li>
+      </ul>
+
+      <div className="right-side-part">
+        <input placeholder="Search" className="search" />
+        <div className="search-icon">
+          <Image src={SearchIcon} alt="search-icon" />
         </div>
+        <div className="icon non">
+          <Image src={CartIcon} alt="cart-icon" />
+        </div>
+        <div className="icon non">
+          <Image src={EmailIcon} alt="email-icon" />
+        </div>
+        <button className="login-button non">Login</button>
+      </div>
+
+      <div className="mobile-menu" onClick={handleClick}>
+        {click ? (
+          <AiOutlineClose className="menu-icon" />
+        ) : (
+          <AiOutlineMenu className="menu-icon" />
+        )}
       </div>
     </HeaderWrapper>
   );

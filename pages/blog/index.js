@@ -9,7 +9,7 @@ import BlogMain2 from "../../src/Components/BlogPage/BlogMain2";
 import BlogHeader from "../../src/Components/BlogPage/BlogHeader";
 
 const BlogHeaderBox1Wrapper = styled.div`
-  height:850px;
+  height: 850px;
   .header-box {
     position: relative;
     display: flex;
@@ -114,61 +114,95 @@ const BlogHeaderBox1Wrapper = styled.div`
       font-size: 14px;
       width: 410px;
     }
-   
   }
   @media screen and (max-width: 1000px) {
     .header-box {
       width: 700px;
-    }
-    .header-box .header-desc .blog-head1 div {
-      font-size: 24px;
-      width: 310px;
-    }
-    .header-box .header-desc .blog-head1 p {
-      font-size: 17px;
-      width: 250px;
-    }
-    
-  }
-  @media screen and (max-width: 700px) {
-    
-    .header-box {
-      margin:10px;
-      width: 450px;
-      bottom:200px;
-    }
-    .header-box .header-desc .blog-head1 div {
-      font-size: 17px;
-      width: 100%;
-    }
-    .header-box .header-desc .blog-head1 p {
-      font-size: 14px;
-      width: 100%;
-    }
-    .header-box .header-desc .blog-box1-btn {
-      padding-top: 20px;
-      button {
-        padding-left: 160px;
-        width: 300px;
+      height: 500px;
+      flex-direction: column;
+      .header-img {
+        width: 100%;
+        height: 50%;
+        border-radius: 16px;
+      }
+      .header-desc {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .blog-bottom1 {
+          padding: 20px 0 0 0;
+        }
+        .blog-head1 div {
+          width: 100%;
+        }
+        .blog-head1 p {
+          width: 100%;
+        }
+        .profile-data {
+          padding: 10px 0 0 0;
+        }
+        .blog-box1-btn {
+          left: 0;
+          position: unset;
+          button {
+            width: 200px;
+            padding: 0;
+          }
+        }
       }
     }
-    .header-box .header-desc .blog-bottom1 {
-      padding-top: 60px;
-      padding-left: 25px;
-    }
-    .header-box .header-desc .profile-data {
-      padding: 0px;
-    }
-   
   }
-
-  
+  @media screen and (max-width: 700px) {
+    .header-box {
+      margin: 10px;
+      width: 450px;
+      bottom: 200px;
+      text-align: center;
+    }
+    .header-box .header-desc {
+      .blog-head1 div {
+        font-size: 17px;
+        width: 100%;
+      }
+      .blog-head1 p {
+        font-size: 14px;
+        width: 100%;
+      }
+      .profile-data {
+        padding: 10px 50px 0 50px;
+      }
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .header-box {
+      margin: 10px;
+      width: 350px;
+      bottom: 200px;
+      text-align: center;
+    }
+    .header-box .header-desc {
+      .blog-head1 div {
+        font-size: 17px;
+        width: 100%;
+      }
+      .blog-head1 p {
+        font-size: 14px;
+        width: 100%;
+      }
+      .profile-data {
+        padding: 10px 50px 0 50px;
+      }
+    }
+  }
 `;
 const BlogHeaderBox1 = () => {
   return (
     <>
       <BlogHeaderBox1Wrapper>
-        <BlogHeader/>
+        <BlogHeader />
         <div
           style={{
             display: "flex",

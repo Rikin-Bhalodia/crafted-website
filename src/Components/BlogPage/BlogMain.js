@@ -9,8 +9,10 @@ const BlogMainWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  ${'' /* position:relative; */}
-  ${'' /* top:-200px */}
+  @media screen and (max-width: 1000px) {
+    position: relative;
+    top: 100px;
+  }
 `;
 const BlogHeader = () => {
   return (
