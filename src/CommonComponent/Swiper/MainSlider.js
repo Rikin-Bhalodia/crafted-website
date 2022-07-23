@@ -15,6 +15,10 @@ const SliderWrapper = styled.div`
     width: 100vw;
     height: 650px;
   }
+  .swiper-wrapper {
+    position: relative;
+    z-index: 1;
+  }
   .content {
     position: absolute !important;
     color: #fff;

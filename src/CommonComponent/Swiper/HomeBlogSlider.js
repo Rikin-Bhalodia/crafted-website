@@ -34,7 +34,7 @@ const HomeBlogWrapper = styled.div`
     width: 50%;
     height: 420px;
     z-index: 0;
-    right: 0px;
+    right: -1px;
     margin-right: 70px;
   }
   .parts {
@@ -54,7 +54,7 @@ const HomeBlogWrapper = styled.div`
   }
   .des-part {
     width: 550px;
-    overflow: hidden;
+    overflow: hidden !important;
   }
   .des-title {
     color: #183b56;
@@ -131,10 +131,20 @@ const HomeBlogWrapper = styled.div`
     margin-bottom: 30px;
     justify-content: space-between;
   }
+  .profile-verified {
+    display: flex;
+    margin: 8px 0 0 0;
+  }
 
   @media screen and (max-width: 1400px) {
     .mySwiper {
       width: 1200px;
+    }
+    .head-part {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 20px 0 20px;
     }
   }
   @media screen and (max-width: 1200px) {
@@ -155,6 +165,7 @@ const HomeBlogWrapper = styled.div`
   @media screen and (max-width: 1000px) {
     .mySwiper {
       width: 700px;
+      height: 600px;
     }
     .blank-card {
       margin-right: 40px;
@@ -162,13 +173,23 @@ const HomeBlogWrapper = styled.div`
     .des {
       padding-right: 20px;
     }
+    .parts {
+      flex-direction: column;
+    }
+    .des-part {
+      width: 100%;
+      padding: 20px 30px 40px 30px;
+      height: 350px;
+    }
+    .blank-card {
+      width: 100%;
+      height: 250px;
+    }
   }
   @media screen and (max-width: 700px) {
     .mySwiper {
       width: 500px;
-    }
-    .blank-card {
-      width: 250px !important;
+      height: 500px;
     }
     .btn-feature {
       margin-top: 20px;
@@ -180,13 +201,93 @@ const HomeBlogWrapper = styled.div`
     .des {
       padding-right: 20px;
     }
-  }
-  @media screen and (max-width: 1400px) {
-    .head-part {
-      display: flex;
-      justify-content: space-between;
+    .des-part {
       width: 100%;
-      padding: 0 20px 0 20px;
+      padding: 0px 30px 10px 30px;
+      height: 300px;
+    }
+    .blank-card {
+      width: 100%;
+      height: 200px;
+    }
+    .profile-data {
+      padding: 20px 0 0 0;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .mySwiper {
+      width: 400px;
+      height: 400px;
+    }
+    .des-title {
+      font-size: 20px;
+    }
+    .des {
+      font-size: 12px;
+    }
+    .des-part {
+      width: 100%;
+      padding: 0px 30px 0px 30px;
+      height: 250px;
+    }
+    .blank-card {
+      width: 100%;
+      height: 150px;
+    }
+    .profile-data {
+      padding: 20px 0 0 0;
+    }
+    .name {
+      font-size: 12px;
+    }
+    .verified {
+      font-size: 12px;
+    }
+    .date {
+      font-size: 12px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .mySwiper {
+      width: 350px;
+      height: 350px;
+    }
+    .des-title {
+      font-size: 14px;
+    }
+    .des {
+      font-size: 10px;
+    }
+    .des-part {
+      width: 100%;
+      padding: 0px 30px 0px 30px;
+      height: 200px;
+    }
+    .blank-card {
+      width: 100%;
+      height: 150px;
+    }
+    .profile-data {
+      padding: 20px 0 0 0;
+    }
+    .name {
+      font-size: 10px;
+    }
+    .verified {
+      font-size: 10px;
+    }
+    .date {
+      font-size: 10px;
+    }
+    .btn-feature {
+      margin-top: 10px;
+    }
+    .profile {
+      height: 30px;
+      width: 40px;
+    }
+    .profile-verified {
+      margin-top: 4px;
     }
   }
 `;
@@ -252,7 +353,7 @@ const HomeBlogSlider = () => {
                       <div className="profile"></div>
                       <div style={{ display: "flex", flexDirection: "column" }}>
                         <div className="name">Viola Manisa</div>
-                        <div style={{ display: "flex", margin: "8px 0 0 0" }}>
+                        <div className="profile-verified">
                           <Image src={Verified} alt="verified" />
                           <div className="verified">Verified writer</div>
                         </div>
