@@ -76,7 +76,7 @@ const BlogBox2Wrapper = styled.div`
     }
   }
   @media screen and (max-width: 1400px) {
-    margin: 20px 20px 0 20px;
+    margin: 20px 10px 0 10px;
     .blog-box2 {
       width: 400px;
       height: 400px;
@@ -86,7 +86,7 @@ const BlogBox2Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     .blog-box2 {
-      width: 450px;
+      width: 350px;
       height: 400px;
     }
   }

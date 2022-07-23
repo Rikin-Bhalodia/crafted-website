@@ -95,7 +95,7 @@ const BlogBox1Wrapper = styled.div`
   }
   @media screen and (max-width: 1000px) {
     .blog-box1 {
-      width: 450px;
+      width: 100%;
       height: 450px;
     }
   }

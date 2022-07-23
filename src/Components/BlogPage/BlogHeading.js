@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const BlogHeadingWrapper = styled.div`
-  width: 1500px;
+  width: 100%;
   display: flex;
-  padding: 0 20px 0 20px;
+  padding: 0 180px;
   justify-content: space-between;
   margin-top: 100px;
   .blog-head {
+    width:100%;
     h3 {
       font-weight: 700;
       font-size: 36px;
@@ -39,8 +40,8 @@ const BlogHeadingWrapper = styled.div`
     }
   }
   @media screen and (max-width: 1400px) {
-    display: flex;
-    justify-content: space-between;
+    ${'' /* display: flex; */}
+    ${'' /* justify-content: space-between; */}
     width: 100%;
     padding: 0 20px 0 20px;
     .blog-head {
@@ -53,18 +54,25 @@ const BlogHeadingWrapper = styled.div`
     }
   }
   @media screen and (max-width: 700px) {
+    flex-direction:column;
+    align-items: center;
+    text-align:center;
+    margin-bottom:20px;
     .blog-head {
       p {
-        width: 300px;
+        width: 100%;
       }
+    }
+    .blog-btn {
+    a {
+      top:0px;
+    
+    }
     }
   }
   @media screen and (max-width: 500px) {
-    .blog-head {
-      p {
-        width: 200px;
-      }
-    }
+    
+    
   }
 `;
 const BlogHeading = (props) => {

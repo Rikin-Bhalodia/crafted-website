@@ -9,7 +9,7 @@ const BlogMain4Wrapper = styled.div`
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
-    padding-left: 110px;
+    padding-left: 180px;
     h3 {
       font-weight: 700;
       font-size: 36px;

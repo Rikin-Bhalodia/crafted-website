@@ -8,6 +8,7 @@ const FollowUsWraapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding:150px 0px 0px;
   .follow {
     font-weight: 700;
     font-size: 30px;

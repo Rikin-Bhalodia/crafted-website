@@ -9,6 +9,8 @@ const BlogMainWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  ${'' /* position:relative; */}
+  ${'' /* top:-200px */}
 `;
 const BlogHeader = () => {
   return (

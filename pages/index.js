@@ -6,7 +6,6 @@ import CustomerReview from "/public/svg/customer.svg";
 import CustomerReview1 from "/public/svg/customer2.svg";
 import CustomerReview2 from "/public/svg/customer3.svg";
 import MainSlider from "../src/CommonComponent/Swiper/MainSlider";
-import FooterContact from "../src/CommonComponent/Footer/FooterContact";
 import Image from "next/image";
 import MatchComponent from "../src/Components/HomePage/StepComponent";
 import HomeBlogSlider from "../src/CommonComponent/Swiper/HomeBlogSlider";
@@ -282,7 +281,6 @@ export default function Home() {
       </div>
       <HomeBlogSlider />
       <Followus />
-      <FooterContact />
     </MainAppWrapper>
   );
 }

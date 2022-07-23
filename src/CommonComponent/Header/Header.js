@@ -74,7 +74,7 @@ const HeaderWrapper = styled.div`
     }
   }
 
-  @media screen and (max-width: 790px) {
+  ${'' /* @media screen and (max-width: 790px) {
     flex-direction: column;
     align-items: center;
     height: 150px;
@@ -114,7 +114,7 @@ const HeaderWrapper = styled.div`
       align-items: center;
       padding: 0px 30px;
     }
-  }
+  } */}
 `;
 
 const Header = () => {
@@ -128,8 +128,8 @@ const Header = () => {
           <div>TCOMaC</div>
           <div>Think Social</div>
           <div>Blog</div>
-        </div>
-        <div className="right-side-part">
+        {/* </div> */}
+        {/* <div className="right-side-part"> */}
           <input placeholder="Search" className="search" />
           <div className="search-icon">
             <Image src={SearchIcon} alt="search-icon" />

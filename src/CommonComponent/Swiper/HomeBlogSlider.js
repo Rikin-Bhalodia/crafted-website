@@ -296,7 +296,7 @@ const HomeBlogSlider = () => {
   const router = useRouter();
   return (
     <HomeBlogWrapper>
-      {router.pathname === "/blog" ? (
+      {router.pathname === "/pages/blog/index.js" ? (
         <div className="head-part">
           <div>
             <div className="head">Case Studies</div>
@@ -313,7 +313,7 @@ const HomeBlogSlider = () => {
             <div className="head">The Crafted Blogs</div>
             <div className="tips">Fashion and Lifestyle Tips</div>
           </div>
-          <Link href="/blog">
+          <Link href="/pages/blog/index.js">
             <button className="view-all-btn">
               View all{" "}
               <Image
