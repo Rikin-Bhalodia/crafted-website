@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Logo from "/public/svg/logo.svg";
-import CloseMenu from "/public/svg/close.svg";
-import MenuIcon from "/public/svg/menu.svg";
+// import CloseMenu from "/public/svg/close.svg";
+// import MenuIcon from "/public/svg/menu.svg";
 import SearchIcon from "/public/svg/search-icon.svg";
 import CartIcon from "/public/svg/cart.svg";
 import EmailIcon from "/public/svg/email.svg";
@@ -68,11 +68,7 @@ const HeaderWrapper = styled.div`
     gap: 50px;
   }
   /*Desktop View*/
-  .logo-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-  }
+  
   .logo-container {
     display: flex;
     align-items: center;

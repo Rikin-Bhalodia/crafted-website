@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "antd": "^4.21.7",
     "core-js": "3",
     "helmet": "^5.1.0",
     "install": "^0.13.0",

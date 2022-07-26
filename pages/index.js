@@ -9,6 +9,8 @@ import MainSlider from "../src/CommonComponent/Swiper/MainSlider";
 import Image from "next/image";
 import MatchComponent from "../src/Components/HomePage/StepComponent";
 import HomeBlogSlider from "../src/CommonComponent/Swiper/HomeBlogSlider";
+
+
 const MainAppWrapper = styled.div`
   position: relative;
 
