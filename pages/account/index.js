@@ -33,23 +33,30 @@ const AccountDetailsWrapper = styled.div`
                 font-size: 36px;
                 line-height: 54px;
                 color: #000000;
-                border-bottom: 3px solid #000000;
-                padding: 20px 0px 10px 20px;
+                padding: 20px 60px;
                 margin-bottom: 0px;
+                background: #D9D9D9;
+                border: 1px solid #343434;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 20px;
+                display : flex;
             }
             .account-data {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
                 justify-content: space-between;
-                /* gap:100px; */
                 align-items: center;
-                border-bottom: .5px solid #000000;
-                height: 120px;
+                border: 1px solid #343434;
+                margin: 30px 0px;
+                padding: 20px 60px;
+                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                border-radius: 20px;
+                /* height: 120px; */
 
                 h5 {
                     font-weight: 700;
                     font-size: 24px;
-                    line-height: 36px;
+                    /* line-height: 36px; */
                     color: #000000;
                 }
 
@@ -64,7 +71,7 @@ const AccountDetailsWrapper = styled.div`
                 a {
                     font-weight: 500;
                     font-size: 24px;
-                    line-height: 36px;
+                    /* line-height: 36px; */
                     color: #1565D8;
                     display : flex;
                     justify-content: flex-end;
@@ -73,7 +80,7 @@ const AccountDetailsWrapper = styled.div`
         }
     }
     .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
-        padding: 50px 20px 0px 0px;
+        padding: 20px 20px 0px 0px;
         align-items: flex-end;
         gap:20px;
     }
@@ -87,7 +94,9 @@ const AccountDetailsWrapper = styled.div`
         .tabs {   
             .tabpane {
                 margin-right: 10px !important;
-                h3 {
+
+                h3,.account-data {
+                    padding: 20px;
                 }
             }
         }
@@ -102,15 +111,20 @@ const AccountDetailsWrapper = styled.div`
 
                     h5 {
                         font-weight: 600;
-                        font-size: 20px;
+                        font-size: 24px;
                     }
 
                     p {
-                        font-size: 15px;
+                        font-size: 20px;
+                        display : grid;
+                        justify-content: flex-start;
+                        grid-area: 2/1/3/4;
                     }
 
                     a {
-                        font-size: 20px;
+                        font-size: 24px;
+                        grid-area: 1/3/2/4;
+
                     }
                 }
             }
@@ -121,7 +135,7 @@ const AccountDetailsWrapper = styled.div`
         }
     }
 
-    @media screen and (max-width: 727px){
+    @media screen and (max-width: 747px){
         padding: 20px 20px 20px !important;
         .tabs {   
             height: 100%;
@@ -130,7 +144,9 @@ const AccountDetailsWrapper = styled.div`
 
                 .account-data {
                     grid-template-columns: 1fr;
-                    grid-template-rows: 1fr 1fr 1fr;
+                    grid-template-rows: 1fr 1fr ;
+
+                   
                 }
             }
         }
@@ -188,10 +204,10 @@ const AccountDetails = () => {
         <Breadcrumb.Item>Contact us</Breadcrumb.Item>
     </Breadcrumb>
     <AccountDetailsWrapper>
-        <h2>My Account Page</h2>
+        <h2>My Profile</h2>
         <Tabs tabPosition={tabPosition} className='tabs'>
             <TabPane tab="Account Information" key="1" className='tabpane'>
-                <h3>Account Information</h3>
+                <h3>My Profile</h3>
                 {account.map((data) => {
                     return (
                         <div className='account-data'>
