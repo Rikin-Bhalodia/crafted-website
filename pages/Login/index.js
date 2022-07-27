@@ -213,7 +213,7 @@ const SignUp = () => {
                     <h4>Welcome to The Crafted</h4>
                     <p>Unlimited free access to the world’s first Online Matching Centre</p>
                     <input type="text" id="name" name="name" placeholder='Name'/><br/>
-                    <input type="text" id="email" name="email" placeholder='Email'/><br/>
+                    <input type="email" id="email" name="email" placeholder='Email'/><br/>
                     <input type="password" name="password" placeholder='Create your password'/><br/>
                     <a href="#" className="btn">Sign Up</a>
                 </div>

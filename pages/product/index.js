@@ -10,8 +10,12 @@ import Skirt from "../../public/svg/product-svg/skirt.svg";
 import Shoes from "../../public/svg/product-svg/shoes.svg";
 import Underware from "../../public/svg/product-svg/underware.svg";
 import { FiChevronRight } from "react-icons/fi";
+import { GoStar } from "react-icons/go";
+import 'antd/dist/antd.css';
+import { Collapse } from 'antd';
+import { Breadcrumb } from 'antd';
 
-
+const { Panel } = Collapse;
 
 const dummyData = [
     {
@@ -51,21 +55,12 @@ const dummyData = [
 const ProductWrapper = styled.div`
     padding: 0px 80px 40px;
     width: 100%;
-    .product-pagition {
-        display: flex;
-        gap: 10px;
-
-        div {
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 27px;
-            color: #9F9F9F;
-        }
-    }
+    
     .product-heading {
         display : flex;
         justify-content: center;
         width: 100%;
+        padding: 20px 0px 20px ;
 
         h3 {
             font-weight: 700;
@@ -77,11 +72,37 @@ const ProductWrapper = styled.div`
     .product-section {
         width: 100%;
         display : flex;
-        gap:30px;
+        gap:50px;
         .sort-product {
             width: 25%;
-            background: #393D46;
 
+            .collapse {
+                .panel {
+                    font-size: 18px;
+                    font-weight: 500;
+                    p {
+                        border-bottom: 3px solid #F6F7FB;
+                        padding-bottom: 30px;
+                        padding-left: 20px;
+
+                        input {
+                            width: 20px;
+                            height: 20px;
+                            border: 3px solid #CDCFD1;
+                            margin-bottom: 15px;
+                        }
+
+                        label {
+                            font-weight: 400;
+                            font-size: 18px;
+                            line-height: 27px;
+                            color: #9F9F9F;
+                            margin-bottom: 15px;
+                            
+                        }
+                    }
+                }
+            }
         }
         .product-data {
             width: 75%;
@@ -121,10 +142,16 @@ const ProductWrapper = styled.div`
             .product-data {
                 width: 100%;
             }
+            .sort-product {
+                width: 100%;
+            }
         }
     }
 
     @media screen and (max-width: 930px){
+        .product-heading {
+            padding: 20px 0px 0px ;
+        }
         .collection {
             width: 100% !important;
         }   
@@ -141,19 +168,57 @@ const ProductWrapper = styled.div`
 `;
 const Product = () => {
   return (
+    <>
+        <Breadcrumb separator=">" style={{marginLeft:'120px'}} >
+        <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+        <Breadcrumb.Item>Categories</Breadcrumb.Item>
+    </Breadcrumb>
     <ProductWrapper>
-        <div className="product-pagition">
-            <div>Home</div>
-            <div><FiChevronRight/></div>
-            <div style={{color: '#393D46'}}>Categories</div>
-        </div>
+        
 
         <div className="product-heading">
             <h3>Products</h3>
         </div>
 
         <div className="product-section">
-            <div className="sort-product"></div>
+            <div className="sort-product">
+            <Collapse className="collapse" defaultActiveKey={['1','2']} ghost>
+                <Panel className="panel" header="Filter by Price" key="1">
+                <p>
+                    <input type="checkbox" id="price" name="price" value="All" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="price">All Price</label><br />
+                    <input type="checkbox" id="price" name="price" value="100-250" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="price">$100 - $250</label><br />
+                    <input type="checkbox" id="price" name="price" value="250-500" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="price">$250 - $500</label><br />
+                    <input type="checkbox" id="price" name="price" value="750-1000" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="price">$750 - $1000</label><br />
+                    <input type="checkbox" id="price" name="price" value="1000-1500" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="price">$1000 - $1500</label><br />
+                </p>
+                </Panel>
+                <Panel className="panel" header="Filter by Rating" key="2">
+                <p>
+                    <input type="checkbox" id="star" name="star" value="1star" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="star" style={{color:'#FBEA53'}}><GoStar size={25}/></label><br />
+                    <input type="checkbox" id="star" name="star" value="2star" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="star" style={{color:'#FBEA53'}}><GoStar size={25}/>&nbsp;<GoStar size={25}/></label><br />
+                    <input type="checkbox" id="star" name="star" value="3star" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="star" style={{color:'#FBEA53'}}><GoStar size={25}/>&nbsp;<GoStar size={25}/>&nbsp;<GoStar size={25}/></label><br />
+                    <input type="checkbox" id="star" name="star" value="4star" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="star" style={{color:'#FBEA53'}}><GoStar size={25}/>&nbsp;<GoStar size={25}/>&nbsp;<GoStar size={25}/>&nbsp;<GoStar size={25}/></label><br />
+                    <input type="checkbox" id="star" name="star" value="5star" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="star" style={{color:'#FBEA53'}}><GoStar size={25}/>&nbsp;<GoStar size={25}/>&nbsp;<GoStar size={25}/>&nbsp;<GoStar size={25}/>&nbsp;<GoStar size={25}/></label><br />
+                </p>
+                </Panel>
+                <Panel className="panel" header="Filter by Color" key="3">
+                <p></p>
+                </Panel>
+                <Panel className="panel" header="Filter by Size" key="4">
+                <p></p>
+                </Panel>
+            </Collapse>
+            </div>
             <div className="product-data">
                 {dummyData.map((data) => {
                     return (
@@ -169,6 +234,8 @@ const Product = () => {
             </div>
         </div>
     </ProductWrapper>
+    </>
+
     );
 };
 
