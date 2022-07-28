@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Tabs } from 'antd';
 import Link from "next/link";
 import { Breadcrumb } from 'antd';
+import MyOrder from '../../src/Components/order-history-page/MyOrder';
 
 const { TabPane } = Tabs;
 
@@ -23,7 +24,6 @@ const AccountDetailsWrapper = styled.div`
 
     .tabs {   
         color: #000000;
-        height: 550px;
 
         .tabpane {
             margin-left: 50px;
@@ -48,16 +48,15 @@ const AccountDetailsWrapper = styled.div`
                 align-items: center;
                 border: 1px solid #343434;
                 margin: 30px 0px;
-                padding: 20px 60px;
+                padding: 15px 60px;
                 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
                 border-radius: 20px;
-                /* height: 120px; */
 
                 h5 {
                     font-weight: 700;
                     font-size: 24px;
-                    /* line-height: 36px; */
                     color: #000000;
+                    margin: 0px;
                 }
 
                 p {
@@ -65,13 +64,12 @@ const AccountDetailsWrapper = styled.div`
                     font-size: 20px;
                     line-height: 30px;
                     color: #000000;
-                    
+                    margin: 0px;
                 }
 
                 a {
                     font-weight: 500;
                     font-size: 24px;
-                    /* line-height: 36px; */
                     color: #1565D8;
                     display : flex;
                     justify-content: flex-end;
@@ -136,6 +134,8 @@ const AccountDetailsWrapper = styled.div`
     }
 
     @media screen and (max-width: 747px){
+        height: 100%;
+
         padding: 20px 20px 20px !important;
         .tabs {   
             height: 100%;
@@ -150,12 +150,18 @@ const AccountDetailsWrapper = styled.div`
                 }
             }
         }
+        .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+        }
         .ant-tabs {
             flex-direction: column;
         }
         .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
-        padding: 10px 20px 0px 0px;
-        gap:10px;
+            flex-direction: row;
+            padding: 10px 10px 30px 0px;
+            gap:0px;
+            justify-content: center;
+    }.ant-tabs-left > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-left > div > .ant-tabs-nav .ant-tabs-ink-bar{
+        display: none;
     }
     }
     @media screen and (max-width: 577px){
@@ -178,18 +184,22 @@ const account = [
     {
         heading: "Name:",
         text: "ABC",
+        edit:"Edit",
     },
     {
         heading: "Email:",
         text: "ABC@gmail.com",
-    },
+        edit:"Change",
+    },    
     {
         heading: "Password:",
         text: "ABC@123",
+        edit:"Reset",
     },
     {
         heading: "Birthday:",
         text: "1st Jan 2020",
+        edit:"Update",
     },
 ];
 
@@ -204,7 +214,7 @@ const AccountDetails = () => {
         <Breadcrumb.Item>Contact us</Breadcrumb.Item>
     </Breadcrumb>
     <AccountDetailsWrapper>
-        <h2>My Profile</h2>
+        <h2>My Account Page</h2>
         <Tabs tabPosition={tabPosition} className='tabs'>
             <TabPane tab="Account Information" key="1" className='tabpane'>
                 <h3>My Profile</h3>
@@ -213,13 +223,13 @@ const AccountDetails = () => {
                         <div className='account-data'>
                             <h5>{data.heading}</h5>
                             <p>{data.text}</p>
-                            <Link href='#'>Edit</Link>
+                            <Link href='#'>{data.edit}</Link>
                         </div>
                     );
                 })}
             </TabPane>
             <TabPane tab="My Order History" key="2" className='tabpane'>
-                <h3>My Orders History</h3>
+                <MyOrder/>
             </TabPane>
       </Tabs>
     </AccountDetailsWrapper>
