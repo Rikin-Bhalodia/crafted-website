@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from "styled-components";
 // import { IoSearchOutline } from "react-icons/io5";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { PlusOutlined } from '@ant-design/icons';
+
 
 import { Breadcrumb } from 'antd';
 import ProductDropDown from './ProductDropDown';
 import ProductTable from './ProductTable';
+import ProductDrawer from './ProductDrawer'
 
-import { Drawer } from 'antd';
-import { Button, Form, Input,Upload,DatePicker } from 'antd';
 
 const ProductWrapper = styled.div`
     padding-top: 20px;
@@ -29,38 +28,8 @@ const ProductWrapper = styled.div`
                 display: flex;
                 flex-direction: row;
                 gap: 10px;
-                button {
-                    width: 90px;
-                    height: 25px;
-                    border-radius: 20px;
-                    border: 1px solid #999999;
-                    padding: 0px 10px;
-                    font-weight: 600;
-                    font-size: 14px;
-                    line-height: 19px;
-                    color: rgba(0, 0, 0, 0.8);
-                    background: #FFFFFF;
-                }
-                .ant-drawer .ant-drawer-right .ant-drawer-open>.ant-drawer-mask>.ant-drawer-content-wrapper>.ant-drawer-content>.ant-drawer-wrapper-body>.ant-drawer-body {
-                    label {
-                        font-weight: 400;
-                        font-size: 18px;
-                        line-height: 47px;
-                        text-align: center;
-                        color: #9F9F9F;
-                    }
-                    input {
-                        width: 100%;
-                        height: 50px;
-                        margin-bottom: 10px;
-                        border: 1px solid #CDCFD1;
-                        font-weight: 400;
-                        font-size: 18px;
-                        line-height: 27px;
-                        color: #9F9F9F;
-                        padding-left: 20px;
-                    }
-                }
+                
+                
             }
         }
         .header-center {
@@ -106,15 +75,7 @@ const ProductWrapper = styled.div`
 `;
 
 const Product = () => {
-    const [visible, setVisible] = useState(false);
-
-    const showDrawer = () => {
-        setVisible(true);
-      };
-    
-      const onClose = () => {
-        setVisible(false);
-      };
+   
     return (
         <>
             <ProductWrapper>
@@ -122,145 +83,7 @@ const Product = () => {
                     <div className='header-left'>
                         <h3>Products</h3>
                         <div className='header-btn'>
-                            <button onClick={showDrawer}>Add New</button>
-                            <Drawer title="Add Items" placement="right" onClose={onClose} visible={visible}>
-                                <Form autoComplete='off' layout='vertical' onFinish={(values) => {console.log({values})}}>
-                                    <Form.Item label="Upload" valuePropName="fileList"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'Please enter valid data',
-                                            },]}
-                                    >
-                                        <Upload action="/upload.do" listType="picture-card">
-                                        <div>
-                                            <PlusOutlined />
-                                            <div style={{ marginTop: 8 }}>Upload</div>
-                                        </div>
-                                        </Upload>
-                                    </Form.Item>
-                                    <Form.Item
-                                        name='name'
-                                        label="Name"
-                                        rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please enter valid data',
-                                        },
-                                        { whitespace : true },
-                                        { min : 3 },
-                                        ]}
-                                    >
-                                    <Input placeholder="" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name='sku'
-                                        label="SKU"
-                                        rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please enter valid data',
-                                        },
-                                        { whitespace : true },
-                                        { min : 3 },
-                                        ]}
-                                    >
-                                    <Input placeholder="" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name='stock'
-                                        label="Stock"
-                                        rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please enter valid data',
-                                        },
-                                        { whitespace : true },
-                                        { min : 3 },
-                                        ]}
-                                    >
-                                    <Input placeholder="" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name='mrp'
-                                        label="MRP"
-                                        rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please enter valid data',
-                                        },
-                                        { whitespace : true },
-                                        { min : 3 },
-                                        ]}
-                                    >
-                                    <Input placeholder="" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name='sale price'
-                                        label="Sale Price"
-                                        rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please enter valid data',
-                                        },
-                                        { whitespace : true },
-                                        { min : 3 },
-                                        ]}
-                                    >
-                                    <Input placeholder="" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name='category'
-                                        label="Category"
-                                        rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please enter valid data',
-                                        },
-                                        { whitespace : true },
-                                        { min : 3 },
-                                        ]}
-                                    >
-                                    <Input placeholder="" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name='tags'
-                                        label="Tags"
-                                        rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please enter valid data',
-                                        },
-                                        { whitespace : true },
-                                        { min : 3 },
-                                        ]}
-                                    >
-                                    <Input placeholder="" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name='date'
-                                        label="Date"
-                                        rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please enter valid data',
-                                        },
-                                        { whitespace : true },
-                                        { min : 3 },
-                                        ]}
-                                    >
-                                    <DatePicker />
-                                    </Form.Item>
-                                    <Form.Item>
-                                        <Button type="primary" block htmlType='submit'>
-                                        Submit
-                                        </Button>
-                                    </Form.Item>
-                                </Form>
-                            </Drawer>
-                            <button>Import</button>
-                            <button>Export</button>
-                            
+                            <ProductDrawer/>
                         </div>
                     </div>
                     <div className='header-center'>

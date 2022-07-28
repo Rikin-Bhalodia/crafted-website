@@ -71,6 +71,12 @@ const DashBoardWrapper = styled.div`
             color: #333333;
         }
     }
+    .ant-menu .ant-menu-root .ant-menu-inline .ant-menu-light {
+        width: 100%;
+        .ant-menu-item .ant-menu-item-active .ant-menu-item-selected {
+            margin-top: 100%;
+        }
+    }
 `;
 
 
