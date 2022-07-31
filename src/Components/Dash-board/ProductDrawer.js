@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 import { PlusOutlined } from '@ant-design/icons';
 import { Drawer } from 'antd';
-import { Button, Form, Input,Upload,DatePicker } from 'antd';
+import { Button, Form, Input,Upload,DatePicker,Select } from 'antd';
 const PrductDrawerWrapper = styled.div`
     button {
                     width: 90px;
@@ -18,7 +18,10 @@ const PrductDrawerWrapper = styled.div`
                     background: #FFFFFF;
                 }
 `;
-
+const { Option } = Select;
+const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
 const PrductDrawer = () => {
     const [visible, setVisible] = useState(false);
 
@@ -119,37 +122,45 @@ const PrductDrawer = () => {
                         >
                         <Input placeholder="" />
                         </Form.Item>
-                        <Form.Item
-                            name='category'
-                            label="Category"
-                            rules={[
-                            {
-                                required: true,
-                                message: 'Please enter valid data',
-                            },
-                            { whitespace : true },
-                            { min : 3 },
-                            ]}
-                        >
-                        <Input placeholder="" />
-                        </Form.Item>
-                        <Form.Item
-                            name='tags'
-                            label="Tags"
-                            rules={[
-                            {
-                                required: true,
-                                message: 'Please enter valid data',
-                            },
-                            { whitespace : true },
-                            { min : 3 },
-                            ]}
-                        >
-                        <Input placeholder="" />
-                        </Form.Item>
+                        <Form.Item label="Categories">
+                        <Select
+                            style={{
+                                width: '100%',
+                            }}
+                            onChange={handleChange}
+                            >
+                            <Option value="jackets">Jacket</Option>
+                            <Option value="shirts">Shirt</Option>
+                            <Option value="pants">Pants</Option>
+                            <Option value="skirts">Skirt</Option>
+                            <Option value="dress">Dress</Option>
+                            <Option value="underwears">Underwear</Option>
+                            <Option value="shoes">Shoes</Option>
+                            <Option value="accesories">Accesories</Option>
+                            </Select>
+                            </Form.Item>
+                        <Form.Item label="Tags">
+                        <Select
+                            style={{
+                                width: '100%',
+                            }}
+                            onChange={handleChange}
+                            >
+                            <Option value="jackets">Jacket</Option>
+                            <Option value="shirts">Shirt</Option>
+                            <Option value="pants">Pants</Option>
+                            <Option value="skirts">Skirt</Option>
+                            <Option value="dress">Dress</Option>
+                            <Option value="underwears">Underwear</Option>
+                            <Option value="shoes">Shoes</Option>
+                            <Option value="accesories">Accesories</Option>
+                            </Select>
+                            </Form.Item>
+                            
                         <Form.Item
                             name='date'
                             label="Date"
+                            
                             rules={[
                             {
                                 required: true,

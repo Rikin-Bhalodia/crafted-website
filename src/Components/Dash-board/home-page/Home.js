@@ -1,17 +1,14 @@
 import React from 'react';
 import styled from "styled-components";
-// import { IoSearchOutline } from "react-icons/io5";
 import { IoNotificationsOutline } from "react-icons/io5";
+import { FiSearch } from "react-icons/fi";
+import HomeTotalBox from './HomeTotalBoxs';
+import HomeChart from './HomeChart';
+import HomeOrder from './HomeOrder';
+import HomeTran from './HomeTran';
+import HomeStac from './HomeStac';
 
-
-import { Breadcrumb } from 'antd';
-import ProductDropDown from './ProductDropDown';
-import ProductTable from './ProductTable';
-import ProductDrawer from './ProductDrawer'
-
-
-const ProductWrapper = styled.div`
-    padding-top: 20px;
+const HomeHeadingWrapper = styled.div`
     .product-header {
         display: flex;
         justify-content: space-between;
@@ -24,12 +21,12 @@ const ProductWrapper = styled.div`
                 line-height: 27px;
                 color: #333333;
             }
-            .header-btn {
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-                
-                
+            .header-date {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 16px;
+                color: #999999;                
             }
         }
         .header-center {
@@ -66,28 +63,47 @@ const ProductWrapper = styled.div`
                 border-radius: 25px;
             }
         }
-    }
-    .filter-data {
-        display : flex;
-        gap: 10px;
-        margin-bottom: -10px;
+    }  
+    .body-section {
+        display: grid;
+        gap: 30px;
+        grid-template-columns: 1.8fr 1fr;
+        width: 100%;
+        height: 120vh;
+        padding: 30px 0px;
+        .body-left {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-rows: 1fr 2fr 2fr;
+            gap: 30px;
+        }
+        .body-right {
+            width: 100%;
+            height: 100%;   
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 30px;
+            margin-right: 30px;
+
+        }
     }
 `;
 
-const Product = () => {
-   
+const HomeHeading = () => {
+
     return (
         <>
-            <ProductWrapper>
+            <HomeHeadingWrapper>
                 <div className='product-header'>
                     <div className='header-left'>
-                        <h3>Products</h3>
-                        <div className='header-btn'>
-                            <ProductDrawer/>
+                        <h3>Dashboard</h3>
+                        <div className='header-date'>
+                            Tuesday, 29 March 2022 
                         </div>
                     </div>
                     <div className='header-center'>
-                        <input type="text" id='search' name='search' placeholder='Search anything here'/>
+                        <FiSearch /><input type="text" id='search' name='search' placeholder='Search anything here'/>
                     </div>
                     <div className='header-right'>
                         <div className='notification'>
@@ -96,22 +112,21 @@ const Product = () => {
                         <div className='profile-icon'></div>
                     </div>
                 </div>
-                <Breadcrumb
-                    separator="|"
-                        style={{
-                        margin: '16px 0',
-                        }}
-                    >
-                    <Breadcrumb.Item>All (05)</Breadcrumb.Item>
-                    <Breadcrumb.Item>Published (05)</Breadcrumb.Item>
-                    <Breadcrumb.Item>Draft (00)</Breadcrumb.Item>
-                </Breadcrumb>
-                <ProductDropDown/>
-                <ProductTable/>
-                
-            </ProductWrapper>
+
+                <div className="body-section">
+                    <div className='body-left'>
+                        <HomeTotalBox/>
+                        <HomeChart/>
+                        <HomeOrder/>
+                    </div>
+                    <div className='body-right'>
+                        <HomeTran/>
+                        <HomeStac/>
+                    </div>
+                </div>
+            </HomeHeadingWrapper>
         </>
     );
 };
 
-export default Product;
+export default HomeHeading;

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
-import ProductSlider from "../../../src/CommonComponent/Swiper/ProductSlider";
+import ProductSlider from "../../../../src/CommonComponent/Swiper/ProductSlider";
 import CartImage from "/public/svg/cart-white.svg";
 
 const SingleProductWrapper = styled.div`

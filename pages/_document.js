@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Html,Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import Helmet from "react-helmet";
 
@@ -56,7 +56,7 @@ export default class extends Document {
 
   render() {
     return (
-      <html {...this.helmetHtmlAttrComponents}>
+      <Html {...this.helmetHtmlAttrComponents}>
         <Head>
           {this.helmetJsx}
           {this.helmetHeadComponents}
@@ -65,7 +65,7 @@ export default class extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

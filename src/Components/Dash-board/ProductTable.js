@@ -87,29 +87,22 @@ const ProductTable = () => {
     return (
         <>
             <ProductTableWrapper>
-
-            
-            
-            
-            <Radio.Group
-                onChange={({ target: { value } }) => {
-                setSelectionType(value);
-                }}
-                value={selectionType}
-            >
-                
-            </Radio.Group>
-
-           
-            <Table
-                rowSelection={{
-                type: selectionType,
-                ...rowSelection,
-                }}
-                columns={columns}
-                dataSource={data}
-            />
-          
+                <Radio.Group
+                    onChange={({ target: { value } }) => {
+                    setSelectionType(value);
+                    }}
+                    value={selectionType}
+                >
+                    
+                </Radio.Group>
+                <Table
+                    rowSelection={{
+                    type: selectionType,
+                    ...rowSelection,
+                    }}
+                    columns={columns}
+                    dataSource={data}
+                />
             </ProductTableWrapper>
         </>
     );
