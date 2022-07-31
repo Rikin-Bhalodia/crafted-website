@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Logo from "/public/svg/logo.svg";
-// import CloseMenu from "/public/svg/close.svg";
-// import MenuIcon from "/public/svg/menu.svg";
 import SearchIcon from "/public/svg/search-icon.svg";
 import CartIcon from "/public/svg/cart.svg";
 import EmailIcon from "/public/svg/email.svg";
 import styled from "styled-components";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
+import { useAuth } from "../../../src/auth//AuthContext";
+import { useRouter } from "next/router";
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -68,7 +68,7 @@ const HeaderWrapper = styled.div`
     gap: 50px;
   }
   /*Desktop View*/
-  
+
   .logo-container {
     display: flex;
     align-items: center;
@@ -196,6 +196,13 @@ const Header = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+  const router = useRouter();
+  const { logout } = useAuth();
+  const handlelogout = async (e) => {
+    e.preventDefault();
+    await logout();
+    router.push("/login");
+  };
   return (
     <HeaderWrapper>
       <div className="logo-container">
@@ -241,7 +248,9 @@ const Header = () => {
         <div className="icon non">
           <Image src={EmailIcon} alt="email-icon" />
         </div>
-        <button className="login-button non">Login</button>
+        <button className="login-button non" onClick={handlelogout}>
+          Logout
+        </button>
       </div>
 
       <div className="mobile-menu" onClick={handleClick}>

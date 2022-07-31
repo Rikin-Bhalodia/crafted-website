@@ -9,11 +9,10 @@ import MainSlider from "../src/CommonComponent/Swiper/MainSlider";
 import Image from "next/image";
 import MatchComponent from "../src/Components/HomePage/StepComponent";
 import HomeBlogSlider from "../src/CommonComponent/Swiper/HomeBlogSlider";
-
+import FooterContact from "../src/CommonComponent/Footer/FooterContact";
 
 const MainAppWrapper = styled.div`
   position: relative;
-
   .main-container {
     margin-top: 250px;
     display: flex;
@@ -283,6 +282,7 @@ export default function Home() {
       </div>
       <HomeBlogSlider />
       <Followus />
+      <FooterContact />
     </MainAppWrapper>
   );
 }

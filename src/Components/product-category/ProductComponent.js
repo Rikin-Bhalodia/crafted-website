@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import ProductImg from "../../../public/svg/product.svg";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../Firebase";
 
 const ProductComponentsWrapper = styled.div`
   display: grid;
@@ -56,14 +58,24 @@ const ProductComponentsWrapper = styled.div`
 `;
 
 const ProductComponents = () => {
+  const [products, setProducts] = useState();
+  const productsCollection = collection(db, "products");
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const data = await getDocs(productsCollection);
+      setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getProducts();
+  }, []);
   return (
     <>
       <ProductComponentsWrapper>
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((_) => {
+        {products?.map((product) => {
           return (
             <div className="pro-comp">
               <div className="pro-image">
-                <Image src={ProductImg} alt="product" />
+                <Image src={product.image} alt="product" />
               </div>
               <div className="pro-details">
                 <h3>Purple Warm Zip Jacket</h3>

@@ -1,238 +1,198 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Image from "next/image";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
-import logo2 from "/public/svg/login-logo.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../../src/auth/AuthContext";
+import Link from "next/link";
 
+const LogInWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100vh;
 
-const SignUpWrapper = styled.div`
-    display : flex;
-    width: 100%;
-    height: 821px;
+  .blank {
+    width: 40%;
+    /* background: #EBEAEA; */
+  }
 
-    .blank {
-        width:40%;
-        /* background: #EBEAEA; */
-    }
+  .login-area {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ebeaea;
 
-    .signup-area {
-        width: 60%;
-        height: 100%;
-        display : flex;
-        flex-direction: column;
+    .login-form {
+      width: 550px;
+      height: 600px;
+      background: #ffffff;
+      box-shadow: 0px 0px 20px rgba(214, 214, 214, 0.5);
+      border-radius: 8px;
+      padding: 40px;
+
+      p {
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 0.583333px;
+        text-transform: uppercase;
+        color: #595959;
+        margin-bottom: 5px;
+      }
+
+      h4 {
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: 1.33333px;
+        color: #1a1a1a;
+        margin: 0px 0px 30px 0px;
+      }
+
+      label {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 26px;
+        letter-spacing: 0.583333px;
+        color: #595959;
+      }
+      input {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 10px;
+        border: 1px solid #cdcfd1;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        color: #9f9f9f;
+        padding-left: 20px;
+        border-radius: 8px;
+      }
+
+      .btn {
+        margin-top: 18px;
+        width: 100%;
+        height: 40px;
+        border: 1px solid #cdcfd1;
+        font-weight: 600;
+        font-size: 16px;
+        color: #ffffff;
+        background: #0764e3;
+        display: flex;
         justify-content: center;
         align-items: center;
-        background: #EBEAEA;
-        text-align: center;
+        border-radius: 8px;
+      }
 
-
-        .signup-form {
-            width: 550px;
-            height: 500px;
-            background: #FFFFFF;
-            box-shadow: 0px 0px 20px rgba(214, 214, 214, 0.5);
-            border-radius: 40px;
-            padding: 10px 40px;
-
-            p {
-                font-weight: 600;
-                font-size: 24px;
-                line-height: 32px;
-                letter-spacing: 0.3125px;
-                color: #595959;
-                margin-bottom: 5px;
-            }
-
-            h4 {
-                font-weight: 700;
-                font-size: 32px;
-                /* line-height: 48px; */
-                letter-spacing: 1.33333px;
-                color: #1A1A1A;
-                margin: 0px 0px 10px 0px;
-            }
-
-            label {
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 26px;
-                letter-spacing: 0.583333px;
-                color: #595959;
-            }
-            input {
-                width: 100%;
-                height: 50px;
-                margin-bottom: 10px;
-                border: 1px solid #CDCFD1;
-                font-weight: 400;
-                font-size: 18px;
-                line-height: 27px;
-                color: #9F9F9F;
-                padding-left: 20px;
-                border-radius: 8px;
-            }
-
-            .btn {
-                margin-top: 10px;
-                width:100%;
-                height: 40px;
-                border: 1px solid #CDCFD1;
-                font-weight: 600;
-                font-size: 16px;
-                color: #FFFFFF;
-                background: #0764E3;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 50px
-
-            }
-        }
-
-        .or {
-            p{
-                font-weight: 700;
-                font-size: 24px;
-                line-height: 48px;
-                letter-spacing: 1.33333px;
-                color: #000000;
-                margin: 10px 0px;
-            }
-        }
-        .signup-btn {
-            .btn2 {
-                /* margin-top: 10px; */
-                width:400px;
-                height: 50px;
-                border: 1px solid #CDCFD1;
-                font-weight: 600;
-                font-size: 26px;
-                color: #FFFFFF;
-                background: #0764E3;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 50px;
-                border-radius: 45px;
-            }
-        }
-
-        .terms {
-            width: 40%;
-
-            p {
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 16px;
-                text-align: center;
-                letter-spacing: .33333px;
-                color: #2C3333;
-
-                span {
-                    color: #000000;
-                    font-weight: 500;
-                    cursor: pointer;
-                }
-            }
-
-            .link {
-                border-top: 1px solid #EBEAEA;
-                text-decoration: underline;
-            }
-
-            .link2 {
-                border-top: 1px solid #EBEAEA;
-                text-decoration: underline;
-                color: #0764E3;
-            }
-        }
-    }   
-    
-    @media screen and (max-width: 1094px){
-        flex-direction: column;
-        .signup-area { 
-            width: 100%;
-        }
+      .link {
+        border-top: 1px solid #ebeaea;
+        text-decoration: underline;
+        /* color: #0764e3; */
+        display: flex;
+        align-items: flex-end;
+        height: 50px;
+        margin-top: 30px;
+      }
     }
+  }
 
-    @media screen and (max-width: 700px){
-      .terms {
-        width: 100% !important;
-      }  
+  @media screen and (max-width: 994px) {
+    flex-direction: column;
+    .login-area {
+      width: 100%;
     }
-
-    @media screen and (max-width: 650px){
-        .signup-area { 
-            padding: 0px 20px;
-
-            .signup-form {
-                width: 100%;
-
-                h4 {
-                    font-size: 28px;
-                }
-
-                p {
-                    font-size: 18px;
-                }
-            }
-        }
+  }
+  @media screen and (max-width: 610px) {
+    .login-area {
+      padding: 0px 20px;
     }
+  }
+  @media screen and (max-width: 460px) {
+    .login-form {
+      padding: 20px !important;
 
-    @media screen and (max-width: 470px){
-        height: 900px !important;
-
-        .signup-form {
-            height: 600px !important;
-        }
-        .btn2 {
-            width: 100% !important;
-            font-weight: 500 !important;
-            font-size: 20px !important;
-            padding: 0px 30px;
-        }
+      h4 {
+        font-size: 31px !important;
+      }
     }
-
+  }
 `;
 
-const SignUp = () => {
-    return (
-        <SignUpWrapper>
-            <div className="blank"></div>
-            <div className="signup-area">
-                <div className="signup-form">
-                    <Image
-                        src={logo2}
-                        alt="main-slider-icon"
-                        className="Crafted-logo"
-                        layout="fixed"
-                        width={100}
-                        height={100}
-                    />
-                    <h4>Welcome to The Crafted</h4>
-                    <p>Unlimited free access to the world’s first Online Matching Centre</p>
-                    <input type="text" id="name" name="name" placeholder='Name'/><br/>
-                    <input type="email" id="email" name="email" placeholder='Email'/><br/>
-                    <input type="password" name="password" placeholder='Create your password'/><br/>
-                    <a href="#" className="btn">Sign Up</a>
-                </div>
-                <div className="or">
-                    <p>OR</p>
-                </div>
-                <div className="signup-btn">
-                    <a href="#" className="btn2" style={{background:"#FFFFFF",color:'#595959'}}><FcGoogle size={30}/>&nbsp;&nbsp;&nbsp;&nbsp;Sign in with Google</a><br/>
-                    <a href="#" className="btn2"><FaFacebook size={30}/>&nbsp;&nbsp;&nbsp;Continue with Facebook</a>
-                </div>
-                <div className="terms">
-                    <p>By continuing, you agree to The Crafted’s <span>
-                    Terms of Service</span> and acknowledge you’ve
-                    read our <span> Privacy Policy</span></p>
-                    <a href="#" className="link">Already have account?</a>&nbsp;&nbsp;&nbsp;<a href="#" className="link2">Login here</a>
-                </div>
-            </div>
-        </SignUpWrapper>
-    );
+const LogIn = () => {
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+  const { login } = useAuth();
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData((pre) => {
+      return { ...pre, [name]: value };
+    });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (loginData.email && loginData.password) {
+      await login(loginData.email, loginData.password);
+      router.push("/");
+    } else {
+      toast("please fill the data ");
+    }
+  };
+  return (
+    <LogInWrapper>
+      <div className="blank"></div>
+      <div className="login-area">
+        <div className="login-form">
+          <p>Hey, look who's here!</p>
+          <h4>Before the start</h4>
+          <p
+            style={{
+              fontWeight: "500",
+              fontSize: "15px",
+              letterSpacing: "0.3125px",
+              lineHeight: "22px",
+              paddingBottom: "18px",
+            }}
+          >
+            Fill in the form below to get instant access to all major features.
+          </p>
+          <label for="fname">User Email</label>
+          <br />
+          <input
+            type="text"
+            id="fname"
+            name="email"
+            value={loginData.email}
+            onChange={handleChange}
+          />
+          <br />
+
+          <label for="address">Password</label>
+          <br />
+          <input
+            type="password"
+            id="address"
+            value={loginData.password}
+            name="password"
+            onChange={handleChange}
+          />
+          <br />
+          <a href="#" className="btn" onClick={handleSubmit}>
+            LogIn
+          </a>
+          <br />
+
+          <Link href="/forget" className="link">
+            Forgot your password?
+          </Link>
+        </div>
+      </div>
+      <ToastContainer />
+    </LogInWrapper>
+  );
 };
 
-export default SignUp;
+export default LogIn;

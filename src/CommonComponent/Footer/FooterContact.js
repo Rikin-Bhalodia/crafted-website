@@ -175,7 +175,7 @@ const FooterWrapper = styled.div`
   }
 `;
 
-const Footer = () => {
+const FooterContact = () => {
   return (
     <FooterWrapper>
       <Image src={WaveImage} alt="wave-icon" />
@@ -214,4 +214,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterContact;
