@@ -10,17 +10,28 @@ const ProductComponentsWrapper = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 50px;
   width: 100%;
-  height: 300px;
+  height: 100%;
   padding: 50px 150px;
   .pro-comp {
-    width: 100%;
-    height: 100%;
-    padding: 30px;
-    background-color: #f6f6f6;
+    padding: 30px 40px;
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+    border-radius: 30px;
+    background: #f6f6f6;
 
+    :hover {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    }
     .pro-image {
-      width: 200px;
-      height: 200px;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      background-size: cover;
+      background-attachment: fixed;
+      .product-img {
+        height: 100%;
+        width: 100%;
+      }
     }
     .pro-details {
       display: flex;
@@ -29,29 +40,31 @@ const ProductComponentsWrapper = styled.div`
       h3 {
         font-weight: 700;
         font-size: 26px;
-        line-height: 54px;
+        line-height: 34px;
         color: #393d46;
-        margin: 0px;
+        margin: 10px;
       }
-      p {
-        font-weight: 400;
-        font-size: 26px;
-        /* line-height: 54px; */
-        color: #9f9f9f;
-        margin: 0px;
-      }
-      .cart-btn {
-        margin-top: 40px;
-        background: #393d46;
+      div {
+        width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
-        width: 200px;
-        height: 54px;
-        border: none;
-        font-weight: 700;
-        color: #ffff;
-        font-size: 18px;
+        p {
+          font-weight: 400;
+          font-size: 26px;
+          /* line-height: 54px; */
+          color: #9f9f9f;
+          margin: 0px;
+        }
+        .cart-btn {
+          background: #393d46;
+          width: 150px;
+          height: 34px;
+          border: none;
+          font-weight: 700;
+          color: #ffff;
+          font-size: 15px;
+        }
       }
     }
   }
@@ -75,12 +88,21 @@ const ProductComponents = () => {
           return (
             <div className="pro-comp">
               <div className="pro-image">
-                <Image src={product.image} alt="product" />
+                <Image
+                  src={product.image}
+                  alt="product"
+                  className="product-img"
+                  // layout="fill"
+                  height={230}
+                  width={250}
+                />
               </div>
               <div className="pro-details">
                 <h3>Purple Warm Zip Jacket</h3>
-                <p>$299</p>
-                <button className="cart-btn">Add to Cart</button>
+                <div>
+                  <p>$299</p>
+                  <button className="cart-btn">Add to Cart</button>
+                </div>
               </div>
             </div>
           );
