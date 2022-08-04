@@ -1,4 +1,5 @@
-const app = require("express")();
+const express = require("express");
+const app = express();
 const path = require("path");
 const Razorpay = require("razorpay");
 const cors = require("cors");
@@ -44,8 +45,9 @@ app.get("/logo.svg", (req, res) => {
 // });
 
 app.post("/razorpay", async (req, res) => {
+  console.log(res, "res");
   const payment_capture = 1;
-  const amount = 499;
+  const amount = 449;
   const currency = "INR";
 
   const options = {

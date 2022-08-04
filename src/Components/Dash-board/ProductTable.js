@@ -43,6 +43,10 @@ const columns = [
     title: "Date",
     dataIndex: "date",
   },
+  {
+    title: "Color",
+    dataIndex: "color",
+  },
 ];
 
 const rowSelection = {
@@ -88,7 +92,7 @@ const ProductTable = () => {
 
         return [year, month, day].join("-");
       };
-
+      console.log(product?.color, "color");
       const currentDate = formatDate(new Date());
       return data.push({
         key: i,
@@ -101,6 +105,20 @@ const ProductTable = () => {
         category: product?.category,
         tags: product?.tags,
         date: currentDate,
+        color: (
+          <div
+            style={{
+              display: "flex",
+              width: "100px",
+              flexWrap: "wrap",
+              gap: "7px",
+            }}
+          >
+            {product?.color?.map((color) => (
+              <div style={{ background: color, height: 13, width: 13 }}></div>
+            ))}
+          </div>
+        ),
       });
     });
   }

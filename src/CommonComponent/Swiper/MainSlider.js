@@ -9,6 +9,7 @@ import { Pagination } from "swiper";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
+// import video from "/public/home-video/craftedVideo.mp4";
 
 const SliderWrapper = styled.div`
   .slide {
@@ -110,25 +111,21 @@ export default function App() {
   return (
     <SliderWrapper>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-        {[1, 2, 4, 5, 6, 7].map((_) => {
-          return (
-            <SwiperSlide className="slide">
-              <Image
-                src={Banner}
-                alt="main-slider-icon"
-                className="banner-img"
-                layout="fill"
-              />
-              <div className="content">
-                <div className="name">India’s First</div>
-                <div className="desc">Online Matching Centre</div>
-                <button className="match-btn">
-                  Match Now <Image src={RightArrow} alt="right-arrow" />
-                </button>
-              </div>
-            </SwiperSlide>
-          );
-        })}
+        <SwiperSlide className="slide">
+          {/* <video width="750" height="500" controls autoPlay>
+            <source
+              src={require("/public/home-video/craftedVideo.mp4")}
+              type="video/ogg"
+            />
+          </video> */}
+          <div className="content">
+            <div className="name">India’s First</div>
+            <div className="desc">Online Matching Centre</div>
+            <button className="match-btn">
+              Match Now <Image src={RightArrow} alt="right-arrow" />
+            </button>
+          </div>
+        </SwiperSlide>
       </Swiper>
       <Swiper
         slidesPerView={4}
@@ -140,7 +137,7 @@ export default function App() {
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_) => {
           return (
             <SwiperSlide className="small-slider">
-                <Image src={Sweater} alt="sweater" />
+              <Image src={Sweater} alt="sweater" />
               <Link href="/pages/cart/index.js">
                 <div>Poplin Cotton Fabric</div>
               </Link>

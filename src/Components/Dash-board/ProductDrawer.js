@@ -6,6 +6,7 @@ import { Drawer } from "antd";
 import { db } from "../../Firebase";
 import { Button, Form, Input, Upload, DatePicker, Select } from "antd";
 import { addDoc, collection } from "firebase/firestore";
+import { SwatchesPicker } from "react-color";
 const PrductDrawerWrapper = styled.div`
   button {
     width: 90px;
@@ -26,6 +27,8 @@ const PrductDrawer = () => {
   const [visible, setVisible] = useState(false);
   const [imageUrl, setImageUrl] = useState();
   const [category, setCategory] = useState();
+  const [colorData, setColorData] = useState([]);
+  console.log(colorData, "color");
   const [tag, setTag] = useState();
 
   const showDrawer = () => {
@@ -51,6 +54,9 @@ const PrductDrawer = () => {
       image: imageUrl,
       tag: tag,
       category: category,
+      color: colorData,
+      totalUserItem: 1,
+      id: Math.floor(Math.random() * 100),
     });
   };
 
@@ -205,6 +211,42 @@ const PrductDrawer = () => {
             <Form.Item name="date" label="Date">
               <DatePicker />
             </Form.Item>
+            <Form.Item name="color" label="Color">
+              <SwatchesPicker
+                color={colorData}
+                onChangeComplete={(color) => {
+                  if (colorData.includes(color.hex)) {
+                    setColorData((prev) => [...prev]);
+                  } else {
+                    setColorData((prev) => {
+                      return [...prev, color.hex];
+                    });
+                  }
+                }}
+              />
+            </Form.Item>
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                flexWrap: "wrap",
+                gap: "15px",
+                margin: "0 0 20px 0",
+              }}
+            >
+              {colorData &&
+                colorData?.map((data) => {
+                  return (
+                    <div
+                      style={{
+                        background: data,
+                        height: "20px",
+                        width: "20px",
+                      }}
+                    ></div>
+                  );
+                })}
+            </div>
             <Form.Item>
               <Button type="primary" block htmlType="submit" onClick={onClose}>
                 Submit

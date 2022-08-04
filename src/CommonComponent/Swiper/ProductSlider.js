@@ -2,6 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import Image from "next/image";
 import styled from "styled-components";
 
 const ProductWrapper = styled.div`
@@ -19,7 +20,6 @@ const ProductWrapper = styled.div`
     height: 200px;
   }
   .productImg {
-    background: #cdcfd1;
     height: 150px;
     width: 180px;
   }
@@ -80,45 +80,28 @@ const ProductWrapper = styled.div`
     }
   }
 `;
-const product = [
-  {
-    name: "Black Briefcase",
-    price: "$299",
-  },
-  {
-    name: "Pink Shirt",
-    price: "$299",
-  },
-  {
-    name: "Gray T-shirt",
-    price: "$299",
-  },
-  {
-    name: "Red Flannel",
-    price: "$299",
-  },
-  {
-    name: "Black Briefcase",
-    price: "$299",
-  },
-  {
-    name: "Black Briefcase",
-    price: "$299",
-  },
-];
-export default function ProductSlider() {
+
+export default function ProductSlider({ products }) {
   return (
     <ProductWrapper>
       <Swiper slidesPerView={4} grabCursor={true} spaceBetween={15}>
-        {product.map((ele) => {
-          return (
-            <SwiperSlide className="swiperSlide">
-              <div className="productImg"></div>
-              <div className="product-name">{ele.name}</div>
-              <div className="product-price">{ele.price}</div>
-            </SwiperSlide>
-          );
-        })}
+        {products &&
+          products.map((ele) => {
+            return (
+              <SwiperSlide className="swiperSlide">
+                <div className="productImg">
+                  <Image
+                    src={ele?.image}
+                    layout="responsive"
+                    height={60}
+                    width={80}
+                  />
+                </div>
+                <div className="product-name">{ele.name}</div>
+                <div className="product-price">${ele.mrp}</div>
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </ProductWrapper>
   );

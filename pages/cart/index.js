@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "antd/dist/antd.css";
-import { Button, message, Steps } from "antd";
+import { Button, Steps } from "antd";
 import ShoppingCart from "./../../src/Components/cart-page/Shoppingcart";
 import CheckOut from "./../../src/Components/cart-page/Checkout";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 import ThankYou from "./../../src/Components/cart-page/Thankyou";
 import styled from "styled-components";
+import Image from "next/image";
 import Logo from "/public/svg/logo.svg";
-import axios from "axios";
+import { useAuth } from "../../src/auth/AuthContext";
 
 const CartWrapper = styled.div`
   padding: 0px 100px 100px;
@@ -56,11 +58,35 @@ const loadScript = (src) => {
 
 const Cart = () => {
   const [current, setCurrent] = useState(0);
+  const [cartProduct, setCartProduct] = useState([]);
+  const { currentUser } = useAuth();
+  console.log(currentUser, "user");
+  useEffect(() => {
+    const db = getDatabase();
+    const starCountRef = ref(db, "cartItem/");
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      setCartProduct(Object.entries(data));
+    });
+  }, []);
+  const cartItems = cartProduct.map(([key, value]) => {
+    return value;
+  });
+  const array = cartItems?.map((data) => {
+    return Number(data?.cartData?.mrp) * data?.totalUserItem;
+  });
+
+  const totalAmount = array.reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+    0
+  );
 
   const displayRezorPay = async () => {
     const data = await fetch("http://localhost:1337/razorpay", {
       method: "POST",
-    }).then((t) => t.json());
+    })
+      .then((t) => t.json())
+      .catch((e) => console.log(e, "e"));
 
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
@@ -71,60 +97,34 @@ const Cart = () => {
     }
     const options = {
       key: "rzp_test_NJRQ7mstGJ8A8J",
-      name: "Acme Corp",
-      description: "Test Transaction",
-      amount: data?.amount,
+      name: "The Crafted",
+      description: "We are happy to make connection with you !!",
+      amount: totalAmount,
       currency: data?.currency,
-      image: { Logo },
+      image: <img src={Logo} alt="logo" />,
       order_id: data?.id,
-      handler: function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
-      },
+      handler: function (response) {},
       prefill: {
-        name: "Gaurav Kumar",
-        email: "gaurav.kumar@example.com",
-        contact: "9999999999",
+        name: currentUser.displayName,
+        email: currentUser.email,
+        // contact: ,
       },
     };
     var rzp1 = new window.Razorpay(options);
     rzp1.open();
   };
-  const next = () => {
-    displayRezorPay();
-    // setCurrent(current + 1);
+  const next = (key) => {
+    key === 0 ? setCurrent(current + 1) : displayRezorPay();
   };
   const prev = () => {
     setCurrent(current - 1);
   };
 
   const onChange = (value) => {
-    console.log("onChange:", current);
     setCurrent(value);
   };
 
-  // var orderId;
-  // $(document).ready(function () {
-  //   var settings = {
-  //     url: "/create/orderId",
-  //     method: "POST",
-  //     timeout: 0,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     data: JSON.stringify({
-  //       amount: "50000",
-  //     }),
-  //   };
-
-  //   //creates new orderId everytime
-  //   $.ajax(settings).done(function (response) {
-  //     orderId = response.orderId;
-  //     console.log(orderId);
-  //     $("button").show();
-  //   });
-  // });
+  console.log(cartItems, array, "item");
 
   return (
     <>
@@ -162,7 +162,7 @@ const Cart = () => {
                 fontSize: "18px",
                 fontWeight: "500",
               }}
-              onClick={() => next()}
+              onClick={() => next(current)}
             >
               Checkout
             </Button>

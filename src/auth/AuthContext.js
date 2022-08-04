@@ -21,7 +21,6 @@ export const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
-  console.log(currentUser, "user");
   const [loading, setLoading] = useState(true);
   const googleAuth = new GoogleAuthProvider();
   const facebookAuth = new FacebookAuthProvider();

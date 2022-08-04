@@ -1,14 +1,17 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import ProductSlider from "../../../src/CommonComponent/Swiper/ProductSlider";
 import CartImage from "/public/svg/cart-white.svg";
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import { db } from "../../../src/Firebase";
+import { getDatabase, ref, set } from "firebase/database";
 
 const SingleProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
   .main-product {
-    background: #c4c4c4;
     max-width: 670px;
     width: 90%;
     height: 423px;
@@ -178,36 +181,102 @@ const SingleProductWrapper = styled.div`
 `;
 
 const SingleProduct = () => {
+  const router = useRouter();
+  const [products, setProducts] = useState();
+  const [cartProduct, setCartProduct] = useState([]);
+  const [item, setItem] = useState();
+  const productsCollection = collection(db, "products");
+  useEffect(() => {
+    const getProducts = async () => {
+      const data = await getDocs(productsCollection);
+      setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getProducts();
+    const singleItem = products?.filter((data) => {
+      if (data.id === router.query.id) {
+        return data;
+      } else {
+        return "";
+      }
+    });
+    setItem(singleItem);
+  }, []);
+  const handleChangeQuantity = (type, id) => {
+    const db = getDatabase();
+    const totalUserItem = 0;
+    type === "minus"
+      ? set(ref(db, "singleItemDetails/" + id), {
+          ...item,
+          totalUserItem: totalUserItem - 1,
+        })
+      : set(ref(db, "singleItemDetails/" + id), {
+          ...item,
+          totalUserItem: totalUserItem + 1,
+        });
+  };
   return (
     <SingleProductWrapper>
       <div className="main-section">
-        <div className="left-part">
-          <div className="main-product"></div>
-          <section>
-            <div className="variance"></div>
-            <div className="variance1"></div>
-            <div className="variance1"></div>
-          </section>
-        </div>
-        <div className="right-part">
-          <div className="route"> Featured {">"} Purple Warm Jacket</div>
-          <div className="title">Purple Warm Zip Jacket</div>
-          <div className="amount">$299</div>
-          <div className="route" style={{ padding: "55px 0 0 0" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </div>
-          <div className="quantity">
-            Quantity <button className="btn-minus">-</button>
-            <input type="number" />
-            <button className="btn-plus">+</button>{" "}
-          </div>
-          <button className="cart-btn">
-            Add to Cart <Image src={CartImage} alt="cart-image" />
-          </button>
-        </div>
+        {products &&
+          products.map((data) => {
+            return (
+              <>
+                {data.id === router.query.id && (
+                  <>
+                    <div className="left-part">
+                      <div className="main-product">
+                        <Image
+                          src={data.image}
+                          layout="responsive"
+                          height={220}
+                          width={350}
+                        />
+                      </div>
+                      <section>
+                        <div className="variance"></div>
+                        <div className="variance1"></div>
+                        <div className="variance1"></div>
+                      </section>
+                    </div>
+                    <div className="right-part">
+                      <div className="route">
+                        {" "}
+                        Featured {">"} Purple Warm Jacket
+                      </div>
+                      <div className="title">{data.name}</div>
+                      <div className="amount">${data.mrp}</div>
+                      <div className="route" style={{ padding: "55px 0 0 0" }}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.
+                      </div>
+                      <div className="quantity">
+                        Quantity{" "}
+                        <button
+                          className="btn-minus"
+                          onClick={() => handleChangeQuantity("minus", data.id)}
+                        >
+                          -
+                        </button>
+                        <input type="number" />
+                        <button
+                          className="btn-plus"
+                          onClick={() => handleChangeQuantity("add", data.id)}
+                        >
+                          +
+                        </button>{" "}
+                      </div>
+                      <button className="cart-btn">
+                        Add to Cart <Image src={CartImage} alt="cart-image" />
+                      </button>
+                    </div>
+                  </>
+                )}
+              </>
+            );
+          })}
       </div>
       <div>
         <div className="similar-product">
@@ -223,7 +292,7 @@ const SingleProduct = () => {
           </span>
         </div>
         <div>
-          <ProductSlider />
+          <ProductSlider products={products} />
         </div>
       </div>
     </SingleProductWrapper>

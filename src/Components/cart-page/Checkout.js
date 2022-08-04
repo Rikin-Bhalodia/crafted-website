@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { BsCreditCard2Back } from "react-icons/bs";
 import { BiTransfer } from "react-icons/bi";
 import { TbBrandPaypal } from "react-icons/tb";
+import { getDatabase, set, ref, onValue, remove } from "firebase/database";
 
 const CheckOutWrapper = styled.div`
   padding: 40px 0px;
@@ -121,6 +122,26 @@ const CheckOutWrapper = styled.div`
 `;
 
 const CheckOut = () => {
+  const [details, setDetails] = useState({
+    name: "",
+    address: "",
+    contact: "",
+    city: "",
+    state: "",
+    zip_code: "",
+  });
+  const db = getDatabase();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetails((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+  // useEffect(() => {
+  //   set(ref(db, "cartItem/" + "details"), {
+  //     details,
+  //   });
+  // }, [details]);
   return (
     <CheckOutWrapper>
       <form action="post">
@@ -128,22 +149,42 @@ const CheckOut = () => {
           <p>Buyer Info</p>
           <label for="fname">Full Name</label>
           <br />
-          <input type="text" id="fname" name="fname" />
+          <input
+            type="text"
+            name="name"
+            value={details.name}
+            onChange={handleChange}
+          />
           <br />
 
           <label for="address">Address</label>
           <br />
-          <input type="text" id="address" name="address" />
+          <input
+            type="text"
+            name="address"
+            value={details.address}
+            onChange={handleChange}
+          />
           <br />
 
           <label for="contact">Contact</label>
           <br />
-          <input type="text" id="contact" name="contact" />
+          <input
+            type="text"
+            name="contact"
+            value={details.contact}
+            onChange={handleChange}
+          />
           <br />
 
           <label for="city">City</label>
           <br />
-          <input type="text" id="city" name="city" />
+          <input
+            type="text"
+            name="city"
+            value={details.city}
+            onChange={handleChange}
+          />
           <br />
 
           <div>
@@ -161,6 +202,8 @@ const CheckOut = () => {
                 name="state"
                 id="state"
                 style={{ marginRight: "32px", width: "60%" }}
+                value={details.state}
+                onChange={handleChange}
               >
                 <option value="">Select State</option>
                 <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -207,9 +250,10 @@ const CheckOut = () => {
 
               <input
                 type="text"
-                id="z-code"
-                name="z-code"
+                name="zip_code"
                 style={{ width: "40%" }}
+                value={details.zip_code}
+                onChange={handleChange}
               />
               <br />
             </div>
@@ -230,12 +274,12 @@ const CheckOut = () => {
             <br />
           </div>
 
-          <label for="name-on-card">Name on Card</label>
+          {/* <label for="name-on-card">Name on Card</label>
           <br />
           <input type="text" id="name-card" name="name-card" />
-          <br />
+          <br /> */}
 
-          <div>
+          {/* <div>
             <div className="label">
               <label
                 for="card-number"
@@ -293,8 +337,8 @@ const CheckOut = () => {
                 max="2099"
                 style={{ width: "50%" }}
               />
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
       </form>
     </CheckOutWrapper>

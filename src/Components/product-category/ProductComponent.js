@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import ProductImg from "../../../public/svg/product.svg";
-import { collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../Firebase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
+import { useAuth } from "../../auth/AuthContext";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 
 const ProductComponentsWrapper = styled.div`
   display: grid;
@@ -73,6 +77,13 @@ const ProductComponentsWrapper = styled.div`
 const ProductComponents = () => {
   const [products, setProducts] = useState();
   const productsCollection = collection(db, "products");
+  const router = useRouter();
+  const [cartProduct, setCartProduct] = useState([]);
+  const { currentUser } = useAuth();
+
+  const cartProducts = cartProduct.map(([key]) => {
+    return Object.values(key).join("");
+  });
 
   useEffect(() => {
     const getProducts = async () => {
@@ -81,33 +92,73 @@ const ProductComponents = () => {
     };
     getProducts();
   }, []);
+
+  useEffect(() => {
+    const db = getDatabase();
+    const starCountRef = ref(db, "cartItem/");
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log(data, "data");
+      setCartProduct(Object.entries(data));
+    });
+  }, []);
+
+  const handleClick = async (e, id) => {
+    e.stopPropagation();
+    const cartData = products.find((data) => data.id === id);
+    const db = getDatabase();
+
+    if (cartProducts.includes(id)) {
+      toast("Your Item is already in Cart !!");
+    } else {
+      set(ref(db, "cartItem/" + id), {
+        cartData,
+        uid: currentUser.uid,
+      });
+      toast("Your Item is added in Cart");
+    }
+  };
+
+  const redirectSingleProduct = (id) => {
+    router.push(`/product/${id}`);
+  };
   return (
     <>
       <ProductComponentsWrapper>
         {products?.map((product) => {
           return (
-            <div className="pro-comp">
-              <div className="pro-image">
-                <Image
-                  src={product.image}
-                  alt="product"
-                  className="product-img"
-                  // layout="fill"
-                  height={230}
-                  width={250}
-                />
-              </div>
-              <div className="pro-details">
-                <h3>Purple Warm Zip Jacket</h3>
-                <div>
-                  <p>$299</p>
-                  <button className="cart-btn">Add to Cart</button>
+            product.category === router.query.id && (
+              <div
+                className="pro-comp"
+                onClick={() => redirectSingleProduct(product?.id)}
+              >
+                <div className="pro-image">
+                  <Image
+                    src={product.image}
+                    alt="product"
+                    className="product-img"
+                    height={230}
+                    width={250}
+                  />
+                </div>
+                <div className="pro-details">
+                  <h3>{product.name}</h3>
+                  <div>
+                    <p>${product.mrp}</p>
+                    <button
+                      className="cart-btn"
+                      onClick={(e) => handleClick(e, product.id)}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            )
           );
         })}
       </ProductComponentsWrapper>
+      <ToastContainer />
     </>
   );
 };
