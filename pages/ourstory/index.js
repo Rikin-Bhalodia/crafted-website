@@ -5,19 +5,21 @@ import CommonHead from "../../src/Components/CommonSection/CommonHeading";
 import CommonMain from "../../src/Components/CommonSection/CommonMain";
 import CommonImage from "../../src/Components/CommonSection/CommonImage";
 import AboutTcomac from "../../src/Components/CommonSection/AboutTcomac";
+// import Link from "next/link";
+// import Image from "next/image";
 
-const ThinkSocialWrapper = styled.div``;
+const OurStoryWrapper = styled.div``;
 
-const ThinkSocial = () => {
+const OurStory = () => {
   return (
     <>
-      <ThinkSocialWrapper>
+      <OurStoryWrapper>
         <CommonHead
           heading="The Crafted Community"
           para="Community of Manufacturers, Sellers, Stitching partners and Customers."
           btn="Read our story"
         />
-        <CommonMain head="ABOUT the Crafted" />
+        <CommonMain />
         <CommonImage />
         <AboutTcomac
           shead="About tcomac"
@@ -33,9 +35,9 @@ const ThinkSocial = () => {
           btn="Meet our team"
           styled={{ marginBottom: "0px" }}
         />
-      </ThinkSocialWrapper>
+      </OurStoryWrapper>
     </>
   );
 };
 
-export default ThinkSocial;
+export default OurStory;

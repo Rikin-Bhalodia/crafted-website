@@ -1,20 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+// import Link from "next/link";
+// import Image from "next/image";
 import CommonValue from "../../src/Components/CommonSection/CommonValue";
 import CommonHead from "../../src/Components/CommonSection/CommonHeading";
 import CommonMain from "../../src/Components/CommonSection/CommonMain";
 import CommonImage from "../../src/Components/CommonSection/CommonImage";
 import AboutTcomac from "../../src/Components/CommonSection/AboutTcomac";
 
-const ThinkSocialWrapper = styled.div``;
+const AboutUsWrapper = styled.div``;
 
-const ThinkSocial = () => {
+const AboutUs = () => {
   return (
     <>
-      <ThinkSocialWrapper>
+      <AboutUsWrapper>
         <CommonHead
-          heading="The Crafted Community"
-          para="Community of Manufacturers, Sellers, Stitching partners and Customers."
+          heading="Brand Empowering Women Building The Crafted New India"
+          para="From year to year we strive to invent the most innovative technology that is used by both our end customers and retailers."
           btn="Read our story"
         />
         <CommonMain head="ABOUT the Crafted" />
@@ -33,9 +35,9 @@ const ThinkSocial = () => {
           btn="Meet our team"
           styled={{ marginBottom: "0px" }}
         />
-      </ThinkSocialWrapper>
+      </AboutUsWrapper>
     </>
   );
 };
 
-export default ThinkSocial;
+export default AboutUs;

@@ -7,14 +7,14 @@ import ProtectedRoute from "../src/auth/ProtectedRoute";
 // import { store } from "./app/store";
 // import { Provider } from "react-redux";
 
-const noAuthPages = ["/login", "/signup", "/resetpassword"];
+const noAuthPages = ["/Login", "/signup", "/resetpassword"];
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   return (
     <>
       <AuthProvider>
-        {router.pathname === "/login" ||
+        {router.pathname === "/Login" ||
         router.pathname === "/signup" ? null : (
           <Header />
         )}
@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
             {/* </Provider> */}
           </ProtectedRoute>
         )}
-        {router.pathname === "/login" ||
+        {router.pathname === "/Login" ||
         router.pathname === "/signup" ? null : (
           <Footer />
         )}
