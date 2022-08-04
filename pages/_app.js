@@ -5,14 +5,14 @@ import { useRouter } from "next/router";
 import AuthProvider from "../src/auth/AuthContext";
 import ProtectedRoute from "../src/auth/ProtectedRoute";
 
-const noAuthPages = ["/login", "/signup", "/resetpassword"];
+const noAuthPages = ["/Login", "/signup", "/resetpassword"];
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   return (
     <>
       <AuthProvider>
-        {router.pathname === "/login" ||
+        {router.pathname === "/Login" ||
         router.pathname === "/signup" ? null : (
           <Header />
         )}
@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </ProtectedRoute>
         )}
-        {router.pathname === "/login" ||
+        {router.pathname === "/Login" ||
         router.pathname === "/signup" ? null : (
           <Footer />
         )}

@@ -140,7 +140,7 @@ export default function App() {
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_) => {
           return (
             <SwiperSlide className="small-slider">
-                <Image src={Sweater} alt="sweater" />
+              <Image src={Sweater} alt="sweater" />
               <Link href="/pages/cart/index.js">
                 <div>Poplin Cotton Fabric</div>
               </Link>

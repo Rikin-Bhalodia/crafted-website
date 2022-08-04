@@ -15,6 +15,7 @@ import { TbLogout } from "react-icons/tb";
 import { Layout, Menu } from "antd";
 import Product from "../../src/Components/Dash-board/Product";
 import Home from "../../src/Components/Dash-board/home-page/Home";
+import Order from "../../src/Components/Dash-board/OrderPage/Order";
 const { Content, Sider } = Layout;
 
 const items = [
@@ -120,7 +121,6 @@ const DashBoard = () => {
         >
           <Sider
             theme="light"
-            sss
             collapsed={collapsed}
             onCollapse={(value) => setCollapsed(value)}
           >
@@ -134,6 +134,7 @@ const DashBoard = () => {
               {items.map((data) => {
                 return (
                   <Menu.Item onClick={() => handleClick(data.key)}>
+                    {data.icon}&nbsp;&nbsp;&nbsp;
                     {data.name}
                   </Menu.Item>
                 );
@@ -153,8 +154,9 @@ const DashBoard = () => {
                   minHeight: 360,
                 }}
               >
-                {key === "2" && <Product />}
                 {key === "1" && <Home />}
+                {key === "2" && <Product />}
+                {key === "3" && <Order />}
               </div>
             </Content>
           </Layout>

@@ -13,6 +13,7 @@ const PrductDrawerWrapper = styled.div`
     border-radius: 20px;
     border: 1px solid #999999;
     padding: 0px 10px;
+    margin-right: 10px;
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
