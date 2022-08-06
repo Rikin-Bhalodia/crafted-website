@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import "antd/dist/antd.css";
 import styled from "styled-components";
 import { Tabs } from "antd";
@@ -45,7 +45,7 @@ const AccountDetailsWrapper = styled.div`
       }
       .account-data {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 0.3fr 0.3fr;
         justify-content: space-between;
         align-items: center;
         border: 1px solid #343434;
@@ -68,13 +68,25 @@ const AccountDetailsWrapper = styled.div`
           color: #000000;
           margin: 0px;
         }
+        input {
+          width: 200px;
+          height: 36px;
+          font-size: 20px;
+          border: 0px solid black;
+          border-radius: 5px;
+          padding: 0px 10px;
+        }
 
-        a {
+        div {
           font-weight: 500;
           font-size: 24px;
           color: #1565d8;
           display: flex;
           justify-content: flex-end;
+          grid-area: 1/4/2/5;
+        }
+        .btn {
+          grid-area: 1/3/2/4;
         }
       }
     }
@@ -99,6 +111,23 @@ const AccountDetailsWrapper = styled.div`
         h3,
         .account-data {
           padding: 20px;
+
+          p,
+          input {
+            font-size: 20px;
+            display: grid;
+            justify-content: flex-start;
+            grid-area: 1/2/2/5;
+          }
+
+          div {
+            font-size: 24px;
+            grid-area: 3/4/4/5;
+          }
+          .btn {
+            grid-area: 3/3/4/4;
+            justify-content: center;
+          }
         }
       }
     }
@@ -115,16 +144,21 @@ const AccountDetailsWrapper = styled.div`
             font-size: 24px;
           }
 
-          p {
+          p,
+          input {
             font-size: 20px;
             display: grid;
             justify-content: flex-start;
             grid-area: 2/1/3/4;
           }
 
-          a {
+          div {
             font-size: 24px;
-            grid-area: 1/3/2/4;
+            grid-area: 3/1/4/2;
+            justify-content: flex-start;
+          }
+          .btn {
+            grid-area: 3/3/4/4;
           }
         }
       }
@@ -191,6 +225,7 @@ const AccountDetails = () => {
     password: "",
     birthdate: "",
   });
+  const [user, setUser] = useState();
   const [id, setId] = useState();
   const router = useRouter();
 
@@ -211,15 +246,24 @@ const AccountDetails = () => {
     });
   };
 
-  const handleAdd = async (e) => {
-    e.preventDefault();
+  const handleAdd = async () => {
     if (id === "1") {
-      await updateUserDisplayName(accountData.displayName);
+      if (accountData.displayName) {
+        await updateUserDisplayName(accountData.displayName);
+      }
       setId("");
     }
     if (id === "2") {
-      await updateUserEmail(accountData.email);
-      router.push("/login");
+      if (accountData.email) {
+        await updateUserEmail(accountData.email);
+        router.push("/login");
+      }
+      setId("");
+    }
+  };
+
+  const handleCancel = () => {
+    if (id) {
       setId("");
     }
   };
@@ -265,7 +309,12 @@ const AccountDetails = () => {
                 <p>{currentUser?.email}</p>
               )}
               {id && id === "2" ? (
-                <div onClick={(e) => handleAdd(e)}>Add</div>
+                <>
+                  <div onClick={(e) => handleAdd(e)}>Add</div>
+                  <div className="btn" onClick={() => handleCancel()}>
+                    Cancel
+                  </div>
+                </>
               ) : (
                 <div onClick={() => handleClick("2")}>Change</div>
               )}
