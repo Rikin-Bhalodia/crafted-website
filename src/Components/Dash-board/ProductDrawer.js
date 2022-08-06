@@ -7,6 +7,7 @@ import { db } from "../../Firebase";
 import { Button, Form, Input, Upload, DatePicker, Select } from "antd";
 import { addDoc, collection } from "firebase/firestore";
 import { SwatchesPicker } from "react-color";
+import { Colors } from "../../CommonComponent/colors";
 const PrductDrawerWrapper = styled.div`
   button {
     width: 90px;
@@ -24,6 +25,7 @@ const PrductDrawerWrapper = styled.div`
 `;
 const { Option } = Select;
 
+const colors = Colors;
 const PrductDrawer = () => {
   const [visible, setVisible] = useState(false);
   const [imageUrl, setImageUrl] = useState();
@@ -215,6 +217,7 @@ const PrductDrawer = () => {
             <Form.Item name="color" label="Color">
               <SwatchesPicker
                 color={colorData}
+                colors={colors}
                 onChangeComplete={(color) => {
                   if (colorData.includes(color.hex)) {
                     setColorData((prev) => [...prev]);

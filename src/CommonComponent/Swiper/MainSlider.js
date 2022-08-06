@@ -2,14 +2,14 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RightArrow from "/public/svg/right-arrow.svg";
 import Sweater from "/public/svg/sweater.svg";
-import Banner from "/public/png/banner.png";
+// import Banner from "/public/png/banner.png";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
-// import video from "/public/home-video/craftedVideo.mp4";
+// import video from "../../assets/craftedVideo.mp4";
 
 const SliderWrapper = styled.div`
   .slide {
@@ -112,11 +112,8 @@ export default function App() {
     <SliderWrapper>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
         <SwiperSlide className="slide">
-          {/* <video width="750" height="500" controls autoPlay>
-            <source
-              src={require("/public/home-video/craftedVideo.mp4")}
-              type="video/ogg"
-            />
+          {/* <video autoPlay loop style={{ width: "500px", height: "500px" }}>
+            <source src={video} />
           </video> */}
           <div className="content">
             <div className="name">India’s First</div>
