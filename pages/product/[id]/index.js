@@ -4,9 +4,16 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import ProductSlider from "../../../src/CommonComponent/Swiper/ProductSlider";
 import CartImage from "/public/svg/cart-white.svg";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../../../src/Firebase";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 
 const SingleProductWrapper = styled.div`
   display: flex;
@@ -183,100 +190,85 @@ const SingleProductWrapper = styled.div`
 const SingleProduct = () => {
   const router = useRouter();
   const [products, setProducts] = useState();
-  const [cartProduct, setCartProduct] = useState([]);
-  const [item, setItem] = useState();
-  const productsCollection = collection(db, "products");
+  const docRef = doc(db, "products", router?.query?.id);
+  const getProducts = async () => {
+    const data = await getDoc(docRef);
+    setProducts(data.data());
+  };
   useEffect(() => {
-    const getProducts = async () => {
-      const data = await getDocs(productsCollection);
-      setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
     getProducts();
-    const singleItem = products?.filter((data) => {
-      if (data.id === router.query.id) {
-        return data;
-      } else {
-        return "";
-      }
-    });
-    setItem(singleItem);
   }, []);
-  const handleChangeQuantity = (type, id) => {
-    const db = getDatabase();
-    const totalUserItem = 0;
+  const handleChangeQuantity = async (type) => {
     type === "minus"
-      ? set(ref(db, "singleItemDetails/" + id), {
-          ...item,
-          totalUserItem: totalUserItem - 1,
+      ? await updateDoc(docRef, {
+          ...products,
+          totalUserItem: products?.totalUserItem - 1,
         })
-      : set(ref(db, "singleItemDetails/" + id), {
-          ...item,
-          totalUserItem: totalUserItem + 1,
+      : await updateDoc(docRef, {
+          ...products,
+          totalUserItem: products?.totalUserItem + 1,
         });
+    getProducts();
+  };
+
+  const AddToCart = () => {
+    const db = getDatabase();
+    set(ref(db, "cartItem/" + router?.query?.id), {
+      cartData: products,
+    });
   };
   return (
     <SingleProductWrapper>
       <div className="main-section">
-        {products &&
-          products.map((data) => {
-            return (
-              <>
-                {data.id === router.query.id && (
-                  <>
-                    <div className="left-part">
-                      <div className="main-product">
-                        <Image
-                          src={data.image}
-                          layout="responsive"
-                          height={220}
-                          width={350}
-                        />
-                      </div>
-                      <section>
-                        <div className="variance"></div>
-                        <div className="variance1"></div>
-                        <div className="variance1"></div>
-                      </section>
-                    </div>
-                    <div className="right-part">
-                      <div className="route">
-                        {" "}
-                        Featured {">"} Purple Warm Jacket
-                      </div>
-                      <div className="title">{data.name}</div>
-                      <div className="amount">${data.mrp}</div>
-                      <div className="route" style={{ padding: "55px 0 0 0" }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                      </div>
-                      <div className="quantity">
-                        Quantity{" "}
-                        <button
-                          className="btn-minus"
-                          onClick={() => handleChangeQuantity("minus", data.id)}
-                        >
-                          -
-                        </button>
-                        <input type="number" />
-                        <button
-                          className="btn-plus"
-                          onClick={() => handleChangeQuantity("add", data.id)}
-                        >
-                          +
-                        </button>{" "}
-                      </div>
-                      <button className="cart-btn">
-                        Add to Cart <Image src={CartImage} alt="cart-image" />
-                      </button>
-                    </div>
-                  </>
-                )}
-              </>
-            );
-          })}
+        {products && (
+          <>
+            <div className="left-part">
+              <div className="main-product">
+                <Image
+                  src={products?.image}
+                  layout="responsive"
+                  height={220}
+                  width={350}
+                />
+              </div>
+              <section>
+                <div className="variance"></div>
+                <div className="variance1"></div>
+                <div className="variance1"></div>
+              </section>
+            </div>
+            <div className="right-part">
+              <div className="route"> Featured {">"} Purple Warm Jacket</div>
+              <div className="title">{products?.name}</div>
+              <div className="amount">${products?.mrp}</div>
+              <div className="route" style={{ padding: "55px 0 0 0" }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </div>
+              <div className="quantity">
+                Quantity{" "}
+                <button
+                  className="btn-minus"
+                  onClick={() => handleChangeQuantity("minus")}
+                >
+                  -
+                </button>
+                <input type="number" value={products?.totalUserItem} />
+                <button
+                  className="btn-plus"
+                  onClick={() => handleChangeQuantity("add")}
+                >
+                  +
+                </button>{" "}
+              </div>
+              <button className="cart-btn" onClick={AddToCart}>
+                Add to Cart <Image src={CartImage} alt="cart-image" o />
+              </button>
+            </div>
+          </>
+        )}
       </div>
       <div>
         <div className="similar-product">
@@ -292,7 +284,7 @@ const SingleProduct = () => {
           </span>
         </div>
         <div>
-          <ProductSlider products={products} />
+          <ProductSlider />
         </div>
       </div>
     </SingleProductWrapper>

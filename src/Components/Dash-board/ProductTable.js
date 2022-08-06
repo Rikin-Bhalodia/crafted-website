@@ -50,13 +50,6 @@ const columns = [
 ];
 
 const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(
-      `selectedRowKeys: ${selectedRowKeys}`,
-      "selectedRows: ",
-      selectedRows
-    );
-  },
   getCheckboxProps: (record) => ({
     disabled: record.name === "Disabled User",
     name: record.name,
@@ -92,7 +85,6 @@ const ProductTable = () => {
 
         return [year, month, day].join("-");
       };
-      console.log(product?.color, "color");
       const currentDate = formatDate(new Date());
       return data.push({
         key: i,

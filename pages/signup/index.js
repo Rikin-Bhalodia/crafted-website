@@ -203,7 +203,6 @@ const SignUp = () => {
     email: "",
     password: "",
   });
-  console.log(signupData, "data");
   const router = useRouter();
   const { signup, signInWithGoogle, currentUser, signInWithFacebook } =
     useAuth();

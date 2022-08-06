@@ -29,7 +29,6 @@ const PrductDrawer = () => {
   const [imageUrl, setImageUrl] = useState();
   const [category, setCategory] = useState();
   const [colorData, setColorData] = useState([]);
-  console.log(colorData, "color");
   const [tag, setTag] = useState();
 
   const showDrawer = () => {
@@ -48,7 +47,6 @@ const PrductDrawer = () => {
   const productsCollection = collection(db, "products");
 
   const submitProductDetails = async (values) => {
-    console.log(values, "value");
     await addDoc(productsCollection, {
       ...values,
       date: values.date._d,

@@ -98,7 +98,6 @@ const ProductComponents = () => {
     const starCountRef = ref(db, "cartItem/");
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      console.log(data, "data");
       setCartProduct(Object.entries(data));
     });
   }, []);

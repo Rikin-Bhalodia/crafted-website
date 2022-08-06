@@ -8,6 +8,7 @@ import ThankYou from "./../../src/Components/cart-page/Thankyou";
 import styled from "styled-components";
 import Image from "next/image";
 import Logo from "/public/svg/logo.svg";
+import { nanoid } from "nanoid";
 import { useAuth } from "../../src/auth/AuthContext";
 
 const CartWrapper = styled.div`
@@ -57,10 +58,10 @@ const loadScript = (src) => {
 // const __DEV__ = document?.domain === "localhost";
 
 const Cart = () => {
+  const order_id = nanoid();
   const [current, setCurrent] = useState(0);
   const [cartProduct, setCartProduct] = useState([]);
   const { currentUser } = useAuth();
-  console.log(currentUser, "user");
   useEffect(() => {
     const db = getDatabase();
     const starCountRef = ref(db, "cartItem/");
@@ -80,10 +81,20 @@ const Cart = () => {
     (previousValue, currentValue) => previousValue + currentValue,
     0
   );
-
+  const bodyData = {
+    amount: totalAmount,
+    receipt: order_id,
+    payment_capture: 1,
+  };
+  console.log(totalAmount, "amount");
   const displayRezorPay = async () => {
     const data = await fetch("http://localhost:1337/razorpay", {
       method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bodyData),
     })
       .then((t) => t.json())
       .catch((e) => console.log(e, "e"));
@@ -100,14 +111,12 @@ const Cart = () => {
       name: "The Crafted",
       description: "We are happy to make connection with you !!",
       amount: totalAmount,
-      currency: data?.currency,
+      currency: "INR",
       image: <img src={Logo} alt="logo" />,
       order_id: data?.id,
-      handler: function (response) {},
       prefill: {
         name: currentUser.displayName,
         email: currentUser.email,
-        // contact: ,
       },
     };
     var rzp1 = new window.Razorpay(options);
@@ -123,8 +132,6 @@ const Cart = () => {
   const onChange = (value) => {
     setCurrent(value);
   };
-
-  console.log(cartItems, array, "item");
 
   return (
     <>
@@ -167,14 +174,6 @@ const Cart = () => {
               Checkout
             </Button>
           )}
-          {/* {current === steps.length - 1 && (
-          <Button
-            type="primary"
-            onClick={() => message.success("Processing complete!")}
-          >
-            Done
-          </Button>
-        )} */}
           {current === 1 && (
             <Button
               style={{

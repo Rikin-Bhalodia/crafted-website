@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import Image from "next/image";
 import styled from "styled-components";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../Firebase";
 
 const ProductWrapper = styled.div`
   display: flex;
@@ -81,7 +83,16 @@ const ProductWrapper = styled.div`
   }
 `;
 
-export default function ProductSlider({ products }) {
+export default function ProductSlider() {
+  const productsCollection = collection(db, "products");
+  const [products, setProducts] = useState([]);
+  const getAllProducts = async () => {
+    const data = await getDocs(productsCollection);
+    setProducts(data.docs.map((data) => data.data()));
+  };
+  useEffect(() => {
+    getAllProducts();
+  }, []);
   return (
     <ProductWrapper>
       <Swiper slidesPerView={4} grabCursor={true} spaceBetween={15}>

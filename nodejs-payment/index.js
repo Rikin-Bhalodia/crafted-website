@@ -45,17 +45,8 @@ app.get("/logo.svg", (req, res) => {
 // });
 
 app.post("/razorpay", async (req, res) => {
-  console.log(res, "res");
-  const payment_capture = 1;
-  const amount = 449;
-  const currency = "INR";
-
-  const options = {
-    amount: amount * 100,
-    currency,
-    receipt: "fbsdfksgjspodgehj",
-    payment_capture,
-  };
+  console.log(req.body, "res");
+  const options = req.body;
 
   try {
     const response = await razorpay.orders.create(options);

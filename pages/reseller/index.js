@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import OurServices from "../../src/Components/reseller/OurServices";
 import ChooseUs from "../../src/Components/reseller/ChooseUs";
 import ContactSec from "../../src/Components/reseller/Contact";
@@ -120,6 +124,30 @@ const ResellerWrapper = styled.div`
 `;
 
 const Reseller = () => {
+  const form = useRef();
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_m0vqwp5",
+        "template_tzutlla",
+        form.current,
+        "_Byn7_FXweaYyAMpl"
+      )
+      .then(
+        (result) => {
+          toast(
+            "your message we received from we will contact you in short time wait for that Thank you!!"
+          );
+        },
+        (error) => {
+          toast("opps something went wrong please retry after some time");
+        }
+      );
+    router.push("/");
+  };
   return (
     <>
       <ResellerWrapper>
@@ -131,13 +159,13 @@ const Reseller = () => {
             We are builing a community of Manufacturers, Sellers, <br />{" "}
             Stitching Partners and Customers.
           </p>
-          <form action="post">
-            <input type="text" id="fname" name="fname" placeholder="Name*" />
+          <form ref={form} onSubmit={handleSubmit}>
+            <input type="text" id="fname" name="name" placeholder="Name*" />
             <br />
 
             <input type="email" id="email" name="email" placeholder="Email*" />
             <br />
-            <select id="Month">
+            <select id="Month" name="category">
               <option value="">Category*</option>
               <option value="Janaury">Janaury</option>
               <option value="February">February</option>
@@ -153,9 +181,9 @@ const Reseller = () => {
               <option value="December">December</option>
             </select>
             <br />
-            <Link href="#" className="btn">
+            <button className="btn" type="submit">
               Get Started
-            </Link>
+            </button>
           </form>
         </div>
       </ResellerWrapper>
@@ -165,6 +193,7 @@ const Reseller = () => {
       <OurMission />
       <TeamSlider />
       <ContactSec />
+      <ToastContainer />
     </>
   );
 };

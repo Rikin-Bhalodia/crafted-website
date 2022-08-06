@@ -85,11 +85,6 @@ const SliderWrapper = styled.div`
     .content {
       margin-top: 50px;
     }
-    ${
-      "" /* .slide {
-      height:750px;
-    } */
-    }
     .banner-img {
       height: 750px;
     }
@@ -112,12 +107,13 @@ export default function App() {
     <SliderWrapper>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
         <SwiperSlide className="slide">
-          {/* <video width="750" height="500" controls autoPlay>
-            <source
-              src={require("/public/home-video/craftedVideo.mp4")}
-              type="video/ogg"
-            />
-          </video> */}
+          <video
+            src={"/craftedVideo.mp4"}
+            autoPlay={true}
+            controls
+            loop
+            style={{ width: "100%", objectFit: "cover" }}
+          />
           <div className="content">
             <div className="name">India’s First</div>
             <div className="desc">Online Matching Centre</div>
