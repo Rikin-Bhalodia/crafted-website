@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 import HeartImg from "/public/svg/heart-icon.svg";
-
+import Link from "next/link";
 const FooterWrapper = styled.div`
   background: #303030;
   height: 100%;
@@ -105,7 +105,11 @@ const Footer = () => {
     <FooterWrapper>
       <div className="container">
         <div style={{ margin: "150px 0 0 0" }}>
-          <div className="head">The Crafted</div>
+          <Link href="/">
+            <div className="head" style={{ cursor: "pointer" }}>
+              The Crafted
+            </div>
+          </Link>
           <div className="head" style={{ fontSize: "24px", fontWeight: "400" }}>
             Building The Crafted New India.
           </div>
@@ -144,31 +148,79 @@ const Footer = () => {
         </div>
         <div className="all-footer-content">
           <div>
-            <div className="title">Product</div>
-            <div className="data">TCOMaC</div>
-            <div className="data">Physical</div>
-            <div className="data">Categories</div>
-            <div className="data">Referral Program</div>
+            <div className="title" style={{ cursor: "pointer" }}>
+              Product
+            </div>
+            <Link href="/webapp">
+              <div className="data" style={{ cursor: "pointer" }}>
+                TCOMaC
+              </div>
+            </Link>
+            <div className="data" style={{ cursor: "pointer" }}>
+              Physical
+            </div>
+            <div className="data" style={{ cursor: "pointer" }}>
+              Categories
+            </div>
+            <div className="data" style={{ cursor: "pointer" }}>
+              Referral Program
+            </div>
           </div>
           <div>
-            <div className="title">Services</div>
-            <div className="data">Partners</div>
-            <div className="data">Design</div>
-            <div className="data">Themes</div>
-            <div className="data">Illustrations</div>
+            <div className="title" style={{ cursor: "pointer" }}>
+              Services
+            </div>
+            <div className="data" style={{ cursor: "pointer" }}>
+              Partners
+            </div>
+            <div className="data" style={{ cursor: "pointer" }}>
+              Design
+            </div>
+            <div className="data" style={{ cursor: "pointer" }}>
+              Themes
+            </div>
+            <div className="data" style={{ cursor: "pointer" }}>
+              Illustrations
+            </div>
           </div>
           <div>
-            <div className="title">Company</div>
-            <div className="data">About Us</div>
-            <div className="data">Think Social</div>
-            <div className="data">Blog</div>
-            <div className="data">Contact Us</div>
+            <div className="title" style={{ cursor: "pointer" }}>
+              Company
+            </div>
+            <Link href="/about">
+              <div className="data" style={{ cursor: "pointer" }}>
+                About Us
+              </div>
+            </Link>
+            <Link href="/think-social">
+              <div className="data" style={{ cursor: "pointer" }}>
+                Think Social
+              </div>
+            </Link>
+            <Link href="/blog">
+              <div className="data" style={{ cursor: "pointer" }}>
+                Blog
+              </div>
+            </Link>
+            <Link href="/contact">
+              <div className="data" style={{ cursor: "pointer" }}>
+                Contact Us
+              </div>
+            </Link>
           </div>
           <div>
-            <div className="title">More</div>
-            <div className="data">Terms</div>
-            <div className="data">Privacy Policy</div>
-            <div className="data">Caree</div>
+            <div className="title" style={{ cursor: "pointer" }}>
+              More
+            </div>
+            <div className="data" style={{ cursor: "pointer" }}>
+              Terms
+            </div>
+            <div className="data" style={{ cursor: "pointer" }}>
+              Privacy Policy
+            </div>
+            <div className="data" style={{ cursor: "pointer" }}>
+              Caree
+            </div>
           </div>
         </div>
         <div></div>

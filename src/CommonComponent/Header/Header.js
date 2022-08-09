@@ -9,7 +9,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
 import { useAuth } from "../../../src/auth//AuthContext";
 import { useRouter } from "next/router";
-
+import Link from "next/link";
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -27,7 +27,10 @@ const HeaderWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 30px;
+  }
+  .tabs .option a {
     font-size: 18px;
+    color: #393d46 !important;
   }
   .right-side-part {
     position: relative;
@@ -206,24 +209,31 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <div className="logo-container">
-        <Image src={Logo} alt="company-logo" className="logo" />
+        <Link href="/">
+          <Image
+            src={Logo}
+            alt="company-logo"
+            className="logo"
+            style={{ cursor: "pointer" }}
+          />
+        </Link>
       </div>
       <ul className={click ? "nav-options active" : "nav-options"}>
         <div className="tabs">
           <li className="option" onClick={closeMobileMenu}>
-            <a href="#">Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li className="option" onClick={closeMobileMenu}>
-            <a href="#">About Us</a>
+            <Link href="/about">About Us</Link>
           </li>
           <li className="option" onClick={closeMobileMenu}>
-            <a href="#">TCOMaC</a>
+            <Link href="webapp">TCOMaC</Link>
           </li>
           <li className="option" onClick={closeMobileMenu}>
-            <a href="#">Think Social</a>
+            <Link href="/think-social">Think Social</Link>
           </li>
           <li className="option" onClick={closeMobileMenu}>
-            <a href="#">Blog</a>
+            <Link href="/blog">Blog</Link>
           </li>
         </div>
         <li className="option mobile-option" onClick={closeMobileMenu}>
@@ -240,15 +250,33 @@ const Header = () => {
       <div className="right-side-part">
         <input placeholder="Search" className="search" />
         <div className="search-icon">
-          <Image src={SearchIcon} alt="search-icon" />
+          <Image
+            src={SearchIcon}
+            alt="search-icon"
+            style={{ cursor: "pointer" }}
+          />
         </div>
         <div className="icon non">
-          <Image src={CartIcon} alt="cart-icon" />
+          <Link href="/cart">
+            <Image
+              src={CartIcon}
+              alt="cart-icon"
+              style={{ cursor: "pointer" }}
+            />
+          </Link>
         </div>
         <div className="icon non">
-          <Image src={EmailIcon} alt="email-icon" />
+          <Image
+            src={EmailIcon}
+            alt="email-icon"
+            style={{ cursor: "pointer" }}
+          />
         </div>
-        <button className="login-button non" onClick={handlelogout}>
+        <button
+          className="login-button non"
+          onClick={handlelogout}
+          style={{ cursor: "pointer" }}
+        >
           Logout
         </button>
       </div>

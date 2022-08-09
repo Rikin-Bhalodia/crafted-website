@@ -111,7 +111,7 @@ const AccountDetailsWrapper = styled.div`
         h3,
         .account-data {
           padding: 20px;
-
+          gap: 20px;
           p,
           input {
             font-size: 20px;
@@ -126,7 +126,7 @@ const AccountDetailsWrapper = styled.div`
           }
           .btn {
             grid-area: 3/3/4/4;
-            justify-content: center;
+            justify-content: flex-start;
           }
         }
       }
@@ -139,6 +139,7 @@ const AccountDetailsWrapper = styled.div`
           font-size: 25px !important;
         }
         .account-data {
+          row-gap: 5px;
           h5 {
             font-weight: 600;
             font-size: 24px;
@@ -152,14 +153,14 @@ const AccountDetailsWrapper = styled.div`
             grid-area: 2/1/3/4;
           }
 
-          div {
+          /* div {
             font-size: 24px;
             grid-area: 3/1/4/2;
             justify-content: flex-start;
           }
           .btn {
             grid-area: 3/3/4/4;
-          }
+          } */
         }
       }
     }
@@ -291,7 +292,12 @@ const AccountDetails = () => {
                 <p>{currentUser?.displayName}</p>
               )}
               {id && id === "1" ? (
-                <div onClick={(e) => handleAdd(e)}>Add</div>
+                <>
+                  <div onClick={(e) => handleAdd(e)}>Add</div>
+                  <div className="btn" onClick={() => handleCancel()}>
+                    Cancel
+                  </div>
+                </>
               ) : (
                 <div onClick={() => handleClick("1")}>Edit</div>
               )}

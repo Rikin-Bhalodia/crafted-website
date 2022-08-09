@@ -2,20 +2,18 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RightArrow from "/public/svg/right-arrow.svg";
 import Sweater from "/public/svg/sweater.svg";
-// import Banner from "/public/png/banner.png";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
-// import video from "../../assets/craftedVideo.mp4";
 
 const SliderWrapper = styled.div`
   .slide {
     position: relative;
     width: 100vw;
-    height: 650px;
+    height: 765px;
   }
   .swiper-wrapper {
     position: relative;
@@ -40,6 +38,7 @@ const SliderWrapper = styled.div`
   .desc {
     font-weight: 700;
     font-size: 80px;
+    line-height: 100px;
     width: 300px;
     font-family: "Playfair Display";
     font-style: normal;
@@ -70,34 +69,24 @@ const SliderWrapper = styled.div`
     border-radius: 25px;
   }
   .small-swiper {
-    ${"" /* position: absolute !important; */}
     bottom: 160px !important;
-  }
-  .banner-img {
-    height: 750px;
-    width: 100vw;
-    object-fit: cover;
-    background-size: cover;
-    background-attachment: fixed;
   }
 
   @media screen and (max-width: 1500px) {
     .content {
       margin-top: 50px;
     }
-    .banner-img {
-      height: 750px;
-    }
   }
   @media screen and (max-width: 570px) {
     .content {
-      margin: 50px 30px;
+      margin: 80px 30px 20px;
     }
     .name {
       font-size: 35px;
     }
     .desc {
       font-size: 70px;
+      line-height: 90px;
     }
   }
 `;
@@ -110,9 +99,13 @@ export default function App() {
           <video
             src={"/craftedVideo.mp4"}
             autoPlay={true}
-            controls
-            loop
-            style={{ width: "100%", objectFit: "cover" }}
+            loop={true}
+            muted
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
           />
           <div className="content">
             <div className="name">India’s First</div>

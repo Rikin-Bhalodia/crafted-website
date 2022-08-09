@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { PlusOutlined } from "@ant-design/icons";
 import { Drawer } from "antd";
+import "antd/dist/antd.variable.min.css";
 import { db } from "../../Firebase";
 import { Button, Form, Input, Upload, DatePicker, Select } from "antd";
 import { addDoc, collection } from "firebase/firestore";

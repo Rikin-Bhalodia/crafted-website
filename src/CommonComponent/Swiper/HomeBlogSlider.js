@@ -294,15 +294,22 @@ const HomeBlogWrapper = styled.div`
 
 const HomeBlogSlider = () => {
   const router = useRouter();
+  const handleClick = () => {
+    router.push("/blog");
+  };
   return (
     <HomeBlogWrapper>
-      {router.pathname === "/pages/blog/index.js" ? (
+      {router.pathname === "/blog" ? (
         <div className="head-part">
           <div>
             <div className="head">Case Studies</div>
             <div className="tips">Here’s what we've been up to recently.</div>
           </div>
-          <button className="view-all-btn">
+          <button
+            className="view-all-btn"
+            onClick={() => handleClick()}
+            style={{ cursor: "pointer" }}
+          >
             View all{" "}
             <Image src={BtnRightArrow} alt="btn-arrow" height={15} width={15} />
           </button>
@@ -313,17 +320,14 @@ const HomeBlogSlider = () => {
             <div className="head">The Crafted Blogs</div>
             <div className="tips">Fashion and Lifestyle Tips</div>
           </div>
-          <Link href="/pages/blog/index.js">
-            <button className="view-all-btn">
-              View all{" "}
-              <Image
-                src={BtnRightArrow}
-                alt="btn-arrow"
-                height={15}
-                width={15}
-              />
-            </button>
-          </Link>
+          <button
+            className="view-all-btn"
+            onClick={() => handleClick()}
+            style={{ cursor: "pointer" }}
+          >
+            View all{" "}
+            <Image src={BtnRightArrow} alt="btn-arrow" height={15} width={15} />
+          </button>
         </div>
       )}
       <Swiper

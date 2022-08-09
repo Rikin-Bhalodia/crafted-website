@@ -6,7 +6,7 @@ import CheckOut from "./../../src/Components/cart-page/Checkout";
 import { getDatabase, onValue, ref, set } from "firebase/database";
 import ThankYou from "./../../src/Components/cart-page/Thankyou";
 import styled from "styled-components";
-import Image from "next/image";
+// import Image from "next/image";
 import Logo from "/public/svg/logo.svg";
 import { nanoid } from "nanoid";
 import { useAuth } from "../../src/auth/AuthContext";

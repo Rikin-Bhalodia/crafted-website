@@ -5,6 +5,8 @@ import BackGround from "/public/svg/background.svg";
 import OurStory from "/public/svg/ourstory.svg";
 import Community from "/public/svg/community.svg";
 import AboutCrafted from "/public/svg/about-crafted.svg";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const CommonCard = styled.div`
   position: relative;
@@ -48,9 +50,17 @@ const CommonCard = styled.div`
   }
 `;
 
-const data = [OurStory, AboutCrafted, Community];
+const data = [
+  { path: "/ourstory", img: OurStory },
+  { path: "/about", img: AboutCrafted },
+  { path: "/think-social", img: Community },
+];
 
 const DiffCard = () => {
+  const router = useRouter();
+  const handleClick = (path) => {
+    router.push(path);
+  };
   return (
     <CommonCard>
       <Image
@@ -62,15 +72,17 @@ const DiffCard = () => {
       />
       <div className="title">Who we are?</div>
       <div className="container">
-        {data.map((img) => {
+        {data.map((dta) => {
           return (
             <div className="card">
               <Image
-                src={img}
+                src={dta.img}
                 className="images"
                 alt="images"
                 width={400}
                 height={350}
+                style={{ cursor: "pointer" }}
+                onClick={() => handleClick(dta.path)}
               />
             </div>
           );
