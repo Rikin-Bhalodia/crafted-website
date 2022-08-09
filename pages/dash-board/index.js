@@ -16,6 +16,7 @@ import { Layout, Menu } from "antd";
 import Product from "../../src/Components/Dash-board/Product";
 import Home from "../../src/Components/Dash-board/home-page/Home";
 import Order from "../../src/Components/Dash-board/OrderPage/Order";
+import SpecialProduct from "../../src/Components/Dash-board/SpecialProductPage";
 const { Content, Sider } = Layout;
 
 const items = [
@@ -23,7 +24,6 @@ const items = [
     name: "Home",
     key: "1",
     icon: <BsFillGridFill />,
-    path: "home",
   },
   {
     name: "Products",
@@ -31,33 +31,38 @@ const items = [
     icon: <HiOutlineShoppingBag />,
   },
   {
-    name: "Orders",
+    name: "SpecialProducts",
     key: "3",
+    icon: <HiOutlineShoppingBag />,
+  },
+  {
+    name: "Orders",
+    key: "4",
     icon: <CgFileDocument />,
   },
   {
     name: "Customers",
-    key: "4",
+    key: "5",
     icon: <BsPeople />,
   },
   {
     name: "Feedback",
-    key: "5",
+    key: "6",
     icon: <BiMessageRoundedDetail />,
   },
   {
     name: "Blog",
-    key: "6",
+    key: "7",
     icon: <BsQuestionCircle />,
   },
   {
     name: "Settings",
-    key: "7",
+    key: "8",
     icon: <IoSettingsOutline />,
   },
   {
     name: "Logout",
-    key: "8",
+    key: "9",
     icon: <TbLogout />,
   },
 ];
@@ -156,7 +161,8 @@ const DashBoard = () => {
               >
                 {key === "1" && <Home />}
                 {key === "2" && <Product />}
-                {key === "3" && <Order />}
+                {key === "3" && <SpecialProduct />}
+                {key === "4" && <Order />}
               </div>
             </Content>
           </Layout>

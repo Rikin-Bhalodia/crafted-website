@@ -223,22 +223,24 @@ const ShoppingCart = () => {
   }, []);
 
   const array = cartItems?.map((data) => {
-    return Number(data?.cartData?.mrp) * data?.totalUserItem;
+    return Number(data?.cartData?.mrp) * data?.cartData?.totalUserItem;
   });
+  console.log(array, "array");
   const handleChangeQuantity = (type, id) => {
     const db = getDatabase();
     const cartItemData = cartItems.find((data) => data.cartData.id === id);
+    console.log(cartItemData, "data");
     type === "minus"
       ? set(ref(db, "cartItem/" + id), {
           ...cartItemData,
-          totalUserItem: cartItemData?.totalUserItem
-            ? cartItemData?.totalUserItem - 1
+          totalUserItem: cartItemData?.cartData?.totalUserItem
+            ? cartItemData?.cartData?.totalUserItem - 1
             : 1,
         })
       : set(ref(db, "cartItem/" + id), {
           ...cartItemData,
-          totalUserItem: cartItemData?.totalUserItem
-            ? cartItemData?.totalUserItem + 1
+          totalUserItem: cartItemData?.cartData?.totalUserItem
+            ? cartItemData?.cartData?.totalUserItem + 1
             : 1,
         });
   };
@@ -277,7 +279,7 @@ const ShoppingCart = () => {
                   >
                     <BiMinus />
                   </a>
-                  <input type="text" value={product?.totalUserItem} />
+                  <input type="text" value={product?.cartData?.totalUserItem} />
                   <a
                     onClick={() =>
                       handleChangeQuantity("add", product.cartData.id)
@@ -286,8 +288,12 @@ const ShoppingCart = () => {
                     <BiPlus />
                   </a>
                 </div>
-                <div>${product.cartData?.mrp * product.totalUserItem}</div>
-                <div>${product.cartData?.mrp * product.totalUserItem}</div>
+                <div>
+                  $ {product.cartData?.mrp * product?.cartData?.totalUserItem}
+                </div>
+                <div>
+                  ${product.cartData?.mrp * product?.cartData?.totalUserItem}
+                </div>
                 <div
                   className="close"
                   onClick={() => deleteCartItem(product?.cartData?.id)}

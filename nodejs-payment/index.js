@@ -17,32 +17,31 @@ app.get("/logo.svg", (req, res) => {
   res.sendFile(path.join(__dirname, "logo.svg"));
 });
 
-// app.post("/verification", (req, res) => {
-//   // do a validation
-//   const secret = "12345678";
+app.post("/verification", (req, res) => {
+  const secret = "12345678";
 
-//   console.log(req.body);
+  console.log(req.body);
 
-//   const crypto = require("crypto");
+  const crypto = require("crypto");
 
-//   const shasum = crypto.createHmac("sha256", secret);
-//   shasum.update(JSON.stringify(req.body));
-//   const digest = shasum.digest("hex");
+  const shasum = crypto.createHmac("sha256", secret);
+  shasum.update(JSON.stringify(req.body));
+  const digest = shasum.digest("hex");
 
-//   console.log(digest, req.headers["x-razorpay-signature"]);
+  console.log(digest, req.headers["x-razorpay-signature"]);
 
-//   if (digest === req.headers["x-razorpay-signature"]) {
-//     console.log("request is legit");
-//     // process it
-//     require("fs").writeFileSync(
-//       "payment1.json",
-//       JSON.stringify(req.body, null, 4)
-//     );
-//   } else {
-//     // pass it
-//   }
-//   res.json({ status: "ok" });
-// });
+  if (digest === req.headers["x-razorpay-signature"]) {
+    console.log("request is legit");
+    // process it
+    require("fs").writeFileSync(
+      "payment1.json",
+      JSON.stringify(req.body, null, 4)
+    );
+  } else {
+    // pass it
+  }
+  res.json({ status: "ok" });
+});
 
 app.post("/razorpay", async (req, res) => {
   console.log(req.body, "res");

@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { PlusOutlined } from "@ant-design/icons";
 import { Drawer } from "antd";
-import { db } from "../../Firebase";
+import { db } from "../../../Firebase";
 import { Button, Form, Input, Upload, DatePicker, Select } from "antd";
 import { addDoc, collection } from "firebase/firestore";
-// import { SwatchesPicker } from "react-color";
-// import { Colors } from "../../CommonComponent/colors";
+import { SwatchesPicker } from "react-color";
+import { Colors } from "../../../CommonComponent/colors";
+import SpecialProductTable from "./table";
 const PrductDrawerWrapper = styled.div`
   button {
     width: 90px;
@@ -25,19 +26,21 @@ const PrductDrawerWrapper = styled.div`
 `;
 const { Option } = Select;
 
-// const colors = Colors;
+const colors = Colors;
 const PrductDrawer = () => {
   const [visible, setVisible] = useState(false);
   const [imageUrl, setImageUrl] = useState();
   const [category, setCategory] = useState();
   const [size, setSize] = useState();
-  // const [colorData, setColorData] = useState([]);
+  const [colorData, setColorData] = useState([]);
   const [tag, setTag] = useState();
 
   const showDrawer = () => {
     setVisible(true);
   };
-
+  const handleSizeChange = (value) => {
+    setSize(value);
+  };
   const onClose = () => {
     setVisible(false);
   };
@@ -47,16 +50,17 @@ const PrductDrawer = () => {
   const handleTagChange = (value) => {
     setTag(value);
   };
-  const productsCollection = collection(db, "products");
+  const specialProductsCollection = collection(db, "specialProducts");
 
   const submitProductDetails = async (values) => {
-    await addDoc(productsCollection, {
+    await addDoc(specialProductsCollection, {
       ...values,
       date: values.date._d,
       image: imageUrl,
       tag: tag,
       category: category,
       size: size,
+      color: colorData,
       totalUserItem: 1,
       id: Math.floor(Math.random() * 100),
     });
@@ -74,13 +78,11 @@ const PrductDrawer = () => {
     });
   };
 
-  const handleSizeChange = (e) => {
-    setSize(e.target.value);
-  };
   return (
     <>
       <PrductDrawerWrapper>
         <button onClick={showDrawer}>Add New</button>
+        <SpecialProductTable />
         <Drawer
           title="Add Items"
           placement="right"
@@ -179,7 +181,7 @@ const PrductDrawer = () => {
               <Input placeholder="" />
             </Form.Item>
             <Form.Item
-              name="sale price"
+              name="sale_price"
               label="Sale Price"
               rules={[
                 {
@@ -199,14 +201,9 @@ const PrductDrawer = () => {
                 }}
                 onChange={handleSelectChange}
               >
-                <Option value="jackets">Jacket</Option>
-                <Option value="shirts">Shirt</Option>
-                <Option value="pants">Pants</Option>
-                <Option value="skirts">Skirt</Option>
-                <Option value="dress">Dress</Option>
-                <Option value="underwears">Underwear</Option>
-                <Option value="shoes">Shoes</Option>
-                <Option value="accesories">Accesories</Option>
+                <Option value="petticoat">Saree Petticoat</Option>
+                <Option value="poplin-cotton">Poplin Cotton Fabric</Option>
+                <Option value="patiala">Patiala Salwar</Option>
               </Select>
             </Form.Item>
             <Form.Item label="Tags">
@@ -216,21 +213,16 @@ const PrductDrawer = () => {
                 }}
                 onChange={handleTagChange}
               >
-                <Option value="jackets">Jacket</Option>
-                <Option value="shirts">Shirt</Option>
-                <Option value="pants">Pants</Option>
-                <Option value="skirts">Skirt</Option>
-                <Option value="dress">Dress</Option>
-                <Option value="underwears">Underwear</Option>
-                <Option value="shoes">Shoes</Option>
-                <Option value="accesories">Accesories</Option>
+                <Option value="petticoat">Saree Petticoat</Option>
+                <Option value="poplin-cotton">Poplin Cotton Fabric</Option>
+                <Option value="patiala">Patiala Salwar</Option>
               </Select>
             </Form.Item>
 
             <Form.Item name="date" label="Date">
               <DatePicker />
             </Form.Item>
-            {/* <Form.Item name="color" label="Color">
+            <Form.Item name="color" label="Color">
               <SwatchesPicker
                 color={colorData}
                 colors={colors}
@@ -244,8 +236,8 @@ const PrductDrawer = () => {
                   }
                 }}
               />
-            </Form.Item> */}
-            {/* <div
+            </Form.Item>
+            <div
               style={{
                 display: "flex",
                 width: "100%",
@@ -266,7 +258,7 @@ const PrductDrawer = () => {
                     ></div>
                   );
                 })}
-            </div> */}
+            </div>
             <Form.Item>
               <Button type="primary" block htmlType="submit" onClick={onClose}>
                 Submit
@@ -274,8 +266,6 @@ const PrductDrawer = () => {
             </Form.Item>
           </Form>
         </Drawer>
-        <button>Import</button>
-        <button>Export</button>
       </PrductDrawerWrapper>
     </>
   );

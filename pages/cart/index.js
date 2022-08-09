@@ -9,6 +9,8 @@ import styled from "styled-components";
 import Image from "next/image";
 import Logo from "/public/svg/logo.svg";
 import { nanoid } from "nanoid";
+import { db } from "../../src/Firebase";
+import { addDoc, collection } from "firebase/firestore";
 import { useAuth } from "../../src/auth/AuthContext";
 
 const CartWrapper = styled.div`
@@ -73,16 +75,19 @@ const Cart = () => {
   const cartItems = cartProduct.map(([key, value]) => {
     return value;
   });
+  console.log(cartItems, cartProduct, "items");
   const array = cartItems?.map((data) => {
-    return Number(data?.cartData?.mrp) * data?.totalUserItem;
+    return Number(data?.cartData?.mrp) * data?.cartData?.totalUserItem;
   });
+  console.log(array, "array");
 
   const totalAmount = array.reduce(
     (previousValue, currentValue) => previousValue + currentValue,
     0
   );
+  const amount = totalAmount * 100;
   const bodyData = {
-    amount: totalAmount,
+    amount: amount,
     receipt: order_id,
     payment_capture: 1,
   };
@@ -102,6 +107,7 @@ const Cart = () => {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
+
     if (!res) {
       alert("Razorpay SDK failed to load. are you online?");
       return;
@@ -110,9 +116,9 @@ const Cart = () => {
       key: "rzp_test_NJRQ7mstGJ8A8J",
       name: "The Crafted",
       description: "We are happy to make connection with you !!",
-      amount: totalAmount,
+      amount: amount,
       currency: "INR",
-      image: <img src={Logo} alt="logo" />,
+      image: Logo,
       order_id: data?.id,
       prefill: {
         name: currentUser.displayName,
@@ -121,6 +127,17 @@ const Cart = () => {
     };
     var rzp1 = new window.Razorpay(options);
     rzp1.open();
+    const orderData = await fetch("http://localhost:1337/verification", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((t) => console.log(t, "jjjj"))
+      .catch((e) => console.log(e, "e"));
+    console.log(orderData, "+++++++++++++++++++");
+    // await addDoc();
   };
   const next = (key) => {
     key === 0 ? setCurrent(current + 1) : displayRezorPay();

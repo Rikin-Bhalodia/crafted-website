@@ -4,7 +4,7 @@ import "antd/dist/antd.css";
 
 import { Radio, Table } from "antd";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../Firebase";
+import { db } from "../../../Firebase";
 
 const columns = [
   {
@@ -47,6 +47,10 @@ const columns = [
     title: "Date",
     dataIndex: "date",
   },
+  {
+    title: "Color",
+    dataIndex: "color",
+  },
 ];
 
 const rowSelection = {
@@ -58,14 +62,14 @@ const rowSelection = {
 
 const ProductTableWrapper = styled.div``;
 
-const ProductTable = () => {
+const SpecialProductTable = () => {
   const [selectionType, setSelectionType] = useState("checkbox");
   const [products, setProducts] = useState([]);
-  const productsCollection = collection(db, "products");
+  const specialProductsCollection = collection(db, "specialProducts");
 
   useEffect(() => {
     const getProducts = async () => {
-      const data = await getDocs(productsCollection);
+      const data = await getDocs(specialProductsCollection);
       setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getProducts();
@@ -73,46 +77,53 @@ const ProductTable = () => {
 
   const data = [];
   {
-    products.map((product, i) => {
-      const formatDate = (date) => {
-        var d = new Date(date),
-          month = "" + (d.getMonth() + 1),
-          day = "" + d.getDate(),
-          year = d.getFullYear();
+    products &&
+      products.map((product, i) => {
+        const formatDate = (date) => {
+          var d = new Date(date),
+            month = "" + (d.getMonth() + 1),
+            day = "" + d.getDate(),
+            year = d.getFullYear();
 
-        if (month.length < 2) month = "0" + month;
-        if (day.length < 2) day = "0" + day;
+          if (month.length < 2) month = "0" + month;
+          if (day.length < 2) day = "0" + day;
 
-        return [year, month, day].join("-");
-      };
-      const currentDate = formatDate(new Date());
-      return data.push({
-        key: i,
-        image: <img src={product?.image} alt="image" height={60} width={100} />,
-        name: product?.name,
-        sku: product?.sku,
-        stock: product?.stock,
-        mrp: product?.mrp,
-        sale_price: product?.sale_price,
-        category: product?.category,
-        tags: product?.tags,
-        date: currentDate,
-        color: (
-          <div
-            style={{
-              display: "flex",
-              width: "100px",
-              flexWrap: "wrap",
-              gap: "7px",
-            }}
-          >
-            {product?.color?.map((color) => (
-              <div style={{ background: color, height: 13, width: 13 }}></div>
-            ))}
-          </div>
-        ),
+          return [year, month, day].join("-");
+        };
+        const currentDate = formatDate(new Date());
+        return data.push({
+          key: i,
+          image: (
+            <img src={product?.image} alt="image" height={60} width={100} />
+          ),
+          name: product?.name,
+          sku: product?.sku,
+          size: product?.size,
+          stock: product?.stock,
+          mrp: product?.mrp,
+          sale_price: product?.sale_price,
+          category: product?.category,
+          tags: product?.tag,
+          date: currentDate,
+          color: (
+            <div
+              style={{
+                display: "flex",
+                width: "100px",
+                flexWrap: "wrap",
+                gap: "7px",
+              }}
+            >
+              {product?.color?.length > 0 &&
+                product?.color?.map((color) => (
+                  <div
+                    style={{ background: color, height: 13, width: 13 }}
+                  ></div>
+                ))}
+            </div>
+          ),
+        });
       });
-    });
   }
 
   return (
@@ -138,4 +149,4 @@ const ProductTable = () => {
   );
 };
 
-export default ProductTable;
+export default SpecialProductTable;

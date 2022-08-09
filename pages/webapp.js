@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import Footer from "../src/CommonComponent/Footer/FooterContact";
 import "antd/dist/antd.css";
-
-import { Breadcrumb } from 'antd';
-
+import Image from "next/image";
+import SingleProductModal from "../src/CommonComponent/SpecialProductModal";
+import { Select } from "antd";
+import { Breadcrumb } from "antd";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../src/Firebase";
+import { Colors } from "../src/CommonComponent/colors";
+import { toast } from "react-toastify";
+import { getDatabase, onValue, ref, set } from "firebase/database";
+import { useAuth } from "../src/auth/AuthContext";
 
 const WebAppWrapper = styled.div`
   .section {
@@ -62,39 +69,25 @@ const WebAppWrapper = styled.div`
     width: 500px;
     height: 400px;
     display: flex;
+    margin: 0 60px;
     justify-content: center;
     align-items: center;
-    font-weight: 700;
+  }
+  .productImg {
+    height: 150px;
+    width: 180px;
+  }
+  .product-name {
+    padding-top: 15px;
+    font-weight: 500;
     font-size: 20px;
-    text-align: center;
-    color: #ffffff;
+    color: #393d46;
   }
-  .red-shade {
-    background: #ff0000;
-    border: 1px solid #000000;
-    width: 20%;
-    height: 100%;
-  }
-  .orange-shade {
-    background: #ff9f24;
-    width: 20%;
-    height: 100%;
-    border: 1px solid #000000;
-    border-left: none;
-  }
-  .blue-shade {
-    background: #1565d8;
-    width: 20%;
-    height: 100%;
-    border: 1px solid #000000;
-    border-left: none;
-    border-right: none;
-  }
-  .pink-shade {
-    background: #fc5ad8;
-    border: 1px solid #000000;
-    width: 40%;
-    height: 100%;
+  .product-price {
+    padding-top: 5px;
+    color: #9f9f9f;
+    font-weight: 500;
+    font-size: 18px;
   }
   .btn {
     display: flex;
@@ -108,7 +101,7 @@ const WebAppWrapper = styled.div`
     height: 60px;
     font-weight: 400;
     font-size: 24px;
-    width: 200px;
+    width: 160px;
     margin-top: 30px;
   }
   .container {
@@ -120,6 +113,9 @@ const WebAppWrapper = styled.div`
     gap: 15px;
     margin: 20px 0 20px 0;
     justify-content: center;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
   .box-container {
     overflow: auto;
@@ -131,6 +127,27 @@ const WebAppWrapper = styled.div`
     border: 1px solid #000000;
     border-radius: 30px;
     display: flex;
+  }
+
+  .productImg {
+    height: 100px;
+    width: 450px;
+  }
+  .product-name {
+    padding-top: 15px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #000000;
+    position: relative;
+    text-align: center;
+  }
+  .product-price {
+    padding-top: 5px;
+    color: #000000;
+    font-weight: 500;
+    font-size: 18px;
+    position: relative;
+    text-align: center;
   }
   @media screen and (max-width: 1400px) {
     .match-color-box {
@@ -200,15 +217,148 @@ const WebAppWrapper = styled.div`
       width: 350px;
     }
   }
+
+  @media screen and (max-width: 1000px) {
+    margin: 0;
+    width: 100%;
+    .productImg {
+      width: 150px;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .productImg {
+      width: 130px;
+      height: 130px;
+    }
+    .product-name {
+      font-size: 16px;
+    }
+  }
+  @media screen and (max-width: 520px) {
+    .productImg {
+      width: 100px;
+      height: 100px;
+    }
+    .product-name {
+      font-size: 12px;
+    }
+    .product-price {
+      font-size: 14px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .productImg {
+      width: 60px;
+      height: 60px;
+    }
+    .product-name {
+      font-size: 10px;
+    }
+    .product-price {
+      font-size: 12px;
+    }
+  }
 `;
 
 const WebApp = () => {
+  const [category, setCategory] = useState("");
+  const [products, setProducts] = useState([]);
+  const [color, setColor] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [cartProduct, setCartProduct] = useState([]);
+  const { currentUser } = useAuth();
+
+  const handleSelectChange = (value) => {
+    setCategory(value);
+  };
+  const productsCollection = collection(db, "specialProducts");
+  const getAllProducts = async () => {
+    const data = await getDocs(productsCollection);
+    setProducts(data.docs.map((data) => data.data()));
+  };
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
+  const selectedProduct = useMemo(() => {
+    return products.filter((ele) => {
+      return ele.category === category &&
+        color.length > 0 &&
+        color.includes(ele.color[0].toUpperCase())
+        ? ele
+        : null;
+    });
+  }, [color, category]);
+  console.log(selectedProduct, "kkkkkkkkkkkk");
+  const onSelect = (data) => {
+    if (color.includes(data)) {
+      setColor((prev) => prev.filter((color) => color !== data));
+    } else {
+      if (color.length < 4) {
+        setColor((prev) => {
+          return [...prev, data];
+        });
+      } else {
+        toast("You can choose only max upto 4 colors !!");
+      }
+    }
+  };
+
+  const handleClick = () => {
+    if (color.length > 0) {
+      setIsModalVisible(true);
+    } else {
+      setIsModalVisible(false);
+    }
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  useEffect(() => {
+    const db = getDatabase();
+    const starCountRef = ref(db, "cartItem/");
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        setCartProduct(Object.entries(data));
+      }
+    });
+  }, []);
+
+  const cartProducts =
+    cartProduct &&
+    cartProduct.map(([key]) => {
+      return Object.values(key).join("");
+    });
+
+  console.log(cartProducts, cartProduct, "llllllllll");
+  const addToCart = () => {
+    const db = getDatabase();
+    selectedProduct.map((ele) => {
+      console.log(ele.id.toString(), "jj");
+      if (cartProducts.includes(ele.id.toString())) {
+        toast(`Your ${ele.name} is already in Cart !!`);
+      } else {
+        set(ref(db, "cartItem/" + ele.id), {
+          cartData: ele,
+          uid: currentUser.uid,
+        });
+        toast("Your Item is added in Cart");
+      }
+    });
+  };
+  const { Option } = Select;
+
+  const colors = Colors;
+
   return (
     <>
-    <Breadcrumb separator=">" style={{marginLeft:'120px'}} >
+      <Breadcrumb separator=">" style={{ marginLeft: "120px" }}>
         <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
         <Breadcrumb.Item>TCOMaC</Breadcrumb.Item>
-    </Breadcrumb>
+      </Breadcrumb>
       <WebAppWrapper>
         <div>
           <div className="heading-section">
@@ -218,23 +368,42 @@ const WebApp = () => {
             <section>
               <div className="label">
                 <div>Select a Product</div>
-                <select>
-                  <option>Petticoat</option>
-                  <option>hello</option>
-                  <option>hello</option>
-                  <option>hello</option>
-                  <option>hello</option>
-                </select>
+                <Select
+                  style={{
+                    width: "100%",
+                  }}
+                  value={category}
+                  onChange={handleSelectChange}
+                >
+                  <Option value="petticoat">Saree Petticoat</Option>
+                  <Option value="poplin-cotton">Poplin Cotton Fabric</Option>
+                  <Option value="patiala">Patiala Salwar</Option>
+                </Select>
               </div>
               <div className="match-color-box">
                 <div className="color-shade">
-                  <div className="red-shade">Image 1</div>
-                  <div className="orange-shade">Image 2</div>
-                  <div className="blue-shade">Image 3</div>
-                  <div className="pink-shade">Image 4</div>
+                  {color.length > 0 && category ? (
+                    selectedProduct.map((ele) => {
+                      return <Image src={ele.image} width={200} height={200} />;
+                    })
+                  ) : (
+                    <div
+                      style={{
+                        background: "black",
+                        filter: "blur(20px)",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    ></div>
+                  )}
                 </div>
                 <div className="btn">
-                  <button className="button-add">Add to Cart</button>
+                  <button className="button-add" onClick={() => addToCart()}>
+                    Add to Cart
+                  </button>
+                  <button className="button-add" onClick={() => handleClick()}>
+                    View Product
+                  </button>
                   <button className="button-add">Buy Now</button>
                 </div>
               </div>
@@ -246,62 +415,18 @@ const WebApp = () => {
               </div>
               <div className="match-color-box">
                 <div className="container">
-                  {[
-                    1,
-                    2,
-                    1,
-                    1,
-                    1,
-                    1,
-                    1,
-                    ,
-                    1,
-                    1,
-                    1,
-                    1,
-                    1,
-                    1,
-                    ,
-                    1,
-                    1,
-                    1,
-                    1,
-                    ,
-                    11,
-                    1,
-                    1,
-                    ,
-                    11,
-                    1,
-                    1,
-                    1,
-                    ,
-                    ,
-                    1,
-                    ,
-                    1,
-                    1,
-                    1,
-                    1,
-                    1,
-                    ,
-                    1,
-                    1,
-                    1,
-                    ,
-                    1,
-                    ,
-                    1,
-                    1,
-                    1,
-                    1,
-                    1,
-                    ,
-                    1,
-                  ].map((_) => {
+                  {colors.map((data) => {
                     return (
                       <div className="box-container">
-                        <div className="box"></div>
+                        <div
+                          className="box"
+                          style={
+                            color.includes(data[0])
+                              ? { border: "4px solid black", background: data }
+                              : { background: data }
+                          }
+                          onClick={() => onSelect(data[0])}
+                        ></div>
                       </div>
                     );
                   })}
@@ -312,6 +437,12 @@ const WebApp = () => {
         </div>
       </WebAppWrapper>
       <Footer />
+      {isModalVisible && color.length > 0 && (
+        <SingleProductModal
+          handleCancel={handleCancel}
+          selectedProduct={selectedProduct}
+        />
+      )}
     </>
   );
 };
