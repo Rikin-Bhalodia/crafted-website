@@ -191,7 +191,9 @@ const FooterContact = () => {
             }}
           >
             <input placeholder="Your Email" className="input-field" />
-            <button className="button">Get started</button>
+            <button className="button" style={{ cursor: "pointer" }}>
+              Get started
+            </button>
           </div>
           <div className="description">
             Get a response tomorrow if you submit by 9pm today. If we received
