@@ -209,39 +209,52 @@ const ShoppingCartWrapper = styled.div`
 `;
 
 const ShoppingCart = () => {
-  const [cartProduct, setCartProduct] = useState([]);
-  const cartItems = cartProduct.map(([key, value]) => {
-    return value;
-  });
+  const [cartProduct, setCartProduct] = useState("");
+  const cartItems =
+    cartProduct &&
+    cartProduct.map(([key, value]) => {
+      return value;
+    });
+  const { currentUser } = useAuth();
   useEffect(() => {
     const db = getDatabase();
     const starCountRef = ref(db, "cartItem/");
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      setCartProduct(Object.entries(data));
+      if (data !== null) {
+        setCartProduct(Object.entries(data));
+      } else {
+        setCartProduct([]);
+      }
     });
   }, []);
-
-  const array = cartItems?.map((data) => {
-    return Number(data?.cartData?.mrp) * data?.cartData?.totalUserItem;
-  });
-  console.log(array, "array");
+  const array =
+    cartItems &&
+    cartItems?.map((data) => {
+      const { cartData } = data;
+      return Number(cartData?.mrp) * cartData?.totalUserItem;
+    });
   const handleChangeQuantity = (type, id) => {
     const db = getDatabase();
-    const cartItemData = cartItems.find((data) => data.cartData.id === id);
-    console.log(cartItemData, "data");
+    const cartItemData = cartItems?.filter((data) => data?.cartData?.id === id);
     type === "minus"
       ? set(ref(db, "cartItem/" + id), {
-          ...cartItemData,
-          totalUserItem: cartItemData?.cartData?.totalUserItem
-            ? cartItemData?.cartData?.totalUserItem - 1
-            : 1,
+          cartData: {
+            ...cartItemData[0].cartData,
+            totalUserItem: cartItemData[0]?.cartData?.totalUserItem
+              ? cartItemData[0]?.cartData?.totalUserItem - 1
+              : 1,
+          },
+          uid: currentUser.uid,
         })
       : set(ref(db, "cartItem/" + id), {
-          ...cartItemData,
-          totalUserItem: cartItemData?.cartData?.totalUserItem
-            ? cartItemData?.cartData?.totalUserItem + 1
-            : 1,
+          cartData: {
+            ...cartItemData[0].cartData,
+            totalUserItem: cartItemData[0]?.cartData?.totalUserItem
+              ? cartItemData[0]?.cartData?.totalUserItem + 1
+              : 1,
+          },
+          uid: currentUser.uid,
         });
   };
   const deleteCartItem = (id) => {
@@ -257,53 +270,57 @@ const ShoppingCart = () => {
         <p>Price</p>
       </div>
       <div className="shop-product">
-        {cartItems?.map((product) => {
-          return (
-            <>
-              <div className="select-product" key={product.cartData.id}>
-                <div className="products">
-                  <div>
-                    <img
-                      src={product.cartData.image}
-                      alt="product-image"
-                      style={{ height: "100%", width: "100%" }}
-                    />
+        {cartItems &&
+          cartItems?.map((product) => {
+            return (
+              <>
+                <div className="select-product" key={product.cartData?.id}>
+                  <div className="products">
+                    <div>
+                      <img
+                        src={product?.cartData?.image}
+                        alt="product-image"
+                        style={{ height: "100%", width: "100%" }}
+                      />
+                    </div>
+                    <p>{product.cartData?.name}</p>
                   </div>
-                  <p>{product.cartData.name}</p>
-                </div>
-                <div className="add-item">
-                  <a
-                    onClick={() =>
-                      handleChangeQuantity("minus", product.cartData.id)
-                    }
+                  <div className="add-item">
+                    <a
+                      onClick={() =>
+                        handleChangeQuantity("minus", product.cartData?.id)
+                      }
+                    >
+                      <BiMinus />
+                    </a>
+                    <input
+                      type="text"
+                      value={product?.cartData?.totalUserItem}
+                    />
+                    <a
+                      onClick={() =>
+                        handleChangeQuantity("add", product.cartData?.id)
+                      }
+                    >
+                      <BiPlus />
+                    </a>
+                  </div>
+                  <div>
+                    $ {product.cartData?.mrp * product?.cartData?.totalUserItem}
+                  </div>
+                  <div>
+                    ${product.cartData?.mrp * product?.cartData?.totalUserItem}
+                  </div>
+                  <div
+                    className="close"
+                    onClick={() => deleteCartItem(product?.cartData?.id)}
                   >
-                    <BiMinus />
-                  </a>
-                  <input type="text" value={product?.cartData?.totalUserItem} />
-                  <a
-                    onClick={() =>
-                      handleChangeQuantity("add", product.cartData.id)
-                    }
-                  >
-                    <BiPlus />
-                  </a>
+                    <CgClose size={30} />
+                  </div>
                 </div>
-                <div>
-                  $ {product.cartData?.mrp * product?.cartData?.totalUserItem}
-                </div>
-                <div>
-                  ${product.cartData?.mrp * product?.cartData?.totalUserItem}
-                </div>
-                <div
-                  className="close"
-                  onClick={() => deleteCartItem(product?.cartData?.id)}
-                >
-                  <CgClose size={30} />
-                </div>
-              </div>
-            </>
-          );
-        })}
+              </>
+            );
+          })}
       </div>
       <div className="code-total">
         <div className="code">
@@ -315,10 +332,11 @@ const ShoppingCart = () => {
 
           <h5>
             $
-            {array.reduce(
-              (previousValue, currentValue) => previousValue + currentValue,
-              0
-            )}
+            {array &&
+              array.reduce(
+                (previousValue, currentValue) => previousValue + currentValue,
+                0
+              )}
           </h5>
         </div>
       </div>
