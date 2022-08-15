@@ -66,7 +66,7 @@ const ShoppingCartWrapper = styled.div`
         background: #393d46;
       }
       input {
-        height: 38px;
+        height: 37px;
         width: 70px;
         text-align: center;
       }
@@ -225,7 +225,6 @@ const ShoppingCart = () => {
   const array = cartItems?.map((data) => {
     return Number(data?.cartData?.mrp) * data?.cartData?.totalUserItem;
   });
-  console.log(array, "array");
   const handleChangeQuantity = (type, id) => {
     const db = getDatabase();
     const cartItemData = cartItems.find((data) => data.cartData.id === id);
@@ -298,7 +297,7 @@ const ShoppingCart = () => {
                   className="close"
                   onClick={() => deleteCartItem(product?.cartData?.id)}
                 >
-                  <CgClose size={30} />
+                  <CgClose size={30} style={{ cursor: "pointer" }} />
                 </div>
               </div>
             </>

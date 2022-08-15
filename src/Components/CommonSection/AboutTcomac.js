@@ -11,6 +11,7 @@ const AboutTcomacWrapper = styled.div`
     padding-top: 0px;
     position: absolute;
     display: flex;
+    z-index: 999;
     .about-desc {
       h6 {
         font-weight: 400;
@@ -48,6 +49,7 @@ const AboutTcomacWrapper = styled.div`
         mix-blend-mode: darken;
         padding: 10px 200px;
         background-color: #fff;
+        cursor: pointer !important;
       }
     }
     .about-img {

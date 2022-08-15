@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Blogbox2 from "./Blogbox2";
 import BlogHeading from "./BlogHeading";
+import { blogs } from "../../../src/CommonComponent/blogdata/blogs";
 
 const BlogHeader2Wrapper = styled.div`
   /* padding: 0px 200px 100px 200px; */
@@ -18,7 +19,7 @@ const BlogHeader2 = () => {
         heading="Recent Articles"
         para="Heres what weve been up to recently."
       />
-      <Blogbox2 />
+      <Blogbox2 blogs={blogs} />
     </BlogHeader2Wrapper>
   );
 };

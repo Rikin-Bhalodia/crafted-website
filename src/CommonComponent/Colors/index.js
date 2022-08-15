@@ -89,3 +89,101 @@ export const Colors = [
   ["#C45655"],
   ["#E56D75"],
 ];
+export const blue = [
+  ["#0000FF"],
+  ["#38B0DE"],
+  ["#1575BF"],
+  ["#213E9E"],
+  ["#01447F"],
+  ["#4B2D72"],
+  ["#129CB7"],
+  ["#191970"],
+  ["#166461"],
+  ["#353B5B"],
+  ["#89C4FF"],
+  ["#361556"],
+];
+export const red = [["#FF0000"], ["#9D0C2B"], ["#9A0C29"], ["#843138"]];
+export const green = [
+  ["#00FF00"],
+  ["#259797"],
+  ["#1AB385"],
+  ["#166032"],
+  ["#636D24"],
+  ["#4F7C33"],
+  ["#218268"],
+  ["#66F4C3"],
+  ["#167E65"],
+  ["#1F881F"],
+  ["#1B4B35"],
+  ["#A4EA9D"],
+  ["#C9E589"],
+];
+export const yellow = [
+  ["#FFFF00"],
+  ["#FFEEA3"],
+  ["#FFC768"],
+  ["#DAC01A"],
+  ["#FFFF99"],
+  ["#FFD67B"],
+];
+export const orange = [["#FF5900"], ["#FF8C00"]];
+export const white = [["#FFFFFF"], ["#F4EFE0"]];
+export const pink = [
+  ["#E30B5C"],
+  ["#F4869A"],
+  ["#AA3365"],
+  ["#FFC1E4"],
+  ["#CD526C"],
+  ["#D671AC"],
+  ["#FFA38C"],
+  ["#F7AFBF"],
+  ["#BF5D7A"],
+  ["#B23971"],
+];
+export const gajri = [
+  ["#E54D5C"],
+  ["#C45655"],
+  ["#E56D75"],
+  ["#FEAB9A"],
+  ["#DE3163"],
+];
+export const purple = [
+  ["#821762"],
+  ["#A42AAA"],
+  ["#AD0082"],
+  ["#88078E"],
+  ["#6A1F44"],
+  ["#633477"],
+  ["#372D52"],
+  ["#492293"],
+  ["#6A4DAF"],
+];
+export const cream = [
+  ["#FFFDD0"],
+  ["#DBB985"],
+  ["#FCFAE0"],
+  ["#F1F1C6"],
+  ["#EFD8B6"],
+  ["#CCB388"],
+  ["#FFF1C6"],
+];
+export const gray = [["#6D7A86"], ["#2E526D"]];
+export const brown = [["#5D1F1E"], ["#7F4534"], ["#8E4D3E"], ["#3E3A3A"]];
+export const mehendi = [
+  ["#74823D "],
+  ["#7C673A"],
+  ["#63532C"],
+  ["#75602C"],
+  ["#545429"],
+  ["#80A084"],
+  ["#75A87A"],
+];
+export const metal = [
+  ["#C97A30"],
+  ["#DAB160"],
+  ["#C69371"],
+  ["#D37F5B"],
+  ["#CE7259"],
+];
+export const black = [["#000000"]];

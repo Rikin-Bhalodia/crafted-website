@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Blogbox1 from "./Blogbox1";
 import Blogbox2 from "./Blogbox2";
+import Link from "next/link";
+import { blogs } from "../../../src/CommonComponent/blogdata/blogs";
 
 const BlogMain4Wrapper = styled.div`
   width: 100%;
@@ -28,6 +30,7 @@ const BlogMain4Wrapper = styled.div`
     text-align: center;
     padding-top: 50px;
     padding-bottom: 30px;
+    margin-bottom: 50px;
 
     a {
       font-weight: 700;
@@ -76,11 +79,9 @@ const BlogMain4 = () => {
         </p>
       </div>
       <Blogbox1 />
-      <Blogbox2 />
+      <Blogbox2 blogs={blogs} />
       <div className="blog-btn">
-        <a href="/">
-          More articles <span>{/* <FiArrowRight /> */}</span>
-        </a>
+        <Link href="#">More articles</Link>
       </div>
     </BlogMain4Wrapper>
   );

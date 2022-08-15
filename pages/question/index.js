@@ -9,7 +9,12 @@ import { Select } from "antd";
 import "antd/dist/antd.variable.min.css";
 
 const QuestionWrapper = styled.div`
-  padding: 50px 200px;
+  padding: 80px 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   .que-head {
     h3 {
       font-size: 40px;

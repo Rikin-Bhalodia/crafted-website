@@ -99,6 +99,7 @@ const ProductWrapper = styled.div`
               height: 20px;
               border: 3px solid #cdcfd1;
               margin-bottom: 15px;
+              cursor: pointer;
             }
 
             label {
@@ -107,6 +108,7 @@ const ProductWrapper = styled.div`
               line-height: 27px;
               color: #9f9f9f;
               margin-bottom: 15px;
+              cursor: pointer;
             }
           }
         }

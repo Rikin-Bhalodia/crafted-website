@@ -84,9 +84,11 @@ const AccountDetailsWrapper = styled.div`
           display: flex;
           justify-content: flex-end;
           grid-area: 1/4/2/5;
+          cursor: pointer;
         }
         .btn {
           grid-area: 1/3/2/4;
+          cursor: pointer;
         }
       }
     }
@@ -271,7 +273,7 @@ const AccountDetails = () => {
   return (
     <>
       <Breadcrumb separator=">" style={{ marginLeft: "120px" }}>
-        <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item>Contact us</Breadcrumb.Item>
       </Breadcrumb>
       <AccountDetailsWrapper>

@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import HomeBlogSlider from "../../CommonComponent/Swiper/HomeBlogSlider";
+import { blogs } from "../../../src/CommonComponent/blogdata/blogs";
+
+console.log(blogs, "blog");
 
 const BlogMain3Wrapper = styled.div`
   width: 100%;
@@ -13,7 +16,7 @@ const BlogMain3Wrapper = styled.div`
 const BlogMain3 = () => {
   return (
     <BlogMain3Wrapper>
-      <HomeBlogSlider />
+      <HomeBlogSlider blogs={blogs} />
     </BlogMain3Wrapper>
   );
 };

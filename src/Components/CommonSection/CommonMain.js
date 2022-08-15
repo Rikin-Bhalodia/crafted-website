@@ -61,22 +61,11 @@ const CommonMain = (props) => {
       <CommonMainWrapper>
         <div className="main-left">
           <p>{props.head}</p>
-          <h4>
-            We provide enterprises with innovative technology for small to space
-            enterprises
-          </h4>
+          <h4>{props.left}</h4>
         </div>
         <div className="main-right">
-          <p>
-            We supply enterprises, organizations and institutes of high-tech
-            industries with modern components. We build long-term trusting
-            relationships with our customers and partnes for further fruitful
-            cooperations.
-          </p>
-          <p>
-            From year to year we strive to invent the most innovative technology
-            that is used by both small enterprises and space enterprises.
-          </p>
+          <p>{props.righttop}</p>
+          <p>{props.rightbottom}</p>
         </div>
       </CommonMainWrapper>
     </>

@@ -278,6 +278,7 @@ const SingleProduct = () => {
               fontSize: "18px",
               color: "#9F9F9F",
               padding: "0 0 0 20px",
+              cursor: "pointer",
             }}
           >
             View all
