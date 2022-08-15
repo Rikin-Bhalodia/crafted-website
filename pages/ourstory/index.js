@@ -16,10 +16,15 @@ const OurStory = () => {
       <OurStoryWrapper>
         <CommonHead
           heading="The Crafted Community"
-          para="Community of Manufacturers, Sellers, Stitching partners and Customers."
-          btn="Read our story"
+          para="The story of revolutionizing Indian textile industry."
+          btn="How it started?"
         />
-        <CommonMain />
+        <CommonMain
+          head="how it started"
+          left="It all began with a 3-year-old child observing his age-old family business of garments. "
+          righttop="Perhaps the toys didn’t inspire Asif Ahmed Subhani. The business activities, the customers, the problems did."
+          rightbottom="Thus began the journey of formal and informal education. Informal education was an inheritance from a well-knit family where moral values, ethics, care and leadership are significantly embedded. The formal education polished these values."
+        />
         <CommonImage />
         <AboutTcomac
           shead="About tcomac"

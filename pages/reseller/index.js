@@ -68,7 +68,7 @@ const ResellerWrapper = styled.div`
         padding: 0px 50px;
         margin-bottom: -5px;
       }
-      a {
+      button {
         background: #000000;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50px;
@@ -81,6 +81,7 @@ const ResellerWrapper = styled.div`
         color: #ffffff;
         padding: 15px 50px;
         margin-top: 10px;
+        cursor: pointer;
       }
     }
   }

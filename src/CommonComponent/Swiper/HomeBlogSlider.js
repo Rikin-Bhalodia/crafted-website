@@ -2,14 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { Navigation, Mousewheel, Keyboard } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { blogs } from "../../../src/CommonComponent/blogdata/blogs";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Link from "next/link";
+// import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Verified from "/public/svg/verified.svg";
 import BtnRightArrow from "/public/svg/btn-right-arrow.svg";
+import blogImage from "../../../public/svg/blog/blogslider1.svg";
 
 const HomeBlogWrapper = styled.div`
   width: 100%;
@@ -19,23 +21,29 @@ const HomeBlogWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
   .mySwiper {
     width: 1500px;
     background: #ffffff;
     border: 1px solid #e5eaf4;
     box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.03);
     border-radius: 16px;
-    height: 410px;
+    height: 100%;
   }
   .blank-card {
     position: relative;
     background: #848484;
     border-radius: 16px 0px 0px 16px;
     width: 50%;
-    height: 420px;
+    height: 400px;
     z-index: 0;
     right: -1px;
     margin-right: 70px;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+    }
   }
   .parts {
     display: flex;
@@ -50,23 +58,26 @@ const HomeBlogWrapper = styled.div`
     font-size: 12px;
     height: 30px;
     color: #36b37e;
-    margin-top: 50px;
+    margin-top: 40px;
+    cursor: pointer;
   }
   .des-part {
     width: 550px;
-    overflow: hidden !important;
+    height: 100% !important;
+    margin-bottom: 20px;
   }
   .des-title {
     color: #183b56;
     font-weight: 400;
     font-size: 36px;
-    padding-top: 40px;
+    padding-top: 30px;
   }
   .des {
     font-weight: 400;
     font-size: 16px;
     padding-top: 20px;
     color: #5a7184;
+    width: 100%;
   }
   .profile-data {
     display: flex;
@@ -80,6 +91,7 @@ const HomeBlogWrapper = styled.div`
     background: #cccccc;
     border-radius: 50%;
     margin-right: 15px;
+    cursor: pointer;
   }
   .name {
     color: #183b56;
@@ -165,7 +177,7 @@ const HomeBlogWrapper = styled.div`
   @media screen and (max-width: 1000px) {
     .mySwiper {
       width: 700px;
-      height: 600px;
+      height: 100%;
     }
     .blank-card {
       margin-right: 40px;
@@ -179,17 +191,17 @@ const HomeBlogWrapper = styled.div`
     .des-part {
       width: 100%;
       padding: 20px 30px 40px 30px;
-      height: 350px;
     }
     .blank-card {
       width: 100%;
-      height: 250px;
+      height: 370px;
+      border-radius: 16px 16px 0px 0px;
     }
   }
   @media screen and (max-width: 700px) {
     .mySwiper {
       width: 500px;
-      height: 500px;
+      height: 100%;
     }
     .btn-feature {
       margin-top: 20px;
@@ -204,11 +216,10 @@ const HomeBlogWrapper = styled.div`
     .des-part {
       width: 100%;
       padding: 0px 30px 10px 30px;
-      height: 300px;
     }
     .blank-card {
       width: 100%;
-      height: 200px;
+      height: 270px;
     }
     .profile-data {
       padding: 20px 0 0 0;
@@ -217,7 +228,7 @@ const HomeBlogWrapper = styled.div`
   @media screen and (max-width: 500px) {
     .mySwiper {
       width: 400px;
-      height: 400px;
+      height: 100%;
     }
     .des-title {
       font-size: 20px;
@@ -228,11 +239,10 @@ const HomeBlogWrapper = styled.div`
     .des-part {
       width: 100%;
       padding: 0px 30px 0px 30px;
-      height: 250px;
     }
     .blank-card {
       width: 100%;
-      height: 150px;
+      height: 220px;
     }
     .profile-data {
       padding: 20px 0 0 0;
@@ -248,9 +258,10 @@ const HomeBlogWrapper = styled.div`
     }
   }
   @media screen and (max-width: 400px) {
+    height: 100%;
     .mySwiper {
       width: 350px;
-      height: 350px;
+      height: 100%;
     }
     .des-title {
       font-size: 14px;
@@ -261,11 +272,10 @@ const HomeBlogWrapper = styled.div`
     .des-part {
       width: 100%;
       padding: 0px 30px 0px 30px;
-      height: 200px;
     }
     .blank-card {
       width: 100%;
-      height: 150px;
+      height: 200px;
     }
     .profile-data {
       padding: 20px 0 0 0;
@@ -292,10 +302,13 @@ const HomeBlogWrapper = styled.div`
   }
 `;
 
-const HomeBlogSlider = () => {
+function HomeBlogSlider() {
   const router = useRouter();
   const handleClick = () => {
     router.push("/blog");
+  };
+  const handleRoute = (id) => {
+    router.push(`/blog/${id}`);
   };
   return (
     <HomeBlogWrapper>
@@ -338,24 +351,27 @@ const HomeBlogSlider = () => {
         modules={[Navigation, Mousewheel, Keyboard]}
         className="mySwiper"
       >
-        {[1, 2, 3, 4].map((_) => {
+        {console.log(blogs, "data")}
+        {blogs?.map((data) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide onClick={() => handleRoute(data.id)}>
               <div className="parts">
-                <div className="blank-card"></div>
+                <div className="blank-card">
+                  <Image src={blogImage} alt="crafterdBlog" layout="fill" />
+                </div>
                 <div className="des-part">
                   <button className="btn-feature">FEATURED</button>
-                  <div className="des-title">
-                    Finding Matching color bottoms and accessories got so Easy
-                  </div>
-                  <div className="des">
-                    In this digital generation where information can be easily
-                    obtained within seconds, business cards ...
-                  </div>
+                  <div className="des-title">{data.title.substr(0, 60)}...</div>
+                  <div className="des">{data.para}...</div>
                   <div className="profile-data">
                     <div style={{ display: "flex" }}>
                       <div className="profile"></div>
-                      <div style={{ display: "flex", flexDirection: "column" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                        }}
+                      >
                         <div className="name">Viola Manisa</div>
                         <div className="profile-verified">
                           <Image src={Verified} alt="verified" />
@@ -373,6 +389,6 @@ const HomeBlogSlider = () => {
       </Swiper>
     </HomeBlogWrapper>
   );
-};
+}
 
 export default HomeBlogSlider;

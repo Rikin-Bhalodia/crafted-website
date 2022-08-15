@@ -89,6 +89,7 @@ const SignUpWrapper = styled.div`
         justify-content: center;
         align-items: center;
         border-radius: 50px;
+        cursor: pointer;
       }
     }
 

@@ -65,7 +65,7 @@ const ForgotWrapper = styled.div`
       margin-top: 0px;
       margin-bottom: 40px;
     }
-    a {
+    button {
       font-weight: 600;
       font-size: 16px;
       font-weight: 500;
@@ -75,6 +75,7 @@ const ForgotWrapper = styled.div`
       border-radius: 8px;
       border: none;
       padding: 10px 50px;
+      cursor: pointer;
     }
   }
   @media screen and (max-width: 800px) {

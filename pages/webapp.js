@@ -16,20 +16,23 @@ import { useAuth } from "../src/auth/AuthContext";
 const WebAppWrapper = styled.div`
   .section {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 150px;
   }
   .heading-section {
     font-weight: 700;
     font-size: 30px;
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 30px;
   }
   .label {
     display: flex;
+    align-items: center;
     font-weight: 400;
     font-size: 16px;
     padding-left: 50px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     margin-top: 20px;
   }
   .label2 {
@@ -57,7 +60,7 @@ const WebAppWrapper = styled.div`
     background: #efefef;
     mix-blend-mode: normal;
     border: 1px solid #000000;
-    border-radius: 45px;
+    border-radius: 35px;
     height: 550px;
     display: flex;
     flex-direction: column;
@@ -69,6 +72,7 @@ const WebAppWrapper = styled.div`
     width: 500px;
     height: 400px;
     display: flex;
+    gap: 10px;
     margin: 0 60px;
     justify-content: center;
     align-items: center;
@@ -92,16 +96,18 @@ const WebAppWrapper = styled.div`
   .btn {
     display: flex;
     justify-content: space-between;
-    width: 500px;
+    width: 100%;
+    gap: 20px;
+    padding: 0px 30px;
   }
   .button-add {
     background: #d9d9d9;
     border: 1px solid #000000;
     border-radius: 45px;
     height: 60px;
-    font-weight: 400;
-    font-size: 24px;
-    width: 160px;
+    font-weight: 500;
+    font-size: 20px;
+    width: 100%;
     margin-top: 30px;
   }
   .container {
@@ -122,7 +128,7 @@ const WebAppWrapper = styled.div`
   }
   .box {
     width: 130px;
-    height: 70px;
+    height: 60px;
     background: #d9d9d9;
     border: 1px solid #000000;
     border-radius: 30px;
@@ -149,6 +155,7 @@ const WebAppWrapper = styled.div`
     position: relative;
     text-align: center;
   }
+
   @media screen and (max-width: 1400px) {
     .match-color-box {
       width: 500px;
@@ -159,10 +166,13 @@ const WebAppWrapper = styled.div`
       height: 350px;
     }
     .btn {
-      width: 450px;
+      width: 100%;
+      gap: 10px;
+      padding: 0px 10px;
     }
     .box {
       width: 100px;
+      height: 50px;
     }
   }
   @media screen and (max-width: 1100px) {
@@ -175,10 +185,14 @@ const WebAppWrapper = styled.div`
       height: 250px;
     }
     .btn {
-      width: 350px;
+      width: 100%;
     }
     .box {
       width: 80px;
+      height: 40px;
+    }
+    .container {
+      gap: 10px;
     }
     .label {
       margin-bottom: 30px;
@@ -191,19 +205,17 @@ const WebAppWrapper = styled.div`
     .section {
       flex-direction: column;
       align-items: center;
+      gap: 30px;
     }
   }
   @media screen and (max-width: 400px) {
     .match-color-box {
       width: 350px;
-      height: 400px;
+      height: 370px;
     }
     .color-shade {
       width: 250px;
       height: 250px;
-    }
-    .btn {
-      width: 300px;
     }
     .box {
       width: 75px;
@@ -211,7 +223,7 @@ const WebAppWrapper = styled.div`
     .button-add {
       height: 40px;
       width: 120px;
-      font-size: 20px;
+      font-size: 13px;
     }
     .label2 {
       width: 350px;
@@ -356,7 +368,7 @@ const WebApp = () => {
   return (
     <>
       <Breadcrumb separator=">" style={{ marginLeft: "120px" }}>
-        <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item>TCOMaC</Breadcrumb.Item>
       </Breadcrumb>
       <WebAppWrapper>
@@ -367,10 +379,10 @@ const WebApp = () => {
           <div className="section">
             <section>
               <div className="label">
-                <div>Select a Product</div>
+                <div>Select a Product</div> &nbsp;&nbsp;&nbsp;
                 <Select
                   style={{
-                    width: "100%",
+                    width: "50%",
                   }}
                   value={category}
                   onChange={handleSelectChange}
@@ -384,7 +396,14 @@ const WebApp = () => {
                 <div className="color-shade">
                   {color.length > 0 && category ? (
                     selectedProduct.map((ele) => {
-                      return <Image src={ele.image} width={200} height={200} />;
+                      return (
+                        <Image
+                          src={ele.image}
+                          width={200}
+                          height={200}
+                          layout="fixed"
+                        />
+                      );
                     })
                   ) : (
                     <div
@@ -398,13 +417,24 @@ const WebApp = () => {
                   )}
                 </div>
                 <div className="btn">
-                  <button className="button-add" onClick={() => addToCart()}>
+                  <button
+                    className="button-add"
+                    onClick={() => addToCart()}
+                    style={{ cursor: "pointer" }}
+                  >
                     Add to Cart
                   </button>
-                  <button className="button-add" onClick={() => handleClick()}>
+
+                  <button
+                    className="button-add"
+                    onClick={() => handleClick()}
+                    style={{ cursor: "pointer" }}
+                  >
                     View Product
                   </button>
-                  <button className="button-add">Buy Now</button>
+                  <button className="button-add" style={{ cursor: "pointer" }}>
+                    Buy Now
+                  </button>
                 </div>
               </div>
             </section>
@@ -422,8 +452,12 @@ const WebApp = () => {
                           className="box"
                           style={
                             color.includes(data[0])
-                              ? { border: "4px solid black", background: data }
-                              : { background: data }
+                              ? {
+                                  border: "4px solid black",
+                                  background: data,
+                                  cursor: "pointer",
+                                }
+                              : { background: data, cursor: "pointer" }
                           }
                           onClick={() => onSelect(data[0])}
                         ></div>

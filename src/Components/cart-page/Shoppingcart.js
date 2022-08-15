@@ -66,7 +66,7 @@ const ShoppingCartWrapper = styled.div`
         background: #393d46;
       }
       input {
-        height: 38px;
+        height: 37px;
         width: 70px;
         text-align: center;
       }

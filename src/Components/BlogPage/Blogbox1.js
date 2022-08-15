@@ -30,6 +30,7 @@ const BlogBox1Wrapper = styled.div`
         background: #ffffff;
         border: none;
         border-radius: 2000px;
+        cursor: pointer;
       }
     }
     .blog-bottom1 {
@@ -53,7 +54,12 @@ const BlogBox1Wrapper = styled.div`
         justify-content: space-between;
         .f1 {
           display: flex;
-          gap: 14px;
+          gap: 20px;
+          align-items: center;
+          .blog-bio-pic {
+            cursor: pointer;
+            margin-top: 10px;
+          }
 
           .writer-des {
             h5 {
@@ -61,6 +67,7 @@ const BlogBox1Wrapper = styled.div`
               font-size: 16px;
               line-height: 20px;
               color: #ffffff;
+              margin: 0 0 10px;
             }
             p {
               font-style: italic;
@@ -68,13 +75,14 @@ const BlogBox1Wrapper = styled.div`
               font-size: 14px;
               line-height: 10px;
               color: #5a7184;
+              margin: 0;
             }
           }
         }
         .f2 {
           position: absolute;
           right: 40px;
-          bottom: 20px;
+          bottom: 0px;
           p {
             font-weight: 600;
             font-size: 16px;

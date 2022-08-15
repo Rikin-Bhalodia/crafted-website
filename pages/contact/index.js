@@ -79,6 +79,7 @@ const ContactPageWrapper = styled.div`
         border-radius: 3px;
         border: none;
         padding: 10px 50px;
+        cursor: pointer;
       }
     }
   }
@@ -189,7 +190,7 @@ const ContactPage = () => {
   return (
     <>
       <Breadcrumb separator=">" style={{ marginLeft: "120px" }}>
-        <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item>Contact us</Breadcrumb.Item>
       </Breadcrumb>
       <ContactPageWrapper>
@@ -217,10 +218,11 @@ const ContactPage = () => {
               <input type="text" id="name" name="name" placeholder="Name*" />
               <br />
               <input
-                type="number"
+                type="tel"
                 id="phone"
                 name="phone"
                 placeholder="Phone*"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
               />
               <br />
               <textarea

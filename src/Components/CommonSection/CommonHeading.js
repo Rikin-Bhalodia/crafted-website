@@ -3,16 +3,21 @@ import styled from "styled-components";
 // import Link from "next/link";
 import Image from "next/image";
 import Wave from "../../../public/svg/wave2.svg";
-
+import banner from "../../../public/svg/main-slider.svg";
 const CommonHeadWrapper = styled.div`
   background-color: #979797;
   width: 100%;
   height: 715px;
   position: relative;
-
+  img {
+    z-index: 1;
+    object-fit: cover;
+  }
   div {
     width: 100%;
     height: 541px;
+    z-index: 999;
+    position: relative;
 
     .common-head {
       display: flex;
@@ -83,11 +88,14 @@ const CommonHead = (props) => {
   return (
     <>
       <CommonHeadWrapper>
+        <Image src={banner} alt="banner-img" layout="fill" />
         <div>
           <div className="common-head">
             <h3>{props.heading}</h3>
             <p>{props.para}</p>
-            <button className="btn">{props.btn}</button>
+            <button className="btn" style={{ cursor: "pointer" }}>
+              {props.btn}
+            </button>
           </div>
         </div>
         <Image src={Wave} layout="fixed" className="img" alt="bannerWave" />

@@ -110,7 +110,7 @@ export default function App() {
           <div className="content">
             <div className="name">India’s First</div>
             <div className="desc">Online Matching Centre</div>
-            <button className="match-btn">
+            <button className="match-btn" style={{ cursor: "pointer" }}>
               Match Now <Image src={RightArrow} alt="right-arrow" />
             </button>
           </div>
@@ -127,7 +127,7 @@ export default function App() {
           return (
             <SwiperSlide className="small-slider">
               <Image src={Sweater} alt="sweater" />
-              <Link href="/pages/cart/index.js">
+              <Link href="/question">
                 <div>Poplin Cotton Fabric</div>
               </Link>
             </SwiperSlide>

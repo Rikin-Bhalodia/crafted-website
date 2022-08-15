@@ -22,6 +22,7 @@ const PrductDrawerWrapper = styled.div`
     line-height: 19px;
     color: rgba(0, 0, 0, 0.8);
     background: #ffffff;
+    cursor: pointer;
   }
 `;
 const { Option } = Select;

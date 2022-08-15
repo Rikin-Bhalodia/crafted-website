@@ -1,6 +1,5 @@
 import Followus from "../src/Components/HomePage/FollowUs/FollowusInsta";
 import CommonCard from "../src/Components/HomePage/CommonCard/index";
-import DiffCard from "../src/Components/HomePage/CommonCard/diffrentCard";
 import styled from "styled-components";
 import CustomerReview from "/public/svg/customer.svg";
 import CustomerReview1 from "/public/svg/customer2.svg";
@@ -271,7 +270,7 @@ export default function Home() {
           <button className="know-how-btn">Know how?</button>
         </div>
       </div>
-      <DiffCard />
+      {/* <DiffCard /> */}
       <div className="customer-section">
         <div className="title-cus">What our customers say</div>
         <div className="customer">

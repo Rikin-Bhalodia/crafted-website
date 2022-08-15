@@ -56,6 +56,7 @@ const BlogHeaderWrapper = styled.div`
         text-align: center;
         color: #ffffff;
         border: none;
+        cursor: pointer;
       }
     }
     .blog-tags {

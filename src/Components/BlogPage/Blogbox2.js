@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 const BlogBox2Wrapper = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ const BlogBox2Wrapper = styled.div`
           line-height: 36px;
           letter-spacing: 0.2px;
           color: #ffffff;
+          margin-top: 0px;
         }
         p {
           font-weight: 400;
@@ -43,7 +45,12 @@ const BlogBox2Wrapper = styled.div`
         justify-content: space-between;
         .f11 {
           display: flex;
-          gap: 14px;
+          gap: 20px;
+          align-items: center;
+          .blog-bio-pic2 {
+            cursor: pointer;
+            margin-top: 10px;
+          }
 
           .writer-des2 {
             h5 {
@@ -51,6 +58,7 @@ const BlogBox2Wrapper = styled.div`
               font-size: 16px;
               line-height: 20px;
               color: #ffffff;
+              margin: 0 0 10px;
             }
             p {
               font-style: italic;
@@ -58,6 +66,7 @@ const BlogBox2Wrapper = styled.div`
               font-size: 14px;
               line-height: 10px;
               color: #5a7184;
+              margin: 0;
             }
           }
         }
@@ -96,55 +105,96 @@ const BlogBox2Wrapper = styled.div`
     flex-direction: column;
   }
 `;
-const Blogbox2 = () => {
+function Blogbox2({ blogs }) {
+  const router = useRouter();
+
   return (
     <BlogBox2Wrapper>
-      {[1, 2, 3].map((_) => {
-        return (
-          <>
-            <div className="blog-box2">
-              <div className="blog-bottom2">
-                <div className="blog-head2">
-                  <h3>Future of Work</h3>
-                  <p>
-                    Majority of peole will work in jobs that dont exist today.
-                  </p>
-                </div>
-                <div className="blog-footer2">
-                  <div className="f11">
-                    <div className="blog-bio-pic2">
-                      <svg
-                        width="54"
-                        height="42"
-                        viewBox="0 0 54 42"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <ellipse
-                          cx="26.6667"
-                          cy="20.9068"
-                          rx="26.6667"
-                          ry="20.3364"
-                          fill="#CCCCCC"
-                        />
-                      </svg>
+      {router.query.id
+        ? blogs.map((data) => {
+            return (
+              router.query.id !== data.id && (
+                <div className="blog-box2">
+                  <div className="blog-bottom2">
+                    <div className="blog-head2">
+                      <h3>{data.title.substr(0, 40)}...</h3>
+                      <p>{data.para.substr(0, 30)}...</p>
                     </div>
-                    <div className="writer-des2">
-                      <h5>Lina Hicks</h5>
-                      <p>Verified writer</p>
+                    <div className="blog-footer2">
+                      <div className="f11">
+                        <div className="blog-bio-pic2">
+                          <svg
+                            width="54"
+                            height="42"
+                            viewBox="0 0 54 42"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <ellipse
+                              cx="26.6667"
+                              cy="20.9068"
+                              rx="26.6667"
+                              ry="20.3364"
+                              fill="#CCCCCC"
+                            />
+                          </svg>
+                        </div>
+                        <div className="writer-des2">
+                          <h5>Lina Hicks</h5>
+                          <p>Verified writer</p>
+                        </div>
+                      </div>
+                      <div className="f12">
+                        <p>02 May</p>
+                      </div>
                     </div>
                   </div>
-                  <div className="f12">
-                    <p>02 May</p>
+                </div>
+              )
+            );
+          })
+        : blogs.slice(0, 3).map((data) => {
+            return (
+              <div className="blog-box2">
+                <div className="blog-bottom2">
+                  <div className="blog-head2">
+                    <h3>{data.title.substr(0, 40)}...</h3>
+                    <p>{data.para.substr(0, 30)}...</p>
+                  </div>
+                  <div className="blog-footer2">
+                    <div className="f11">
+                      <div className="blog-bio-pic2">
+                        <svg
+                          width="54"
+                          height="42"
+                          viewBox="0 0 54 42"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <ellipse
+                            cx="26.6667"
+                            cy="20.9068"
+                            rx="26.6667"
+                            ry="20.3364"
+                            fill="#CCCCCC"
+                          />
+                        </svg>
+                      </div>
+                      <div className="writer-des2">
+                        <h5>Lina Hicks</h5>
+                        <p>Verified writer</p>
+                      </div>
+                    </div>
+                    <div className="f12">
+                      <p>02 May</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </>
-        );
-      })}
+            );
+          })}
     </BlogBox2Wrapper>
   );
-};
+}
 
 export default Blogbox2;

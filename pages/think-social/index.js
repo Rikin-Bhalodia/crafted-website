@@ -17,7 +17,12 @@ const ThinkSocial = () => {
           para="Community of Manufacturers, Sellers, Stitching partners and Customers."
           btn="Read our story"
         />
-        <CommonMain head="ABOUT the Crafted" />
+        <CommonMain
+          head="ABOUT the Crafted"
+          left="We provide enterpriseswith innovative technologyfor small to space enterprises"
+          righttop="We supply enterprises, organizations and institutes of high-tech industries with modern components. We build long-term trusting relationships with our customers and partnes for further fruitful cooperations."
+          rightbottom="From year to year we strive to invent the most innovative technology that is used by both small enterprises and space enterprises."
+        />
         <CommonImage />
         <AboutTcomac
           shead="About tcomac"

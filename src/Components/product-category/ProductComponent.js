@@ -68,6 +68,7 @@ const ProductComponentsWrapper = styled.div`
           font-weight: 700;
           color: #ffff;
           font-size: 15px;
+          cursor: pointer;
         }
       }
     }
