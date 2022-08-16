@@ -15,9 +15,32 @@ a {
 * {
   box-sizing: border-box;
 }
-
+/* .ant-modal{
+  width: 800px;
+} */
 .modalStyle .ant-modal-body {
   display: flex;
   gap :50px;
   width:100%;
+}
+
+.modalStyle .ant-modal-content{
+  width: 800px;
+}
+
+.modalStyle .ant-modal-body .modaldata >div{
+  font-size: 20px;
+  font-weight: 500;
+}
+@media screen and (max-width:840px){
+  .modalStyle .ant-modal-content{
+    width: 100%;
+  }
+  .modalStyle .ant-modal-body .modaldata >div{
+    font-size: 10px;
+    font-weight: 500;
+  }
+  .modalStyle .ant-modal-body {
+    gap :20px;
+  }
 }

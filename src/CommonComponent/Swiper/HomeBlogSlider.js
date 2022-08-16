@@ -354,7 +354,10 @@ function HomeBlogSlider() {
         {console.log(blogs, "data")}
         {blogs?.map((data) => {
           return (
-            <SwiperSlide onClick={() => handleRoute(data.id)}>
+            <SwiperSlide
+              onClick={() => handleRoute(data.id)}
+              style={{ cursor: "pointer" }}
+            >
               <div className="parts">
                 <div className="blank-card">
                   <Image src={blogImage} alt="crafterdBlog" layout="fill" />

@@ -107,14 +107,20 @@ const BlogBox2Wrapper = styled.div`
 `;
 function Blogbox2({ blogs }) {
   const router = useRouter();
-
+  const handleRoute = (id) => {
+    router.push(`/blog/${id}`);
+  };
   return (
     <BlogBox2Wrapper>
       {router.query.id
         ? blogs.map((data) => {
             return (
               router.query.id !== data.id && (
-                <div className="blog-box2">
+                <div
+                  className="blog-box2"
+                  onClick={() => handleRoute(data.id)}
+                  style={{ cursor: "pointer" }}
+                >
                   <div className="blog-bottom2">
                     <div className="blog-head2">
                       <h3>{data.title.substr(0, 40)}...</h3>
@@ -153,9 +159,13 @@ function Blogbox2({ blogs }) {
               )
             );
           })
-        : blogs.slice(0, 3).map((data) => {
+        : blogs.slice(1, 4).map((data) => {
             return (
-              <div className="blog-box2">
+              <div
+                className="blog-box2"
+                onClick={() => handleRoute(data.id)}
+                style={{ cursor: "pointer" }}
+              >
                 <div className="blog-bottom2">
                   <div className="blog-head2">
                     <h3>{data.title.substr(0, 40)}...</h3>

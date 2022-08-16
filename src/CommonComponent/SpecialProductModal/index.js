@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import "antd/dist/antd.css";
+
 const SingleProductModalWrapper = styled.div``;
 
+import { IoCloseCircle } from "react-icons/io5";
 const SingleProductModal = ({ handleCancel, selectedProduct }) => {
   const handleOk = () => {
     handleCancel();
@@ -21,23 +23,30 @@ const SingleProductModal = ({ handleCancel, selectedProduct }) => {
           onOk={handleOk}
           onCancel={handleClose}
           className="modalStyle"
-          centered
+          centered={true}
+          width="800px"
         >
           {selectedProduct.map((ele) => {
             return (
               <>
-                <div>
-                  <div style={{ fontSize: "20px", fontWeight: "500" }}>
+                <div className="modaldata">
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
                     {ele.name}
+                    <div>
+                      <IoCloseCircle />
+                    </div>
                   </div>
                   <Image src={ele.image} width={200} height={200} />
-                  <div style={{ fontSize: "15px", fontWeight: "500" }}>
+                  <div>
+                    Price: &nbsp; &nbsp;
                     {ele.mrp}
                   </div>
-                  <div style={{ fontSize: "15px", fontWeight: "500" }}>
-                    {ele.size}
-                  </div>
-                  <div style={{ fontSize: "15px", fontWeight: "500" }}>X</div>
+                  <div>Size:&nbsp; &nbsp; &nbsp;{ele.size}</div>
                 </div>
               </>
             );

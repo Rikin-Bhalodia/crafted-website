@@ -51,7 +51,7 @@ const SliderWrapper = styled.div`
     background: #393d46;
     color: #fff;
     width: 200px;
-    margin-top: 20px;
+    margin-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
