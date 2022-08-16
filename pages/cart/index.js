@@ -69,7 +69,11 @@ const Cart = () => {
     const starCountRef = ref(db, "cartItem/");
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      setCartProduct(Object.entries(data));
+      if (data !== null) {
+        setCartProduct(Object.entries(data));
+      } else {
+        setCartProduct([]);
+      }
     });
   }, []);
   const cartItems = cartProduct.map(([key, value]) => {
