@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 const BlogBox1Wrapper = styled.div`
   display: flex;
@@ -110,27 +111,39 @@ const BlogBox1Wrapper = styled.div`
   @media screen and (max-width: 700px) {
     display: flex;
     flex-direction: column;
-  }
-  /* @media screen and (max-width: 400px) {
     .blog-box1 {
-      width: 370px;
-      height: 400px;
+      .blog-bottom1 {
+        .blog-head1 {
+          h3 {
+            font-size: 25px;
+            line-height: 38px;
+          }
+        }
+      }
     }
-  } */
+  }
 `;
-const Blogbox1 = () => {
+const Blogbox1 = ({ blogs }) => {
+  const router = useRouter();
+  const handleRoute = (id) => {
+    router.push(`/blog/${id}`);
+  };
   return (
     <BlogBox1Wrapper>
-      {[1, 2].map((_) => {
+      {blogs.slice(0, 2).map((data) => {
         return (
           <>
-            <div className="blog-box1">
+            <div
+              className="blog-box1"
+              onClick={() => handleRoute(data.id)}
+              style={{ cursor: "pointer" }}
+            >
               <div className="blog-box1-btn">
                 <button>FEATURED</button>
               </div>
               <div className="blog-bottom1">
                 <div className="blog-head1">
-                  <h3>Motherhood is the hardest and the best job ever</h3>
+                  <h3>{data.title.substr(0, 50)}...</h3>
                 </div>
                 <div className="blog-footer1">
                   <div className="f1">

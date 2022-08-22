@@ -7,6 +7,8 @@ import BlogMain from "../../src/Components/BlogPage/BlogMain";
 import BlogMain3 from "../../src/Components/BlogPage/BlogMain3";
 import BlogMain2 from "../../src/Components/BlogPage/BlogMain2";
 import BlogHeader from "../../src/Components/BlogPage/BlogHeader";
+import { blogs } from "../../src/CommonComponent/blogdata/blogs";
+import { useRouter } from "next/router";
 
 const BlogHeaderBox1Wrapper = styled.div`
   height: 850px;
@@ -36,7 +38,7 @@ const BlogHeaderBox1Wrapper = styled.div`
       position: relative;
 
       .blog-box1-btn {
-        padding: 40px 0px 0px;
+        padding: 20px 0px 0px;
         position: absolute;
         left: -150px;
         z-index: 1;
@@ -127,7 +129,8 @@ const BlogHeaderBox1Wrapper = styled.div`
       }
       .header-desc {
         width: 100%;
-        height: 50%;
+        height: 60%;
+        padding: 0px 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -199,48 +202,58 @@ const BlogHeaderBox1Wrapper = styled.div`
   }
 `;
 const BlogHeaderBox1 = () => {
+  const router = useRouter();
+
+  const handleRoute = (id) => {
+    router.push(`/blog/${id}`);
+  };
   return (
     <>
       <BlogHeaderBox1Wrapper>
         <BlogHeader />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            width: "100%",
-            alignItems: "center",
-          }}
-        >
-          <div className="header-box">
-            <div className="header-img"></div>
-            <div className="header-desc">
-              <div className="blog-box1-btn">
-                <button>FEATURED</button>
-              </div>
-              <div className="blog-bottom1">
-                <div className="blog-head1">
-                  <div>Finding matching color petticoat got so Easy</div>
-                  <p>
-                    In this digital generation where information can be easily
-                    obtained within seconds, business cards ...
-                  </p>
-                </div>
-                <div className="profile-data">
-                  <div style={{ display: "flex" }}>
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                      <div className="name">Viola Manisa</div>
-                      <div style={{ display: "flex", margin: "8px 0 0 0" }}>
-                        <Image src={Verified} alt="verified" />
-                        <div className="verified">Verified writer</div>
+        {blogs.slice(0, 1).map((data) => {
+          return (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+                alignItems: "center",
+                cursor: "pointer",
+              }}
+              onClick={() => handleRoute(data.id)}
+            >
+              <div className="header-box">
+                <div className="header-img"></div>
+                <div className="header-desc">
+                  <div className="blog-box1-btn">
+                    <button>FEATURED</button>
+                  </div>
+                  <div className="blog-bottom1">
+                    <div className="blog-head1">
+                      <div>{data.title}</div>
+                      <p>{data.para} ...</p>
+                    </div>
+                    <div className="profile-data">
+                      <div style={{ display: "flex" }}>
+                        <div
+                          style={{ display: "flex", flexDirection: "column" }}
+                        >
+                          <div className="name">Viola Manisa</div>
+                          <div style={{ display: "flex", margin: "8px 0 0 0" }}>
+                            <Image src={Verified} alt="verified" />
+                            <div className="verified">Verified writer</div>
+                          </div>
+                        </div>
                       </div>
+                      <div className="date">02 May</div>
                     </div>
                   </div>
-                  <div className="date">02 May</div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          );
+        })}
       </BlogHeaderBox1Wrapper>
       <BlogMain />
       <BlogMain2 />
