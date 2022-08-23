@@ -1,14 +1,12 @@
 import Followus from "../src/Components/HomePage/FollowUs/FollowusInsta";
 import CommonCard from "../src/Components/HomePage/CommonCard/index";
 import styled from "styled-components";
-import CustomerReview from "/public/svg/customer.svg";
-import CustomerReview1 from "/public/svg/customer2.svg";
-import CustomerReview2 from "/public/svg/customer3.svg";
 import MainSlider from "../src/CommonComponent/Swiper/MainSlider";
-import Image from "next/image";
+// import Image from "next/image";
 import MatchComponent from "../src/Components/HomePage/StepComponent";
 import HomeBlogSlider from "../src/CommonComponent/Swiper/HomeBlogSlider";
 import FooterContact from "../src/CommonComponent/Footer/FooterContact";
+import ReviewSlider from "../src/Components/review-slider/ReviewSlider";
 
 const MainAppWrapper = styled.div`
   position: relative;
@@ -78,15 +76,7 @@ const MainAppWrapper = styled.div`
   .customer-section {
     position: relative;
   }
-  .customer {
-    bottom: 0px;
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    padding: 0px 50px;
-    margin-bottom: 200px;
-    position: relative;
-  }
+
   .title-cus {
     margin: 200px 0px 50px 100px;
     font-weight: 700;
@@ -123,11 +113,7 @@ const MainAppWrapper = styled.div`
     .woman-empowers-btn {
       margin-top: 30px;
     }
-    .customer {
-      flex-wrap: wrap;
-      gap: 30px;
-      padding: 0px 30px;
-    }
+
     .title-cus {
       text-align: center;
       margin: 100px 0px 50px;
@@ -273,10 +259,8 @@ export default function Home() {
       {/* <DiffCard /> */}
       <div className="customer-section">
         <div className="title-cus">What our customers say</div>
-        <div className="customer">
-          <Image src={CustomerReview} alt="customer-review" height={500} />
-          <Image src={CustomerReview1} alt="customer-review" height={500} />
-          <Image src={CustomerReview2} alt="customer-review" height={500} />
+        <div className="review">
+          <ReviewSlider />
         </div>
       </div>
       <HomeBlogSlider />

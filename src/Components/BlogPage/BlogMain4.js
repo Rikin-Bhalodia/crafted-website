@@ -78,7 +78,7 @@ const BlogMain4 = () => {
           stories from the team behind company.
         </p>
       </div>
-      <Blogbox1 />
+      <Blogbox1 blogs={blogs} />
       <Blogbox2 blogs={blogs} />
       <div className="blog-btn">
         <Link href="#">More articles</Link>
