@@ -8,10 +8,29 @@ import { Select } from "antd";
 import { Breadcrumb } from "antd";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../src/Firebase";
-import { Colors } from "../src/CommonComponent/colors";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { getDatabase, onValue, ref, set } from "firebase/database";
 import { useAuth } from "../src/auth/AuthContext";
+import { useRouter } from "next/router";
+import {
+  black,
+  blue,
+  brown,
+  Colors,
+  cream,
+  gajri,
+  gray,
+  green,
+  mehendi,
+  metal,
+  orange,
+  pink,
+  purple,
+  red,
+  white,
+  yellow,
+} from "../src/CommonComponent/Colors";
 
 const WebAppWrapper = styled.div`
   .section {
@@ -271,15 +290,18 @@ const WebAppWrapper = styled.div`
     }
   }
 `;
+const AllColors = Colors;
 
 const WebApp = () => {
-  const [category, setCategory] = useState("");
+  const router = useRouter();
+  const [category, setCategory] = useState(router.query.type || "");
+  console.log(router.query.type);
   const [products, setProducts] = useState([]);
   const [color, setColor] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [cartProduct, setCartProduct] = useState([]);
   const { currentUser } = useAuth();
-
+  console.log(router, "router");
   const handleSelectChange = (value) => {
     setCategory(value);
   };
@@ -363,7 +385,36 @@ const WebApp = () => {
   };
   const { Option } = Select;
 
-  const colors = Colors;
+  const colors = [
+    { data: red, key: "red" },
+    { data: blue, key: "blue" },
+    { data: cream, key: "cream" },
+    { data: green, key: "green" },
+    { data: yellow, key: "yellow" },
+    { data: gray, key: "gray" },
+    { data: white, key: "white" },
+    { data: black, key: "black" },
+    { data: mehendi, key: "mehendi" },
+    { data: brown, key: "brown" },
+    { data: metal, key: "metal" },
+    { data: purple, key: "purple" },
+    { data: orange, key: "orange" },
+    { data: gajri, key: "gajri" },
+    { data: pink, key: "pink" },
+  ];
+
+  const Colors = colors.find((data) => {
+    if (data.key === router?.query?.color) {
+      return data;
+    } else {
+      return "";
+    }
+  });
+  const renderColors = router?.query?.color ? Colors?.data : AllColors;
+  console.log(renderColors, AllColors, "hhhh");
+  // if (color.length <= 0) {
+  //   toast("please choose any color please");
+  // }
 
   return (
     <>
@@ -394,7 +445,7 @@ const WebApp = () => {
               </div>
               <div className="match-color-box">
                 <div className="color-shade">
-                  {color.length > 0 && category ? (
+                  {color?.length > 0 && category ? (
                     selectedProduct.map((ele) => {
                       return (
                         <Image
@@ -445,25 +496,26 @@ const WebApp = () => {
               </div>
               <div className="match-color-box">
                 <div className="container">
-                  {colors.map((data) => {
-                    return (
-                      <div className="box-container">
-                        <div
-                          className="box"
-                          style={
-                            color.includes(data[0])
-                              ? {
-                                  border: "4px solid black",
-                                  background: data,
-                                  cursor: "pointer",
-                                }
-                              : { background: data, cursor: "pointer" }
-                          }
-                          onClick={() => onSelect(data[0])}
-                        ></div>
-                      </div>
-                    );
-                  })}
+                  {renderColors &&
+                    renderColors.map((data) => {
+                      return (
+                        <div className="box-container">
+                          <div
+                            className="box"
+                            style={
+                              color.includes(data[0])
+                                ? {
+                                    border: "4px solid black",
+                                    background: data,
+                                    cursor: "pointer",
+                                  }
+                                : { background: data, cursor: "pointer" }
+                            }
+                            onClick={() => onSelect(data[0])}
+                          ></div>
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
             </section>
@@ -475,8 +527,11 @@ const WebApp = () => {
         <SingleProductModal
           handleCancel={handleCancel}
           selectedProduct={selectedProduct}
+          setColor={setColor}
+          color={color}
         />
       )}
+      <ToastContainer />
     </>
   );
 };

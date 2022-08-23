@@ -33,7 +33,7 @@ const SareePetticoatWrapper = styled.div`
 const SareePetticoat = () => {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
-
+  console.log(color, size, "++++++++++++++++");
   const handleChange = (value) => {
     setColor(value);
   };
@@ -45,7 +45,10 @@ const SareePetticoat = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (color && size) {
-      router.push("/");
+      router.push({
+        pathname: "/webapp",
+        query: { type: "petticoat", color: color, size: size },
+      });
     } else {
       toast("please fill the data ");
     }

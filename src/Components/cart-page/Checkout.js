@@ -121,27 +121,7 @@ const CheckOutWrapper = styled.div`
   }
 `;
 
-const CheckOut = () => {
-  const [details, setDetails] = useState({
-    name: "",
-    address: "",
-    contact: "",
-    city: "",
-    state: "",
-    zip_code: "",
-  });
-  const db = getDatabase();
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setDetails((prev) => {
-      return { ...prev, [name]: value };
-    });
-  };
-  // useEffect(() => {
-  //   set(ref(db, "cartItem/" + "details"), {
-  //     details,
-  //   });
-  // }, [details]);
+const CheckOut = ({ handleChange, details }) => {
   return (
     <CheckOutWrapper>
       <form action="post">
@@ -153,7 +133,7 @@ const CheckOut = () => {
             type="text"
             name="name"
             value={details.name}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <br />
 
@@ -163,7 +143,7 @@ const CheckOut = () => {
             type="text"
             name="address"
             value={details.address}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <br />
 
@@ -173,7 +153,7 @@ const CheckOut = () => {
             type="text"
             name="contact"
             value={details.contact}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <br />
 
@@ -183,7 +163,7 @@ const CheckOut = () => {
             type="text"
             name="city"
             value={details.city}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <br />
 
@@ -203,7 +183,7 @@ const CheckOut = () => {
                 id="state"
                 style={{ marginRight: "32px", width: "60%" }}
                 value={details.state}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e)}
               >
                 <option value="">Select State</option>
                 <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -253,7 +233,7 @@ const CheckOut = () => {
                 name="zip_code"
                 style={{ width: "40%" }}
                 value={details.zip_code}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e)}
               />
               <br />
             </div>

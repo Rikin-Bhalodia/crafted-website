@@ -46,7 +46,10 @@ const PatialaSalwar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (color && size) {
-      router.push("/");
+      router.push({
+        pathname: "/webapp",
+        query: { type: "patiala", color: color, size: size },
+      });
     } else {
       toast("please fill the data ");
     }
