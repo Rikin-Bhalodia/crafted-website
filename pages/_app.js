@@ -22,9 +22,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         ) : (
           <ProtectedRoute>
-            {/* <Provider store={store}> */}
             <Component {...pageProps} />
-            {/* </Provider> */}
           </ProtectedRoute>
         )}
         {router.pathname === "/login" ||

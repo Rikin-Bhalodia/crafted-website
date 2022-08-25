@@ -229,12 +229,8 @@ const SignUp = () => {
   const handleLoginWithFacebook = async (e) => {
     e.preventDefault();
     await signInWithFacebook();
-    currentUser?.email ? router.push("/") : router.push("/signup");
   };
 
-  // useEffect(() => {
-  //   router.push("/");
-  // }, [currentUser?.email]);
   return (
     <SignUpWrapper>
       <div className="blank"></div>

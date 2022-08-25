@@ -27,17 +27,31 @@ const AuthProvider = ({ children }) => {
   const googleAuth = new GoogleAuthProvider();
   const facebookAuth = new FacebookAuthProvider();
 
-  const signup = (email, password) => {
+  const signup = async (email, password) => {
     setCurrentUser((prev) => {
       return { ...prev, password: password };
     });
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        if (result.credential) {
+          console.log(result.credential);
+          router.push("/");
+        }
+      })
+      .catch((err) => console.log(err));
   };
-  const login = (email, password) => {
+  const login = async (email, password) => {
     setCurrentUser((prev) => {
       return { ...prev, password: password };
     });
-    return signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        if (result.credential) {
+          console.log(result.credential);
+          router.push("/");
+        }
+      })
+      .catch((err) => console.log(err));
   };
   const logout = () => {
     return signOut(auth);
@@ -48,12 +62,25 @@ const AuthProvider = ({ children }) => {
     });
   };
   const signInWithGoogle = () => {
-    signInWithRedirect(auth, googleAuth);
-    router.push("/");
+    signInWithRedirect(auth, googleAuth)
+      .then((result) => {
+        if (result.credential) {
+          console.log(result.credential);
+          router.push("/");
+        }
+      })
+      .catch((err) => console.log(err));
   };
+
   const signInWithFacebook = () => {
-    signInWithRedirect(auth, facebookAuth);
-    router.push("/");
+    signInWithRedirect(auth, facebookAuth)
+      .then((result) => {
+        if (result.credential) {
+          console.log(result.credential);
+          router.push("/");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   const updateUserEmail = (updatedEmail) => {
