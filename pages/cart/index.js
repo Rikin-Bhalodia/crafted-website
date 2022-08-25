@@ -80,7 +80,6 @@ const Cart = () => {
       totalUserItem: data.cartData.totalUserItem,
     };
   });
-  console.log(productDetails, "jjjjjjjjjjj");
   const [details, setDetails] = useState({
     name: "",
     address: "",
@@ -90,7 +89,6 @@ const Cart = () => {
     zip_code: "",
     user_id: currentUser.uid,
   });
-  console.log(details, "details");
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDetails((prev) => {
@@ -130,7 +128,6 @@ const Cart = () => {
     notes: details,
   };
 
-  console.log(totalAmount, "amount");
   const displayRezorPay = async () => {
     const data = await fetch("http://localhost:1337/razorpay", {
       method: "POST",
@@ -188,23 +185,6 @@ const Cart = () => {
       },
       body: JSON.stringify(orderItemsDetails),
     });
-
-    console.log(orderData, orderDetails, "+++++++++++++++++++");
-
-    // fetch("http://localhost:1337/order-details", {
-    //   method: "GET",
-    //   mode: "cors",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data, "data");
-    //   })
-    //   .catch((err) => console.log(err));
-
-    // await addDoc();
   };
 
   const next = (key) => {
@@ -236,7 +216,7 @@ const Cart = () => {
           {steps[current].title}
         </div>
         <Steps current={current} onChange={onChange}>
-          {steps.map((item) => (
+          {steps.map((item, i) => (
             <Step key={item.title} title={item.title} />
           ))}
         </Steps>

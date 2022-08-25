@@ -211,7 +211,7 @@ const BlogHeaderBox1 = () => {
     <>
       <BlogHeaderBox1Wrapper>
         <BlogHeader />
-        {blogs.slice(0, 1).map((data) => {
+        {blogs.slice(0, 1).map((data, i) => {
           return (
             <div
               style={{
@@ -221,6 +221,7 @@ const BlogHeaderBox1 = () => {
                 alignItems: "center",
                 cursor: "pointer",
               }}
+              key={i}
               onClick={() => handleRoute(data.id)}
             >
               <div className="header-box">

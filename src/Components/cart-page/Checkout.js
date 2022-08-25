@@ -127,7 +127,7 @@ const CheckOut = ({ handleChange, details }) => {
       <form action="post">
         <div className="form1">
           <p>Buyer Info</p>
-          <label for="fname">Full Name</label>
+          <label htmlFor="fname">Full Name</label>
           <br />
           <input
             type="text"
@@ -137,7 +137,7 @@ const CheckOut = ({ handleChange, details }) => {
           />
           <br />
 
-          <label for="address">Address</label>
+          <label htmlFor="address">Address</label>
           <br />
           <input
             type="text"
@@ -147,7 +147,7 @@ const CheckOut = ({ handleChange, details }) => {
           />
           <br />
 
-          <label for="contact">Contact</label>
+          <label htmlFor="contact">Contact</label>
           <br />
           <input
             type="text"
@@ -157,7 +157,7 @@ const CheckOut = ({ handleChange, details }) => {
           />
           <br />
 
-          <label for="city">City</label>
+          <label htmlFor="city">City</label>
           <br />
           <input
             type="text"
@@ -169,11 +169,14 @@ const CheckOut = ({ handleChange, details }) => {
 
           <div>
             <div className="label">
-              <label for="state" style={{ marginRight: "32px", width: "60%" }}>
+              <label
+                htmlFor="state"
+                style={{ marginRight: "32px", width: "60%" }}
+              >
                 State
               </label>
 
-              <label for="z-code" style={{ width: "40%" }}>
+              <label htmlFor="z-code" style={{ width: "40%" }}>
                 Zip Code
               </label>
             </div>
@@ -254,7 +257,7 @@ const CheckOut = ({ handleChange, details }) => {
             <br />
           </div>
 
-          {/* <label for="name-on-card">Name on Card</label>
+          {/* <label htmlFor="name-on-card">Name on Card</label>
           <br />
           <input type="text" id="name-card" name="name-card" />
           <br /> */}
@@ -262,13 +265,13 @@ const CheckOut = ({ handleChange, details }) => {
           {/* <div>
             <div className="label">
               <label
-                for="card-number"
+                htmlFor="card-number"
                 style={{ marginRight: "32px", width: "60%" }}
               >
                 Card Number
               </label>
               <br />
-              <label for="cvv" style={{ width: "40%" }}>
+              <label htmlFor="cvv" style={{ width: "40%" }}>
                 CVV
               </label>
             </div>
@@ -287,11 +290,11 @@ const CheckOut = ({ handleChange, details }) => {
 
           <div>
             <div className="label">
-              <label for="month" style={{ marginRight: "32px", width: "50%" }}>
+              <label htmlFor="month" style={{ marginRight: "32px", width: "50%" }}>
                 Month
               </label>
               <br />
-              <label for="year" style={{ width: "50%" }}>
+              <label htmlFor="year" style={{ width: "50%" }}>
                 Year
               </label>
             </div>

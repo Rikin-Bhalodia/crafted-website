@@ -42,7 +42,6 @@ const PatialaSalwar = () => {
   };
 
   const router = useRouter();
-  // console.log(color, size);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (color && size) {

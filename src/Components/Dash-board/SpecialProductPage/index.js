@@ -256,6 +256,7 @@ const PrductDrawer = () => {
                         height: "20px",
                         width: "20px",
                       }}
+                      key={data}
                     ></div>
                   );
                 })}

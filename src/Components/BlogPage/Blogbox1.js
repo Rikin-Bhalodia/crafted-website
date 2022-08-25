@@ -137,6 +137,7 @@ const Blogbox1 = ({ blogs }) => {
               className="blog-box1"
               onClick={() => handleRoute(data.id)}
               style={{ cursor: "pointer" }}
+              key={data.id}
             >
               <div className="blog-box1-btn">
                 <button>FEATURED</button>

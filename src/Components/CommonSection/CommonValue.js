@@ -107,7 +107,7 @@ const CommonValue = () => {
         <div className="value-section">
           {value.map((data) => {
             return (
-              <div className="value-box">
+              <div className="value-box" key={data.head}>
                 <div>{data.logo}</div>
                 <h6>{data.head}</h6>
                 <p>{data.para}</p>

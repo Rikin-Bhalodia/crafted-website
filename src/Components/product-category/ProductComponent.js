@@ -129,6 +129,7 @@ const ProductComponents = () => {
           return (
             product.category === router.query.id && (
               <div
+                key={product?.id}
                 className="pro-comp"
                 onClick={() => redirectSingleProduct(product?.id)}
               >

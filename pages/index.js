@@ -176,7 +176,7 @@ export default function Home() {
           <div className="box-container">
             {dummyData.map((data) => {
               return (
-                <div className="card-details" style={{}}>
+                <div className="card-details" style={{}} key={data}>
                   <div className="small-box"></div>
                   <div className="card-data">
                     <div>{data.name}</div>
@@ -216,7 +216,7 @@ export default function Home() {
           <div className="box-container">
             {dummyData.map((data) => {
               return (
-                <div className="card-details" style={{}}>
+                <div className="card-details" style={{}} key={data}>
                   <div className="small-box"></div>
                   <div className="card-data">
                     <div>{data.name}</div>

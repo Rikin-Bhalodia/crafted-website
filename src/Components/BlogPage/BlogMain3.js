@@ -3,8 +3,6 @@ import styled from "styled-components";
 import HomeBlogSlider from "../../CommonComponent/Swiper/HomeBlogSlider";
 import { blogs } from "../../../src/CommonComponent/blogdata/blogs";
 
-console.log(blogs, "blog");
-
 const BlogMain3Wrapper = styled.div`
   width: 100%;
   display: flex;

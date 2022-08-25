@@ -5,7 +5,7 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
-  signInWithPopup,
+  signInWithRedirect,
   GoogleAuthProvider,
   FacebookAuthProvider,
   updateEmail,
@@ -13,6 +13,7 @@ import {
 } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 const AuthContext = React.createContext();
 export const useAuth = () => {
@@ -21,6 +22,7 @@ export const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const googleAuth = new GoogleAuthProvider();
   const facebookAuth = new FacebookAuthProvider();
@@ -46,10 +48,12 @@ const AuthProvider = ({ children }) => {
     });
   };
   const signInWithGoogle = () => {
-    signInWithPopup(auth, googleAuth);
+    signInWithRedirect(auth, googleAuth);
+    router.push("/");
   };
   const signInWithFacebook = () => {
-    signInWithPopup(auth, facebookAuth);
+    signInWithRedirect(auth, facebookAuth);
+    router.push("/");
   };
 
   const updateUserEmail = (updatedEmail) => {

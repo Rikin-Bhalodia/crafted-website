@@ -160,7 +160,7 @@ const CommonCard = () => {
       <div className="container">
         {[1, 2].map((_) => {
           return (
-            <div className="card">
+            <div className="card" key={_}>
               <div className="card-content">
                 <Image src={ProductImg} alt="product" />
                 <button>Add to Cart</button>

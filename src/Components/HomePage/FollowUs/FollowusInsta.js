@@ -68,7 +68,7 @@ const FollowUs = () => {
         {[1, 2, 3, 4, 5, 6].map((_) => {
           return (
             <>
-              <div className="box"></div>
+              <div className="box" key={_}></div>
             </>
           );
         })}

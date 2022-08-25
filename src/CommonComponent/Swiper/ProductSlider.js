@@ -97,9 +97,9 @@ export default function ProductSlider() {
     <ProductWrapper>
       <Swiper slidesPerView={4} grabCursor={true} spaceBetween={15}>
         {products &&
-          products.map((ele) => {
+          products.map((ele, i) => {
             return (
-              <SwiperSlide className="swiperSlide">
+              <SwiperSlide className="swiperSlide" key={i}>
                 <div className="productImg">
                   <Image
                     src={ele?.image}

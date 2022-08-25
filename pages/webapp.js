@@ -295,13 +295,12 @@ const AllColors = Colors;
 const WebApp = () => {
   const router = useRouter();
   const [category, setCategory] = useState(router.query.type || "");
-  console.log(router.query.type);
   const [products, setProducts] = useState([]);
   const [color, setColor] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [cartProduct, setCartProduct] = useState([]);
   const { currentUser } = useAuth();
-  console.log(router, "router");
+
   const handleSelectChange = (value) => {
     setCategory(value);
   };
@@ -323,7 +322,6 @@ const WebApp = () => {
         : null;
     });
   }, [color, category]);
-  console.log(selectedProduct, "kkkkkkkkkkkk");
   const onSelect = (data) => {
     if (color.includes(data)) {
       setColor((prev) => prev.filter((color) => color !== data));
@@ -367,11 +365,9 @@ const WebApp = () => {
       return Object.values(key).join("");
     });
 
-  console.log(cartProducts, cartProduct, "llllllllll");
   const addToCart = () => {
     const db = getDatabase();
     selectedProduct.map((ele) => {
-      console.log(ele.id.toString(), "jj");
       if (cartProducts.includes(ele.id.toString())) {
         toast(`Your ${ele.name} is already in Cart !!`);
       } else {
@@ -411,10 +407,6 @@ const WebApp = () => {
     }
   });
   const renderColors = router?.query?.color ? Colors?.data : AllColors;
-  console.log(renderColors, AllColors, "hhhh");
-  // if (color.length <= 0) {
-  //   toast("please choose any color please");
-  // }
 
   return (
     <>
@@ -446,13 +438,14 @@ const WebApp = () => {
               <div className="match-color-box">
                 <div className="color-shade">
                   {color?.length > 0 && category ? (
-                    selectedProduct.map((ele) => {
+                    selectedProduct.map((ele, i) => {
                       return (
                         <Image
                           src={ele.image}
                           width={200}
                           height={200}
                           layout="fixed"
+                          key={i}
                         />
                       );
                     })
@@ -497,9 +490,9 @@ const WebApp = () => {
               <div className="match-color-box">
                 <div className="container">
                   {renderColors &&
-                    renderColors.map((data) => {
+                    renderColors.map((data, i) => {
                       return (
-                        <div className="box-container">
+                        <div className="box-container" key={i}>
                           <div
                             className="box"
                             style={

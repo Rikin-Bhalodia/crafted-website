@@ -290,7 +290,7 @@ function BlogSecLeft({ blogs }) {
         return (
           router.query.id === data.id && (
             <BlogSecLeftWrapper>
-              <div className="blog-img1">
+              <div className="blog-img1" key={data.id}>
                 <Image
                   src={blog}
                   alt="blog-image"

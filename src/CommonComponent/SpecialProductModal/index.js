@@ -21,9 +21,7 @@ const SingleProductModal = ({
   };
 
   const handleClick = (data) => {
-    console.log(data, color, "data");
     if (color.includes(data[0].toUpperCase())) {
-      console.log(data[0], "hello");
       setColor((prev) =>
         prev.filter((color) => color !== data[0].toUpperCase())
       );
@@ -44,7 +42,7 @@ const SingleProductModal = ({
           {selectedProduct.map((ele) => {
             return (
               <>
-                <div className="modaldata">
+                <div className="modaldata" key={ele}>
                   <div
                     style={{
                       display: "flex",

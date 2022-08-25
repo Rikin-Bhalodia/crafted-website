@@ -109,6 +109,7 @@ const MatchComponent = () => {
           return (
             <div
               className={data.step === "Step3" ? "card-detail" : "step-card"}
+              key={data.step}
             >
               <Image src={data.img} alt="step-img" className="step-img" />
               <div className="data-step">{data.step}</div>

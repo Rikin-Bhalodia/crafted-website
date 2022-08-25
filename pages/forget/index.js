@@ -120,7 +120,7 @@ const Forgot = () => {
       </div>
       <div className="forgot-area">
         <h4>We are here to get you back.</h4>
-        <label for="email">Email:</label>
+        <label htmlFor="email">Email:</label>
         <br />
         <input
           type="email"

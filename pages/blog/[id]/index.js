@@ -72,8 +72,6 @@ const BlogSepPage = () => {
       <BlogSepPageWrapper>
         <section className="blog-section">
           <div className="blog-sec-left">
-            {console.log(blogs, "bbloggggg1ffff")}
-
             <BlogSecLeft blogs={blogs} />
           </div>
           <div className="blog-sec-right">

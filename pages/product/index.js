@@ -200,7 +200,7 @@ const Product = () => {
                 <p>
                   <input type="checkbox" id="price" name="price" value="All" />
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <label for="price">All Price</label>
+                  <label htmlFor="price">All Price</label>
                   <br />
                   <input
                     type="checkbox"
@@ -209,7 +209,7 @@ const Product = () => {
                     value="100-250"
                   />
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <label for="price">$100 - $250</label>
+                  <label htmlFor="price">$100 - $250</label>
                   <br />
                   <input
                     type="checkbox"
@@ -218,7 +218,7 @@ const Product = () => {
                     value="250-500"
                   />
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <label for="price">$250 - $500</label>
+                  <label htmlFor="price">$250 - $500</label>
                   <br />
                   <input
                     type="checkbox"
@@ -227,7 +227,7 @@ const Product = () => {
                     value="750-1000"
                   />
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <label for="price">$750 - $1000</label>
+                  <label htmlFor="price">$750 - $1000</label>
                   <br />
                   <input
                     type="checkbox"
@@ -236,7 +236,7 @@ const Product = () => {
                     value="1000-1500"
                   />
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <label for="price">$1000 - $1500</label>
+                  <label htmlFor="price">$1000 - $1500</label>
                   <br />
                 </p>
               </Panel>
@@ -244,13 +244,13 @@ const Product = () => {
                 <p>
                   <input type="checkbox" id="star" name="star" value="1star" />
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <label for="star" style={{ color: "#FBEA53" }}>
+                  <label htmlFor="star" style={{ color: "#FBEA53" }}>
                     <GoStar size={25} />
                   </label>
                   <br />
                   <input type="checkbox" id="star" name="star" value="2star" />
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <label for="star" style={{ color: "#FBEA53" }}>
+                  <label htmlFor="star" style={{ color: "#FBEA53" }}>
                     <GoStar size={25} />
                     &nbsp;
                     <GoStar size={25} />
@@ -258,7 +258,7 @@ const Product = () => {
                   <br />
                   <input type="checkbox" id="star" name="star" value="3star" />
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <label for="star" style={{ color: "#FBEA53" }}>
+                  <label htmlFor="star" style={{ color: "#FBEA53" }}>
                     <GoStar size={25} />
                     &nbsp;
                     <GoStar size={25} />
@@ -268,7 +268,7 @@ const Product = () => {
                   <br />
                   <input type="checkbox" id="star" name="star" value="4star" />
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <label for="star" style={{ color: "#FBEA53" }}>
+                  <label htmlFor="star" style={{ color: "#FBEA53" }}>
                     <GoStar size={25} />
                     &nbsp;
                     <GoStar size={25} />
@@ -280,7 +280,7 @@ const Product = () => {
                   <br />
                   <input type="checkbox" id="star" name="star" value="5star" />
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <label for="star" style={{ color: "#FBEA53" }}>
+                  <label htmlFor="star" style={{ color: "#FBEA53" }}>
                     <GoStar size={25} />
                     &nbsp;
                     <GoStar size={25} />
@@ -307,6 +307,7 @@ const Product = () => {
               return (
                 <div
                   className="collection"
+                  key={data}
                   onClick={() => handleClick(data.key)}
                 >
                   <Image src={data.img} alt="Collaction-image" />
