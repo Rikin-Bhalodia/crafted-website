@@ -13,7 +13,7 @@ const SliderWrapper = styled.div`
   .slide {
     position: relative;
     width: 100vw;
-    height: 765px;
+    height: 100vh;
   }
   .swiper-wrapper {
     position: relative;
@@ -27,22 +27,21 @@ const SliderWrapper = styled.div`
     display: flex;
     flex-direction: column;
     ${"" /* align-items: center; */}
-    margin-top: 80px;
     margin-left: 70px;
   }
   .name {
     font-weight: 500;
-    font-size: 48px;
+    font-size: 38px;
     ${"" /* padding-left: 52px; */}
   }
   .desc {
     font-weight: 700;
     font-size: 80px;
-    line-height: 100px;
+    line-height: 90px;
     width: 300px;
     font-family: "Playfair Display";
     font-style: normal;
-    margin-top: 20px;
+    margin-top: 10px;
     ${"" /* padding-left: 50px; */}
   }
   .match-btn {
@@ -51,7 +50,7 @@ const SliderWrapper = styled.div`
     background: #393d46;
     color: #fff;
     width: 200px;
-    margin-top: 40px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +68,7 @@ const SliderWrapper = styled.div`
     border-radius: 25px;
   }
   .small-swiper {
-    bottom: 160px !important;
+    bottom: 150px !important;
   }
 
   @media screen and (max-width: 1500px) {
@@ -102,8 +101,8 @@ export default function App() {
             loop={true}
             muted
             style={{
-              width: "100%",
-              height: "100%",
+              width: "100vw",
+              height: "100vh",
               objectFit: "cover",
             }}
           />

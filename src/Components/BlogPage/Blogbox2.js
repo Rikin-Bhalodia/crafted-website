@@ -7,6 +7,8 @@ const BlogBox2Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
+  width: 100%;
+  padding: 0px 130px;
 
   .blog-box2 {
     width: 470px;
@@ -85,9 +87,9 @@ const BlogBox2Wrapper = styled.div`
     }
   }
   @media screen and (max-width: 1400px) {
-    margin: 20px 10px 0 10px;
+    padding: 20px 20px 0 20px;
     .blog-box2 {
-      width: 400px;
+      width: 100%;
       height: 400px;
     }
   }
@@ -95,14 +97,18 @@ const BlogBox2Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     .blog-box2 {
-      width: 350px;
+      width: 48%;
       height: 400px;
     }
   }
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 770px) {
     display: flex;
     flex-direction: column;
+    .blog-box2 {
+      width: 100%;
+      height: 400px;
+    }
   }
 `;
 function Blogbox2({ blogs }) {

@@ -296,7 +296,7 @@ const WebApp = () => {
     return products.filter((ele) => {
       return ele.category === category &&
         color.length > 0 &&
-        color.includes(ele.color[0].toUpperCase())
+        color.includes(ele.color[0]?.toUpperCase())
         ? ele
         : null;
     });

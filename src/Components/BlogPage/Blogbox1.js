@@ -7,8 +7,8 @@ const BlogBox1Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
-  padding-bottom: 30px;
   width: 100%;
+  padding: 0px 130px 30px;
   .blog-box1 {
     width: 725px;
     height: 550px;
@@ -96,13 +96,14 @@ const BlogBox1Wrapper = styled.div`
   }
 
   @media screen and (max-width: 1400px) {
-    padding: 0 20px 0 20px;
+    padding: 0 150px;
     .blog-box1 {
-      width: 500px;
+      width: 100%;
       height: 470px;
     }
   }
   @media screen and (max-width: 1000px) {
+    padding: 0 100px;
     .blog-box1 {
       width: 100%;
       height: 450px;

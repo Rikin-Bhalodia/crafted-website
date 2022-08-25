@@ -11,7 +11,7 @@ const BlogMain4Wrapper = styled.div`
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
-    padding-left: 180px;
+    padding: 0px 130px;
     h3 {
       font-weight: 700;
       font-size: 36px;
@@ -50,21 +50,12 @@ const BlogMain4Wrapper = styled.div`
 
   @media screen and (max-width: 1400px) {
     .blog-head {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding-left: 0;
-      p {
-        padding: 0 20px 0 20px;
-      }
+      padding: 0 20px;
     }
   }
   @media screen and (max-width: 700px) {
     .blog-head {
-      p {
-        padding: 0 40px 0 40px;
-      }
+      text-align: center;
     }
   }
 `;

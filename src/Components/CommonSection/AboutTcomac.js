@@ -66,14 +66,14 @@ const AboutTcomacWrapper = styled.div`
         height: 64px;
         bottom: -300px;
         position: absolute;
-        right: 280px;
+        right: 300px;
       }
       .item2 {
         width: 128px;
         height: 96px;
         bottom: -220px;
         position: absolute;
-        right: 460px;
+        right: 480px;
         z-index: 999;
       }
       .item3 {
@@ -81,7 +81,7 @@ const AboutTcomacWrapper = styled.div`
         height: 120px;
         bottom: -475px;
         position: absolute;
-        right: 320px;
+        right: 340px;
         z-index: 999;
       }
       .item4 {
@@ -89,7 +89,7 @@ const AboutTcomacWrapper = styled.div`
         height: 160px;
         top: 40px;
         position: absolute;
-        right: 0px;
+        right: 20px;
         z-index: 999;
       }
       .item5 {
@@ -97,12 +97,12 @@ const AboutTcomacWrapper = styled.div`
         height: 96px;
         bottom: -380px;
         position: absolute;
-        right: 40px;
+        right: 60px;
       }
       .item6 {
         position: absolute;
         bottom: -430px;
-        right: 260px;
+        right: 280px;
       }
       .item7 {
         position: absolute;
@@ -111,7 +111,7 @@ const AboutTcomacWrapper = styled.div`
         border-radius: 50%;
         background: #f1f4f5;
         bottom: -238px;
-        right: 568px;
+        right: 588px;
       }
       .item8 {
         background: #1565d8;
@@ -120,7 +120,7 @@ const AboutTcomacWrapper = styled.div`
         height: 50px;
         border-radius: 50%;
         bottom: -220px;
-        right: -21px;
+        right: -1px;
       }
     }
   }

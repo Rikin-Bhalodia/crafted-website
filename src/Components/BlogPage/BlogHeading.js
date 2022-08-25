@@ -4,8 +4,8 @@ import Link from "next/link";
 const BlogHeadingWrapper = styled.div`
   width: 100%;
   display: flex;
-  padding: 0 180px;
-  justify-content: space-between;
+  padding: 0 130px;
+  justify-content: center;
   margin-top: 100px;
   .blog-head {
     width: 100%;
@@ -44,7 +44,7 @@ const BlogHeadingWrapper = styled.div`
     padding: 0 20px 0 20px;
     .blog-head {
       p {
-        width: 400px;
+        width: 100%;
       }
     }
     .blog-btn {

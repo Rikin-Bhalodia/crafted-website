@@ -22,8 +22,9 @@ const HomeBlogWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 0 130px;
   .mySwiper {
-    width: 1500px;
+    width: 100%;
     background: #ffffff;
     border: 1px solid #e5eaf4;
     box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.03);
@@ -138,7 +139,7 @@ const HomeBlogWrapper = styled.div`
     color: #5a7184;
   }
   .head-part {
-    width: 1500px;
+    width: 100%;
     display: flex;
     margin-bottom: 30px;
     justify-content: space-between;
@@ -149,19 +150,20 @@ const HomeBlogWrapper = styled.div`
   }
 
   @media screen and (max-width: 1400px) {
+    padding: 0 20px;
     .mySwiper {
-      width: 1200px;
+      width: 100%;
     }
     .head-part {
       display: flex;
       justify-content: space-between;
       width: 100%;
-      padding: 0 20px 0 20px;
+      /* padding: 0 20px 0 20px; */
     }
   }
   @media screen and (max-width: 1200px) {
     .mySwiper {
-      width: 1000px;
+      width: 100%;
     }
     .btn-feature {
       margin-top: 30px;
@@ -176,7 +178,7 @@ const HomeBlogWrapper = styled.div`
   }
   @media screen and (max-width: 1000px) {
     .mySwiper {
-      width: 700px;
+      width: 100%;
       height: 100%;
     }
     .blank-card {
@@ -256,9 +258,16 @@ const HomeBlogWrapper = styled.div`
     .date {
       font-size: 12px;
     }
+    .head-part {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      gap: 10px;
+    }
   }
   @media screen and (max-width: 400px) {
     height: 100%;
+    padding: 0 10px;
     .mySwiper {
       width: 350px;
       height: 100%;
