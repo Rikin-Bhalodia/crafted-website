@@ -8,10 +8,11 @@ import ThankYou from "./../../src/Components/cart-page/Thankyou";
 import styled from "styled-components";
 // import Image from "next/image";
 import Logo from "/public/svg/logo.svg";
-import { nanoid } from "nanoid";
+import UniqId from "uniqid";
 import { db } from "../../src/Firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { useAuth } from "../../src/auth/AuthContext";
+import axios from "axios";
 
 const CartWrapper = styled.div`
   padding: 0px 100px 100px;
@@ -26,22 +27,6 @@ const CartWrapper = styled.div`
     padding: 0px 20px 50px !important;
   }
 `;
-
-const { Step } = Steps;
-const steps = [
-  {
-    title: "Shopping Cart",
-    content: <ShoppingCart />,
-  },
-  {
-    title: "Checkout",
-    content: <CheckOut />,
-  },
-  {
-    title: "Thank You",
-    content: <ThankYou />,
-  },
-];
 
 const loadScript = (src) => {
   return new Promise((resolve) => {
@@ -60,10 +45,10 @@ const loadScript = (src) => {
 // const __DEV__ = document?.domain === "localhost";
 
 const Cart = () => {
-  const order_id = nanoid();
   const [current, setCurrent] = useState(0);
-  const [cartProduct, setCartProduct] = useState([]);
   const { currentUser } = useAuth();
+  const [cartProduct, setCartProduct] = useState([]);
+
   useEffect(() => {
     const db = getDatabase();
     const starCountRef = ref(db, "cartItem/");
@@ -76,14 +61,60 @@ const Cart = () => {
       }
     });
   }, []);
+
   const cartItems = cartProduct.map(([key, value]) => {
     return value;
   });
-  console.log(cartItems, cartProduct, "items");
+
+  const productDetails = cartItems.map((data) => {
+    return {
+      category: data.cartData.category,
+      color: data.cartData.color,
+      id: data.cartData.id,
+      mrp: data.cartData.mrp,
+      name: data.cartData.name,
+      sale_price: data.cartData.sale_price,
+      size: data.cartData.size,
+      sku: data.cartData.sku,
+      tag: data.cartData.tag,
+      totalUserItem: data.cartData.totalUserItem,
+    };
+  });
+  const [details, setDetails] = useState({
+    name: "",
+    address: "",
+    contact: "",
+    city: "",
+    state: "",
+    zip_code: "",
+    user_id: currentUser.uid,
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetails((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const { Step } = Steps;
+  const steps = [
+    {
+      title: "Shopping Cart",
+      content: <ShoppingCart />,
+    },
+    {
+      title: "Checkout",
+      content: <CheckOut handleChange={handleChange} details={details} />,
+    },
+    {
+      title: "Thank You",
+      content: <ThankYou />,
+    },
+  ];
+
   const array = cartItems?.map((data) => {
     return Number(data?.cartData?.mrp) * data?.cartData?.totalUserItem;
   });
-  console.log(array, "array");
 
   const totalAmount = array.reduce(
     (previousValue, currentValue) => previousValue + currentValue,
@@ -92,10 +123,11 @@ const Cart = () => {
   const amount = totalAmount * 100;
   const bodyData = {
     amount: amount,
-    receipt: order_id,
+    receipt: UniqId(),
     payment_capture: 1,
+    notes: details,
   };
-  console.log(totalAmount, "amount");
+
   const displayRezorPay = async () => {
     const data = await fetch("http://localhost:1337/razorpay", {
       method: "POST",
@@ -116,6 +148,12 @@ const Cart = () => {
       alert("Razorpay SDK failed to load. are you online?");
       return;
     }
+
+    const orderItemsDetails = {
+      productDetails,
+      order_id: data?.id,
+      user_id: currentUser.uid,
+    };
     const options = {
       key: "rzp_test_NJRQ7mstGJ8A8J",
       name: "The Crafted",
@@ -125,7 +163,7 @@ const Cart = () => {
       image: Logo,
       order_id: data?.id,
       prefill: {
-        name: currentUser.displayName,
+        name: details.name,
         email: currentUser.email,
       },
     };
@@ -137,12 +175,18 @@ const Cart = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    })
-      .then((t) => console.log(t, "jjjj"))
-      .catch((e) => console.log(e, "e"));
-    console.log(orderData, "+++++++++++++++++++");
-    // await addDoc();
+    });
+
+    const orderDetails = await fetch("http://localhost:1337/order-details", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderItemsDetails),
+    });
   };
+
   const next = (key) => {
     key === 0 ? setCurrent(current + 1) : displayRezorPay();
   };
@@ -172,7 +216,7 @@ const Cart = () => {
           {steps[current].title}
         </div>
         <Steps current={current} onChange={onChange}>
-          {steps.map((item) => (
+          {steps.map((item, i) => (
             <Step key={item.title} title={item.title} />
           ))}
         </Steps>

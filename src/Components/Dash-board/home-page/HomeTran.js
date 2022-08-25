@@ -111,7 +111,7 @@ const HomeTran = () => {
         </div>
         {tran.map((data) => {
           return (
-            <div className="tran-data">
+            <div className="tran-data" key={data.name}>
               <div className="tran-img">{data.img}</div>
               <div className="tran-name">
                 <h5>{data.name}</h5>

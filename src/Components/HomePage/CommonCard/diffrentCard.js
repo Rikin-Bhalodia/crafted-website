@@ -74,7 +74,7 @@ const DiffCard = () => {
       <div className="container">
         {data.map((dta) => {
           return (
-            <div className="card">
+            <div className="card" key={dta}>
               <Image
                 src={dta.img}
                 className="images"

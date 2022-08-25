@@ -122,9 +122,9 @@ export default function App() {
         spaceBetween={15}
         className="small-swiper"
       >
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_) => {
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => {
           return (
-            <SwiperSlide className="small-slider">
+            <SwiperSlide className="small-slider" key={i}>
               <Image src={Sweater} alt="sweater" />
               <Link href="/question">
                 <div>Poplin Cotton Fabric</div>

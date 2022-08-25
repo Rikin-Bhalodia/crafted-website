@@ -360,11 +360,11 @@ function HomeBlogSlider() {
         modules={[Navigation, Mousewheel, Keyboard]}
         className="mySwiper"
       >
-        {console.log(blogs, "data")}
         {blogs?.map((data) => {
           return (
             <SwiperSlide
               onClick={() => handleRoute(data.id)}
+              key={data.id}
               style={{ cursor: "pointer" }}
             >
               <div className="parts">

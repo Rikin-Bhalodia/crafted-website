@@ -5,7 +5,7 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
-  signInWithPopup,
+  signInWithRedirect,
   GoogleAuthProvider,
   FacebookAuthProvider,
   updateEmail,
@@ -13,6 +13,7 @@ import {
 } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 const AuthContext = React.createContext();
 export const useAuth = () => {
@@ -21,21 +22,36 @@ export const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const googleAuth = new GoogleAuthProvider();
   const facebookAuth = new FacebookAuthProvider();
 
-  const signup = (email, password) => {
+  const signup = async (email, password) => {
     setCurrentUser((prev) => {
       return { ...prev, password: password };
     });
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        if (result.credential) {
+          console.log(result.credential);
+          router.push("/");
+        }
+      })
+      .catch((err) => console.log(err));
   };
-  const login = (email, password) => {
+  const login = async (email, password) => {
     setCurrentUser((prev) => {
       return { ...prev, password: password };
     });
-    return signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        if (result.credential) {
+          console.log(result.credential);
+          router.push("/");
+        }
+      })
+      .catch((err) => console.log(err));
   };
   const logout = () => {
     return signOut(auth);
@@ -46,10 +62,25 @@ const AuthProvider = ({ children }) => {
     });
   };
   const signInWithGoogle = () => {
-    signInWithPopup(auth, googleAuth);
+    signInWithRedirect(auth, googleAuth)
+      .then((result) => {
+        if (result.credential) {
+          console.log(result.credential);
+          router.push("/");
+        }
+      })
+      .catch((err) => console.log(err));
   };
+
   const signInWithFacebook = () => {
-    signInWithPopup(auth, facebookAuth);
+    signInWithRedirect(auth, facebookAuth)
+      .then((result) => {
+        if (result.credential) {
+          console.log(result.credential);
+          router.push("/");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   const updateUserEmail = (updatedEmail) => {

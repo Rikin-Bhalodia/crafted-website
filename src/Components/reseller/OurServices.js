@@ -178,7 +178,7 @@ const OurServices = () => {
           </p>
           {services.map((data) => {
             return (
-              <div className="services-box">
+              <div className="services-box" key={data.head}>
                 <div className="services-logo">{data.img}</div>
                 <div className="services-des">
                   <h5>{data.head}</h5>

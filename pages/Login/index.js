@@ -146,7 +146,7 @@ const LogIn = () => {
       <div className="blank"></div>
       <div className="login-area">
         <div className="login-form">
-          <p>Hey, look who's here!</p>
+          <p>Hey,look who's here!</p>
           <h4>Before the start</h4>
           <p
             style={{
@@ -159,7 +159,7 @@ const LogIn = () => {
           >
             Fill in the form below to get instant access to all major features.
           </p>
-          <label for="fname">User Email</label>
+          <label htmlFor="fname">User Email</label>
           <br />
           <input
             type="text"
@@ -170,7 +170,7 @@ const LogIn = () => {
           />
           <br />
 
-          <label for="address">Password</label>
+          <label htmlFor="address">Password</label>
           <br />
           <input
             type="password"

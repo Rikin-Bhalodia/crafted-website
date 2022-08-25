@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import "antd/dist/antd.css";
@@ -7,12 +7,25 @@ import "antd/dist/antd.css";
 const SingleProductModalWrapper = styled.div``;
 
 import { IoCloseCircle } from "react-icons/io5";
-const SingleProductModal = ({ handleCancel, selectedProduct }) => {
+const SingleProductModal = ({
+  handleCancel,
+  selectedProduct,
+  setColor,
+  color,
+}) => {
   const handleOk = () => {
     handleCancel();
   };
   const handleClose = () => {
     handleCancel();
+  };
+
+  const handleClick = (data) => {
+    if (color.includes(data[0].toUpperCase())) {
+      setColor((prev) =>
+        prev.filter((color) => color !== data[0].toUpperCase())
+      );
+    }
   };
   return (
     <>
@@ -29,7 +42,7 @@ const SingleProductModal = ({ handleCancel, selectedProduct }) => {
           {selectedProduct.map((ele) => {
             return (
               <>
-                <div className="modaldata">
+                <div className="modaldata" key={ele}>
                   <div
                     style={{
                       display: "flex",
@@ -39,7 +52,7 @@ const SingleProductModal = ({ handleCancel, selectedProduct }) => {
                   >
                     {ele.name}
                     <div>
-                      <IoCloseCircle />
+                      <IoCloseCircle onClick={() => handleClick(ele.color)} />
                     </div>
                   </div>
                   <Image src={ele.image} width={150} height={130} />

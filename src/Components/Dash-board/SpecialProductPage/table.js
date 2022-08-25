@@ -117,6 +117,7 @@ const SpecialProductTable = () => {
               {product?.color?.length > 0 &&
                 product?.color?.map((color) => (
                   <div
+                    key={color}
                     style={{ background: color, height: 13, width: 13 }}
                   ></div>
                 ))}

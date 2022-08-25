@@ -8,7 +8,6 @@ import { db } from "../../Firebase";
 const ProductWrapper = styled.div``;
 
 export default function TcomocProduct(products) {
-  console.log(products.data, "product+++++++++++++++++++");
   const { data } = products;
   return <ProductWrapper></ProductWrapper>;
 }

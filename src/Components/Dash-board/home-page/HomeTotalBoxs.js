@@ -101,7 +101,7 @@ const HomeTotalBox = () => {
         <div className="div">
           {box.map((data) => {
             return (
-              <div className="total-data">
+              <div className="total-data" key={data.per}>
                 <div className="up-data">
                   <div>{data.logo}</div>
                   <h4>{data.per}</h4>

@@ -124,6 +124,7 @@ function Blogbox2({ blogs }) {
               router.query.id !== data.id && (
                 <div
                   className="blog-box2"
+                  key={data.id}
                   onClick={() => handleRoute(data.id)}
                   style={{ cursor: "pointer" }}
                 >
@@ -168,6 +169,7 @@ function Blogbox2({ blogs }) {
         : blogs.slice(1, 4).map((data) => {
             return (
               <div
+                key={data.id}
                 className="blog-box2"
                 onClick={() => handleRoute(data.id)}
                 style={{ cursor: "pointer" }}

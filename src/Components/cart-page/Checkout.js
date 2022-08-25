@@ -121,79 +121,62 @@ const CheckOutWrapper = styled.div`
   }
 `;
 
-const CheckOut = () => {
-  const [details, setDetails] = useState({
-    name: "",
-    address: "",
-    contact: "",
-    city: "",
-    state: "",
-    zip_code: "",
-  });
-  const db = getDatabase();
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setDetails((prev) => {
-      return { ...prev, [name]: value };
-    });
-  };
-  // useEffect(() => {
-  //   set(ref(db, "cartItem/" + "details"), {
-  //     details,
-  //   });
-  // }, [details]);
+const CheckOut = ({ handleChange, details }) => {
   return (
     <CheckOutWrapper>
       <form action="post">
         <div className="form1">
           <p>Buyer Info</p>
-          <label for="fname">Full Name</label>
+          <label htmlFor="fname">Full Name</label>
           <br />
           <input
             type="text"
             name="name"
             value={details.name}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <br />
 
-          <label for="address">Address</label>
+          <label htmlFor="address">Address</label>
           <br />
           <input
             type="text"
             name="address"
             value={details.address}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <br />
 
-          <label for="contact">Contact</label>
+          <label htmlFor="contact">Contact</label>
           <br />
           <input
             type="text"
             name="contact"
             value={details.contact}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <br />
 
-          <label for="city">City</label>
+          <label htmlFor="city">City</label>
           <br />
           <input
             type="text"
             name="city"
             value={details.city}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <br />
 
           <div>
             <div className="label">
-              <label for="state" style={{ marginRight: "32px", width: "60%" }}>
+              <label
+                htmlFor="state"
+                style={{ marginRight: "32px", width: "60%" }}
+              >
                 State
               </label>
 
-              <label for="z-code" style={{ width: "40%" }}>
+              <label htmlFor="z-code" style={{ width: "40%" }}>
                 Zip Code
               </label>
             </div>
@@ -203,7 +186,7 @@ const CheckOut = () => {
                 id="state"
                 style={{ marginRight: "32px", width: "60%" }}
                 value={details.state}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e)}
               >
                 <option value="">Select State</option>
                 <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -253,7 +236,7 @@ const CheckOut = () => {
                 name="zip_code"
                 style={{ width: "40%" }}
                 value={details.zip_code}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e)}
               />
               <br />
             </div>
@@ -274,7 +257,7 @@ const CheckOut = () => {
             <br />
           </div>
 
-          {/* <label for="name-on-card">Name on Card</label>
+          {/* <label htmlFor="name-on-card">Name on Card</label>
           <br />
           <input type="text" id="name-card" name="name-card" />
           <br /> */}
@@ -282,13 +265,13 @@ const CheckOut = () => {
           {/* <div>
             <div className="label">
               <label
-                for="card-number"
+                htmlFor="card-number"
                 style={{ marginRight: "32px", width: "60%" }}
               >
                 Card Number
               </label>
               <br />
-              <label for="cvv" style={{ width: "40%" }}>
+              <label htmlFor="cvv" style={{ width: "40%" }}>
                 CVV
               </label>
             </div>
@@ -307,11 +290,11 @@ const CheckOut = () => {
 
           <div>
             <div className="label">
-              <label for="month" style={{ marginRight: "32px", width: "50%" }}>
+              <label htmlFor="month" style={{ marginRight: "32px", width: "50%" }}>
                 Month
               </label>
               <br />
-              <label for="year" style={{ width: "50%" }}>
+              <label htmlFor="year" style={{ width: "50%" }}>
                 Year
               </label>
             </div>

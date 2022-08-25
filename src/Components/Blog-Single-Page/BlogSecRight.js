@@ -179,9 +179,9 @@ function BlogSecRight() {
         </div>
         <div className="latest-post">
           <h4>LATEST POSTS</h4>
-          {[1, 2, 3, 4].map((_) => {
+          {[1, 2, 3, 4].map((_, i) => {
             return (
-              <div className="prev-data">
+              <div className="prev-data" key={i}>
                 <div className="prev-img"></div>
                 <div className="prev-head">
                   <p

@@ -45,7 +45,10 @@ const PoplinCottonFabric = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (color && size) {
-      router.push("/");
+      router.push({
+        pathname: "/webapp",
+        query: { type: "poplin-cotton", color: color, size: size },
+      });
     } else {
       toast("please fill the data ");
     }
