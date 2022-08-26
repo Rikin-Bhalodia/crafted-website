@@ -4,7 +4,7 @@ import Link from "next/link";
 const BlogHeadingWrapper = styled.div`
   width: 100%;
   display: flex;
-  padding: 0 130px;
+  padding: 0 150px;
   justify-content: center;
   margin-top: 100px;
   .blog-head {
@@ -41,7 +41,7 @@ const BlogHeadingWrapper = styled.div`
   }
   @media screen and (max-width: 1400px) {
     width: 100%;
-    padding: 0 20px 0 20px;
+    padding: 0 100px;
     .blog-head {
       p {
         width: 100%;
@@ -51,11 +51,16 @@ const BlogHeadingWrapper = styled.div`
       padding-right: 20px;
     }
   }
+  @media screen and (max-width: 1000px) {
+    padding: 0 50px;
+  }
+
   @media screen and (max-width: 700px) {
     flex-direction: column;
     align-items: center;
     text-align: center;
     margin-bottom: 20px;
+    padding: 0 20px;
     .blog-head {
       p {
         width: 100%;

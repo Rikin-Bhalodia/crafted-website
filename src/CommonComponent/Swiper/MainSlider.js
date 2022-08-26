@@ -13,7 +13,7 @@ const SliderWrapper = styled.div`
   .slide {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 530px;
   }
   .swiper-wrapper {
     position: relative;
@@ -28,16 +28,17 @@ const SliderWrapper = styled.div`
     flex-direction: column;
     ${"" /* align-items: center; */}
     margin-left: 70px;
+    margin-top: 20px;
   }
   .name {
     font-weight: 500;
-    font-size: 38px;
+    font-size: 28px;
     ${"" /* padding-left: 52px; */}
   }
   .desc {
     font-weight: 700;
-    font-size: 80px;
-    line-height: 90px;
+    font-size: 75px;
+    line-height: 80px;
     width: 300px;
     font-family: "Playfair Display";
     font-style: normal;
@@ -57,8 +58,8 @@ const SliderWrapper = styled.div`
     height: 50px;
   }
   .small-slider {
-    height: 130px;
-    width: 140px !important;
+    height: 120px;
+    width: 130px !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,24 +69,24 @@ const SliderWrapper = styled.div`
     border-radius: 25px;
   }
   .small-swiper {
-    bottom: 150px !important;
+    bottom: 135px !important;
   }
 
   @media screen and (max-width: 1500px) {
     .content {
-      margin-top: 50px;
+      margin-top: 20px;
     }
   }
   @media screen and (max-width: 570px) {
     .content {
-      margin: 80px 30px 20px;
+      margin: 20px 30px;
     }
     .name {
-      font-size: 35px;
+      font-size: 25px;
     }
     .desc {
       font-size: 70px;
-      line-height: 90px;
+      line-height: 80px;
     }
   }
 `;
@@ -102,7 +103,7 @@ export default function App() {
             muted
             style={{
               width: "100vw",
-              height: "100vh",
+              height: "550px",
               objectFit: "cover",
             }}
           />

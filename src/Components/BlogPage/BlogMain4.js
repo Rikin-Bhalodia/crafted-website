@@ -50,11 +50,17 @@ const BlogMain4Wrapper = styled.div`
 
   @media screen and (max-width: 1400px) {
     .blog-head {
-      padding: 0 20px;
+      padding: 0 150px;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .blog-head {
+      padding: 0 100px;
     }
   }
   @media screen and (max-width: 700px) {
     .blog-head {
+      padding: 0px 20px;
       text-align: center;
     }
   }

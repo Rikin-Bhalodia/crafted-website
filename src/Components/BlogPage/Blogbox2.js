@@ -8,7 +8,7 @@ const BlogBox2Wrapper = styled.div`
   align-items: center;
   gap: 30px;
   width: 100%;
-  padding: 0px 130px;
+  padding: 0px 150px;
 
   .blog-box2 {
     width: 470px;
@@ -29,17 +29,18 @@ const BlogBox2Wrapper = styled.div`
       .blog-head2 {
         h3 {
           font-weight: 700;
-          font-size: 28px;
+          font-size: 22px;
           line-height: 36px;
           letter-spacing: 0.2px;
           color: #ffffff;
-          margin-top: 0px;
+          margin: 0px 0px 0px;
         }
         p {
           font-weight: 400;
-          font-size: 20px;
+          font-size: 15px;
           line-height: 36px;
           color: #ffffff;
+          margin: 0px 0px 10px;
         }
       }
       .blog-footer2 {
@@ -87,7 +88,7 @@ const BlogBox2Wrapper = styled.div`
     }
   }
   @media screen and (max-width: 1400px) {
-    padding: 20px 20px 0 20px;
+    padding: 20px 100px 0px;
     .blog-box2 {
       width: 100%;
       height: 400px;
@@ -101,10 +102,14 @@ const BlogBox2Wrapper = styled.div`
       height: 400px;
     }
   }
+  @media screen and (max-width: 1000px) {
+    padding: 0 50px;
+  }
 
   @media screen and (max-width: 770px) {
     display: flex;
     flex-direction: column;
+    padding: 0 20px;
     .blog-box2 {
       width: 100%;
       height: 400px;
