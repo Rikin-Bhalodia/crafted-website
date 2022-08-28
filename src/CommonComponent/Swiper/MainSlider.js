@@ -12,8 +12,8 @@ import Link from "next/link";
 const SliderWrapper = styled.div`
   .slide {
     position: relative;
-    width: 100vw;
-    height: 530px;
+    width: 100%;
+    height: 80%;
   }
   .swiper-wrapper {
     position: relative;
@@ -42,7 +42,6 @@ const SliderWrapper = styled.div`
     width: 300px;
     font-family: "Playfair Display";
     font-style: normal;
-    margin-top: 10px;
     ${"" /* padding-left: 50px; */}
   }
   .match-btn {
@@ -69,24 +68,88 @@ const SliderWrapper = styled.div`
     border-radius: 25px;
   }
   .small-swiper {
-    bottom: 135px !important;
+    bottom: 150px !important;
   }
-
-  @media screen and (max-width: 1500px) {
+  video {
+    width: 100vw;
+    object-fit: cover;
+  }
+  @media screen and (max-width: 1950px) {
+    video {
+      height: 800px;
+    }
     .content {
-      margin-top: 20px;
+      margin: 100px 140px;
+    }
+    .name {
+      font-size: 45px;
+    }
+    .desc {
+      font-size: 80px;
+      line-height: 100px;
+    }
+    .match-btn {
+      font-size: 20px;
+      width: 180px;
+      margin-top: 40px;
+      height: 50px;
+    }
+  }
+  @media screen and (max-width: 1500px) {
+    video {
+      height: 700px;
+    }
+    .content {
+      margin: 80px 100px;
+    }
+    .name {
+      font-size: 35px;
+    }
+    .desc {
+      font-size: 70px;
+      line-height: 90px;
+    }
+    .match-btn {
+      font-size: 18px;
+      width: 170px;
+      margin-top: 35px;
+      height: 45px;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    video {
+      height: 600px;
+    }
+    .content {
+      margin: 40px 80px;
+    }
+    .name {
+      font-size: 30px;
+    }
+    .desc {
+      font-size: 60px;
+      line-height: 80px;
+    }
+    .match-btn {
+      margin-top: 30px;
     }
   }
   @media screen and (max-width: 570px) {
     .content {
-      margin: 20px 30px;
+      margin: 30px 40px;
     }
     .name {
       font-size: 25px;
     }
     .desc {
-      font-size: 70px;
-      line-height: 80px;
+      font-size: 50px;
+      line-height: 70px;
+    }
+    .match-btn {
+      font-size: 16px;
+      width: 160px;
+      margin-top: 30px;
+      height: 40px;
     }
   }
 `;
@@ -96,17 +159,7 @@ export default function App() {
     <SliderWrapper>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
         <SwiperSlide className="slide">
-          <video
-            src={"/craftedVideo.mp4"}
-            autoPlay={true}
-            loop={true}
-            muted
-            style={{
-              width: "100vw",
-              height: "550px",
-              objectFit: "cover",
-            }}
-          />
+          <video src={"/craftedVideo.mp4"} autoPlay={true} loop={true} muted />
           <div className="content">
             <div className="name">India’s First</div>
             <div className="desc">Online Matching Centre</div>
@@ -128,7 +181,10 @@ export default function App() {
             <SwiperSlide className="small-slider" key={i}>
               <Image src={Sweater} alt="sweater" />
               <Link href="/question">
-                <div>Poplin Cotton Fabric</div>
+                <div>
+                  Poplin Cotton
+                  <br /> Fabric
+                </div>
               </Link>
             </SwiperSlide>
           );
