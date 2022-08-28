@@ -13,13 +13,13 @@ import Link from "next/link";
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 111px;
+  height: 100px;
   width: 100%;
-  overflow-x: hidden;
+  overflow-y: hidden;
   align-items: center;
 
   .logo {
-    height: 110px !important;
+    height: 90px !important;
     width: 240px !important;
     padding-left: 80px !important;
   }

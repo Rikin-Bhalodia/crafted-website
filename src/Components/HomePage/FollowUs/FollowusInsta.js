@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "next/link";
+import InstagramEmbed from "react-instagram-embed";
 
 const FollowUsWraapper = styled.div`
   width: 100%;
@@ -65,17 +67,32 @@ const FollowUs = () => {
           justifyContent: "center",
         }}
       >
-        {[1, 2, 3, 4, 5, 6].map((_) => {
-          return (
-            <>
-              <div className="box" key={_}></div>
-            </>
-          );
-        })}
+        <div className="box">
+          <InstagramEmbed
+            url="https://www.instagram.com/p/CawHewPp2g0/"
+            // clientAccessToken="123|456"
+            // maxWidth={0}
+            // hideCaption={false}
+            // containerTagName="div"
+            // protocol=""
+            // injectScript
+            // onLoading={() => {}}
+            // onSuccess={() => {}}
+            // onAfterRender={() => {}}
+            // onFailure={() => {}}
+          />
+        </div>
+        <div className="box"></div>
+        <div className="box"></div>
+        <div className="box"></div>
+        <div className="box"></div>
+        <div className="box"></div>
       </div>
-      <button className="button" style={{ cursor: "pointer" }}>
-        FOLLOW NOW
-      </button>
+      <Link href="https://www.instagram.com/robo.party/" target="_blank">
+        <button className="button" style={{ cursor: "pointer" }}>
+          FOLLOW NOW
+        </button>
+      </Link>
     </FollowUsWraapper>
   );
 };

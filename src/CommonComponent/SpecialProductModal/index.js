@@ -47,6 +47,7 @@ const SingleProductModal = ({
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
+                      paddingBottom: "5px",
                     }}
                   >
                     {ele.name}
@@ -54,7 +55,7 @@ const SingleProductModal = ({
                       <IoCloseCircle onClick={() => handleClick(ele.color)} />
                     </div>
                   </div>
-                  <Image src={ele.image} width={200} height={200} />
+                  <Image src={ele.image} width={150} height={130} />
                   <div>
                     Price: &nbsp; &nbsp;
                     {ele.mrp}

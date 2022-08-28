@@ -34,7 +34,7 @@ const CommonValueWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 100px;
-  padding: 100px;
+  padding: 0px 100px 50px;
   justify-content: center;
   align-items: center;
   .value-heading {

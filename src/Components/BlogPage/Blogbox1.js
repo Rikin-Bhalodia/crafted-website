@@ -7,8 +7,8 @@ const BlogBox1Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
-  padding-bottom: 30px;
   width: 100%;
+  padding: 0px 150px 30px;
   .blog-box1 {
     width: 725px;
     height: 550px;
@@ -42,11 +42,12 @@ const BlogBox1Wrapper = styled.div`
         padding-bottom: 20px;
         h3 {
           font-weight: 700;
-          font-size: 36px;
-          line-height: 48px;
+          font-size: 30px;
+          line-height: 38px;
           letter-spacing: 0.2px;
           color: #ffffff;
-          width: 80%;
+          width: 90%;
+          margin-bottom: 10px;
         }
       }
 
@@ -96,13 +97,14 @@ const BlogBox1Wrapper = styled.div`
   }
 
   @media screen and (max-width: 1400px) {
-    padding: 0 20px 0 20px;
+    padding: 0 100px 30px;
     .blog-box1 {
-      width: 500px;
+      width: 100%;
       height: 470px;
     }
   }
   @media screen and (max-width: 1000px) {
+    padding: 0 50px 20px;
     .blog-box1 {
       width: 100%;
       height: 450px;
@@ -111,6 +113,7 @@ const BlogBox1Wrapper = styled.div`
   @media screen and (max-width: 700px) {
     display: flex;
     flex-direction: column;
+    padding: 0 20px 20px;
     .blog-box1 {
       .blog-bottom1 {
         .blog-head1 {

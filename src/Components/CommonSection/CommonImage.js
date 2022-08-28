@@ -45,11 +45,13 @@ const CommonImageWrapper = styled.div`
       background: #979797;
       border-radius: 10px;
       grid-area: 4/5/7/7;
+      z-index: 1;
     }
     .img7 {
       position: absolute;
       bottom: 205px;
       right: 94px;
+      z-index: -999;
     }
   }
   @media screen and (max-width: 1000px) {

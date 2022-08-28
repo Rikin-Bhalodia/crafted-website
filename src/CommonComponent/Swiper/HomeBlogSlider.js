@@ -22,8 +22,9 @@ const HomeBlogWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 0 130px;
   .mySwiper {
-    width: 1500px;
+    width: 100%;
     background: #ffffff;
     border: 1px solid #e5eaf4;
     box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.03);
@@ -35,10 +36,10 @@ const HomeBlogWrapper = styled.div`
     background: #848484;
     border-radius: 16px 0px 0px 16px;
     width: 50%;
-    height: 400px;
+    height: 298px;
     z-index: 0;
     right: -1px;
-    margin-right: 70px;
+    margin-right: 30px;
     overflow: hidden;
 
     img {
@@ -58,23 +59,24 @@ const HomeBlogWrapper = styled.div`
     font-size: 12px;
     height: 30px;
     color: #36b37e;
-    margin-top: 40px;
+    margin-top: 20px;
     cursor: pointer;
   }
   .des-part {
     width: 550px;
     height: 100% !important;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    padding-right: 20px;
   }
   .des-title {
     color: #183b56;
     font-weight: 400;
-    font-size: 36px;
-    padding-top: 30px;
+    font-size: 30px;
+    padding-top: 10px;
   }
   .des {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
     padding-top: 20px;
     color: #5a7184;
     width: 100%;
@@ -82,7 +84,7 @@ const HomeBlogWrapper = styled.div`
   .profile-data {
     display: flex;
     justify-content: space-between;
-    padding-top: 40px;
+    padding-top: 30px;
   }
   .profile {
     height: 50px;
@@ -138,7 +140,7 @@ const HomeBlogWrapper = styled.div`
     color: #5a7184;
   }
   .head-part {
-    width: 1500px;
+    width: 100%;
     display: flex;
     margin-bottom: 30px;
     justify-content: space-between;
@@ -149,34 +151,43 @@ const HomeBlogWrapper = styled.div`
   }
 
   @media screen and (max-width: 1400px) {
+    padding: 0 100px;
     .mySwiper {
-      width: 1200px;
+      width: 100%;
+      height: 300px;
     }
     .head-part {
       display: flex;
       justify-content: space-between;
       width: 100%;
-      padding: 0 20px 0 20px;
     }
   }
   @media screen and (max-width: 1200px) {
     .mySwiper {
-      width: 1000px;
+      width: 100%;
     }
     .btn-feature {
-      margin-top: 30px;
+      margin-top: 20px;
     }
     .des-title {
-      padding-top: 20px;
       font-size: 32px;
+      padding-top: 10px;
     }
     .des {
       padding-right: 20px;
+      padding-top: 20px;
+    }
+    .des-part {
+      margin-bottom: 20px;
+    }
+    .profile-data {
+      padding-top: 20px;
     }
   }
   @media screen and (max-width: 1000px) {
+    padding: 0 50px;
     .mySwiper {
-      width: 700px;
+      width: 100%;
       height: 100%;
     }
     .blank-card {
@@ -199,6 +210,7 @@ const HomeBlogWrapper = styled.div`
     }
   }
   @media screen and (max-width: 700px) {
+    padding: 0 20px;
     .mySwiper {
       width: 500px;
       height: 100%;
@@ -256,9 +268,16 @@ const HomeBlogWrapper = styled.div`
     .date {
       font-size: 12px;
     }
+    .head-part {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      gap: 10px;
+    }
   }
   @media screen and (max-width: 400px) {
     height: 100%;
+    padding: 0 10px;
     .mySwiper {
       width: 350px;
       height: 100%;

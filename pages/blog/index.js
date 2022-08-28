@@ -18,7 +18,7 @@ const BlogHeaderBox1Wrapper = styled.div`
     justify-content: center;
     bottom: 240px;
     display: flex;
-    width: 1500px;
+    width: 100%;
     height: 380px;
     display: flex;
     justify-content: center;
@@ -26,6 +26,7 @@ const BlogHeaderBox1Wrapper = styled.div`
     border: 1px solid #e5eaf4;
     box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.03);
     border-radius: 16px;
+    margin: 0 150px;
 
     .header-img {
       width: 50%;
@@ -36,7 +37,7 @@ const BlogHeaderBox1Wrapper = styled.div`
     .header-desc {
       width: 50%;
       position: relative;
-
+      padding-right: 20px;
       .blog-box1-btn {
         padding: 20px 0px 0px;
         position: absolute;
@@ -73,7 +74,7 @@ const BlogHeaderBox1Wrapper = styled.div`
       .profile-data {
         display: flex;
         justify-content: space-between;
-        padding-top: 40px;
+        padding-top: 30px;
       }
       .profile {
         height: 50px;
@@ -104,17 +105,25 @@ const BlogHeaderBox1Wrapper = styled.div`
       }
     }
   }
+  /* @media screen and (max-width: 1560px) {
+    .header-box {
+      height: 420px;
+    }
+  } */
   @media screen and (max-width: 1400px) {
     .header-box {
-      width: 1000px;
+      width: 100%;
+      margin: 0 20px;
+      margin: 0 100px;
+      height: 330px;
     }
     .header-box .header-desc .blog-head1 div {
       font-size: 28px;
-      width: 410px;
+      width: 100%;
     }
     .header-box .header-desc .blog-head1 p {
-      font-size: 14px;
-      width: 410px;
+      font-size: 15px;
+      width: 100%;
     }
   }
   @media screen and (max-width: 1000px) {
@@ -122,10 +131,12 @@ const BlogHeaderBox1Wrapper = styled.div`
       width: 700px;
       height: 500px;
       flex-direction: column;
+      margin: 0 50px;
       .header-img {
         width: 100%;
         height: 50%;
         border-radius: 16px;
+        border-radius: 16px 16px 0px 0px;
       }
       .header-desc {
         width: 100%;
@@ -136,7 +147,7 @@ const BlogHeaderBox1Wrapper = styled.div`
         justify-content: center;
         align-items: center;
         .blog-bottom1 {
-          padding: 20px 0 0 0;
+          padding: 20px;
         }
         .blog-head1 div {
           width: 100%;
@@ -160,10 +171,10 @@ const BlogHeaderBox1Wrapper = styled.div`
   }
   @media screen and (max-width: 700px) {
     .header-box {
-      margin: 10px;
-      width: 450px;
+      width: 100%;
       bottom: 200px;
       text-align: center;
+      margin: 0 20px;
     }
     .header-box .header-desc {
       .blog-head1 div {
@@ -173,16 +184,13 @@ const BlogHeaderBox1Wrapper = styled.div`
       .blog-head1 p {
         font-size: 14px;
         width: 100%;
-      }
-      .profile-data {
-        padding: 10px 50px 0 50px;
       }
     }
   }
   @media screen and (max-width: 500px) {
     .header-box {
       margin: 10px;
-      width: 350px;
+      width: 100%;
       bottom: 200px;
       text-align: center;
     }
@@ -194,9 +202,6 @@ const BlogHeaderBox1Wrapper = styled.div`
       .blog-head1 p {
         font-size: 14px;
         width: 100%;
-      }
-      .profile-data {
-        padding: 10px 50px 0 50px;
       }
     }
   }
@@ -232,8 +237,8 @@ const BlogHeaderBox1 = () => {
                   </div>
                   <div className="blog-bottom1">
                     <div className="blog-head1">
-                      <div>{data.title}</div>
-                      <p>{data.para} ...</p>
+                      <div>{data.title.substr(0, 56)}...</div>
+                      <p>{data.para.substr(0, 90)} ...</p>
                     </div>
                     <div className="profile-data">
                       <div style={{ display: "flex" }}>

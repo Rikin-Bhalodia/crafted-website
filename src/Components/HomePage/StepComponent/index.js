@@ -32,7 +32,7 @@ const StepComponent = styled.div`
     font-weight: 700;
     font-size: 40px;
     text-align: center;
-    padding-top: 70px;
+    /* padding-top: 70px; */
   }
   .card {
     display: grid;
