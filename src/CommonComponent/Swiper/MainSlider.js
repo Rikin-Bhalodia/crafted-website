@@ -8,6 +8,7 @@ import { Pagination } from "swiper";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const SliderWrapper = styled.div`
   .slide {
@@ -92,6 +93,7 @@ const SliderWrapper = styled.div`
 `;
 
 export default function App() {
+  const router = useRouter();
   return (
     <SliderWrapper>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
@@ -108,7 +110,7 @@ export default function App() {
             }}
           />
           <div className="content">
-            <div className="name">India’s First</div>
+            <div className="name">World's First</div>
             <div className="desc">Online Matching Centre</div>
             <button className="match-btn" style={{ cursor: "pointer" }}>
               Match Now <Image src={RightArrow} alt="right-arrow" />
@@ -125,11 +127,13 @@ export default function App() {
       >
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => {
           return (
-            <SwiperSlide className="small-slider" key={i}>
+            <SwiperSlide
+              className="small-slider"
+              key={i}
+              onClick={() => router.push("/question")}
+            >
               <Image src={Sweater} alt="sweater" />
-              <Link href="/question">
-                <div>Poplin Cotton Fabric</div>
-              </Link>
+              <div>Poplin Cotton Fabric</div>
             </SwiperSlide>
           );
         })}

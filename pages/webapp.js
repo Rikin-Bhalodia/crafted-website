@@ -297,6 +297,7 @@ const WebApp = () => {
   const [category, setCategory] = useState(router.query.type || "");
   const [products, setProducts] = useState([]);
   const [color, setColor] = useState([]);
+  const [colorTag, setColorTag] = useState(router.query.color || "" || []);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [cartProduct, setCartProduct] = useState([]);
   const { currentUser } = useAuth();
@@ -316,8 +317,8 @@ const WebApp = () => {
   const selectedProduct = useMemo(() => {
     return products.filter((ele) => {
       return ele.category === category &&
-        color.length > 0 &&
-        color.includes(ele.color[0].toUpperCase())
+        Array.isArray(ele?.tag) &&
+        ele?.tag?.includes(colorTag)
         ? ele
         : null;
     });
@@ -437,28 +438,58 @@ const WebApp = () => {
               </div>
               <div className="match-color-box">
                 <div className="color-shade">
-                  {color?.length > 0 && category ? (
-                    selectedProduct.map((ele, i) => {
-                      return (
-                        <Image
-                          src={ele.image}
-                          width={200}
-                          height={200}
-                          layout="fixed"
-                          key={i}
-                        />
-                      );
-                    })
-                  ) : (
-                    <div
-                      style={{
-                        background: "black",
-                        filter: "blur(20px)",
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    ></div>
-                  )}
+                  {selectedProduct.map((ele, i) => {
+                    return Array.isArray(ele?.color) ? (
+                      ele?.color.map((data) =>
+                        typeof data == "string" ? (
+                          color.includes(data.toUpperCase()) ? (
+                            <img
+                              src={ele?.image}
+                              width={200}
+                              height={200}
+                              key={i}
+                            />
+                          ) : (
+                            <div
+                              style={{
+                                background: "black",
+                                filter: "blur(20px)",
+                                width: "100%",
+                                height: "100%",
+                              }}
+                            ></div>
+                          )
+                        ) : color.includes(data.color.toUpperCase()) ? (
+                          <img
+                            src={ele?.image}
+                            width={200}
+                            height={200}
+                            key={i}
+                          />
+                        ) : (
+                          <div
+                            style={{
+                              background: "black",
+                              filter: "blur(20px)",
+                              width: "100%",
+                              height: "100%",
+                            }}
+                          ></div>
+                        )
+                      )
+                    ) : ele?.color?.toUpperCase() ? (
+                      <img src={ele?.image} width={200} height={200} key={i} />
+                    ) : (
+                      <div
+                        style={{
+                          background: "black",
+                          filter: "blur(20px)",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                      ></div>
+                    );
+                  })}
                 </div>
                 <div className="btn">
                   <button
