@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import Footer from "../src/CommonComponent/Footer/FooterContact";
 import "antd/dist/antd.css";
-import Image from "next/image";
 import SingleProductModal from "../src/CommonComponent/SpecialProductModal";
 import { Select } from "antd";
 import { Breadcrumb } from "antd";
@@ -13,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { getDatabase, onValue, ref, set } from "firebase/database";
 import { useAuth } from "../src/auth/AuthContext";
 import { useRouter } from "next/router";
+import { ColorRing } from 'react-loader-spinner'
 import {
   black,
   blue,
@@ -308,7 +308,9 @@ const WebApp = () => {
   };
   const productsCollection = collection(db, "specialProducts");
   const getAllProducts = async () => {
+    console.time()
     const data = await getDocs(productsCollection);
+    console.timeEnd()
     setProducts(data.docs.map((data) => ({ ...data.data(), id: data.id })));
   };
   useEffect(() => {
@@ -414,6 +416,19 @@ const WebApp = () => {
   });
   const renderColors = router?.query?.color ? Colors?.data : AllColors;
 
+  if(!products?.length){
+return <div style={{width:"100%",height:"700px",display:"flex",justifyContent:"center",alignItems:"center"}}>
+      <ColorRing
+        visible={true}
+        height="80"
+        width="80"
+        ariaLabel="blocks-loading"
+        wrapperStyle={{}}
+        wrapperClass="blocks-wrapper"
+        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+      />
+        </div> 
+  }
   return (
     <>
       <Breadcrumb separator=">" style={{ marginLeft: "120px" }}>

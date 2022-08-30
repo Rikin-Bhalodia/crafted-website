@@ -13,7 +13,9 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../../../src/Firebase";
-import { getDatabase, onValue, ref, set } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
+import { ColorRing } from 'react-loader-spinner'
+
 
 const SingleProductWrapper = styled.div`
   display: flex;
@@ -229,6 +231,20 @@ const SingleProduct = () => {
       cartData: products,
     });
   };
+
+  if(!products?.length){
+    return <div style={{width:"100%",height:"700px",display:"flex",justifyContent:"center",alignItems:"center"}}>
+          <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+          />
+            </div> 
+      }
   return (
     <SingleProductWrapper>
       <div className="main-section">
