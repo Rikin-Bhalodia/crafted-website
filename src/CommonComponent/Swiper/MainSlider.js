@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RightArrow from "/public/svg/right-arrow.svg";
 import Sweater from "/public/svg/sweater.svg";
@@ -27,23 +27,20 @@ const SliderWrapper = styled.div`
     z-index: 99;
     display: flex;
     flex-direction: column;
-    ${"" /* align-items: center; */}
-    margin-left: 70px;
-    margin-top: 20px;
+    margin-left: 120px;
+    margin-top: 70px;
   }
   .name {
     font-weight: 500;
-    font-size: 28px;
-    ${"" /* padding-left: 52px; */}
+    font-size: 45px;
   }
   .desc {
     font-weight: 700;
-    font-size: 75px;
-    line-height: 80px;
+    font-size: 80px;
+    line-height: 100px;
     width: 300px;
     font-family: "Playfair Display";
     font-style: normal;
-    ${"" /* padding-left: 50px; */}
   }
   .match-btn {
     font-weight: 500;
@@ -51,7 +48,7 @@ const SliderWrapper = styled.div`
     background: #393d46;
     color: #fff;
     width: 200px;
-    margin-top: 30px;
+    margin-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,10 +74,10 @@ const SliderWrapper = styled.div`
   }
   @media screen and (max-width: 1950px) {
     video {
-      height: 800px;
+      height: 700px;
     }
     .content {
-      margin: 100px 140px;
+      margin: 70px 120px;
     }
     .name {
       font-size: 45px;
@@ -91,17 +88,17 @@ const SliderWrapper = styled.div`
     }
     .match-btn {
       font-size: 20px;
-      width: 180px;
+      width: 200px;
       margin-top: 40px;
       height: 50px;
     }
   }
   @media screen and (max-width: 1500px) {
     video {
-      height: 700px;
+      height: 630px;
     }
     .content {
-      margin: 80px 100px;
+      margin: 60px 100px;
     }
     .name {
       font-size: 35px;
@@ -119,10 +116,10 @@ const SliderWrapper = styled.div`
   }
   @media screen and (max-width: 1200px) {
     video {
-      height: 600px;
+      height: 580px;
     }
     .content {
-      margin: 40px 80px;
+      margin: 50px 80px;
     }
     .name {
       font-size: 30px;
@@ -137,7 +134,7 @@ const SliderWrapper = styled.div`
   }
   @media screen and (max-width: 570px) {
     .content {
-      margin: 30px 40px;
+      margin: 60px 50px;
     }
     .name {
       font-size: 25px;
@@ -157,11 +154,44 @@ const SliderWrapper = styled.div`
 
 export default function App() {
   const router = useRouter();
+  const [videoURL, setvideoURL] = useState("");
+  const [windowDimenion, detectHW] = useState({
+    winWidth: window.innerWidth,
+    winHeight: window.innerHeight,
+  });
+
+  const detectSize = () => {
+    detectHW({
+      winWidth: window.innerWidth,
+      winHeight: window.innerHeight,
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", detectSize);
+
+    return () => {
+      window.removeEventListener("resize", detectSize);
+    };
+  }, [windowDimenion]);
+
+  useEffect(() => {
+    if (windowDimenion.winWidth >= 1400) {
+      setvideoURL("/craftedVideo.mp4");
+    } else if (windowDimenion.winWidth >= 1000) {
+      setvideoURL("/Crafted1400.mp4");
+    } else if (windowDimenion.winWidth >= 600) {
+      setvideoURL("/Crafted900.mp4");
+    } else {
+      setvideoURL("/Crafted400.mp4");
+    }
+  }, [windowDimenion.winWidth]);
+
   return (
     <SliderWrapper>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
         <SwiperSlide className="slide">
-          <video src={"/craftedVideo.mp4"} autoPlay={true} loop={true} muted />
+          <video src={videoURL} autoPlay={true} loop={true} muted />
           <div className="content">
             <div className="name">World's First</div>
             <div className="desc">Online Matching Centre</div>
