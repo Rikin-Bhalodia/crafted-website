@@ -8,6 +8,7 @@ import { Pagination } from "swiper";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const SliderWrapper = styled.div`
   .slide {
@@ -152,6 +153,7 @@ const SliderWrapper = styled.div`
 `;
 
 export default function App() {
+  const router = useRouter();
   const [videoURL, setvideoURL] = useState("");
   const [windowDimenion, detectHW] = useState({
     winWidth: window.innerWidth,
@@ -191,7 +193,7 @@ export default function App() {
         <SwiperSlide className="slide">
           <video src={videoURL} autoPlay={true} loop={true} muted />
           <div className="content">
-            <div className="name">India’s First</div>
+            <div className="name">World's First</div>
             <div className="desc">Online Matching Centre</div>
             <button className="match-btn" style={{ cursor: "pointer" }}>
               Match Now <Image src={RightArrow} alt="right-arrow" />
@@ -208,14 +210,13 @@ export default function App() {
       >
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => {
           return (
-            <SwiperSlide className="small-slider" key={i}>
+            <SwiperSlide
+              className="small-slider"
+              key={i}
+              onClick={() => router.push("/question")}
+            >
               <Image src={Sweater} alt="sweater" />
-              <Link href="/question">
-                <div>
-                  Poplin Cotton
-                  <br /> Fabric
-                </div>
-              </Link>
+              <div>Poplin Cotton Fabric</div>
             </SwiperSlide>
           );
         })}

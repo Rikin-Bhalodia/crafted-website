@@ -6,10 +6,10 @@ const ProtectedRoute = ({ children }) => {
   const { currentUser } = useAuth();
   const router = useRouter();
   useEffect(() => {
-    if (!currentUser?.email || currentUser?.email) {
-      router.push("/");
-    }
-  }, [currentUser?.email]);
+    // if (!currentUser?.email || currentUser?.email) {
+    // router.push("/");
+    // }
+  }, []);
   return children;
 };
 

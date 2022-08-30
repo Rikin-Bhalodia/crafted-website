@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import ProductSlider from "../../../src/CommonComponent/Swiper/ProductSlider";
@@ -189,24 +189,36 @@ const SingleProductWrapper = styled.div`
 
 const SingleProduct = () => {
   const router = useRouter();
-  const [products, setProducts] = useState();
-  const docRef = doc(db, "products", router?.query?.id);
+  const [products, setProducts] = useState([]);
+  const [query] = useState(router?.query?.ids);
+  // router.query.map
+  const docRef = collection(db, "specialProducts");
   const getProducts = async () => {
-    const data = await getDoc(docRef);
-    setProducts(data.data());
+    const data = await getDocs(docRef);
+    setProducts(data.docs.map((data) => ({ ...data.data(), id: data.id })));
   };
   useEffect(() => {
     getProducts();
   }, []);
-  const handleChangeQuantity = async (type) => {
+
+  const specialProducts = useMemo(() => {
+    return products.filter((data) => {
+      return query.includes(data.id) ? data : null;
+    });
+  }, [products.length > 0]);
+  console.log(products, "products");
+  console.log(specialProducts, "specialProducts");
+  const handleChangeQuantity = async (type, product, id) => {
+    console.log(id, "id");
+    const docRef2 = doc(db, "specialProducts", id);
     type === "minus"
-      ? await updateDoc(docRef, {
-          ...products,
-          totalUserItem: products?.totalUserItem - 1,
+      ? await updateDoc(docRef2, {
+          ...product,
+          totalUserItem: product?.totalUserItem - 1,
         })
-      : await updateDoc(docRef, {
-          ...products,
-          totalUserItem: products?.totalUserItem + 1,
+      : await updateDoc(docRef2, {
+          ...product,
+          totalUserItem: product?.totalUserItem + 1,
         });
     getProducts();
   };
@@ -220,55 +232,77 @@ const SingleProduct = () => {
   return (
     <SingleProductWrapper>
       <div className="main-section">
-        {products && (
-          <>
-            <div className="left-part">
-              <div className="main-product">
-                <Image
-                  src={products?.image}
-                  layout="responsive"
-                  height={220}
-                  width={350}
-                />
-              </div>
-              <section>
-                <div className="variance"></div>
-                <div className="variance1"></div>
-                <div className="variance1"></div>
-              </section>
-            </div>
-            <div className="right-part">
-              <div className="route"> Featured {">"} Purple Warm Jacket</div>
-              <div className="title">{products?.name}</div>
-              <div className="amount">${products?.mrp}</div>
-              <div className="route" style={{ padding: "55px 0 0 0" }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </div>
-              <div className="quantity">
-                Quantity{" "}
-                <button
-                  className="btn-minus"
-                  onClick={() => handleChangeQuantity("minus")}
-                >
-                  -
-                </button>
-                <input type="number" value={products?.totalUserItem} />
-                <button
-                  className="btn-plus"
-                  onClick={() => handleChangeQuantity("add")}
-                >
-                  +
-                </button>{" "}
-              </div>
-              <button className="cart-btn" onClick={AddToCart}>
-                Add to Cart <Image src={CartImage} alt="cart-image" o />
-              </button>
-            </div>
-          </>
-        )}
+        {specialProducts &&
+          specialProducts.map((product) => {
+            return (
+              <>
+                <div className="left-part">
+                  <div className="main-product">
+                    <img
+                      src={product?.image[0]}
+                      layout="responsive"
+                      height={300}
+                      width={350}
+                    />
+                  </div>
+                  <section>
+                    <img
+                      src={product?.image[1]}
+                      layout="responsive"
+                      height={100}
+                      width={100}
+                    />
+                    <img
+                      src={product?.image[2]}
+                      layout="responsive"
+                      height={100}
+                      width={100}
+                    />
+                    <img
+                      src={product?.image[3]}
+                      layout="responsive"
+                      height={100}
+                      width={100}
+                    />
+                  </section>
+                </div>
+                <div className="right-part">
+                  <div className="route">
+                    {" "}
+                    Featured {">"} Purple Warm Jacket
+                  </div>
+                  <div className="title">{product?.name}</div>
+                  <div className="amount">${product?.mrp}</div>
+                  <div className="route" style={{ padding: "55px 0 0 0" }}>
+                    {product?.description}
+                  </div>
+                  <div className="quantity">
+                    Quantity{" "}
+                    <button
+                      className="btn-minus"
+                      onClick={() =>
+                        handleChangeQuantity("minus", product, product.id)
+                      }
+                    >
+                      -
+                    </button>
+                    <input type="number" value={product?.totalUserItem} />
+                    <button
+                      className="btn-plus"
+                      onClick={() =>
+                        handleChangeQuantity("add", product, product.id)
+                      }
+                    >
+                      +
+                    </button>{" "}
+                  </div>
+                  <button className="cart-btn" onClick={AddToCart}>
+                    Add to Cart <Image src={CartImage} alt="cart-image" o />
+                  </button>
+                </div>
+              </>
+            );
+          })}
       </div>
       <div>
         <div className="similar-product">

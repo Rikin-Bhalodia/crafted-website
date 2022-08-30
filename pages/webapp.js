@@ -297,6 +297,8 @@ const WebApp = () => {
   const [category, setCategory] = useState(router.query.type || "");
   const [products, setProducts] = useState([]);
   const [color, setColor] = useState([]);
+  const [ids, setIds] = useState([]);
+  const [colorTag, setColorTag] = useState(router.query.color || "" || []);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [cartProduct, setCartProduct] = useState([]);
   const { currentUser } = useAuth();
@@ -307,7 +309,7 @@ const WebApp = () => {
   const productsCollection = collection(db, "specialProducts");
   const getAllProducts = async () => {
     const data = await getDocs(productsCollection);
-    setProducts(data.docs.map((data) => data.data()));
+    setProducts(data.docs.map((data) => ({ ...data.data(), id: data.id })));
   };
   useEffect(() => {
     getAllProducts();
@@ -316,12 +318,15 @@ const WebApp = () => {
   const selectedProduct = useMemo(() => {
     return products.filter((ele) => {
       return ele.category === category &&
-        color.length > 0 &&
-        color.includes(ele.color[0]?.toUpperCase())
-        ? ele
+        ele?.tag?.includes(colorTag) &&
+        ele?.color[0]?.color
+        ? color.includes(ele?.color[0]?.color?.toUpperCase())
+          ? ele
+          : null
         : null;
     });
   }, [color, category]);
+  console.log(selectedProduct, "product");
   const onSelect = (data) => {
     if (color.includes(data)) {
       setColor((prev) => prev.filter((color) => color !== data));
@@ -337,11 +342,12 @@ const WebApp = () => {
   };
 
   const handleClick = () => {
-    if (color.length > 0) {
-      setIsModalVisible(true);
-    } else {
-      setIsModalVisible(false);
-    }
+    const ids = selectedProduct.map((data) => data?.id);
+    console.log(ids, "ids");
+    router.push({
+      pathname: "/product/1",
+      query: { ids: ids },
+    });
   };
 
   const handleCancel = () => {
@@ -437,15 +443,15 @@ const WebApp = () => {
               </div>
               <div className="match-color-box">
                 <div className="color-shade">
-                  {color?.length > 0 && category ? (
+                  {selectedProduct.length ? (
                     selectedProduct.map((ele, i) => {
                       return (
-                        <Image
-                          src={ele.image}
-                          width={200}
-                          height={200}
-                          layout="fixed"
+                        <img
+                          src={ele?.image[0]}
+                          width={100}
+                          height={100}
                           key={i}
+                          alt="image"
                         />
                       );
                     })
