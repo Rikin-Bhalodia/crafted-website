@@ -16,7 +16,7 @@ const CommonHeadWrapper = styled.div`
   div {
     width: 100%;
     height: 541px;
-    z-index: 999;
+    z-index: 111;
     position: relative;
 
     .common-head {
@@ -60,7 +60,7 @@ const CommonHeadWrapper = styled.div`
     position: absolute;
     bottom: 0;
   }
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 1040px) {
     height: 600px;
     div {
       height: 436px;
@@ -70,14 +70,26 @@ const CommonHeadWrapper = styled.div`
           font-size: 35px;
           line-height: 45px;
           margin-bottom: 10px;
-          width: 100%;
+          width: 50%;
         }
         p {
           margin-bottom: 20px;
-          width: 100%;
+          width: 50%;
         }
         .btn {
           padding: 12px 50px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 700px) {
+    div {
+      .common-head {
+        h3 {
+          width: 100%;
+        }
+        p {
+          width: 100%;
         }
       }
     }

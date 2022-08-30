@@ -13,23 +13,25 @@ import Link from "next/link";
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 100px;
+  height: 65px;
   width: 100%;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   align-items: center;
 
   .logo {
-    height: 90px !important;
+    height: 50px !important;
     width: 240px !important;
     padding-left: 80px !important;
   }
   .tabs {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
+    padding-right: 20px;
   }
   .tabs .option a {
-    font-size: 18px;
+    font-size: 15px;
+    font-weight: 500;
     color: #393d46 !important;
   }
   .right-side-part {
@@ -37,19 +39,20 @@ const HeaderWrapper = styled.div`
     right: 30px;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   .search {
-    height: 48px;
-    width: 250px;
+    height: 34px;
+    width: 150px;
     border: 2px solid #f6f7fb;
     padding-left: 20px;
     color: #9f9f9f;
-    font-size: 18px;
+    font-size: 15px;
   }
   .search-icon {
     background: #393d46;
     display: flex;
-    height: 48px;
+    height: 34px;
     width: 40px;
     justify-content: center;
     align-items: center;
@@ -61,7 +64,7 @@ const HeaderWrapper = styled.div`
     margin-left: 30px;
     background: #393d46;
     width: 68px;
-    height: 48px;
+    height: 34px;
     border: none;
     color: #ffffff;
   }
@@ -85,7 +88,6 @@ const HeaderWrapper = styled.div`
     padding-left: 25px;
     display: grid;
     grid-template-columns: repeat(3, auto);
-    grid-gap: 50px;
     list-style-type: none;
   }
   .mobile-option {
@@ -105,7 +107,7 @@ const HeaderWrapper = styled.div`
       width: 100%;
       height: 350px;
       position: absolute;
-      top: 80px;
+      top: 48px;
       left: -100%;
       opacity: 0;
       transition: all 0.5s ease;
@@ -122,6 +124,7 @@ const HeaderWrapper = styled.div`
       z-index: 9;
       align-content: center;
       padding-left: 0px;
+      z-index: 999;
       .tabs {
         flex-direction: column;
         gap: 0;
@@ -129,8 +132,8 @@ const HeaderWrapper = styled.div`
     }
 
     .menu-icon {
-      width: 45px;
-      height: 45px;
+      width: 35px;
+      height: 35px;
       margin-right: 10px;
     }
     .option {
@@ -174,7 +177,6 @@ const HeaderWrapper = styled.div`
     }
     .right-side-part {
       right: 0px;
-      width: 80%;
     }
   }
 
@@ -185,7 +187,7 @@ const HeaderWrapper = styled.div`
 
     .search {
       padding-left: 0px;
-      width: 100% !important;
+      width: 100px;
     }
     .tabs {
       font-size: 15px;
@@ -214,6 +216,8 @@ const Header = () => {
             src={Logo}
             alt="company-logo"
             className="logo"
+            height={60}
+            width="200"
             style={{ cursor: "pointer" }}
           />
         </Link>
