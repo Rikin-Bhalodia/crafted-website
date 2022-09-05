@@ -14,9 +14,10 @@ const CommonCardWrapper = styled.div`
     align-items: center;
     position: relative;
     bottom: -130px;
+    padding: 0 50px;
   }
   .card {
-    width: 600px;
+    width: 680px;
     height: 330px;
     display: flex;
     background: #f6f7fb;
@@ -94,22 +95,26 @@ const CommonCardWrapper = styled.div`
   }
 
   @media screen and (max-width: 1286px) {
-    .container {
-      flex-direction: column;
-      margin: 0px 20px;
-    }
-
     .time-table {
       width: 100%;
     }
     .card {
       width: 100%;
-      height: 100%;
+      height: 300px;
     }
   }
   @media screen and (max-width: 1000px) {
+    .container {
+      flex-direction: column;
+      margin: 0px 20px;
+      padding: 0 0px;
+    }
     .card-content {
       padding: 10px 0px;
+    }
+    .card {
+      width: 600px;
+      height: 330px;
     }
   }
   @media screen and (max-width: 700px) {
@@ -118,6 +123,10 @@ const CommonCardWrapper = styled.div`
     }
     .des {
       font-size: 17px;
+    }
+    .card {
+      width: 100%;
+      height: 100%;
     }
   }
 

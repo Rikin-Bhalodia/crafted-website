@@ -29,17 +29,17 @@ const HomeBlogWrapper = styled.div`
     border: 1px solid #e5eaf4;
     box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.03);
     border-radius: 16px;
-    height: 100%;
+    height: 400px;
   }
   .blank-card {
     position: relative;
     background: #848484;
     border-radius: 16px 0px 0px 16px;
     width: 50%;
-    height: 298px;
+    height: 400px;
     z-index: 0;
     right: -1px;
-    margin-right: 30px;
+    margin-right: 50px;
     overflow: hidden;
 
     img {
@@ -54,16 +54,16 @@ const HomeBlogWrapper = styled.div`
     mix-blend-mode: normal;
     border-radius: 2000px;
     font-weight: 600;
-    width: 100px;
+    width: 150px;
     border: none;
-    font-size: 12px;
-    height: 30px;
+    font-size: 15px;
+    height: 40px;
     color: #36b37e;
-    margin-top: 20px;
+    margin-top: 40px;
     cursor: pointer;
   }
   .des-part {
-    width: 550px;
+    width: 50%;
     height: 100% !important;
     /* margin-bottom: 20px; */
     padding-right: 20px;
@@ -71,12 +71,12 @@ const HomeBlogWrapper = styled.div`
   .des-title {
     color: #183b56;
     font-weight: 400;
-    font-size: 30px;
-    padding-top: 10px;
+    font-size: 35px;
+    padding-top: 20px;
   }
   .des {
     font-weight: 400;
-    font-size: 15px;
+    font-size: 20px;
     padding-top: 20px;
     color: #5a7184;
     width: 100%;
@@ -84,7 +84,7 @@ const HomeBlogWrapper = styled.div`
   .profile-data {
     display: flex;
     justify-content: space-between;
-    padding-top: 30px;
+    padding-top: 40px;
   }
   .profile {
     height: 50px;
@@ -98,19 +98,19 @@ const HomeBlogWrapper = styled.div`
   .name {
     color: #183b56;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
   }
   .verified {
     font-family: "Open Sans";
     font-style: italic;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     color: #5a7184;
     padding-left: 8px;
   }
   .date {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     color: #5a7184;
     padding-right: 25px;
   }
@@ -160,6 +160,43 @@ const HomeBlogWrapper = styled.div`
       display: flex;
       justify-content: space-between;
       width: 100%;
+    }
+    .blank-card {
+      margin-right: 30px;
+    }
+    .btn-feature {
+      font-size: 12px;
+      margin-top: 20px;
+      width: 100px;
+      height: 30px;
+    }
+    .des-part {
+      width: 550px;
+      height: 100% !important;
+      padding-right: 20px;
+    }
+    .des-title {
+      font-size: 30px;
+      padding-top: 10px;
+    }
+    .des {
+      font-weight: 400;
+      font-size: 15px;
+      padding-top: 20px;
+      width: 100%;
+    }
+    .profile-data {
+      padding-top: 30px;
+    }
+
+    .name {
+      font-size: 16px;
+    }
+    .verified {
+      font-size: 14px;
+    }
+    .date {
+      font-size: 16px;
     }
   }
   @media screen and (max-width: 1200px) {

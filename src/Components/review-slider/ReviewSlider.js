@@ -1,33 +1,66 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 // import Link from "next/link";
-import Image from "next/image";
-import review from "../../../public/review-image/Review.png";
-import review1 from "../../../public/review-image/Review-1.png";
-import review2 from "../../../public/review-image/Review-2.png";
-import review3 from "../../../public/review-image/Review-3.png";
-import review4 from "../../../public/review-image/Review-4.png";
-import review5 from "../../../public/review-image/Review-5.png";
-import review6 from "../../../public/review-image/Review-6.png";
-import review7 from "../../../public/review-image/Review-7.png";
-import review8 from "../../../public/review-image/Review-8.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { FreeMode } from "swiper";
+import { GoStar } from "react-icons/go";
 
 const ReviewSliderWrapper = styled.div`
   padding: 0px 30px;
   .team-slider {
-    height: 700px;
-    margin: 20px;
+    height: 500px;
+    margin: 50px 0px;
     .slider {
-      overflow: hidden;
-      position: relative;
+      display: flex;
+      background: #f6f7fb;
+      box-shadow: 0px 16px 25px rgba(0, 0, 0, 0.1);
+      border-radius: 45px;
+      height: 100%;
+      margin: 30px 10px 30px 20px;
+      .review-img {
+        padding: 30px 15px 20px 20px;
+        div {
+          width: 70px;
+          height: 70px;
+          background: #cccccc;
+          border-radius: 50%;
+        }
+      }
+      .review-data {
+        padding: 30px 30px 30px 0;
+
+        h5 {
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 22px;
+          color: #183b56;
+          margin: 15px 0 0;
+        }
+        div {
+          color: yellow;
+        }
+        p {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+          color: rgba(24, 59, 86, 0.5);
+          margin: 5px 0;
+        }
+
+        h6 {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 22px;
+          color: #183b56;
+          margin: 15px 0;
+        }
+      }
     }
   }
   @media screen and (max-width: 500px) {
-    padding: 0px;
+    padding: 0 20px;
   }
 `;
 
@@ -44,101 +77,195 @@ const ReviewSlider = () => {
               breakpoints={{
                 0: {
                   slidesPerView: 1,
-                  spaceBetween: 10,
+                  spaceBetween: 0,
                 },
                 750: {
                   slidesPerView: 2,
-                  spaceBetween: 20,
+                  spaceBetween: 0,
                 },
-                1075: {
+                1100: {
                   slidesPerView: 3,
-                  spaceBetween: 20,
+                  spaceBetween: 0,
                 },
                 1500: {
-                  slidesPerView: 3,
-                  spaceBetween: 30,
+                  slidesPerView: 4,
+                  spaceBetween: 0,
                 },
               }}
             >
               <div style={{ width: "100%" }}>
                 <SwiperSlide>
                   <div className="slider">
-                    <Image
-                      src={review}
-                      width={500}
-                      height="550"
-                      layout="fixed"
-                    />
+                    <div className="review-img">
+                      <div></div>
+                    </div>
+                    <div className="review-data">
+                      <h5>svedha.r</h5>
+                      <div>
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                      </div>
+                      <h5>Comfortin</h5>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <h6>
+                        It was soft and suits for summer , thanks for the
+                        product which satisfies my mom expectations with a
+                        reasonable price and more comfortable.
+                      </h6>
+                    </div>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                   <div className="slider">
-                    <Image
-                      src={review2}
-                      width={500}
-                      height="550"
-                      layout="fixed"
-                    />
+                    <div className="review-img">
+                      <div></div>
+                    </div>
+                    <div className="review-data">
+                      <h5>svedha.r</h5>
+                      <div>
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                      </div>
+                      <h5>Comfortin</h5>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <h6>
+                        It was soft and suits for summer , thanks for the
+                        product which satisfies my mom expectations with a
+                        reasonable price and more comfortable.
+                      </h6>
+                    </div>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                   <div className="slider">
-                    <Image
-                      src={review3}
-                      width={500}
-                      height="550"
-                      layout="fixed"
-                    />
+                    <div className="review-img">
+                      <div></div>
+                    </div>
+                    <div className="review-data">
+                      <h5>svedha.r</h5>
+                      <div>
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                      </div>
+                      <h5>Comfortin</h5>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <h6>
+                        It was soft and suits for summer , thanks for the
+                        product which satisfies my mom expectations with a
+                        reasonable price and more comfortable.
+                      </h6>
+                    </div>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                   <div className="slider">
-                    <Image
-                      src={review4}
-                      width={500}
-                      height="550"
-                      layout="fixed"
-                    />
+                    <div className="review-img">
+                      <div></div>
+                    </div>
+                    <div className="review-data">
+                      <h5>svedha.r</h5>
+                      <div>
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                      </div>
+                      <h5>Comfortin</h5>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <h6>
+                        It was soft and suits for summer , thanks for the
+                        product which satisfies my mom expectations with a
+                        reasonable price and more comfortable.
+                      </h6>
+                    </div>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                   <div className="slider">
-                    <Image
-                      src={review5}
-                      width={500}
-                      height="550"
-                      layout="fixed"
-                    />
+                    <div className="review-img">
+                      <div></div>
+                    </div>
+                    <div className="review-data">
+                      <h5>svedha.r</h5>
+                      <div>
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                      </div>
+                      <h5>Comfortin</h5>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <h6>
+                        It was soft and suits for summer , thanks for the
+                        product which satisfies my mom expectations with a
+                        reasonable price and more comfortable.
+                      </h6>
+                    </div>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                   <div className="slider">
-                    <Image
-                      src={review6}
-                      width={500}
-                      height="550"
-                      layout="fixed"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="slider">
-                    <Image
-                      src={review7}
-                      width={500}
-                      height="550"
-                      layout="fixed"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="slider">
-                    <Image
-                      src={review8}
-                      width={500}
-                      height="550"
-                      layout="fixed"
-                    />
+                    <div className="review-img">
+                      <div></div>
+                    </div>
+                    <div className="review-data">
+                      <h5>svedha.r</h5>
+                      <div>
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                      </div>
+                      <h5>Comfortin</h5>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <p>Reviewed in India on 14 June 2021</p>
+                      <h6>
+                        It was soft and suits for summer , thanks for the
+                        product which satisfies my mom expectations with a
+                        reasonable price and more comfortable.
+                      </h6>
+                    </div>
                   </div>
                 </SwiperSlide>
               </div>

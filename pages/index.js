@@ -23,8 +23,8 @@ const MainAppWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 40px;
-    height: 300px;
-    width: 600px;
+    height: 400px;
+    width: 680px;
     bottom: 150px;
   }
   .box-container {
@@ -35,6 +35,7 @@ const MainAppWrapper = styled.div`
     box-shadow: 0px 16px 50px rgba(0, 0, 0, 0.1);
     border-radius: 35px;
     padding: 0px 30px;
+    width: 680px;
   }
   .main-heading {
     text-align: center;
@@ -49,8 +50,8 @@ const MainAppWrapper = styled.div`
   }
   .card-details {
     display: flex;
-    height: 150px;
-    width: 250px;
+    height: 180px;
+    width: 280px;
     align-items: center;
   }
   .text {
@@ -97,7 +98,7 @@ const MainAppWrapper = styled.div`
   }
 
   .title-cus {
-    margin: 200px 0px 50px 100px;
+    margin: 50px 0px 0px 50px;
     font-weight: 700;
     font-size: 30px;
     color: #183b56;
@@ -106,9 +107,26 @@ const MainAppWrapper = styled.div`
     position: relative;
     top: 10px;
   }
+  @media screen and (max-width: 1400px) {
+    .main-container {
+      height: 300px;
+      width: 600px;
+    }
+    .box-container {
+      width: 100%;
+    }
+    .card-details {
+      height: 160px;
+      width: 250px;
+    }
+  }
+
   @media screen and (max-width: 1277px) {
     .main-container {
       width: 500px;
+    }
+    .box-container {
+      width: 100%;
     }
     .small-box {
       width: 70px;
@@ -116,7 +134,7 @@ const MainAppWrapper = styled.div`
       margin-right: 15px;
     }
     .card-details {
-      height: 120px;
+      height: 140px;
       width: 200px;
     }
     .text {
@@ -164,7 +182,7 @@ const MainAppWrapper = styled.div`
     }
     .title-cus {
       text-align: center;
-      margin: 100px 0px 50px;
+      margin: 50px 0 0;
     }
   }
   @media screen and (max-width: 627px) {
