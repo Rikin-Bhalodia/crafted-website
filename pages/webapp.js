@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { getDatabase, onValue, ref, set } from "firebase/database";
 import { useAuth } from "../src/auth/AuthContext";
 import { useRouter } from "next/router";
-import { ColorRing } from 'react-loader-spinner'
+import { ColorRing } from "react-loader-spinner";
 import {
   black,
   blue,
@@ -31,6 +31,8 @@ import {
   white,
   yellow,
 } from "../src/CommonComponent/Colors";
+import { images } from "../src/CommonComponent/BlankImages";
+import Image from "next/image";
 
 const WebAppWrapper = styled.div`
   .section {
@@ -93,6 +95,7 @@ const WebAppWrapper = styled.div`
     display: flex;
     gap: 10px;
     margin: 0 60px;
+    position: relative;
     justify-content: center;
     align-items: center;
   }
@@ -294,6 +297,8 @@ const AllColors = Colors;
 
 const WebApp = () => {
   const router = useRouter();
+  console.log(router, "routeer");
+
   const [category, setCategory] = useState(router.query.type || "");
   const [products, setProducts] = useState([]);
   const [color, setColor] = useState([]);
@@ -308,9 +313,9 @@ const WebApp = () => {
   };
   const productsCollection = collection(db, "specialProducts");
   const getAllProducts = async () => {
-    console.time()
+    console.time();
     const data = await getDocs(productsCollection);
-    console.timeEnd()
+    console.timeEnd();
     setProducts(data.docs.map((data) => ({ ...data.data(), id: data.id })));
   };
   useEffect(() => {
@@ -348,7 +353,7 @@ const WebApp = () => {
     console.log(ids, "ids");
     router.push({
       pathname: "/product/1",
-      query: { ids: ids },
+      query: { ids: ids, category: router?.query?.type },
     });
   };
 
@@ -416,18 +421,28 @@ const WebApp = () => {
   });
   const renderColors = router?.query?.color ? Colors?.data : AllColors;
 
-  if(!products?.length){
-return <div style={{width:"100%",height:"700px",display:"flex",justifyContent:"center",alignItems:"center"}}>
-      <ColorRing
-        visible={true}
-        height="80"
-        width="80"
-        ariaLabel="blocks-loading"
-        wrapperStyle={{}}
-        wrapperClass="blocks-wrapper"
-        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-      />
-        </div> 
+  if (!products?.length) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "700px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <ColorRing
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+        />
+      </div>
+    );
   }
   return (
     <>
@@ -454,6 +469,8 @@ return <div style={{width:"100%",height:"700px",display:"flex",justifyContent:"c
                   <Option value="petticoat">Saree Petticoat</Option>
                   <Option value="poplin-cotton">Poplin Cotton Fabric</Option>
                   <Option value="patiala">Patiala Salwar</Option>
+                  <Option value="full-patiala">Full Patiala Salwar</Option>
+                  <Option value="semi-patiala">Semi Patiala Salwar</Option>
                 </Select>
               </div>
               <div className="match-color-box">
@@ -463,22 +480,38 @@ return <div style={{width:"100%",height:"700px",display:"flex",justifyContent:"c
                       return (
                         <img
                           src={ele?.image[0]}
-                          width={100}
-                          height={100}
+                          height={350}
+                          width={300}
                           key={i}
                           alt="image"
+                          style={
+                            i === 0
+                              ? { position: "relative" }
+                              : i === 1
+                              ? { position: "absolute", left: "140px" }
+                              : i === 2
+                              ? { position: "absolute", right: "150px" }
+                              : { position: "absolute", left: "200px" }
+                          }
                         />
                       );
                     })
                   ) : (
-                    <div
-                      style={{
-                        background: "black",
-                        filter: "blur(20px)",
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    ></div>
+                    <div>
+                      {images.map((image) => {
+                        console.log(image, "image");
+                        return (
+                          image.category === category && (
+                            <Image
+                              src={image.img}
+                              alt="images"
+                              height={350}
+                              width={300}
+                            />
+                          )
+                        );
+                      })}
+                    </div>
                   )}
                 </div>
                 <div className="btn">

@@ -8,7 +8,7 @@ const { Option } = Select;
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
 
-const SareePetticoatWrapper = styled.div`
+const PatialaSalwarWrapper = styled.div`
   .questions {
     .body {
       div {
@@ -30,9 +30,10 @@ const SareePetticoatWrapper = styled.div`
   }
 `;
 
-const SareePetticoat = () => {
+const SemiPatialaSalwar = () => {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+
   const handleChange = (value) => {
     setColor(value);
   };
@@ -46,7 +47,7 @@ const SareePetticoat = () => {
     if (color && size) {
       router.push({
         pathname: "/webapp",
-        query: { type: "petticoat", color: color, size: size },
+        query: { type: "semi-patiala", color: color, size: size },
       });
     } else {
       toast("please fill the data ");
@@ -54,11 +55,11 @@ const SareePetticoat = () => {
   };
   return (
     <>
-      <SareePetticoatWrapper>
+      <PatialaSalwarWrapper>
         <div className="questions">
           <div className="body">
             <div>
-              <h5>1. What is the color of your saree?</h5>
+              <h5>1. What is the contrast color of your suit?</h5>
               <p>
                 <Select
                   defaultValue="Select Color"
@@ -164,7 +165,7 @@ const SareePetticoat = () => {
               </p>
             </div>
             <div>
-              <h5>2. What is your waist size?</h5>
+              <h5>2. What is the size of your waist?</h5>
               <p>
                 <Select
                   defaultValue="Select Size"
@@ -190,9 +191,9 @@ const SareePetticoat = () => {
             </div>
           </div>
         </div>
-      </SareePetticoatWrapper>
+      </PatialaSalwarWrapper>
       <ToastContainer />
     </>
   );
 };
-export default SareePetticoat;
+export default SemiPatialaSalwar;

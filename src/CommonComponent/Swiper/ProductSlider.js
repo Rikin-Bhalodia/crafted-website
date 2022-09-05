@@ -28,8 +28,11 @@ const ProductWrapper = styled.div`
   .product-name {
     padding-top: 15px;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     color: #393d46;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    /* overflow: hidden; */
   }
   .product-price {
     padding-top: 5px;
@@ -54,7 +57,7 @@ const ProductWrapper = styled.div`
       height: 130px;
     }
     .product-name {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
   @media screen and (max-width: 520px) {
@@ -83,8 +86,9 @@ const ProductWrapper = styled.div`
   }
 `;
 
-export default function ProductSlider() {
-  const productsCollection = collection(db, "products");
+export default function ProductSlider({ category }) {
+  console.log(category, "kkkkkkk");
+  const productsCollection = collection(db, "specialProducts");
   const [products, setProducts] = useState([]);
   const getAllProducts = async () => {
     const data = await getDocs(productsCollection);
@@ -98,19 +102,21 @@ export default function ProductSlider() {
       <Swiper slidesPerView={4} grabCursor={true} spaceBetween={15}>
         {products &&
           products.map((ele, i) => {
+            console.log(ele, "ele");
             return (
-              <SwiperSlide className="swiperSlide" key={i}>
-                <div className="productImg">
-                  <Image
-                    src={ele?.image}
-                    layout="responsive"
-                    height={60}
-                    width={80}
-                  />
-                </div>
-                <div className="product-name">{ele.name}</div>
-                <div className="product-price">${ele.mrp}</div>
-              </SwiperSlide>
+              category === ele?.category && (
+                <SwiperSlide
+                  className="swiperSlide"
+                  key={i}
+                  style={{ height: "200px", width: "300px" }}
+                >
+                  <div className="productImg">
+                    <img src={ele?.image} height={60} width={80} />
+                  </div>
+                  <div className="product-name">{ele.name}</div>
+                  <div className="product-price">${ele.mrp}</div>
+                </SwiperSlide>
+              )
             );
           })}
       </Swiper>

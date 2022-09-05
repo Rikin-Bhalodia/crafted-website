@@ -182,6 +182,7 @@ const PatialaSalwar = () => {
                   <Option value="l">L</Option>
                   <Option value="xl">XL</Option>
                   <Option value="xxl">XXL</Option>
+                  <Option value="free-size">Free Size</Option>
                 </Select>
               </p>
             </div>

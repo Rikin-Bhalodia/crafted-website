@@ -14,13 +14,15 @@ import {
 } from "firebase/firestore";
 import { db } from "../../../src/Firebase";
 import { getDatabase, ref, set } from "firebase/database";
-import { ColorRing } from 'react-loader-spinner'
-
+import { ColorRing } from "react-loader-spinner";
 
 const SingleProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
   .main-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 670px;
     width: 90%;
     height: 423px;
@@ -61,7 +63,6 @@ const SingleProductWrapper = styled.div`
   .title {
     font-weight: 700;
     font-size: 40px;
-    width: 300px;
     padding-top: 25px;
   }
   .route {
@@ -124,6 +125,7 @@ const SingleProductWrapper = styled.div`
   }
   .main-section {
     display: flex;
+    flex-direction: column;
     column-gap: 30px;
   }
   @media screen and (max-width: 700px) {
@@ -193,7 +195,8 @@ const SingleProduct = () => {
   const router = useRouter();
   const [products, setProducts] = useState([]);
   const [query] = useState(router?.query?.ids);
-  // router.query.map
+  const [category] = useState(router?.query?.category);
+
   const docRef = collection(db, "specialProducts");
   const getProducts = async () => {
     const data = await getDocs(docRef);
@@ -205,13 +208,11 @@ const SingleProduct = () => {
 
   const specialProducts = useMemo(() => {
     return products.filter((data) => {
-      return query.includes(data.id) ? data : null;
+      return query?.includes(data.id) ? data : null;
     });
   }, [products.length > 0]);
-  console.log(products, "products");
-  console.log(specialProducts, "specialProducts");
   const handleChangeQuantity = async (type, product, id) => {
-    console.log(id, "id");
+    console.log(product, "product");
     const docRef2 = doc(db, "specialProducts", id);
     type === "minus"
       ? await updateDoc(docRef2, {
@@ -232,26 +233,36 @@ const SingleProduct = () => {
     });
   };
 
-  if(!products?.length){
-    return <div style={{width:"100%",height:"700px",display:"flex",justifyContent:"center",alignItems:"center"}}>
-          <ColorRing
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="blocks-loading"
-            wrapperStyle={{}}
-            wrapperClass="blocks-wrapper"
-            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-          />
-            </div> 
-      }
+  if (!products?.length) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "700px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <ColorRing
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+        />
+      </div>
+    );
+  }
   return (
     <SingleProductWrapper>
       <div className="main-section">
         {specialProducts &&
           specialProducts.map((product) => {
             return (
-              <>
+              <div style={{ display: "flex", margin: "0 0 50px 0" }}>
                 <div className="left-part">
                   <div className="main-product">
                     <img
@@ -316,7 +327,7 @@ const SingleProduct = () => {
                     Add to Cart <Image src={CartImage} alt="cart-image" o />
                   </button>
                 </div>
-              </>
+              </div>
             );
           })}
       </div>
@@ -335,7 +346,7 @@ const SingleProduct = () => {
           </span>
         </div>
         <div>
-          <ProductSlider />
+          <ProductSlider category={category} />
         </div>
       </div>
     </SingleProductWrapper>

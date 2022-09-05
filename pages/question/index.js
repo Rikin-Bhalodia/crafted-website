@@ -4,6 +4,8 @@ import styled from "styled-components";
 // import Image from "next/image";
 import SareePetticoat from "../../src/Components/question/SareePetticoat";
 import PatialaSalwar from "../../src/Components/question/PatialaSalwar";
+import FullPatialaSalwar from "../../src/Components/question/FullPatialaSalwar";
+import SemiPatialaSalwar from "../../src/Components/question/SemiPatialaSalwar";
 import PoplinCottonFabric from "../../src/Components/question/PoplinCottonFabric";
 import { Select } from "antd";
 import "antd/dist/antd.variable.min.css";
@@ -54,11 +56,15 @@ const Question = () => {
               <Option value="saree">Saree Petticoat</Option>
               <Option value="poplin">Poplin Cotton Fabric</Option>
               <Option value="patiala">Patiala Salwar</Option>
+              <Option value="full-patiala">Full Patiala Salwar</Option>
+              <Option value="semi-patiala">Semi Patiala Salwar</Option>
             </Select>
           </div>
           {name === "saree" && <SareePetticoat />}
           {name === "poplin" && <PoplinCottonFabric />}
           {name === "patiala" && <PatialaSalwar />}
+          {name === "full-patiala" && <FullPatialaSalwar />}
+          {name === "semi-patiala" && <SemiPatialaSalwar />}
         </div>
       </QuestionWrapper>
     </>
