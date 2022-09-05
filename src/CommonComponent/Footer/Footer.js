@@ -18,6 +18,11 @@ const FooterWrapper = styled.div`
     font-size: 36px;
     color: #cccccc;
   }
+  .para {
+    font-weight: 600;
+    font-size: 26px;
+    color: #cccccc;
+  }
   .color {
     display: flex;
     column-gap: 15px;
@@ -34,7 +39,8 @@ const FooterWrapper = styled.div`
     position: relative;
     ${"" /* right: 50px; */}
     margin-top: 30px;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 80px;
   }
   .title {
     font-weight: 700;
@@ -72,30 +78,74 @@ const FooterWrapper = styled.div`
     color: #cccccc;
     padding-top: 10px;
   }
-  @media screen and (max-width: 1299px) {
-    .container {
-      flex-direction: column;
-      text-align: center;
-    }
-    .container > div {
-      margin-top: 50px !important;
-    }
-    .color {
-      justify-content: center;
-    }
-    .all-footer-content {
-      justify-content: space-evenly;
-      width: 100vw;
-    }
+  .top {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+  }
+  .end {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+  }
+  .head-logo {
+    margin-top: 100px;
+    margin-left: 50px;
   }
   @media screen and (max-width: 1299px) {
-    .all-footer-content {
-      flex-wrap: wrap;
-      margin-top: 0px !important;
+    .top {
+      gap: 50px;
     }
+    .end {
+      gap: 50px;
+    }
+    .all-footer-content {
+      gap: 50px;
+    }
+    .container {
+      justify-content: center;
+    }
+  }
+  @media screen and (max-width: 1100px) {
+    .all-footer-content {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0px;
+      gap: 20px;
+    }
+    .head-logo {
+      margin-left: 50px;
+    }
+    .head {
+      font-size: 30px;
+    }
+    .para {
+      font-size: 20px;
+    }
+    .color {
+      column-gap: 10px;
+    }
+  }
+  @media screen and (max-width: 799px) {
     .all-footer-content > div {
       width: 150px;
       padding: 20px 0px;
+    }
+  }
+  @media screen and (max-width: 630px) {
+    .container {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    .head-logo {
+      text-align: center;
+      margin-left: 0px;
+      margin-top: 30px;
+    }
+    .color {
+      column-gap: 10px;
+      text-align: center;
+      justify-content: center;
     }
   }
 `;
@@ -104,15 +154,13 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <div className="container">
-        <div style={{ margin: "150px 0 0 0" }}>
+        <div className="head-logo">
           <Link href="/">
             <div className="head" style={{ cursor: "pointer" }}>
               The Crafted
             </div>
           </Link>
-          <div className="head" style={{ fontSize: "24px", fontWeight: "400" }}>
-            Building The Crafted New India.
-          </div>
+          <div className="para">Building The Crafted New India.</div>
           <div className="color">
             <div
               className="diff"
@@ -147,79 +195,83 @@ const Footer = () => {
           </div>
         </div>
         <div className="all-footer-content">
-          <div>
-            <div className="title" style={{ cursor: "pointer" }}>
-              Product
-            </div>
-            <Link href="/webapp">
-              <div className="data" style={{ cursor: "pointer" }}>
-                TCOMaC
+          <div className="top">
+            <div>
+              <div className="title" style={{ cursor: "pointer" }}>
+                Product
               </div>
-            </Link>
-            <div className="data" style={{ cursor: "pointer" }}>
-              Physical
+              <Link href="/webapp">
+                <div className="data" style={{ cursor: "pointer" }}>
+                  TCOMaC
+                </div>
+              </Link>
+              <div className="data" style={{ cursor: "pointer" }}>
+                Physical
+              </div>
+              <div className="data" style={{ cursor: "pointer" }}>
+                Categories
+              </div>
+              <div className="data" style={{ cursor: "pointer" }}>
+                Referral Program
+              </div>
             </div>
-            <div className="data" style={{ cursor: "pointer" }}>
-              Categories
-            </div>
-            <div className="data" style={{ cursor: "pointer" }}>
-              Referral Program
+            <div>
+              <div className="title" style={{ cursor: "pointer" }}>
+                Services
+              </div>
+              <div className="data" style={{ cursor: "pointer" }}>
+                Partners
+              </div>
+              <div className="data" style={{ cursor: "pointer" }}>
+                Design
+              </div>
+              <div className="data" style={{ cursor: "pointer" }}>
+                Themes
+              </div>
+              <div className="data" style={{ cursor: "pointer" }}>
+                Illustrations
+              </div>
             </div>
           </div>
-          <div>
-            <div className="title" style={{ cursor: "pointer" }}>
-              Services
-            </div>
-            <div className="data" style={{ cursor: "pointer" }}>
-              Partners
-            </div>
-            <div className="data" style={{ cursor: "pointer" }}>
-              Design
-            </div>
-            <div className="data" style={{ cursor: "pointer" }}>
-              Themes
-            </div>
-            <div className="data" style={{ cursor: "pointer" }}>
-              Illustrations
-            </div>
-          </div>
-          <div>
-            <div className="title" style={{ cursor: "pointer" }}>
-              Company
-            </div>
-            <Link href="/about">
-              <div className="data" style={{ cursor: "pointer" }}>
-                About Us
+          <div className="end">
+            <div>
+              <div className="title" style={{ cursor: "pointer" }}>
+                Company
               </div>
-            </Link>
-            <Link href="/think-social">
-              <div className="data" style={{ cursor: "pointer" }}>
-                Think Social
-              </div>
-            </Link>
-            <Link href="/blog">
-              <div className="data" style={{ cursor: "pointer" }}>
-                Blog
-              </div>
-            </Link>
-            <Link href="/contact">
-              <div className="data" style={{ cursor: "pointer" }}>
-                Contact Us
-              </div>
-            </Link>
-          </div>
-          <div>
-            <div className="title" style={{ cursor: "pointer" }}>
-              More
+              <Link href="/about">
+                <div className="data" style={{ cursor: "pointer" }}>
+                  About Us
+                </div>
+              </Link>
+              <Link href="/think-social">
+                <div className="data" style={{ cursor: "pointer" }}>
+                  Think Social
+                </div>
+              </Link>
+              <Link href="/blog">
+                <div className="data" style={{ cursor: "pointer" }}>
+                  Blog
+                </div>
+              </Link>
+              <Link href="/contact">
+                <div className="data" style={{ cursor: "pointer" }}>
+                  Contact Us
+                </div>
+              </Link>
             </div>
-            <div className="data" style={{ cursor: "pointer" }}>
-              Terms
-            </div>
-            <div className="data" style={{ cursor: "pointer" }}>
-              Privacy Policy
-            </div>
-            <div className="data" style={{ cursor: "pointer" }}>
-              Caree
+            <div>
+              <div className="title" style={{ cursor: "pointer" }}>
+                More
+              </div>
+              <div className="data" style={{ cursor: "pointer" }}>
+                Terms
+              </div>
+              <div className="data" style={{ cursor: "pointer" }}>
+                Privacy Policy
+              </div>
+              <div className="data" style={{ cursor: "pointer" }}>
+                Caree
+              </div>
             </div>
           </div>
         </div>

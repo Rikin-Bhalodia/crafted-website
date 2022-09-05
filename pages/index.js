@@ -10,20 +10,37 @@ import ReviewSlider from "../src/Components/review-slider/ReviewSlider";
 
 const MainAppWrapper = styled.div`
   position: relative;
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 0 50px;
+  }
   .main-container {
-    margin-top: 250px;
+    margin-top: 280px;
     display: flex;
     flex-direction: column;
-    height: 300px;
-    width: 600px;
+    align-items: center;
+    gap: 40px;
+    height: 400px;
+    width: 680px;
     bottom: 150px;
   }
   .box-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: space-evenly;
-    flex-wrap: wrap;
+    background: #f6f7fb;
+    box-shadow: 0px 16px 50px rgba(0, 0, 0, 0.1);
+    border-radius: 35px;
+    padding: 0px 30px;
+    width: 680px;
   }
   .main-heading {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
   }
   .small-box {
     width: 80px;
@@ -33,19 +50,22 @@ const MainAppWrapper = styled.div`
   }
   .card-details {
     display: flex;
-    height: 150px;
-    width: 250px;
+    height: 180px;
+    width: 280px;
     align-items: center;
   }
+  .text {
+    font-size: 20px;
+  }
   .woman-empowers {
-    margin-top: 100px;
+    margin-top: 200px;
     width: 100%;
     height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #f6f7fb;
-    margin-bottom: 60px;
+    margin-bottom: 0px;
   }
   .woman-empowers-title {
     font-weight: 600;
@@ -78,7 +98,7 @@ const MainAppWrapper = styled.div`
   }
 
   .title-cus {
-    margin: 200px 0px 50px 100px;
+    margin: 50px 0px 0px 50px;
     font-weight: 700;
     font-size: 30px;
     color: #183b56;
@@ -87,23 +107,64 @@ const MainAppWrapper = styled.div`
     position: relative;
     top: 10px;
   }
-  @media screen and (max-width: 1277px) {
-    .main {
-      flex-direction: column;
-    }
+  @media screen and (max-width: 1400px) {
     .main-container {
-      width: 100vw;
-      justify-content: center;
-      padding: 60px;
+      height: 300px;
+      width: 600px;
     }
-    .main2 {
-      margin-top: 80px !important;
+    .box-container {
+      width: 100%;
+    }
+    .card-details {
+      height: 160px;
+      width: 250px;
+    }
+  }
+
+  @media screen and (max-width: 1277px) {
+    .main-container {
+      width: 500px;
+    }
+    .box-container {
+      width: 100%;
+    }
+    .small-box {
+      width: 70px;
+      height: 70px;
+      margin-right: 15px;
+    }
+    .card-details {
+      height: 140px;
+      width: 200px;
+    }
+    .text {
+      font-size: 15px;
+      margin-right: 10px;
+    }
+    .main-heading {
+      font-size: 25px;
     }
     .woman-empowers {
       padding: 0px 50px;
     }
   }
   @media screen and (max-width: 1007px) {
+    .main {
+      flex-direction: column;
+    }
+    .main-container {
+      gap: 20px;
+      width: 600px;
+    }
+    .small-box {
+      width: 80px;
+      height: 80px;
+      margin-right: 25px;
+    }
+    .card-details {
+      height: 150px;
+      width: 250px;
+    }
     .woman-empowers {
       flex-direction: column;
       text-align: center;
@@ -113,23 +174,72 @@ const MainAppWrapper = styled.div`
     .woman-empowers-btn {
       margin-top: 30px;
     }
-
+    .main2 {
+      margin-top: 120px;
+    }
+    .box-container {
+      border-radius: 30px;
+    }
     .title-cus {
       text-align: center;
-      margin: 100px 0px 50px;
+      margin: 50px 0 0;
     }
   }
   @media screen and (max-width: 627px) {
     .main-container {
-      padding: 5px;
-      height: 100%;
-      width: 100%;
+      width: 400px;
+    }
+    .small-box {
+      width: 60px;
+      height: 60px;
+      margin-right: 15px;
     }
     .card-details {
-      width: 200px;
+      height: 120px;
+      width: 180px;
+    }
+    .text {
+      font-size: 12px;
+    }
+    .main2 {
+      margin-top: 80px;
     }
     .main-heading {
-      text-align: center;
+      font-size: 20px;
+    }
+    .woman-empowers {
+      margin-top: 100px;
+    }
+    .woman-empowers-title {
+      font-size: 18px;
+      padding-right: 0px;
+    }
+  }
+  @media screen and (max-width: 460px) {
+    .main-container {
+      width: 350px;
+    }
+    .small-box {
+      width: 50px;
+      height: 50px;
+      margin-right: 5px;
+    }
+    .card-details {
+      height: 100px;
+      width: 140px;
+    }
+    .text {
+      font-size: 12px;
+      margin-right: 0px;
+    }
+    .box-container {
+      border-radius: 20px;
+    }
+    .main2 {
+      margin-top: 10px;
+    }
+    .woman-empowers {
+      margin-top: 80px;
     }
     .woman-empowers-title {
       font-size: 18px;
@@ -162,15 +272,9 @@ export default function Home() {
       <MainSlider />
       <MatchComponent />
       <CommonCard />
-      <div
-        style={{ display: "flex", justifyContent: "center" }}
-        className="main"
-      >
+      <div style={{}} className="main">
         <div className="main-container">
-          <div
-            style={{ fontSize: "30px", fontWeight: "700" }}
-            className="main-heading"
-          >
+          <div style={{}} className="main-heading">
             New Arrival
           </div>
           <div className="box-container">
@@ -179,15 +283,15 @@ export default function Home() {
                 <div className="card-details" style={{}} key={data}>
                   <div className="small-box"></div>
                   <div className="card-data">
-                    <div>{data.name}</div>
-                    <div>{data.price}</div>
+                    <div className="text">{data.name}</div>
+                    <div className="text">{data.price}</div>
                   </div>
                 </div>
               );
             })}
           </div>
           <div style={{ textAlign: "center" }}>
-            View More
+            View all
             <svg
               width="32"
               height="31"
@@ -207,10 +311,7 @@ export default function Home() {
           </div>
         </div>
         <div className="main-container main2">
-          <div
-            style={{ fontSize: "30px", fontWeight: "700" }}
-            className="main-heading"
-          >
+          <div style={{}} className="main-heading">
             Popular This Week
           </div>
           <div className="box-container">
@@ -219,15 +320,16 @@ export default function Home() {
                 <div className="card-details" style={{}} key={data}>
                   <div className="small-box"></div>
                   <div className="card-data">
-                    <div>{data.name}</div>
-                    <div>{data.price}</div>
+                    <div className="text">{data.name}</div>
+                    <div className="text">{data.price}</div>
+                    <div></div>
                   </div>
                 </div>
               );
             })}
           </div>
           <div style={{ textAlign: "center" }}>
-            View More
+            View all
             <svg
               width="32"
               height="31"

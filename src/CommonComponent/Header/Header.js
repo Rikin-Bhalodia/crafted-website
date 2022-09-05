@@ -13,25 +13,29 @@ import Link from "next/link";
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 65px;
+  height: 100px;
   width: 100%;
   /* overflow-y: hidden; */
   align-items: center;
 
-  .logo {
+  .logo-container {
     height: 50px !important;
-    width: 240px !important;
-    padding-left: 80px !important;
+    width: 280px !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 3%;
   }
   .tabs {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding-right: 20px;
+    justify-content: flex-start;
+    gap: 70px;
+    padding-right: 50px;
   }
   .tabs .option a {
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 20px;
     color: #393d46 !important;
   }
   .right-side-part {
@@ -43,7 +47,7 @@ const HeaderWrapper = styled.div`
   }
   .search {
     height: 34px;
-    width: 150px;
+    width: 250px;
     border: 2px solid #f6f7fb;
     padding-left: 20px;
     color: #9f9f9f;
@@ -97,7 +101,7 @@ const HeaderWrapper = styled.div`
     display: none;
     visibility: hidden;
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1140px) {
     .logo {
       width: 45px;
       height: 45px;
@@ -160,21 +164,40 @@ const HeaderWrapper = styled.div`
       display: none;
     }
   }
+  @media screen and (max-width: 1665px) {
+    .tabs {
+      gap: 50px;
+    }
+    .search {
+      height: 34px;
+      width: 150px;
+    }
+  }
 
-  @media screen and (max-width: 1230px) {
+  @media screen and (max-width: 1365px) {
+    height: 75px;
+    .tabs {
+      gap: 30px;
+    }
     .right-area {
       justify-content: center;
       flex-direction: column;
       align-items: center;
       gap: 10px;
     }
+    .tabs .option a {
+      font-size: 15px;
+    }
+    .logo-container {
+      height: 50px !important;
+      width: 280px !important;
+      padding-right: 80px;
+      padding-left: 3%;
+    }
   }
   @media screen and (max-width: 712px) {
     justify-content: space-evenly;
     gap: 20px;
-    .logo {
-      padding-left: 10px !important;
-    }
     .right-side-part {
       right: 0px;
     }
@@ -193,6 +216,17 @@ const HeaderWrapper = styled.div`
       font-size: 15px;
       align-items: center;
       padding: 0px 30px;
+    }
+  }
+
+  @media screen and (max-width: 454px) {
+    .logo-container {
+      padding-right: 30px;
+    }
+  }
+  @media screen and (max-width: 404px) {
+    .logo-container {
+      padding-right: 10px;
     }
   }
 `;
@@ -216,8 +250,6 @@ const Header = () => {
             src={Logo}
             alt="company-logo"
             className="logo"
-            height={60}
-            width="200"
             style={{ cursor: "pointer" }}
           />
         </Link>

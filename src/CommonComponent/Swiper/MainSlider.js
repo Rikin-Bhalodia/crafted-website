@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import RightArrow from "/public/svg/right-arrow.svg";
 import Sweater from "/public/svg/sweater.svg";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import Image from "next/image";
 import styled from "styled-components";
-import Link from "next/link";
+// import Link from "next/link";
 import { useRouter } from "next/router";
+import { BsArrowRight } from "react-icons/bs";
 
 const SliderWrapper = styled.div`
+  height: 750px;
   .slide {
-    position: relative;
-    width: 100%;
-    height: 80%;
+    width: 100vw;
+    height: 750px;
   }
   .swiper-wrapper {
     position: relative;
@@ -32,31 +32,32 @@ const SliderWrapper = styled.div`
   }
   .name {
     font-weight: 500;
-    font-size: 45px;
+    font-size: 58px;
+    line-height: 87px;
   }
   .desc {
     font-weight: 700;
-    font-size: 80px;
-    line-height: 100px;
+    font-size: 128px;
+    line-height: 100%;
     width: 300px;
     font-family: "Playfair Display";
     font-style: normal;
   }
   .match-btn {
     font-weight: 500;
-    font-size: 20px;
-    background: #393d46;
+    font-size: 30px;
+    line-height: 36px;
     color: #fff;
-    width: 200px;
-    margin-top: 40px;
+    margin-top: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 50px;
+    margin-left: 10px;
+    z-index: 1;
   }
   .small-slider {
-    height: 120px;
-    width: 130px !important;
+    height: 160px;
+    width: 150px !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,90 +65,114 @@ const SliderWrapper = styled.div`
     text-align: center;
     background: #ffffff;
     border-radius: 25px;
+    div {
+      font-size: 20px;
+    }
   }
   .small-swiper {
-    bottom: 150px !important;
+    bottom: 200px;
+    z-index: 999;
   }
   video {
     width: 100vw;
     object-fit: cover;
+    height: 750px;
   }
-  @media screen and (max-width: 1950px) {
+
+  @media screen and (max-width: 1400px) {
+    height: 540px;
     video {
-      height: 700px;
+      height: 540px;
     }
     .content {
-      margin: 70px 120px;
+      margin: 40px 100px;
     }
     .name {
-      font-size: 45px;
+      font-size: 44px;
+      line-height: 66px;
     }
     .desc {
-      font-size: 80px;
-      line-height: 100px;
-    }
-    .match-btn {
-      font-size: 20px;
-      width: 200px;
-      margin-top: 40px;
-      height: 50px;
-    }
-  }
-  @media screen and (max-width: 1500px) {
-    video {
-      height: 630px;
-    }
-    .content {
-      margin: 60px 100px;
-    }
-    .name {
-      font-size: 35px;
-    }
-    .desc {
-      font-size: 70px;
-      line-height: 90px;
+      font-size: 100px;
     }
     .match-btn {
       font-size: 18px;
-      width: 170px;
-      margin-top: 35px;
-      height: 45px;
+      line-height: 27px;
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+    .small-slider {
+      height: 130px;
+      width: 120px !important;
+      div {
+        font-size: 15px;
+      }
+    }
+    .small-swiper {
+      bottom: 160px;
     }
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 850px) {
+    height: 450px;
     video {
-      height: 580px;
+      height: 450px;
     }
     .content {
-      margin: 50px 80px;
+      margin: 30px 60px;
     }
     .name {
-      font-size: 30px;
+      font-size: 35px;
+      line-height: 52px;
+    }
+    .desc {
+      font-size: 80px;
+    }
+    .match-btn {
+      font-size: 15px;
+      line-height: 22px;
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+    .small-slider {
+      height: 110px;
+      width: 100px !important;
+      div {
+        font-size: 12px;
+      }
+    }
+    .small-swiper {
+      bottom: 140px;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    height: 450px;
+
+    video {
+      height: 450px;
+    }
+    .content {
+      margin: 20px 40px;
+    }
+    .name {
+      font-size: 20px;
+      line-height: 30px;
     }
     .desc {
       font-size: 60px;
-      line-height: 80px;
     }
     .match-btn {
-      margin-top: 30px;
+      font-size: 15px;
+      margin-top: 10px;
+      margin-left: 10px;
     }
-  }
-  @media screen and (max-width: 570px) {
-    .content {
-      margin: 60px 50px;
+    .small-slider {
+      height: 110px;
+      width: 100px !important;
+      div {
+        font-size: 12px;
+      }
     }
-    .name {
-      font-size: 25px;
-    }
-    .desc {
-      font-size: 50px;
-      line-height: 70px;
-    }
-    .match-btn {
-      font-size: 16px;
-      width: 160px;
-      margin-top: 30px;
-      height: 40px;
+    .small-swiper {
+      bottom: 140px;
     }
   }
 `;
@@ -191,35 +216,41 @@ export default function App() {
     <SliderWrapper>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
         <SwiperSlide className="slide">
-          <video src={videoURL} autoPlay={true} loop={true} muted />
+          <div>
+            <video src={videoURL} autoPlay={true} loop={true} muted />
+          </div>
           <div className="content">
             <div className="name">World's First</div>
             <div className="desc">Online Matching Centre</div>
-            <button className="match-btn" style={{ cursor: "pointer" }}>
-              Match Now <Image src={RightArrow} alt="right-arrow" />
-            </button>
+            <div className="match-btn" style={{ cursor: "pointer" }}>
+              Match Now{" "}
+              <BsArrowRight
+                size={40}
+                style={{ marginBottom: "15px", marginLeft: "20px" }}
+              />
+            </div>
           </div>
+          <Swiper
+            slidesPerView={4}
+            centeredSlides={true}
+            grabCursor={true}
+            spaceBetween={15}
+            className="small-swiper"
+          >
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => {
+              return (
+                <SwiperSlide
+                  className="small-slider"
+                  key={i}
+                  onClick={() => router.push("/question")}
+                >
+                  <Image src={Sweater} alt="sweater" />
+                  <div>Poplin Cotton Fabric</div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </SwiperSlide>
-      </Swiper>
-      <Swiper
-        slidesPerView={4}
-        centeredSlides={true}
-        grabCursor={true}
-        spaceBetween={15}
-        className="small-swiper"
-      >
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => {
-          return (
-            <SwiperSlide
-              className="small-slider"
-              key={i}
-              onClick={() => router.push("/question")}
-            >
-              <Image src={Sweater} alt="sweater" />
-              <div>Poplin Cotton Fabric</div>
-            </SwiperSlide>
-          );
-        })}
       </Swiper>
     </SliderWrapper>
   );
