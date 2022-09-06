@@ -153,6 +153,11 @@ const CommonCardWrapper = styled.div`
       font-size: 10px;
       height: 30px;
     }
+    .title {
+      font-size: 26px;
+      top: 48px;
+      left: 35px;
+    }
   }
 `;
 

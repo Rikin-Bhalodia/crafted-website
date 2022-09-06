@@ -111,7 +111,7 @@ const FooterWrapper = styled.div`
       flex-direction: column;
       align-items: center;
       margin-top: 0px;
-      gap: 20px;
+      gap: 0px;
     }
     .head-logo {
       margin-left: 50px;
@@ -128,9 +128,14 @@ const FooterWrapper = styled.div`
   }
   @media screen and (max-width: 799px) {
     .all-footer-content > div {
-      width: 150px;
+      width: 350px;
       padding: 20px 0px;
     }
+    /* .top {
+    }
+    .end {
+      gap: 80px;
+    } */
   }
   @media screen and (max-width: 630px) {
     .container {

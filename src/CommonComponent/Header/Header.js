@@ -57,7 +57,7 @@ const HeaderWrapper = styled.div`
     background: #393d46;
     display: flex;
     height: 34px;
-    width: 40px;
+    width: 30px;
     justify-content: center;
     align-items: center;
   }
@@ -191,12 +191,12 @@ const HeaderWrapper = styled.div`
     .logo-container {
       height: 50px !important;
       width: 280px !important;
-      padding-right: 80px;
+      padding-right: 100px;
       padding-left: 3%;
     }
   }
   @media screen and (max-width: 712px) {
-    justify-content: space-evenly;
+    justify-content: space-between;
     gap: 20px;
     .right-side-part {
       right: 0px;
@@ -216,17 +216,6 @@ const HeaderWrapper = styled.div`
       font-size: 15px;
       align-items: center;
       padding: 0px 30px;
-    }
-  }
-
-  @media screen and (max-width: 454px) {
-    .logo-container {
-      padding-right: 30px;
-    }
-  }
-  @media screen and (max-width: 404px) {
-    .logo-container {
-      padding-right: 10px;
     }
   }
 `;
@@ -273,6 +262,14 @@ const Header = () => {
           </li>
         </div>
         <li className="option mobile-option" onClick={closeMobileMenu}>
+          <input placeholder="Search " className="search" style={{}} />
+          <div className="search-icon">
+            <Image
+              src={SearchIcon}
+              alt="search-icon"
+              style={{ cursor: "pointer" }}
+            />
+          </div>
           <div className="icon">
             <Image src={CartIcon} alt="cart-icon" />
           </div>
@@ -284,8 +281,8 @@ const Header = () => {
       </ul>
 
       <div className="right-side-part">
-        <input placeholder="Search" className="search" />
-        <div className="search-icon">
+        <input placeholder="Search" className="search non" />
+        <div className="search-icon non">
           <Image
             src={SearchIcon}
             alt="search-icon"

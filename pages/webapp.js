@@ -38,7 +38,6 @@ const WebAppWrapper = styled.div`
   .section {
     display: flex;
     justify-content: center;
-    gap: 150px;
   }
   .heading-section {
     font-weight: 700;
@@ -55,6 +54,7 @@ const WebAppWrapper = styled.div`
     padding-left: 50px;
     margin-bottom: 20px;
     margin-top: 20px;
+    width: 450px;
   }
   .label2 {
     font-weight: 700;
@@ -62,7 +62,6 @@ const WebAppWrapper = styled.div`
     text-align: center;
     margin-top: 20px;
 
-    padding-bottom: 20px;
     span {
       font-weight: 400;
     }
@@ -78,11 +77,12 @@ const WebAppWrapper = styled.div`
     margin-left: 25px;
   }
   .match-color-box {
-    background: #efefef;
+    background: #fff;
     mix-blend-mode: normal;
     border: 1px solid #000000;
-    border-radius: 35px;
-    height: 550px;
+    box-shadow: 0px 8px 19px rgba(0, 0, 0, 0.35);
+    border-radius: 20px;
+    height: 535px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -120,7 +120,7 @@ const WebAppWrapper = styled.div`
     justify-content: space-between;
     width: 100%;
     gap: 20px;
-    padding: 0px 30px;
+    padding: 20px 30px;
   }
   .button-add {
     background: #d9d9d9;
@@ -177,24 +177,41 @@ const WebAppWrapper = styled.div`
     position: relative;
     text-align: center;
   }
-
+  .sec-tco {
+    position: relative;
+    right: 25px;
+  }
   @media screen and (max-width: 1400px) {
     .match-color-box {
-      width: 500px;
-      height: 500px;
+      width: 600px;
     }
     .color-shade {
       width: 450px;
       height: 350px;
     }
     .btn {
-      width: 100%;
+      width: 550px;
       gap: 10px;
-      padding: 0px 10px;
+      padding: 20px 10px;
     }
     .box {
       width: 100px;
       height: 50px;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .match-color-box {
+      width: 500px;
+    }
+    .btn {
+      width: 420px;
+      gap: 10px;
+      padding: 20px 10px;
+    }
+    .button-add {
+      height: 40px;
+      width: 140px;
+      font-size: 13px;
     }
   }
   @media screen and (max-width: 1100px) {
@@ -207,7 +224,7 @@ const WebAppWrapper = styled.div`
       height: 250px;
     }
     .btn {
-      width: 100%;
+      width: 350px;
     }
     .box {
       width: 80px;
@@ -227,7 +244,23 @@ const WebAppWrapper = styled.div`
     .section {
       flex-direction: column;
       align-items: center;
-      gap: 30px;
+    }
+    .sec-tco {
+      position: relative;
+      right: 0;
+    }
+    .sec-toc1 {
+      position: relative;
+      top: 20px;
+      z-index: 1;
+    }
+    .label {
+      padding: 0 30px;
+      width: 350px;
+    }
+    .label2 {
+      margin-top: 30px;
+      padding: 0 10px;
     }
   }
   @media screen and (max-width: 400px) {
@@ -456,24 +489,24 @@ const WebApp = () => {
             TCOMaC - The Crafted Online Matching Center
           </div>
           <div className="section">
-            <section>
-              <div className="label">
-                <div>Select a Product</div> &nbsp;&nbsp;&nbsp;
-                <Select
-                  style={{
-                    width: "50%",
-                  }}
-                  value={category}
-                  onChange={handleSelectChange}
-                >
-                  <Option value="petticoat">Saree Petticoat</Option>
-                  <Option value="poplin-cotton">Poplin Cotton Fabric</Option>
-                  <Option value="patiala">Patiala Salwar</Option>
-                  <Option value="full-patiala">Full Patiala Salwar</Option>
-                  <Option value="semi-patiala">Semi Patiala Salwar</Option>
-                </Select>
-              </div>
+            <section className="sec-toc1">
               <div className="match-color-box">
+                <div className="label">
+                  <div>Select a Product</div> &nbsp;&nbsp;&nbsp;
+                  <Select
+                    style={{
+                      width: "50%",
+                    }}
+                    value={category}
+                    onChange={handleSelectChange}
+                  >
+                    <Option value="petticoat">Saree Petticoat</Option>
+                    <Option value="poplin-cotton">Poplin Cotton Fabric</Option>
+                    <Option value="patiala">Patiala Salwar</Option>
+                    <Option value="full-patiala">Full Patiala Salwar</Option>
+                    <Option value="semi-patiala">Semi Patiala Salwar</Option>
+                  </Select>
+                </div>
                 <div className="color-shade">
                   {selectedProduct.length ? (
                     selectedProduct.map((ele, i) => {
@@ -536,12 +569,12 @@ const WebApp = () => {
                 </div>
               </div>
             </section>
-            <section>
-              <div className="label2">
-                Choose your desired colors -{" "}
-                <span>max upto 4 colors for discounted price </span>
-              </div>
+            <section className="sec-tco">
               <div className="match-color-box">
+                <div className="label2">
+                  Choose your desired colors -{" "}
+                  <span>max upto 4 colors for discounted price </span>
+                </div>
                 <div className="container">
                   {renderColors &&
                     renderColors.map((data, i) => {
