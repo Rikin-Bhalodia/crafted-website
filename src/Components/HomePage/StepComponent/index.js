@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Step1 from "/public/svg/step1.svg";
 import Step2 from "/public/svg/step2.svg";
 import Step3 from "/public/svg/step3.svg";
-console.log(Step1.src, "kkkkkkkkkkkk");
 const StepComponent = styled.div`
   padding: 0px 200px;
   .heading-title {

@@ -106,8 +106,11 @@ const ProductTable = () => {
               gap: "7px",
             }}
           >
-            {product?.color?.map((color) => (
-              <div style={{ background: color, height: 13, width: 13 }}></div>
+            {product?.color?.map((color, i) => (
+              <div
+                style={{ background: color, height: 13, width: 13 }}
+                key={i}
+              ></div>
             ))}
           </div>
         ),

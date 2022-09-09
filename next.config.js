@@ -7,6 +7,9 @@ const nextConfig = {
       unoptimized: false,
     },
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = nextConfig;
