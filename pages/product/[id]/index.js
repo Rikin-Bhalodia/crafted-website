@@ -15,6 +15,7 @@ import {
 import { db } from "../../../src/Firebase";
 import { getDatabase, ref, set } from "firebase/database";
 import { ColorRing } from "react-loader-spinner";
+import useDebounce from "../../../src/CommonComponent/CustomHooks";
 
 const SingleProductWrapper = styled.div`
   display: flex;
@@ -196,7 +197,9 @@ const SingleProduct = () => {
   const [products, setProducts] = useState([]);
   const [query] = useState(router?.query?.ids);
   const [category] = useState(router?.query?.category);
+  const [totalProduct, setTotalProduct] = useState([]);
 
+  const debouncedValue = useDebounce(totalProduct, 500);
   const docRef = collection(db, "specialProducts");
   const getProducts = async () => {
     const data = await getDocs(docRef);
@@ -211,25 +214,32 @@ const SingleProduct = () => {
       return query?.includes(data.id) ? data : null;
     });
   }, [products.length > 0]);
-  const handleChangeQuantity = async (type, product, id) => {
-    console.log(product, "product");
-    const docRef2 = doc(db, "specialProducts", id);
-    type === "minus"
-      ? await updateDoc(docRef2, {
-          ...product,
-          totalUserItem: product?.totalUserItem - 1,
-        })
-      : await updateDoc(docRef2, {
-          ...product,
-          totalUserItem: product?.totalUserItem + 1,
-        });
-    getProducts();
+
+  const handleChangeQuantity = async (type, id) => {
+    const checkProduct = totalProduct.find((item) => item.id === id);
+    if (checkProduct) {
+      setTotalProduct((prev) =>
+        prev.map((data) =>
+          data.id === id
+            ? type === "minus"
+              ? { quantity: data.quantity - 1, id }
+              : { quantity: data.quantity + 1, id }
+            : data
+        )
+      );
+    } else {
+      setTotalProduct((prev) => [...prev, { quantity: 2, id }]);
+    }
   };
 
-  const AddToCart = () => {
+  const AddToCart = (product, id) => {
+    const checkProduct = totalProduct.find((item) => item.id === id);
     const db = getDatabase();
-    set(ref(db, "cartItem/" + router?.query?.id), {
-      cartData: products,
+    set(ref(db, "cartItem/" + id), {
+      cartData: {
+        ...product,
+        totalUserItem: checkProduct.quantity,
+      },
     });
   };
 
@@ -260,7 +270,10 @@ const SingleProduct = () => {
     <SingleProductWrapper>
       <div className="main-section">
         {specialProducts &&
-          specialProducts.map((product) => {
+          specialProducts.map((product, i) => {
+            const totalItems = totalProduct.filter(
+              (item) => item.id === product.id
+            );
             return (
               <div style={{ display: "flex", margin: "0 0 50px 0" }}>
                 <div className="left-part">
@@ -307,24 +320,23 @@ const SingleProduct = () => {
                     Quantity{" "}
                     <button
                       className="btn-minus"
-                      onClick={() =>
-                        handleChangeQuantity("minus", product, product.id)
-                      }
+                      onClick={() => handleChangeQuantity("minus", product.id)}
                     >
                       -
                     </button>
-                    <input type="number" value={product?.totalUserItem} />
+                    <input type="number" value={totalItems[0]?.quantity || 1} />
                     <button
                       className="btn-plus"
-                      onClick={() =>
-                        handleChangeQuantity("add", product, product.id)
-                      }
+                      onClick={() => handleChangeQuantity("add", product.id)}
                     >
                       +
                     </button>{" "}
                   </div>
-                  <button className="cart-btn" onClick={AddToCart}>
-                    Add to Cart <Image src={CartImage} alt="cart-image" o />
+                  <button
+                    className="cart-btn"
+                    onClick={() => AddToCart(product, product.id)}
+                  >
+                    Add to Cart <Image src={CartImage} alt="cart-image" />
                   </button>
                 </div>
               </div>

@@ -87,7 +87,6 @@ const ProductWrapper = styled.div`
 `;
 
 export default function ProductSlider({ category }) {
-  console.log(category, "kkkkkkk");
   const productsCollection = collection(db, "specialProducts");
   const [products, setProducts] = useState([]);
   const getAllProducts = async () => {
@@ -102,7 +101,6 @@ export default function ProductSlider({ category }) {
       <Swiper slidesPerView={4} grabCursor={true} spaceBetween={15}>
         {products &&
           products.map((ele, i) => {
-            console.log(ele, "ele");
             return (
               category === ele?.category && (
                 <SwiperSlide

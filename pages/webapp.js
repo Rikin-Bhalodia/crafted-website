@@ -330,7 +330,6 @@ const AllColors = Colors;
 
 const WebApp = () => {
   const router = useRouter();
-  console.log(router, "routeer");
 
   const [category, setCategory] = useState(router.query.type || "");
   const [products, setProducts] = useState([]);
@@ -356,7 +355,7 @@ const WebApp = () => {
   }, []);
 
   const selectedProduct = useMemo(() => {
-    return products.filter((ele) => {
+    return products?.filter((ele) => {
       return ele.category === category &&
         ele?.tag?.includes(colorTag) &&
         ele?.color[0]?.color
@@ -366,7 +365,7 @@ const WebApp = () => {
         : null;
     });
   }, [color, category]);
-  console.log(selectedProduct, "product");
+
   const onSelect = (data) => {
     if (color.includes(data)) {
       setColor((prev) => prev.filter((color) => color !== data));
@@ -383,7 +382,6 @@ const WebApp = () => {
 
   const handleClick = () => {
     const ids = selectedProduct.map((data) => data?.id);
-    console.log(ids, "ids");
     router.push({
       pathname: "/product/1",
       query: { ids: ids, category: router?.query?.type },
@@ -513,7 +511,7 @@ const WebApp = () => {
                       return (
                         <img
                           src={ele?.image[0]}
-                          height={350}
+                          height={300}
                           width={300}
                           key={i}
                           alt="image"
@@ -532,11 +530,10 @@ const WebApp = () => {
                   ) : (
                     <div>
                       {images.map((image) => {
-                        console.log(image, "image");
                         return (
                           image.category === category && (
                             <Image
-                              src={image.img}
+                              src={image?.img}
                               alt="images"
                               height={350}
                               width={300}
