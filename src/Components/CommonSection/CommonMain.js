@@ -8,9 +8,10 @@ const CommonMainWrapper = styled.div`
   .main-content {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 50px;
     .main-left {
+      flex-grow: 1;
       p {
         font-weight: 400;
         font-size: 24px;
@@ -30,31 +31,73 @@ const CommonMainWrapper = styled.div`
       }
     }
     .main-right {
+      flex-grow: 1;
       p {
         font-weight: 400;
-        font-size: 18px;
-        line-height: 32px;
-        color: #183b56;
+        font-size: 28px;
+        line-height: 36px;
+        color: #5a7184;
       }
     }
   }
 
   @media screen and (max-width: 1440px) {
     padding: 0px 80px;
+    .main-content {
+      .main-left {
+        p {
+          font-size: 20px;
+          line-height: 25px;
+          letter-spacing: 1.7px;
+        }
+        h4 {
+          font-size: 30px;
+          line-height: 40px;
+        }
+      }
+      .main-right {
+        p {
+          font-size: 25px;
+          line-height: 30px;
+        }
+      }
+    }
   }
-  @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1000px) {
     .main-content {
       flex-direction: column;
+      text-align: center;
+      .main-left {
+        h4 {
+          width: 100%;
+        }
+      }
     }
   }
   @media screen and (max-width: 657px) {
     padding: 0px 30px 0px;
-    gap: 30px;
-    .main-left {
-      h4 {
-        font-size: 26px;
-        line-height: 38px;
-        width: 100%;
+  }
+  @media screen and (max-width: 500px) {
+    .main-content {
+      text-align: left;
+      gap: 0px;
+
+      .main-left {
+        p {
+          font-size: 15px;
+          line-height: 15px;
+          letter-spacing: 1.5px;
+        }
+        h4 {
+          font-size: 28px;
+          line-height: 38px;
+        }
+      }
+      .main-right {
+        p {
+          font-size: 22px;
+          line-height: 30px;
+        }
       }
     }
   }

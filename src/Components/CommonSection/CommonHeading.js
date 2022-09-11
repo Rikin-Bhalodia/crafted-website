@@ -77,7 +77,7 @@ const CommonHeadWrapper = styled.div`
           width: 50%;
         }
         .btn {
-          padding: 12px 50px;
+          padding: 10px 30px;
         }
       }
     }
