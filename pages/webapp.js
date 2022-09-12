@@ -455,13 +455,13 @@ const WebApp = () => {
 
   const addToCart = () => {
     const db = getDatabase();
-    selectedProduct.map((ele) => {
+    selectedProduct?.map((ele) => {
       if (cartProducts.includes(ele.id.toString())) {
         toast(`Your ${ele.name} is already in Cart !!`);
       } else {
         set(ref(db, "cartItem/" + ele.id), {
           cartData: ele,
-          uid: currentUser.uid,
+          uid: currentUser?.uid || "",
         });
         toast("Your Item is added in Cart");
       }

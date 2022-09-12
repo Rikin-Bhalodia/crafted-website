@@ -3,16 +3,12 @@ import "antd/dist/antd.css";
 import { Button, Steps } from "antd";
 import ShoppingCart from "./../../src/Components/cart-page/Shoppingcart";
 import CheckOut from "./../../src/Components/cart-page/Checkout";
-import { getDatabase, onValue, ref, set } from "firebase/database";
+import { getDatabase, onValue, ref } from "firebase/database";
 import ThankYou from "./../../src/Components/cart-page/Thankyou";
 import styled from "styled-components";
-// import Image from "next/image";
 import Logo from "/public/svg/logo.svg";
 import UniqId from "uniqid";
-import { db } from "../../src/Firebase";
-import { addDoc, collection } from "firebase/firestore";
 import { useAuth } from "../../src/auth/AuthContext";
-import axios from "axios";
 
 const CartWrapper = styled.div`
   padding: 0px 100px 100px;
