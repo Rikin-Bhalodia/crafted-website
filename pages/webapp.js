@@ -37,6 +37,7 @@ import Image from "next/image";
 const WebAppWrapper = styled.div`
   .section {
     display: flex;
+    margin-top: 80px;
     justify-content: center;
   }
   .heading-section {
@@ -130,7 +131,6 @@ const WebAppWrapper = styled.div`
     font-weight: 500;
     font-size: 20px;
     width: 100%;
-    margin-top: 30px;
   }
   .container {
     display: flex;
@@ -180,6 +180,23 @@ const WebAppWrapper = styled.div`
   .sec-tco {
     position: relative;
     right: 25px;
+    margin-bottom: 70px;
+  }
+  .button-view-all {
+    background: #d9d9d9;
+    border: 1px solid #000000;
+    border-radius: 45px;
+    height: 50px;
+    font-weight: 500;
+    font-size: 15px;
+    width: 300px;
+    position: absolute;
+    right: 20px;
+    top: -60px;
+  }
+  .dummy-image {
+    height: 380px;
+    width: 360px;
   }
   @media screen and (max-width: 1400px) {
     .match-color-box {
@@ -206,7 +223,6 @@ const WebAppWrapper = styled.div`
     .btn {
       width: 420px;
       gap: 10px;
-      padding: 20px 10px;
     }
     .button-add {
       height: 40px;
@@ -225,6 +241,7 @@ const WebAppWrapper = styled.div`
     }
     .btn {
       width: 350px;
+      margin-bottom: 10px;
     }
     .box {
       width: 80px;
@@ -238,6 +255,15 @@ const WebAppWrapper = styled.div`
     }
     .label2 {
       width: 400px;
+    }
+    .button-view-all {
+      height: 50px;
+      font-size: 13px;
+      width: 250px;
+    }
+    .dummy-image {
+      height: 320px;
+      width: 280px;
     }
   }
   @media screen and (max-width: 800px) {
@@ -262,6 +288,13 @@ const WebAppWrapper = styled.div`
       margin-top: 30px;
       padding: 0 10px;
     }
+    .button-view-all {
+      height: 50px;
+      font-size: 14px;
+      right: 70px;
+      top: 420px;
+      width: 250px;
+    }
   }
   @media screen and (max-width: 400px) {
     .match-color-box {
@@ -282,6 +315,17 @@ const WebAppWrapper = styled.div`
     }
     .label2 {
       width: 350px;
+    }
+    .button-view-all {
+      height: 50px;
+      font-size: 12px;
+      right: 70px;
+      top: 390px;
+      width: 200px;
+    }
+    .dummy-image {
+      height: 250px;
+      width: 220px;
     }
   }
 
@@ -334,8 +378,8 @@ const WebApp = () => {
   const [category, setCategory] = useState(router.query.type || "");
   const [products, setProducts] = useState([]);
   const [color, setColor] = useState([]);
-  const [ids, setIds] = useState([]);
   const [colorTag, setColorTag] = useState(router.query.color || "" || []);
+  const [checkColor, setCheckColor] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [cartProduct, setCartProduct] = useState([]);
   const { currentUser } = useAuth();
@@ -357,7 +401,7 @@ const WebApp = () => {
   const selectedProduct = useMemo(() => {
     return products?.filter((ele) => {
       return ele.category === category &&
-        ele?.tag?.includes(colorTag) &&
+        (ele?.tag?.includes(colorTag) || true) &&
         ele?.color[0]?.color
         ? color.includes(ele?.color[0]?.color?.toUpperCase())
           ? ele
@@ -445,12 +489,20 @@ const WebApp = () => {
 
   const Colors = colors.find((data) => {
     if (data.key === router?.query?.color) {
-      return data;
+      return checkColor ? "" : data;
     } else {
       return "";
     }
   });
-  const renderColors = router?.query?.color ? Colors?.data : AllColors;
+
+  const handleAllColor = () => {
+    setCheckColor(!checkColor);
+  };
+  const renderColors = router?.query?.color
+    ? checkColor
+      ? AllColors
+      : Colors?.data
+    : AllColors;
 
   if (!products?.length) {
     return (
@@ -511,8 +563,7 @@ const WebApp = () => {
                       return (
                         <img
                           src={ele?.image[0]}
-                          height={300}
-                          width={300}
+                          className="dummy-image"
                           key={i}
                           alt="image"
                           style={
@@ -532,11 +583,10 @@ const WebApp = () => {
                       {images.map((image) => {
                         return (
                           image.category === category && (
-                            <Image
-                              src={image?.img}
+                            <img
+                              src={image?.img?.src}
                               alt="images"
-                              height={350}
-                              width={300}
+                              className="dummy-image"
                             />
                           )
                         );
@@ -567,6 +617,17 @@ const WebApp = () => {
               </div>
             </section>
             <section className="sec-tco">
+              {router?.query?.color && (
+                <button
+                  className="button-view-all"
+                  onClick={() => handleAllColor()}
+                  style={{ cursor: "pointer" }}
+                >
+                  {checkColor
+                    ? `Back to your selected Color ${colorTag}`
+                    : "View All Colors"}
+                </button>
+              )}
               <div className="match-color-box">
                 <div className="label2">
                   Choose your desired colors -{" "}
