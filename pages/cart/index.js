@@ -87,7 +87,7 @@ const Cart = () => {
     city: "",
     state: "",
     zip_code: "",
-    user_id: currentUser.uid,
+    user_id: currentUser?.uid || "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -152,7 +152,7 @@ const Cart = () => {
     const orderItemsDetails = {
       productDetails,
       order_id: data?.id,
-      user_id: currentUser.uid,
+      user_id: currentUser?.uid || "",
     };
     const options = {
       key: "rzp_test_NJRQ7mstGJ8A8J",
@@ -164,7 +164,7 @@ const Cart = () => {
       order_id: data?.id,
       prefill: {
         name: details.name,
-        email: currentUser.email,
+        email: currentUser?.email || "",
       },
     };
     var rzp1 = new window.Razorpay(options);
