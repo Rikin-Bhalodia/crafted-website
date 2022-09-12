@@ -13,7 +13,7 @@ import Link from "next/link";
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 100px;
+  height: 85px;
   width: 100%;
   /* overflow-y: hidden; */
   align-items: center;

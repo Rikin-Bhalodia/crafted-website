@@ -8,6 +8,7 @@ const FooterWrapper = styled.div`
   height: 100%;
   position: relative;
   top: -5px;
+  z-index: 999;
 
   .container {
     display: flex;

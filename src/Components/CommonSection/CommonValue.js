@@ -33,7 +33,7 @@ const value = [
 const CommonValueWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 70px;
   padding: 0px 100px 50px;
   justify-content: center;
   align-items: center;
@@ -46,6 +46,7 @@ const CommonValueWrapper = styled.div`
       text-align: center;
       letter-spacing: 0.2px;
       color: #183b56;
+      margin: 0;
     }
     p {
       font-weight: 400;
@@ -80,17 +81,32 @@ const CommonValueWrapper = styled.div`
   @media screen and (max-width: 1100px) {
     padding: 50px;
     .value-section {
-      gap: 50px;
+      gap: 40px;
     }
   }
   @media screen and (max-width: 650px) {
-    padding: 30px 0px 50px;
-    gap: 50px;
+    padding: 20px 10px 50px;
+    gap: 30px;
+    .value-heading {
+      h3 {
+        font-size: 30px;
+        line-height: 40px;
+      }
+      p {
+        font-size: 20px;
+        line-height: 27px;
+      }
+    }
     .value-section {
-      grid-template-columns: auto;
-      gap: 20px;
+      gap: 30px;
       h6 {
-        margin-top: 20px;
+        font-size: 18px;
+        line-height: 20px;
+        margin-top: 30px;
+      }
+      p {
+        font-size: 14px;
+        line-height: 25px;
       }
     }
   }
@@ -101,7 +117,7 @@ const CommonValue = () => {
     <>
       <CommonValueWrapper>
         <div className="value-heading">
-          <h3>Our values</h3>
+          <h3>Core values</h3>
           <p>We strive to redefine the standard of excellence.</p>
         </div>
         <div className="value-section">

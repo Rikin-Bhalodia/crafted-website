@@ -6,13 +6,20 @@ import Oval from "../../../public/svg/oval.svg";
 import Dot from "../../../public/svg/dot.svg";
 
 const AboutTcomacWrapper = styled.div`
-  margin: 50px 200px;
+  position: relative;
+  margin: 0 200px -200px;
+  .imgOval {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
   .about-tcomac {
-    padding-top: 0px;
     position: absolute;
     display: flex;
-    z-index: 999;
+    z-index: 5;
     .about-desc {
+      flex-grow: 2;
+      width: 50%;
       h6 {
         font-weight: 400;
         font-size: 24px;
@@ -23,7 +30,7 @@ const AboutTcomacWrapper = styled.div`
         margin-bottom: 40px;
       }
       h4 {
-        font-weight: 400;
+        font-weight: 600;
         font-size: 36px;
         line-height: 48px;
         letter-spacing: 0.2px;
@@ -36,7 +43,6 @@ const AboutTcomacWrapper = styled.div`
         line-height: 32px;
         color: #5a7184;
         margin-bottom: 60px;
-        /* width: 50%; */
       }
       .btn {
         border: 2px solid #333333;
@@ -53,65 +59,54 @@ const AboutTcomacWrapper = styled.div`
       }
     }
     .about-img {
-      width: 100%;
-      height: 100%;
+      width: 50%;
       position: relative;
-
       .item {
         background: #979797;
         border-radius: 13px;
       }
       .item1 {
         width: 85px;
-        height: 64px;
-        bottom: -300px;
+        height: 85px;
+        bottom: 90px;
         position: absolute;
-        right: 300px;
+        right: 315px;
       }
       .item2 {
-        width: 128px;
-        height: 96px;
-        bottom: -220px;
+        width: 140px;
+        height: 140px;
+        bottom: 140px;
         position: absolute;
-        right: 480px;
+        right: 520px;
         z-index: 999;
       }
       .item3 {
-        width: 160px;
-        height: 120px;
-        bottom: -475px;
+        width: 130px;
+        height: 130px;
+        bottom: -110px;
         position: absolute;
-        right: 340px;
+        right: 400px;
         z-index: 999;
       }
       .item4 {
-        width: 213.33px;
-        height: 160px;
-        top: 40px;
+        width: 190px;
+        height: 190px;
+        bottom: 190px;
         position: absolute;
         right: 20px;
         z-index: 999;
       }
       .item5 {
-        width: 128px;
-        height: 96px;
-        bottom: -380px;
+        width: 140px;
+        height: 140px;
+        bottom: -15px;
         position: absolute;
-        right: 60px;
+        right: 30px;
       }
       .item6 {
         position: absolute;
-        bottom: -430px;
-        right: 280px;
-      }
-      .item7 {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: #f1f4f5;
-        bottom: -238px;
-        right: 588px;
+        bottom: -50px;
+        right: 300px;
       }
       .item8 {
         background: #1565d8;
@@ -119,105 +114,366 @@ const AboutTcomacWrapper = styled.div`
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        bottom: -220px;
+        bottom: 175px;
         right: -1px;
       }
     }
   }
-  .imgOval {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-
-  @media screen and (max-width: 1660px) {
-    margin: 50px;
-  }
-  @media screen and (max-width: 1360px) {
-    margin: 0px 30px 350px;
+  @media screen and (max-width: 1700px) {
     .about-tcomac {
-      flex-direction: column;
       .about-desc {
+        /* width: 70%; */
       }
       .about-img {
-        margin-bottom: 400px;
+        .item1 {
+          width: 75px;
+          height: 75px;
+          bottom: 90px;
+          right: 255px;
+        }
+        .item2 {
+          width: 130px;
+          height: 130px;
+          bottom: 140px;
+          right: 470px;
+        }
+        .item3 {
+          width: 120px;
+          height: 120px;
+          bottom: -110px;
+          right: 350px;
+        }
+        .item4 {
+          width: 180px;
+          height: 180px;
+          bottom: 195px;
+          right: -10px;
+        }
+        .item5 {
+          width: 130px;
+          height: 130px;
+          bottom: -15px;
+          right: 0px;
+        }
+        .item6 {
+          bottom: -50px;
+          right: 270px;
+        }
+        .item8 {
+          width: 45px;
+          height: 45px;
+          bottom: 175px;
+          right: -30px;
+        }
       }
     }
   }
-  @media screen and (max-width: 700px) {
-    margin: 0px 30px 250px;
-
+  @media screen and (max-width: 1600px) {
     .about-tcomac {
-      .about-desc {
-        h6 {
-          font-size: 20px;
-          line-height: 25px;
-          margin-bottom: 20px;
+      .about-img {
+        .item1 {
+          width: 65px;
+          height: 65px;
+          bottom: 90px;
+          right: 180px;
         }
-        h4 {
-          font-size: 26px;
-          line-height: 38px;
-          margin: 0px 0px 20px;
+        .item2 {
+          width: 120px;
+          height: 120px;
+          bottom: 140px;
+          right: 360px;
         }
-        p {
-          font-size: 15px;
-          line-height: 30px;
-          margin-bottom: 30px;
+        .item3 {
+          width: 110px;
+          height: 110px;
+          bottom: -90px;
+          right: 240px;
         }
-        .btn {
-          padding: 10px 50px;
+        .item4 {
+          width: 170px;
+          height: 170px;
+          bottom: 195px;
+          right: -70px;
+        }
+        .item5 {
+          width: 120px;
+          height: 120px;
+          bottom: 0px;
+          right: -60px;
+        }
+        .item6 {
+          bottom: -50px;
+          right: 170px;
+        }
+        .item8 {
+          width: 40px;
+          height: 40px;
+          bottom: 180px;
+          right: -85px;
         }
       }
     }
+  }
+  @media screen and (max-width: 1500px) {
+    margin: 0 80px -200px;
     .about-img {
-      .item1 {
-        width: 65px !important;
-        height: 44px !important;
-        bottom: -240px !important;
-        right: 160px !important;
+      margin-right: 80px;
+    }
+  }
+  @media screen and (max-width: 1400px) {
+    margin: 0 80px -150px;
+    .about-tcomac {
+      .about-img {
       }
-      .item2 {
-        width: 88px !important;
-        height: 66px !important;
-        bottom: -160px !important;
-        right: 260px !important;
-        z-index: 999;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    margin: 0 80px -160px;
+    .about-tcomac {
+      .about-desc {
+        width: 40%;
+        h6 {
+          font-size: 22px;
+          line-height: 25px;
+        }
+        h4 {
+          font-size: 30px;
+          line-height: 40px;
+        }
+        .btn {
+          font-size: 14px;
+          padding: 10px 100px;
+        }
       }
-      .item3 {
-        width: 130px !important;
-        height: 100px !important;
-        bottom: -380px !important;
-        right: 220px !important;
-        z-index: 999;
+      .about-img {
+        width: 30%;
+        .item1 {
+          width: 65px;
+          height: 65px;
+          bottom: 90px;
+          right: 180px;
+        }
+        .item2 {
+          display: none;
+        }
+        .item3 {
+          width: 110px;
+          height: 110px;
+          bottom: -110px;
+          right: 160px;
+        }
+        .item4 {
+          width: 170px;
+          height: 170px;
+          bottom: 195px;
+          right: -70px;
+        }
+        .item5 {
+          width: 120px;
+          height: 120px;
+          bottom: -10px;
+          right: -45px;
+        }
+        .item6 {
+          bottom: -60px;
+          right: 140px;
+        }
+        .item8 {
+          width: 40px;
+          height: 40px;
+          bottom: 180px;
+          right: -85px;
+        }
       }
-      .item4 {
-        width: 150px !important;
-        height: 100px !important;
-        top: 40px !important;
-        right: 20px !important;
-        z-index: 999;
+    }
+  }
+  @media screen and (max-width: 900px) {
+    margin: 0 80px -150px;
+    .about-tcomac {
+      .about-img {
+        width: 30%;
+        .item1 {
+          width: 65px;
+          height: 65px;
+          bottom: 90px;
+          right: 120px;
+        }
+        .item2 {
+          display: none;
+        }
+        .item3 {
+          width: 110px;
+          height: 110px;
+          bottom: -110px;
+          right: 100px;
+        }
+        .item4 {
+          width: 170px;
+          height: 170px;
+          bottom: 195px;
+          right: -130px;
+        }
+        .item5 {
+          width: 120px;
+          height: 120px;
+          bottom: -10px;
+          right: -100px;
+        }
+        .item6 {
+          bottom: -60px;
+          right: 80px;
+        }
+        .item8 {
+          width: 40px;
+          height: 40px;
+          bottom: 180px;
+          right: -145px;
+        }
       }
-      .item5 {
-        width: 108px !important;
-        height: 76px !important;
-        bottom: -330px !important;
-        right: 20px !important;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    margin: 0 80px -80px;
+    .about-tcomac {
+      .about-desc {
+        width: 50%;
+        .btn {
+          font-size: 14px;
+          padding: 10px 60px;
+        }
       }
-      .item6 {
-        bottom: -360px !important;
-        right: 180px !important;
+      .about-img {
+        width: 30%;
+        .item1 {
+          width: 65px;
+          height: 65px;
+          bottom: 60px;
+          right: 90px;
+        }
+        .item2 {
+          display: none;
+        }
+        .item3 {
+          width: 110px;
+          height: 110px;
+          bottom: -130px;
+          right: 100px;
+        }
+        .item4 {
+          width: 170px;
+          height: 170px;
+          bottom: 175px;
+          right: -130px;
+        }
+        .item5 {
+          width: 120px;
+          height: 120px;
+          bottom: -30px;
+          right: -100px;
+        }
+        .item6 {
+          bottom: -80px;
+          right: 80px;
+        }
+        .item8 {
+          width: 40px;
+          height: 40px;
+          bottom: 160px;
+          right: -145px;
+        }
       }
-      .item7 {
-        width: 30px !important;
-        height: 30px !important;
-        bottom: -168px !important;
-        right: 328px !important;
+    }
+  }
+  @media screen and (max-width: 660px) {
+    margin: 0 30px 100px;
+    .about-tcomac {
+      flex-direction: column;
+      align-items: center;
+      .about-desc {
+        width: 100%;
+        text-align: center;
+        .btn {
+          font-size: 14px;
+          padding: 10px 30px;
+        }
       }
-      .item8 {
-        width: 40px !important;
-        height: 40px !important;
-        bottom: -155px !important;
-        right: 5px !important;
+      .about-img {
+        width: 30%;
+        .item1 {
+          width: 65px;
+          height: 65px;
+          bottom: -115px;
+          right: 20px;
+        }
+        .item2 {
+          display: none;
+        }
+        .item3 {
+          width: 110px;
+          height: 110px;
+          bottom: -60px;
+          right: 180px;
+        }
+        .item4 {
+          width: 170px;
+          height: 170px;
+          bottom: -320px;
+          right: -200px;
+        }
+        .item5 {
+          width: 120px;
+          height: 120px;
+          bottom: -310px;
+          right: 135px;
+        }
+        .item6 {
+          bottom: -240px;
+          right: 80px;
+        }
+        .item8 {
+          display: none;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 500px) {
+    margin: 0 30px 130px;
+    .about-tcomac {
+      .about-img {
+        width: 30%;
+        .item1 {
+          width: 65px;
+          height: 65px;
+          bottom: -115px;
+          right: 0px;
+        }
+        .item2 {
+          display: none;
+        }
+        .item3 {
+          width: 110px;
+          height: 110px;
+          bottom: -60px;
+          right: 135px;
+        }
+        .item4 {
+          width: 170px;
+          height: 170px;
+          bottom: -320px;
+          right: -200px;
+        }
+        .item5 {
+          width: 120px;
+          height: 120px;
+          bottom: -310px;
+          right: 100px;
+        }
+        .item6 {
+          display: none;
+        }
+        .item8 {
+          display: none;
+        }
       }
     }
   }
@@ -252,8 +508,6 @@ const AboutTcomac = (data) => {
           layout="fixed"
           className="imgOval"
           alt="background-oval"
-          width={2000}
-          height={550}
         />
       </AboutTcomacWrapper>
     </>
