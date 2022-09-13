@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const CommonContent1Wrapper = styled.div`
   display: flex;
-  padding: 0 200px 30px;
+  padding: 50px 200px;
   gap: 50px;
   align-items: center;
   .content-img {
@@ -18,10 +18,18 @@ const CommonContent1Wrapper = styled.div`
     }
   }
   .content-data {
+    h3 {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 60px;
+      letter-spacing: 0.2px;
+      color: #183b56;
+      margin: 0 0 30px;
+    }
     p {
       font-weight: 400;
-      font-size: 32px;
-      line-height: 46px;
+      font-size: 30px;
+      line-height: 40px;
       color: #5a7184;
     }
   }
@@ -33,6 +41,10 @@ const CommonContent1Wrapper = styled.div`
       }
     }
     .content-data {
+      h3 {
+        font-size: 38px;
+        line-height: 50px;
+      }
       p {
         font-size: 30px;
         line-height: 40px;
@@ -41,7 +53,7 @@ const CommonContent1Wrapper = styled.div`
   }
 
   @media screen and (max-width: 1500px) {
-    padding: 0 80px;
+    padding: 50px 80px;
     .content-img {
       .img {
         width: 550px;
@@ -49,6 +61,11 @@ const CommonContent1Wrapper = styled.div`
       }
     }
     .content-data {
+      h3 {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 60px;
+      }
       p {
         font-size: 25px;
         line-height: 34px;
@@ -91,6 +108,10 @@ const CommonContent1Wrapper = styled.div`
       }
     }
     .content-data {
+      h3 {
+        font-size: 30px;
+        line-height: 40px;
+      }
       p {
         font-size: 22px;
         line-height: 30px;
@@ -103,7 +124,7 @@ const CommonContent1Wrapper = styled.div`
     gap: 20px;
   }
   @media screen and (max-width: 657px) {
-    padding: 0px 30px 0px;
+    padding: 30px;
   }
   @media screen and (max-width: 500px) {
     text-align: left;
@@ -116,7 +137,7 @@ const CommonContent1Wrapper = styled.div`
   }
 `;
 
-const CommonContent1 = () => {
+const CommonContent1 = (props) => {
   return (
     <>
       <CommonContent1Wrapper>
@@ -124,15 +145,9 @@ const CommonContent1 = () => {
           <div className="img"></div>
         </div>
         <div className="content-data">
-          <p>
-            The new journey began with the word, “Care” when the founder of “The
-            Crafted” Asif Ahmed Subhani realized how his female friends and
-            relatives would feel frustrated running around the markets to find a
-            colour-matching piece of cloth for their costumes. A postgraduate
-            degree in Business Administration from Pune, India helped him to
-            look further and see the future. The Crafted came into being in 2018
-            on the following Core values:
-          </p>
+          <h3>{props.head}</h3>
+          <p>{props.para}</p>
+          <p>{props.para1}</p>
         </div>
       </CommonContent1Wrapper>
     </>

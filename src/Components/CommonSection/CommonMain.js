@@ -11,7 +11,7 @@ const CommonMainWrapper = styled.div`
     align-items: flex-start;
     gap: 50px;
     .main-left {
-      flex-grow: 1;
+      width: 50%;
       p {
         font-weight: 400;
         font-size: 24px;
@@ -26,12 +26,11 @@ const CommonMainWrapper = styled.div`
         line-height: 48px;
         letter-spacing: 0.2px;
         color: #183b56;
-        width: 85%;
         margin: 0px;
       }
     }
     .main-right {
-      flex-grow: 1;
+      width: 50%;
       p {
         font-weight: 400;
         font-size: 28px;
@@ -67,11 +66,6 @@ const CommonMainWrapper = styled.div`
     .main-content {
       flex-direction: column;
       text-align: center;
-      .main-left {
-        h4 {
-          width: 100%;
-        }
-      }
     }
   }
   @media screen and (max-width: 657px) {
