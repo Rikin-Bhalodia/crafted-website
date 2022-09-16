@@ -4,19 +4,11 @@ import styled from "styled-components";
 // import Image from "next/image";
 
 const CommonContent2Wrapper = styled.div`
-  padding: 0 200px 30px;
-  .content-head {
-    h3 {
-      font-weight: 700;
-      font-size: 48px;
-      line-height: 60px;
-      letter-spacing: 0.2px;
-      color: #183b56;
-      margin: 0 0 30px;
-    }
-  }
+  padding: 50px 200px;
+  background: #f9fbfe;
   .content-body {
     display: flex;
+    align-items: center;
     gap: 50px;
     .content-img {
       .img {
@@ -28,6 +20,14 @@ const CommonContent2Wrapper = styled.div`
       }
     }
     .content-data {
+      h3 {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 60px;
+        letter-spacing: 0.2px;
+        color: #183b56;
+        margin: 0 0 30px;
+      }
       p {
         font-weight: 400;
         font-size: 30px;
@@ -39,12 +39,6 @@ const CommonContent2Wrapper = styled.div`
   }
 
   @media screen and (max-width: 1700px) {
-    .content-head {
-      h3 {
-        font-size: 38px;
-        line-height: 50px;
-      }
-    }
     .content-body {
       .content-img {
         .img {
@@ -53,6 +47,10 @@ const CommonContent2Wrapper = styled.div`
         }
       }
       .content-data {
+        h3 {
+          font-size: 38px;
+          line-height: 50px;
+        }
         p {
           font-size: 25px;
           line-height: 35px;
@@ -62,14 +60,7 @@ const CommonContent2Wrapper = styled.div`
   }
 
   @media screen and (max-width: 1500px) {
-    padding: 0 80px;
-    .content-head {
-      h3 {
-        font-weight: 700;
-        font-size: 48px;
-        line-height: 60px;
-      }
-    }
+    padding: 50px 80px;
     .content-body {
       .content-img {
         .img {
@@ -78,6 +69,11 @@ const CommonContent2Wrapper = styled.div`
         }
       }
       .content-data {
+        h3 {
+          font-weight: 700;
+          font-size: 48px;
+          line-height: 60px;
+        }
         p {
           font-size: 25px;
           line-height: 34px;
@@ -118,12 +114,6 @@ const CommonContent2Wrapper = styled.div`
     }
   }
   @media screen and (max-width: 1150px) {
-    .content-head {
-      h3 {
-        font-size: 30px;
-        line-height: 40px;
-      }
-    }
     .content-body {
       .content-img {
         .img {
@@ -132,6 +122,10 @@ const CommonContent2Wrapper = styled.div`
         }
       }
       .content-data {
+        h3 {
+          font-size: 30px;
+          line-height: 40px;
+        }
         p {
           font-size: 20px;
           line-height: 27px;
@@ -147,7 +141,7 @@ const CommonContent2Wrapper = styled.div`
     }
   }
   @media screen and (max-width: 657px) {
-    padding: 0px 30px 0px;
+    padding: 30px;
   }
   @media screen and (max-width: 500px) {
     .content-body {
@@ -161,31 +155,16 @@ const CommonContent2Wrapper = styled.div`
   }
 `;
 
-const CommonContent2 = () => {
+const CommonContent2 = (props) => {
   return (
     <>
       <CommonContent2Wrapper>
-        <div className="content-head">
-          <h3>The Care</h3>
-        </div>
         <div className="content-body">
           <div className="content-data">
-            <p>
-              There is just one word that sums up the values and the philosophy
-              of The Crafted brand. The word is, “Care”. The “Care” for the
-              women instigated us to conduct a survey. One thousand women were
-              asked if they felt the need for a platform where they could order
-              their favourite colour-matching piece of cloth.
-            </p>
-            <p>
-              An overwhelming number of 983 women responded in affirmative. The
-              loud and clear answer “yes” triggered the passion to set up an
-              e-commerce website and a mobile app to facilitate Indian women to
-              order their matching colour cloth material from the comforts of
-              their homes. Thus, “The Crafted” came into being. The appreciation
-              for the hub called “The Crafted” has been widespread, satisfying
-              and growing.
-            </p>
+            <h3>{props.head}</h3>
+            <p>{props.para1}</p>
+            <p>{props.para2}</p>
+            <p>{props.para3}</p>
           </div>
           <div className="content-img">
             <div className="img"></div>
