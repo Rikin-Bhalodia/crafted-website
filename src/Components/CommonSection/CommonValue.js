@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-// import Link from "next/link";
 import Image from "next/image";
 import value1 from "../../../public/svg/value/value1.svg";
 import value2 from "../../../public/svg/value/value2.svg";

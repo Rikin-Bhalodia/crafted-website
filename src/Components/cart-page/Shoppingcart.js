@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CgClose } from "react-icons/cg";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../Firebase";
 import { getDatabase, set, ref, onValue, remove } from "firebase/database";
 import { useAuth } from "../../auth/AuthContext";
 
@@ -210,12 +208,14 @@ const ShoppingCartWrapper = styled.div`
 
 const ShoppingCart = () => {
   const [cartProduct, setCartProduct] = useState("");
+  const { currentUser } = useAuth();
+
   const cartItems =
     cartProduct &&
     cartProduct.map(([key, value]) => {
       return value;
     });
-  const { currentUser } = useAuth();
+
   useEffect(() => {
     const db = getDatabase();
     const starCountRef = ref(db, "cartItem/");
@@ -228,12 +228,14 @@ const ShoppingCart = () => {
       }
     });
   }, []);
+
   const array =
     cartItems &&
     cartItems?.map((data) => {
       const { cartData } = data;
       return Number(cartData?.mrp) * cartData?.totalUserItem;
     });
+
   const handleChangeQuantity = (type, id) => {
     const db = getDatabase();
     const cartItemData = cartItems?.filter((data) => data?.cartData?.id === id);
@@ -257,10 +259,12 @@ const ShoppingCart = () => {
           uid: currentUser.uid,
         });
   };
+
   const deleteCartItem = (id) => {
     const db = getDatabase();
     remove(ref(db, "cartItem/" + id));
   };
+
   return (
     <ShoppingCartWrapper>
       <div className="shop-heading">

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-// import Link from "next/link";
 import Image from "next/image";
 import Wave from "../../../public/svg/wave2.svg";
 import banner from "../../../public/svg/main-slider.svg";
+
 const CommonHeadWrapper = styled.div`
   background-color: #979797;
   width: 100%;

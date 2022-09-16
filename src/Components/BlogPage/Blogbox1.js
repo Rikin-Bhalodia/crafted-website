@@ -128,6 +128,7 @@ const BlogBox1Wrapper = styled.div`
 `;
 const Blogbox1 = ({ blogs }) => {
   const router = useRouter();
+
   const handleRoute = (id) => {
     router.push(`/blog/${id}`);
   };

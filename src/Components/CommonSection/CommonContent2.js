@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-// import Link from "next/link";
-// import Image from "next/image";
 
 const CommonContent2Wrapper = styled.div`
   padding: 50px 200px;

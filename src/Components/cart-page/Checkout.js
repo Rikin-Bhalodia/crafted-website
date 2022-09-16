@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { BsCreditCard2Back } from "react-icons/bs";
 import { BiTransfer } from "react-icons/bi";
 import { TbBrandPaypal } from "react-icons/tb";
-import { getDatabase, set, ref, onValue, remove } from "firebase/database";
 
 const CheckOutWrapper = styled.div`
   padding: 40px 0px;
@@ -12,7 +11,6 @@ const CheckOutWrapper = styled.div`
     width: 100%;
     display: flex;
     gap: 100px;
-    /* justify-content: space-between; */
 
     div {
       width: 50%;
