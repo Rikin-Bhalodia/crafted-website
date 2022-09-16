@@ -59,9 +59,7 @@ const FooterWrapper = styled.div`
     width: 100%;
     justify-content: center;
     text-align: center;
-    ${"" /* position: absolute; */}
-    ${"" /* bottom: 35px; */}
-    padding:50px 0px 30px;
+    padding: 50px 0px 30px;
   }
   .image-back {
     height: 60px;
@@ -132,11 +130,6 @@ const FooterWrapper = styled.div`
       width: 350px;
       padding: 20px 0px;
     }
-    /* .top {
-    }
-    .end {
-      gap: 80px;
-    } */
   }
   @media screen and (max-width: 630px) {
     .container {

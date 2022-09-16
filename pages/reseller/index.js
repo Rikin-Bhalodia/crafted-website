@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";

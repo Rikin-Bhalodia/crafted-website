@@ -12,10 +12,6 @@ const FooterWrapper = styled.div`
     display: flex;
     position: relative;
     top: -5.2px;
-    ${
-      "" /* padding:0px 80px;
-    gap:100px; */
-    }
   }
   .article-card {
     width: 500px;
@@ -34,7 +30,6 @@ const FooterWrapper = styled.div`
     background: #9d9d9d;
     border-radius: 12px;
     height: 170px;
-    ${"" /* margin: 10px  ; */}
   }
   .article-title {
     color: #183b56;

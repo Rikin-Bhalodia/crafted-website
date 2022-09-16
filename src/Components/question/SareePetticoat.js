@@ -33,6 +33,7 @@ const SareePetticoatWrapper = styled.div`
 const SareePetticoat = () => {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+
   const handleChange = (value) => {
     setColor(value);
   };
