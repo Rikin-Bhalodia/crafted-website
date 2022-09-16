@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ProductComponent from "../../../../src/Components/product-category/ProductComponent";
+
 const ProductCategoryWrapper = styled.div`
   height: 2000px;
   .product-heading {

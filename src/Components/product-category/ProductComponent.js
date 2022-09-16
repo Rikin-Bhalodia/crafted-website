@@ -1,13 +1,14 @@
 import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../Firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { useAuth } from "../../auth/AuthContext";
 import { getDatabase, onValue, ref, set } from "firebase/database";
+import { CartItems } from "../../utils";
 
 const ProductComponentsWrapper = styled.div`
   display: grid;
@@ -18,7 +19,6 @@ const ProductComponentsWrapper = styled.div`
   padding: 50px 150px;
   .pro-comp {
     padding: 30px 40px;
-    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
     border-radius: 30px;
     background: #f6f6f6;
 
@@ -95,12 +95,7 @@ const ProductComponents = () => {
   }, []);
 
   useEffect(() => {
-    const db = getDatabase();
-    const starCountRef = ref(db, "cartItem/");
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      setCartProduct(Object.entries(data));
-    });
+    CartItems(setCartProduct);
   }, []);
 
   const handleClick = async (e, id) => {
