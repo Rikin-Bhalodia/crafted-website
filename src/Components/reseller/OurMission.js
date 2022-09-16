@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-// import Image from "next/image";
 
 const OurMissionWrapper = styled.div`
   display: grid;

@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import Link from "next/link";
-// import Image from "next/image";
 import { Select } from "antd";
-import "antd/dist/antd.variable.min.css";
-const { Option } = Select;
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
+import "antd/dist/antd.variable.min.css";
 
+const { Option } = Select;
 const PoplinCottonFabricWrapper = styled.div`
   .questions {
     .body {

@@ -1,18 +1,16 @@
+import React from "react";
 import styled from "styled-components";
-// import Link from "next/link";
-// import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Pagination } from "swiper";
 import {
   FaInstagram,
   FaLinkedinIn,
   FaFacebookF,
   FaTwitter,
 } from "react-icons/fa";
-import React, { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { FreeMode, Pagination } from "swiper";
 
 const TeamSliderWrapper = styled.div`
   padding: 100px 0px 150px;
