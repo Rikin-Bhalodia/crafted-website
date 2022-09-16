@@ -9,7 +9,6 @@ import Shirt from "../../public/svg/product-svg/shirt.svg";
 import Skirt from "../../public/svg/product-svg/skirt.svg";
 import Shoes from "../../public/svg/product-svg/shoes.svg";
 import Underware from "../../public/svg/product-svg/underware.svg";
-// import { FiChevronRight } from "react-icons/fi";
 import { GoStar } from "react-icons/go";
 import "antd/dist/antd.css";
 import { Collapse } from "antd";
@@ -133,7 +132,6 @@ const ProductWrapper = styled.div`
           display: flex;
           flex-direction: column;
           justify-content: center;
-          /* align-items: center; */
 
           p {
             font-weight: 400;
@@ -179,6 +177,7 @@ const ProductWrapper = styled.div`
 `;
 const Product = () => {
   const router = useRouter();
+
   const handleClick = (key) => {
     router.push(`/product/category/${key}`);
   };

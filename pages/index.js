@@ -2,7 +2,6 @@ import Followus from "../src/Components/HomePage/FollowUs/FollowusInsta";
 import CommonCard from "../src/Components/HomePage/CommonCard/index";
 import styled from "styled-components";
 import MainSlider from "../src/CommonComponent/Swiper/MainSlider";
-// import Image from "next/image";
 import MatchComponent from "../src/Components/HomePage/StepComponent";
 import HomeBlogSlider from "../src/CommonComponent/Swiper/HomeBlogSlider";
 import FooterContact from "../src/CommonComponent/Footer/FooterContact";
@@ -272,15 +271,13 @@ export default function Home() {
       <MainSlider />
       <MatchComponent />
       <CommonCard />
-      <div style={{}} className="main">
+      <div className="main">
         <div className="main-container">
-          <div style={{}} className="main-heading">
-            New Arrival
-          </div>
+          <div className="main-heading">New Arrival</div>
           <div className="box-container">
             {dummyData.map((data) => {
               return (
-                <div className="card-details" style={{}} key={data}>
+                <div className="card-details" key={data}>
                   <div className="small-box"></div>
                   <div className="card-data">
                     <div className="text">{data.name}</div>
@@ -311,13 +308,11 @@ export default function Home() {
           </div>
         </div>
         <div className="main-container main2">
-          <div style={{}} className="main-heading">
-            Popular This Week
-          </div>
+          <div className="main-heading">Popular This Week</div>
           <div className="box-container">
             {dummyData.map((data) => {
               return (
-                <div className="card-details" style={{}} key={data}>
+                <div className="card-details" key={data}>
                   <div className="small-box"></div>
                   <div className="card-data">
                     <div className="text">{data.name}</div>

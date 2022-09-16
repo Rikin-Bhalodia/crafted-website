@@ -16,6 +16,7 @@ import { db } from "../../../src/Firebase";
 import { getDatabase, ref, set } from "firebase/database";
 import { ColorRing } from "react-loader-spinner";
 import useDebounce from "../../../src/CommonComponent/CustomHooks";
+import { getAllProducts } from "../../../src/utils";
 
 const SingleProductWrapper = styled.div`
   display: flex;
@@ -199,14 +200,8 @@ const SingleProduct = () => {
   const [category] = useState(router?.query?.category);
   const [totalProduct, setTotalProduct] = useState([]);
 
-  const debouncedValue = useDebounce(totalProduct, 500);
-  const docRef = collection(db, "specialProducts");
-  const getProducts = async () => {
-    const data = await getDocs(docRef);
-    setProducts(data.docs.map((data) => ({ ...data.data(), id: data.id })));
-  };
   useEffect(() => {
-    getProducts();
+    getAllProducts(setProducts);
   }, []);
 
   const specialProducts = useMemo(() => {

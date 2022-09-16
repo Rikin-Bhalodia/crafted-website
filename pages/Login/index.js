@@ -132,6 +132,7 @@ const LogIn = () => {
       return { ...pre, [name]: value };
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (loginData.email && loginData.password) {

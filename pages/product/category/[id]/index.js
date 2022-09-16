@@ -12,8 +12,6 @@ const ProductCategoryWrapper = styled.div`
       font-size: 40px;
     }
   }
-  .products {
-  }
 `;
 
 const ProductCategory = () => {

@@ -2,37 +2,18 @@ import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import Footer from "../src/CommonComponent/Footer/FooterContact";
 import "antd/dist/antd.css";
-import SingleProductModal from "../src/CommonComponent/SpecialProductModal";
 import { Select } from "antd";
 import { Breadcrumb } from "antd";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../src/Firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getDatabase, onValue, ref, set } from "firebase/database";
 import { useAuth } from "../src/auth/AuthContext";
 import { useRouter } from "next/router";
 import { ColorRing } from "react-loader-spinner";
-import {
-  black,
-  blue,
-  brown,
-  Colors,
-  cream,
-  gajri,
-  gray,
-  green,
-  mehendi,
-  metal,
-  orange,
-  pink,
-  purple,
-  red,
-  white,
-  yellow,
-} from "../src/CommonComponent/Colors";
+import { Colors } from "../src/CommonComponent/Colors";
 import { images } from "../src/CommonComponent/BlankImages";
-import Image from "next/image";
+import { getAllProducts } from "../src/utils";
+import { colors } from "../src/utils/other";
 
 const WebAppWrapper = styled.div`
   .section {
@@ -378,37 +359,37 @@ const WebApp = () => {
   const [category, setCategory] = useState(router.query.type || "");
   const [products, setProducts] = useState([]);
   const [color, setColor] = useState([]);
-  const [colorTag, setColorTag] = useState(router.query.color || "" || []);
+  const [colorTag] = useState(router.query.color || "" || []);
   const [checkColor, setCheckColor] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
   const [cartProduct, setCartProduct] = useState([]);
   const { currentUser } = useAuth();
 
+  console.log(products, "color");
   const handleSelectChange = (value) => {
     setCategory(value);
   };
-  const productsCollection = collection(db, "specialProducts");
-  const getAllProducts = async () => {
-    console.time();
-    const data = await getDocs(productsCollection);
-    console.timeEnd();
-    setProducts(data.docs.map((data) => ({ ...data.data(), id: data.id })));
-  };
+
   useEffect(() => {
-    getAllProducts();
+    getAllProducts(setProducts);
   }, []);
 
   const selectedProduct = useMemo(() => {
     return products?.filter((ele) => {
+      console.log(ele?.color[0]?.color, "kkkkkkkkkkkkkkkkkk");
       return ele.category === category &&
         (ele?.tag?.includes(colorTag) || true) &&
         ele?.color[0]?.color
-        ? color.includes(ele?.color[0]?.color?.toUpperCase())
+        ? color.includes(
+            ele?.color[0]?.color?.toUpperCase() ||
+              color.includes(ele?.color).toUpperCase()
+          )
           ? ele
           : null
         : null;
     });
   }, [color, category]);
+
+  console.log(selectedProduct, "product");
 
   const onSelect = (data) => {
     if (color.includes(data)) {
@@ -430,10 +411,6 @@ const WebApp = () => {
       pathname: "/product/1",
       query: { ids: ids, category: router?.query?.type },
     });
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
   };
 
   useEffect(() => {
@@ -467,25 +444,8 @@ const WebApp = () => {
       }
     });
   };
-  const { Option } = Select;
 
-  const colors = [
-    { data: red, key: "red" },
-    { data: blue, key: "blue" },
-    { data: cream, key: "cream" },
-    { data: green, key: "green" },
-    { data: yellow, key: "yellow" },
-    { data: gray, key: "gray" },
-    { data: white, key: "white" },
-    { data: black, key: "black" },
-    { data: mehendi, key: "mehendi" },
-    { data: brown, key: "brown" },
-    { data: metal, key: "metal" },
-    { data: purple, key: "purple" },
-    { data: orange, key: "orange" },
-    { data: gajri, key: "gajri" },
-    { data: pink, key: "pink" },
-  ];
+  const { Option } = Select;
 
   const Colors = colors.find((data) => {
     if (data.key === router?.query?.color) {
@@ -498,6 +458,7 @@ const WebApp = () => {
   const handleAllColor = () => {
     setCheckColor(!checkColor);
   };
+
   const renderColors = router?.query?.color
     ? checkColor
       ? AllColors
@@ -661,14 +622,6 @@ const WebApp = () => {
         </div>
       </WebAppWrapper>
       <Footer />
-      {isModalVisible && color.length > 0 && (
-        <SingleProductModal
-          handleCancel={handleCancel}
-          selectedProduct={selectedProduct}
-          setColor={setColor}
-          color={color}
-        />
-      )}
       <ToastContainer />
     </>
   );
