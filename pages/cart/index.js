@@ -3,12 +3,12 @@ import "antd/dist/antd.css";
 import { Button, Steps } from "antd";
 import ShoppingCart from "./../../src/Components/cart-page/Shoppingcart";
 import CheckOut from "./../../src/Components/cart-page/Checkout";
-import { getDatabase, onValue, ref } from "firebase/database";
 import ThankYou from "./../../src/Components/cart-page/Thankyou";
 import styled from "styled-components";
 import Logo from "/public/svg/logo.svg";
 import UniqId from "uniqid";
 import { useAuth } from "../../src/auth/AuthContext";
+import { CartItems } from "../../src/utils";
 
 const CartWrapper = styled.div`
   padding: 0px 100px 100px;
@@ -45,17 +45,9 @@ const Cart = () => {
   const { currentUser } = useAuth();
   const [cartProduct, setCartProduct] = useState([]);
 
+  console.log(cartProduct, "kkkk");
   useEffect(() => {
-    const db = getDatabase();
-    const starCountRef = ref(db, "cartItem/");
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data !== null) {
-        setCartProduct(Object.entries(data));
-      } else {
-        setCartProduct([]);
-      }
-    });
+    CartItems(setCartProduct);
   }, []);
 
   const cartItems = cartProduct.map(([key, value]) => {
@@ -165,7 +157,7 @@ const Cart = () => {
     };
     var rzp1 = new window.Razorpay(options);
     rzp1.open();
-    const orderData = await fetch("http://localhost:1337/verification", {
+    await fetch("http://localhost:1337/verification", {
       method: "POST",
       mode: "cors",
       headers: {
@@ -173,7 +165,7 @@ const Cart = () => {
       },
     });
 
-    const orderDetails = await fetch("http://localhost:1337/order-details", {
+    await fetch("http://localhost:1337/order-details", {
       method: "POST",
       mode: "cors",
       headers: {
@@ -186,6 +178,7 @@ const Cart = () => {
   const next = (key) => {
     key === 0 ? setCurrent(current + 1) : displayRezorPay();
   };
+
   const prev = () => {
     setCurrent(current - 1);
   };

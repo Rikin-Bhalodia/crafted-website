@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import Link from "next/link";
-// import Image from "next/image";
 import SareePetticoat from "../../src/Components/question/SareePetticoat";
 import PatialaSalwar from "../../src/Components/question/PatialaSalwar";
 import FullPatialaSalwar from "../../src/Components/question/FullPatialaSalwar";
@@ -38,6 +36,7 @@ const Question = () => {
   const handleSelectChange = (value) => {
     setName(value);
   };
+
   return (
     <>
       <QuestionWrapper>

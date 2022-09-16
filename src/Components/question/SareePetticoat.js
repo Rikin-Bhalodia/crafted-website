@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import Link from "next/link";
-// import Image from "next/image";
 import { Select } from "antd";
-import "antd/dist/antd.variable.min.css";
-const { Option } = Select;
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
+import "antd/dist/antd.variable.min.css";
 
+const { Option } = Select;
 const SareePetticoatWrapper = styled.div`
   .questions {
     .body {
@@ -33,6 +31,7 @@ const SareePetticoatWrapper = styled.div`
 const SareePetticoat = () => {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+
   const handleChange = (value) => {
     setColor(value);
   };

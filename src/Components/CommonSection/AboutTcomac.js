@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-// import Link from "next/link";
 import Image from "next/image";
 import Oval from "../../../public/svg/oval.svg";
 import Dot from "../../../public/svg/dot.svg";

@@ -10,12 +10,12 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useAuth } from "../../../src/auth//AuthContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
+
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   height: 85px;
   width: 100%;
-  /* overflow-y: hidden; */
   align-items: center;
 
   .logo-container {
@@ -226,6 +226,7 @@ const Header = () => {
   const closeMobileMenu = () => setClick(false);
   const router = useRouter();
   const { logout } = useAuth();
+
   const handlelogout = async (e) => {
     e.preventDefault();
     await logout();

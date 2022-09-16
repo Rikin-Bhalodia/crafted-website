@@ -1,11 +1,10 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-// import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
 import { FreeMode } from "swiper";
 import { GoStar } from "react-icons/go";
+import "swiper/css";
+import "swiper/css/free-mode";
 
 const ReviewSliderWrapper = styled.div`
   padding: 0px 30px;

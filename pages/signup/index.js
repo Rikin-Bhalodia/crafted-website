@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
@@ -17,7 +17,6 @@ const SignUpWrapper = styled.div`
 
   .blank {
     width: 40%;
-    /* background: #EBEAEA; */
   }
 
   .signup-area {
@@ -50,7 +49,6 @@ const SignUpWrapper = styled.div`
       h4 {
         font-weight: 700;
         font-size: 32px;
-        /* line-height: 48px; */
         letter-spacing: 1.33333px;
         color: #1a1a1a;
         margin: 0px 0px 10px 0px;
@@ -105,7 +103,6 @@ const SignUpWrapper = styled.div`
     }
     .signup-btn {
       .btn2 {
-        /* margin-top: 10px; */
         width: 400px;
         height: 50px;
         border: 1px solid #cdcfd1;
@@ -205,14 +202,15 @@ const SignUp = () => {
     password: "",
   });
   const router = useRouter();
-  const { signup, signInWithGoogle, currentUser, signInWithFacebook } =
-    useAuth();
+  const { signup, signInWithGoogle, signInWithFacebook } = useAuth();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSignupData((pre) => {
       return { ...pre, [name]: value };
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (signupData.name && signupData?.email && signupData.password) {

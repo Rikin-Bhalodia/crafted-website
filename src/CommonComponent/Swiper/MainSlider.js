@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import Image from "next/image";
 import styled from "styled-components";
-// import Link from "next/link";
 import { useRouter } from "next/router";
 import { BsArrowRight } from "react-icons/bs";
 

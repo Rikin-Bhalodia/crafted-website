@@ -53,14 +53,17 @@ const AuthProvider = ({ children }) => {
       })
       .catch((err) => console.log(err));
   };
+
   const logout = () => {
     return signOut(auth);
   };
+
   const resetPassword = (email) => {
     return sendPasswordResetEmail(auth, email, {
       url: "http://localhost:8000/login",
     });
   };
+
   const signInWithGoogle = () => {
     signInWithRedirect(auth, googleAuth)
       .then((result) => {
@@ -85,9 +88,7 @@ const AuthProvider = ({ children }) => {
 
   const updateUserEmail = (updatedEmail) => {
     updateEmail(auth.currentUser, updatedEmail)
-      .then((res) => {
-        //
-      })
+      .then((res) => {})
       .catch((e) => {
         toast("Please Login Again With New Email !!");
       });

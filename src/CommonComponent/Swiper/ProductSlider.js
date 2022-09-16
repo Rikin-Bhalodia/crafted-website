@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import Image from "next/image";
 import styled from "styled-components";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../Firebase";
@@ -32,7 +31,6 @@ const ProductWrapper = styled.div`
     color: #393d46;
     -webkit-line-clamp: 2;
     text-overflow: ellipsis;
-    /* overflow: hidden; */
   }
   .product-price {
     padding-top: 5px;

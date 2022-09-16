@@ -6,7 +6,6 @@ import { blogs } from "../../../src/CommonComponent/blogdata/blogs";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-// import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Verified from "/public/svg/verified.svg";
@@ -372,6 +371,7 @@ const HomeBlogWrapper = styled.div`
 
 function HomeBlogSlider() {
   const router = useRouter();
+
   const handleClick = () => {
     router.push("/blog");
   };

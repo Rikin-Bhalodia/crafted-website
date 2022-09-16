@@ -59,9 +59,7 @@ const FooterWrapper = styled.div`
     width: 100%;
     justify-content: center;
     text-align: center;
-    ${"" /* position: absolute; */}
-    ${"" /* bottom: 35px; */}
-    padding:50px 0px 30px;
+    padding: 50px 0px 30px;
   }
   .image-back {
     height: 60px;
@@ -132,6 +130,7 @@ const FooterWrapper = styled.div`
       width: 350px;
       padding: 20px 0px;
     }
+<<<<<<< HEAD
     .title {
       font-size: 25px;
     }
@@ -147,6 +146,8 @@ const FooterWrapper = styled.div`
     .copy-right {
       font-size: 19px;
     }
+=======
+>>>>>>> 13dc2c0bbbfa71e9b4b43aa7795349d988d20df0
   }
   @media screen and (max-width: 630px) {
     .container {
