@@ -273,6 +273,18 @@ const HomeBlogWrapper = styled.div`
     .profile-data {
       padding: 20px 0 0 0;
     }
+    .head {
+      font-size: 25px;
+      line-height: 40px;
+    }
+    .tips {
+      font-size: 15px;
+    }
+    .view-all-btn {
+      font-size: 12px;
+      width: 100px;
+      height: 30px;
+    }
   }
   @media screen and (max-width: 500px) {
     .mySwiper {

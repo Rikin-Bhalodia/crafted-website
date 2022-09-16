@@ -11,7 +11,7 @@ const ReviewSliderWrapper = styled.div`
   padding: 0px 30px;
   .team-slider {
     height: 500px;
-    margin: 50px 0px;
+    margin: 30px 0px 70px;
     .slider {
       display: flex;
       background: #f6f7fb;
@@ -33,10 +33,10 @@ const ReviewSliderWrapper = styled.div`
 
         h5 {
           font-weight: 600;
-          font-size: 20px;
+          font-size: 18px;
           line-height: 22px;
           color: #183b56;
-          margin: 15px 0 0;
+          margin: 10px 0 0;
         }
         div {
           color: yellow;

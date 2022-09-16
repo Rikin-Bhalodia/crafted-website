@@ -66,6 +66,12 @@ const CommonMainWrapper = styled.div`
     .main-content {
       flex-direction: column;
       text-align: center;
+      .main-left {
+        width: 100%;
+      }
+      .main-right {
+        width: 100%;
+      }
     }
   }
   @media screen and (max-width: 657px) {

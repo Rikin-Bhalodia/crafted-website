@@ -50,6 +50,15 @@ const FollowUsWraapper = styled.div`
     }
     .follow {
       text-align: center;
+      font-size: 20px;
+    }
+    .slug {
+      font-size: 15px;
+    }
+    .button {
+      font-size: 12px;
+      width: 120px;
+      height: 35px;
     }
   }
 `;

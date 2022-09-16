@@ -138,6 +138,7 @@ const CommonContent2Wrapper = styled.div`
       flex-direction: column-reverse;
       align-items: center;
       gap: 20px;
+      text-align: center;
     }
   }
   @media screen and (max-width: 657px) {

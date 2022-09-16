@@ -460,7 +460,7 @@ const AboutTcomacWrapper = styled.div`
           width: 170px;
           height: 170px;
           bottom: -320px;
-          right: -200px;
+          right: -215px;
         }
         .item5 {
           width: 120px;

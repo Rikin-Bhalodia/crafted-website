@@ -1,9 +1,9 @@
-import Image from "next/image";
+// import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 import Step1 from "/public/svg/step1.svg";
 import Step2 from "/public/svg/step2.svg";
-import Step3 from "/public/svg/step3.svg";
+import Step3 from "/public/png/buy.png";
 const StepComponent = styled.div`
   padding: 0px 200px;
   .heading-title {
@@ -41,13 +41,13 @@ const StepComponent = styled.div`
           left: 50px;
           p {
             font-weight: 400;
-            font-size: 36px;
+            font-size: 30px;
             color: #000000;
             margin: 5px;
           }
           h4 {
             font-weight: 500;
-            font-size: 36px;
+            font-size: 30px;
             color: #000000;
             margin: 0;
           }
@@ -73,13 +73,13 @@ const StepComponent = styled.div`
           left: 50px;
           p {
             font-weight: 400;
-            font-size: 36px;
+            font-size: 30px;
             color: #000000;
             margin: 0;
           }
           h4 {
             font-weight: 500;
-            font-size: 36px;
+            font-size: 30px;
             color: #000000;
             margin: 0;
           }
@@ -133,7 +133,8 @@ const StepComponent = styled.div`
   @media screen and (max-width: 1320px) {
     .heading-title {
       font-weight: 700;
-      font-size: 30px;
+      font-size: 24px;
+      line-height: 29px;
     }
     .card-area {
       .left-side-area {
@@ -151,7 +152,7 @@ const StepComponent = styled.div`
               font-size: 25px;
             }
             h4 {
-              font-size: 28px;
+              font-size: 25px;
             }
           }
         }
@@ -170,7 +171,7 @@ const StepComponent = styled.div`
               font-size: 25px;
             }
             h4 {
-              font-size: 28px;
+              font-size: 25px;
             }
           }
         }
@@ -232,7 +233,7 @@ const StepComponent = styled.div`
   @media screen and (max-width: 700px) {
     padding: 0px 40px;
     .heading-title {
-      font-size: 25px;
+      font-size: 20px;
     }
   }
   @media screen and (max-width: 550px) {
@@ -254,10 +255,10 @@ const StepComponent = styled.div`
             bottom: 30px;
             left: 8%;
             p {
-              font-size: 17px;
+              font-size: 15px;
             }
             h4 {
-              font-size: 20px;
+              font-size: 15px;
             }
           }
         }
@@ -277,10 +278,10 @@ const StepComponent = styled.div`
             bottom: 30px;
             left: 8%;
             p {
-              font-size: 17px;
+              font-size: 15px;
             }
             h4 {
-              font-size: 20px;
+              font-size: 15px;
             }
           }
         }

@@ -132,11 +132,21 @@ const FooterWrapper = styled.div`
       width: 350px;
       padding: 20px 0px;
     }
-    /* .top {
+    .title {
+      font-size: 25px;
     }
-    .end {
-      gap: 80px;
-    } */
+    .data {
+      font-size: 15px;
+    }
+    .head {
+      font-size: 28px;
+    }
+    .para {
+      font-size: 18px;
+    }
+    .copy-right {
+      font-size: 19px;
+    }
   }
   @media screen and (max-width: 630px) {
     .container {
@@ -152,6 +162,21 @@ const FooterWrapper = styled.div`
       column-gap: 10px;
       text-align: center;
       justify-content: center;
+    }
+    .title {
+      font-size: 20px;
+    }
+    .data {
+      font-size: 13px;
+    }
+    .head {
+      font-size: 25px;
+    }
+    .para {
+      font-size: 15px;
+    }
+    .copy-right {
+      font-size: 16px;
     }
   }
 `;

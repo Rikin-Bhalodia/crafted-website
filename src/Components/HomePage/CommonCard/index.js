@@ -41,7 +41,7 @@ const CommonCardWrapper = styled.div`
   .title {
     color: #ffffff;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 26px;
     position: absolute;
     top: 30px;
     left: 60px;
@@ -66,7 +66,7 @@ const CommonCardWrapper = styled.div`
     height: 40px;
     color: #ffffff;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 18px;
     background: #393d46;
     border-radius: 45px;
     border: none;
@@ -81,7 +81,7 @@ const CommonCardWrapper = styled.div`
     margin-right: 15px;
     margin-top: 10px;
     color: #9f9f9f;
-    font-size: 20px;
+    font-size: 23px;
   }
   .discount-price {
     margin-right: 15px;
@@ -154,7 +154,7 @@ const CommonCardWrapper = styled.div`
       height: 30px;
     }
     .title {
-      font-size: 26px;
+      font-size: 22px;
       top: 48px;
       left: 35px;
     }

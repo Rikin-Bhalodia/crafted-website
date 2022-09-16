@@ -199,7 +199,7 @@ const MainAppWrapper = styled.div`
       width: 180px;
     }
     .text {
-      font-size: 12px;
+      font-size: 15px;
     }
     .main2 {
       margin-top: 80px;
@@ -219,6 +219,9 @@ const MainAppWrapper = styled.div`
     .main-container {
       width: 350px;
     }
+    .main-heading {
+      font-size: 18px;
+    }
     .small-box {
       width: 50px;
       height: 50px;
@@ -229,7 +232,7 @@ const MainAppWrapper = styled.div`
       width: 140px;
     }
     .text {
-      font-size: 12px;
+      font-size: 10px;
       margin-right: 0px;
     }
     .box-container {
@@ -242,7 +245,7 @@ const MainAppWrapper = styled.div`
       margin-top: 80px;
     }
     .woman-empowers-title {
-      font-size: 18px;
+      font-size: 15px;
     }
   }
 `;

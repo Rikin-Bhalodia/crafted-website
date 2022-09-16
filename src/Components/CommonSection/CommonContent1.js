@@ -120,8 +120,10 @@ const CommonContent1Wrapper = styled.div`
   }
   @media screen and (max-width: 1000px) {
     flex-direction: column;
-    text-align: center;
     gap: 20px;
+    .content-data {
+      text-align: center;
+    }
   }
   @media screen and (max-width: 657px) {
     padding: 30px;

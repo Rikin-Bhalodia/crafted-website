@@ -195,7 +195,11 @@ const WebAppWrapper = styled.div`
     top: -60px;
   }
   .dummy-image {
-    height: 380px;
+    height: 370px;
+    width: 360px;
+  }
+  .dummy-image-1 {
+    height: 330px;
     width: 360px;
   }
   @media screen and (max-width: 1400px) {
@@ -527,6 +531,10 @@ const WebApp = () => {
       </div>
     );
   }
+  const style1 = {
+    position: "relative",
+    right: "53px",
+  };
   return (
     <>
       <Breadcrumb separator=">" style={{ marginLeft: "120px" }}>
@@ -568,12 +576,12 @@ const WebApp = () => {
                           alt="image"
                           style={
                             i === 0
-                              ? { position: "relative" }
+                              ? { position: "relative", right: "53px" }
                               : i === 1
-                              ? { position: "absolute", left: "140px" }
+                              ? { position: "absolute", right: "32px" }
                               : i === 2
-                              ? { position: "absolute", right: "150px" }
-                              : { position: "absolute", left: "200px" }
+                              ? { position: "absolute", right: "215px" }
+                              : { position: "absolute", right: "-60px" }
                           }
                         />
                       );
@@ -586,7 +594,7 @@ const WebApp = () => {
                             <img
                               src={image?.img?.src}
                               alt="images"
-                              className="dummy-image"
+                              className="dummy-image-1"
                             />
                           )
                         );

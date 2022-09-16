@@ -163,14 +163,28 @@ const FooterWrapper = styled.div`
   }
 
   @media screen and (max-width: 440px) {
-    .article-des {
-      font-size: 15px;
-    }
-    .article-title {
-      font-size: 18px;
-    }
     .input-field {
       width: 100%;
+    }
+    .heading {
+      font-size: 20px;
+    }
+    .article-des {
+      padding: 10px 0 0 10px;
+      font-size: 12px;
+    }
+    .article-title {
+      padding: 20px 0 0 10px;
+      font-size: 18px;
+    }
+    .button {
+      margin-top: 20px;
+    }
+    .left-card {
+      left: -10px;
+    }
+    .right-card {
+      right: -10px;
     }
   }
 `;

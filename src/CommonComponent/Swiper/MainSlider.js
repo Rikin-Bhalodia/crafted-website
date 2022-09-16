@@ -32,12 +32,12 @@ const SliderWrapper = styled.div`
   }
   .name {
     font-weight: 500;
-    font-size: 58px;
-    line-height: 87px;
+    font-size: 30px;
+    line-height: 75px;
   }
   .desc {
     font-weight: 700;
-    font-size: 128px;
+    font-size: 100px;
     line-height: 100%;
     width: 300px;
     font-family: "Playfair Display";
@@ -45,8 +45,8 @@ const SliderWrapper = styled.div`
   }
   .match-btn {
     font-weight: 500;
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 20px;
+    line-height: 30px;
     color: #fff;
     margin-top: 30px;
     display: flex;
@@ -66,7 +66,7 @@ const SliderWrapper = styled.div`
     background: #ffffff;
     border-radius: 25px;
     div {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
   .small-swiper {
@@ -88,15 +88,15 @@ const SliderWrapper = styled.div`
       margin: 40px 100px;
     }
     .name {
-      font-size: 44px;
-      line-height: 66px;
+      font-size: 35px;
+      line-height: 52px;
     }
     .desc {
-      font-size: 100px;
+      font-size: 75px;
     }
     .match-btn {
-      font-size: 18px;
-      line-height: 27px;
+      font-size: 15px;
+      line-height: 21px;
       margin-top: 10px;
       margin-left: 20px;
     }
@@ -120,23 +120,23 @@ const SliderWrapper = styled.div`
       margin: 30px 60px;
     }
     .name {
-      font-size: 35px;
-      line-height: 52px;
+      font-size: 30px;
+      line-height: 48px;
     }
     .desc {
-      font-size: 80px;
+      font-size: 60px;
     }
     .match-btn {
       font-size: 15px;
       line-height: 22px;
       margin-top: 10px;
-      margin-left: 20px;
+      margin-left: 10px;
     }
     .small-slider {
       height: 110px;
       width: 100px !important;
       div {
-        font-size: 12px;
+        font-size: 10px;
       }
     }
     .small-swiper {
@@ -153,14 +153,15 @@ const SliderWrapper = styled.div`
       margin: 20px 40px;
     }
     .name {
-      font-size: 20px;
-      line-height: 30px;
+      font-size: 15px;
+      line-height: 42px;
     }
     .desc {
-      font-size: 60px;
+      font-size: 50px;
+      line-height: 55px;
     }
     .match-btn {
-      font-size: 15px;
+      font-size: 12px;
       margin-top: 10px;
       margin-left: 10px;
     }
@@ -244,7 +245,7 @@ export default function App() {
                   key={i}
                   onClick={() => router.push("/question")}
                 >
-                  <Image src={Sweater} alt="sweater" />
+                  <Image src={Sweater} alt="sweater" width={60} />
                   <div>Poplin Cotton Fabric</div>
                 </SwiperSlide>
               );
