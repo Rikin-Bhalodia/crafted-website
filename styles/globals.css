@@ -18,8 +18,8 @@ a {
 
 .modalStyle .ant-modal-body {
   display: flex;
-  gap :20px;
-  width:100%;
+  gap: 20px;
+  width: 100%;
 }
 .modaldata {
   background-color: rgb(180, 180, 196);
@@ -27,23 +27,30 @@ a {
   border-radius: 10px;
   padding: 10px;
 }
-.modalStyle .ant-modal-content{
+.modalStyle .ant-modal-content {
   width: 800px;
 }
 
-.modalStyle .ant-modal-body .modaldata >div{
+.modalStyle .ant-modal-body .modaldata > div {
   font-size: 20px;
   font-weight: 500;
 }
-@media screen and (max-width:840px){
-  .modalStyle .ant-modal-content{
+@media screen and (max-width: 840px) {
+  .modalStyle .ant-modal-content {
     width: 100%;
   }
-  .modalStyle .ant-modal-body .modaldata >div{
+  .modalStyle .ant-modal-body .modaldata > div {
     font-size: 10px;
     font-weight: 500;
   }
   .modalStyle .ant-modal-body {
-    gap :20px;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .ant-select {
+    position: relative !important;
+    top: 10px;
   }
 }

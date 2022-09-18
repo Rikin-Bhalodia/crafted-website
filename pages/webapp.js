@@ -183,6 +183,18 @@ const WebAppWrapper = styled.div`
     height: 330px;
     width: 360px;
   }
+  .first-image {
+    position: relative;
+  }
+  .second-image {
+    position: absolute;
+    right: -35px;
+  }
+  .third-image {
+    position: absolute;
+    left: -35px;
+  }
+
   @media screen and (max-width: 1400px) {
     .match-color-box {
       width: 600px;
@@ -250,6 +262,10 @@ const WebAppWrapper = styled.div`
       height: 320px;
       width: 280px;
     }
+    .dummy-image-1 {
+      height: 300px;
+      width: 300px;
+    }
   }
   @media screen and (max-width: 800px) {
     .section {
@@ -312,6 +328,12 @@ const WebAppWrapper = styled.div`
       height: 250px;
       width: 220px;
     }
+    .dummy-image-1 {
+      margin-bottom: 30px;
+      padding-top: 20px;
+      height: 230px;
+      width: 240px;
+    }
   }
 
   @media screen and (max-width: 1000px) {
@@ -353,6 +375,11 @@ const WebAppWrapper = styled.div`
     .product-price {
       font-size: 12px;
     }
+    .label .labell {
+      font-size: 14px;
+      position: relative;
+      top: 10px;
+    }
   }
 `;
 const AllColors = Colors;
@@ -368,7 +395,6 @@ const WebApp = () => {
   const [cartProduct, setCartProduct] = useState([]);
   const { currentUser } = useAuth();
 
-  console.log(products, "color");
   const handleSelectChange = (value) => {
     setCategory(value);
   };
@@ -379,7 +405,6 @@ const WebApp = () => {
 
   const selectedProduct = useMemo(() => {
     return products?.filter((ele) => {
-      console.log(ele?.color[0]?.color, "kkkkkkkkkkkkkkkkkk");
       return ele.category === category &&
         (ele?.tag?.includes(colorTag) || true) &&
         ele?.color[0]?.color
@@ -399,12 +424,12 @@ const WebApp = () => {
     if (color.includes(data)) {
       setColor((prev) => prev.filter((color) => color !== data));
     } else {
-      if (color.length < 4) {
+      if (color.length < 3) {
         setColor((prev) => {
           return [...prev, data];
         });
       } else {
-        toast("You can choose only max upto 4 colors !!");
+        toast("You can choose only max upto 3 colors !!");
       }
     }
   };
@@ -485,17 +510,12 @@ const WebApp = () => {
           height="80"
           width="80"
           ariaLabel="blocks-loading"
-          wrapperStyle={{}}
           wrapperClass="blocks-wrapper"
           colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
         />
       </div>
     );
   }
-  const style1 = {
-    position: "relative",
-    right: "53px",
-  };
   return (
     <>
       <Breadcrumb separator=">" style={{ marginLeft: "120px" }}>
@@ -511,7 +531,8 @@ const WebApp = () => {
             <section className="sec-toc1">
               <div className="match-color-box">
                 <div className="label">
-                  <div>Select a Product</div> &nbsp;&nbsp;&nbsp;
+                  <div className="labell">Select a Product</div>{" "}
+                  &nbsp;&nbsp;&nbsp;
                   <Select
                     style={{
                       width: "50%",
@@ -532,18 +553,17 @@ const WebApp = () => {
                       return (
                         <img
                           src={ele?.image[0]}
-                          className="dummy-image"
+                          className={`dummy-image ${
+                            i === 0
+                              ? "first-image"
+                              : i === 1
+                              ? "second-image"
+                              : i === 2
+                              ? "third-image"
+                              : "forth-image"
+                          }`}
                           key={i}
                           alt="image"
-                          style={
-                            i === 0
-                              ? { position: "relative", right: "53px" }
-                              : i === 1
-                              ? { position: "absolute", right: "32px" }
-                              : i === 2
-                              ? { position: "absolute", right: "215px" }
-                              : { position: "absolute", right: "-60px" }
-                          }
                         />
                       );
                     })
