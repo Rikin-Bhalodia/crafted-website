@@ -407,10 +407,9 @@ const WebApp = () => {
     return products?.filter((ele) => {
       return ele.category === category &&
         (ele?.tag?.includes(colorTag) || true) &&
-        ele?.color[0]?.color
+        ele?.color[0]
         ? color.includes(
-            ele?.color[0]?.color?.toUpperCase() ||
-              color.includes(ele?.color).toUpperCase()
+            ele?.color[0]?.color?.toUpperCase() || ele?.color[0]?.toUpperCase()
           )
           ? ele
           : null
