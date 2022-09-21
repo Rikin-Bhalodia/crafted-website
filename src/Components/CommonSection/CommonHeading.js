@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Wave from "../../../public/svg/wave2.svg";
-import banner from "../../../public/svg/main-slider.svg";
 
 const CommonHeadWrapper = styled.div`
   background-color: #979797;
@@ -100,7 +99,8 @@ const CommonHead = (props) => {
   return (
     <>
       <CommonHeadWrapper>
-        <Image src={banner} alt="banner-img" layout="fill" />
+        {/* <img src={props?.image?.src} alt="image" className="img" /> */}
+        <Image src={props.img} alt="banner-img" layout="fill" />
         <div>
           <div className="common-head">
             <h3>{props.heading}</h3>

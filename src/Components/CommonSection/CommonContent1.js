@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+// import Image from "next/image";
 
 const CommonContent1Wrapper = styled.div`
   display: flex;
@@ -10,7 +11,6 @@ const CommonContent1Wrapper = styled.div`
     .img {
       width: 750px;
       height: 750px;
-      background: #979797;
       border: 10px solid #ffffff;
       border-radius: 8px;
     }
@@ -142,12 +142,12 @@ const CommonContent1 = (props) => {
     <>
       <CommonContent1Wrapper>
         <div className="content-img">
-          <div className="img"></div>
+          <img src={props?.image?.src} alt="image" className="img" />
         </div>
         <div className="content-data">
           <h3>{props.head}</h3>
           <p>{props.para}</p>
-          <p>{props.para1}</p>
+          <p>{props?.para1}</p>
         </div>
       </CommonContent1Wrapper>
     </>

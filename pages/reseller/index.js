@@ -10,17 +10,20 @@ import ContactSec from "../../src/Components/reseller/Contact";
 import AboutUs from "../../src/Components/reseller/AboutUs";
 import OurMission from "../../src/Components/reseller/OurMission";
 import TeamSlider from "../../src/Components/reseller/TeamSlider";
+import banner from "../../public/svg/reseller-banner.svg";
+import Image from "next/image";
 
 const ResellerWrapper = styled.div`
   width: 100%;
   height: 750px;
-  background: linear-gradient(
-    261.26deg,
-    #cccccc 14.9%,
-    #666666 43.58%,
-    #000000 89.94%
-  );
+  background-image: url("");
   opacity: 0.7;
+  position: relative;
+  object-fit: fill;
+  img {
+    z-index: 1;
+    object-fit: cover;
+  }
   .reseller-section {
     width: 100%;
     height: 100%;
@@ -28,7 +31,9 @@ const ResellerWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    z-index: 2;
+    position: absolute;
+    top: 0;
     h3 {
       font-weight: 400;
       font-size: 60px;
@@ -92,9 +97,8 @@ const ResellerWrapper = styled.div`
     }
   }
   @media screen and (max-width: 568px) {
-    padding: 20px 50px;
+    padding: 20px 0px;
     width: 100%;
-    height: 100%;
     .reseller-section {
       h3 {
         font-size: 30px;
@@ -151,6 +155,7 @@ const Reseller = () => {
   return (
     <>
       <ResellerWrapper>
+        <Image src={banner} layout="fill" />
         <div className="reseller-section">
           <h3>
             Become our <br /> The Crafted Associate Partner

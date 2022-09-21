@@ -9,12 +9,12 @@ import value4 from "../../../public/svg/value/value4.svg";
 const value = [
   {
     logo: <Image src={value1} alt="icon" />,
-    head: "Collaboration",
+    head: "Women Empowerment",
     para: "Collaboration is the process of two or more people or organizations working together to complete a task or achieve a goal. ",
   },
   {
     logo: <Image src={value2} alt="icon" />,
-    head: "Transparency",
+    head: "Leadership",
     para: "Transparency, as used in science is operating in such a way that it is easy for others to see what actions are performed.",
   },
   {

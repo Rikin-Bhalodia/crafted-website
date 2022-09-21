@@ -8,6 +8,9 @@ import CommonContent1 from "../../src/Components/CommonSection/CommonContent1";
 import CommonContent2 from "../../src/Components/CommonSection/CommonContent2";
 // import Link from "next/link";
 // import Image from "next/image";
+import Journey from "/public/svg/about-story-community/journey.svg";
+import Care from "/public/svg/about-story-community/thecare.svg";
+import banner from "/public/svg/main-slider.svg";
 
 const OurStoryWrapper = styled.div``;
 
@@ -16,17 +19,19 @@ const OurStory = () => {
     <>
       <OurStoryWrapper>
         <CommonHead
+          img={banner}
           heading="The Crafted Story"
           para="The story of revolutionizing Indian textile industry."
           btn="Subscribe our Newsletter"
         />
         <CommonMain
           head="how it started"
-          left="It all began with a 3-year-old child observing his age-old family business of garments. "
-          righttop="Perhaps the toys didn’t inspire Asif Ahmed Subhani. The business activities, the customers, the problems did.Thus began the journey of formal and informal education."
-          rightbottom="Informal education was an inheritance from a well-knit family where moral values, ethics, care and leadership are significantly embedded. The formal education polished these values."
+          left="It all began with a 3-year-old child observing his age-old family business of textiles. "
+          rightbottom="Perhaps the toys didn’t inspire Asif Ahmed Subhani. The business activities, the customers, the problems did.
+Thus began the journey of formal and informal education. Informal education was an inheritance from a well-knit family where moral values, ethics, care and leadership are significantly embedded. The formal education polished these values.  "
         />
         <CommonContent1
+          image={Journey}
           para="The new journey began with the word, “Care” when the founder of “The
             Crafted” Asif Ahmed Subhani realized how his female friends and
             relatives would feel frustrated running around the markets to find a
@@ -37,6 +42,7 @@ const OurStory = () => {
         />
         <CommonValue />
         <CommonContent2
+          image={Care}
           head="The Care"
           para1="There is just one word that sums up the values and the philosophy
               of The Crafted brand. The word is, “Care”. The “Care” for the

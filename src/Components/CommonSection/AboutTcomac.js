@@ -61,7 +61,6 @@ const AboutTcomacWrapper = styled.div`
       width: 50%;
       position: relative;
       .item {
-        background: #979797;
         border-radius: 13px;
       }
       .item1 {
@@ -70,6 +69,7 @@ const AboutTcomacWrapper = styled.div`
         bottom: 90px;
         position: absolute;
         right: 315px;
+        background: #2cc1b8;
       }
       .item2 {
         width: 140px;
@@ -78,6 +78,7 @@ const AboutTcomacWrapper = styled.div`
         position: absolute;
         right: 520px;
         z-index: 999;
+        background: #74e73e;
       }
       .item3 {
         width: 130px;
@@ -86,6 +87,7 @@ const AboutTcomacWrapper = styled.div`
         position: absolute;
         right: 400px;
         z-index: 999;
+        background: #e86fc6;
       }
       .item4 {
         width: 190px;
@@ -94,6 +96,7 @@ const AboutTcomacWrapper = styled.div`
         position: absolute;
         right: 20px;
         z-index: 999;
+        background: #ff3838;
       }
       .item5 {
         width: 140px;
@@ -101,6 +104,7 @@ const AboutTcomacWrapper = styled.div`
         bottom: -15px;
         position: absolute;
         right: 30px;
+        background: #ff7a00;
       }
       .item6 {
         position: absolute;
