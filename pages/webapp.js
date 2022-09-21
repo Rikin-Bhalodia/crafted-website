@@ -470,6 +470,7 @@ const WebApp = () => {
           uid: currentUser?.uid || "",
         });
         toast("Your Item is added in Cart");
+        router.push("/cart");
       }
     });
   };
@@ -599,7 +600,11 @@ const WebApp = () => {
                   >
                     View Product
                   </button>
-                  <button className="button-add" style={{ cursor: "pointer" }}>
+                  <button
+                    className="button-add"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => addToCart()}
+                  >
                     Buy Now
                   </button>
                 </div>
@@ -639,7 +644,9 @@ const WebApp = () => {
                                 : { background: data.code, cursor: "pointer" }
                             }
                             onClick={() => onSelect(data.code[0])}
-                          >{data.color}</div>
+                          >
+                            {data.color}
+                          </div>
                         </div>
                       );
                     })}
