@@ -21,7 +21,7 @@ const SignUpWrapper = styled.div`
 
   .signup-area {
     width: 60%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -224,10 +224,10 @@ const SignUp = () => {
     e.preventDefault();
     await signInWithGoogle();
   };
-  const handleLoginWithFacebook = async (e) => {
-    e.preventDefault();
-    await signInWithFacebook();
-  };
+  // const handleLoginWithFacebook = async (e) => {
+  //   e.preventDefault();
+  //   await signInWithFacebook();
+  // };
 
   return (
     <SignUpWrapper>
@@ -290,10 +290,10 @@ const SignUp = () => {
             &nbsp;&nbsp;&nbsp;&nbsp;Sign in with Google
           </a>
           <br />
-          <a href="#" className="btn2" onClick={handleLoginWithFacebook}>
+          {/* <a href="#" className="btn2" onClick={handleLoginWithFacebook}>
             <FaFacebook size={30} />
             &nbsp;&nbsp;&nbsp;Continue with Facebook
-          </a>
+          </a> */}
         </div>
         <div className="terms">
           <p>
@@ -305,9 +305,9 @@ const SignUp = () => {
             Already have account?
           </a>
           &nbsp;&nbsp;&nbsp;
-          <Link href="/login" className="link2">
+          <a href="/login" className="link2">
             Login here
-          </Link>
+          </a>
         </div>
       </div>
       <ToastContainer />

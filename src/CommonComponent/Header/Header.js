@@ -225,13 +225,17 @@ const Header = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const router = useRouter();
-  const { logout } = useAuth();
+  const { logout, currentUser } = useAuth();
 
-  const handlelogout = async (e) => {
+  const handleLogin = async (e, type) => {
     e.preventDefault();
-    await logout();
-    router.push("/login");
+    if (type === "logout") {
+      await logout();
+    } else {
+      router.push("/login");
+    }
   };
+
   return (
     <HeaderWrapper>
       <div className="logo-container">
@@ -306,13 +310,23 @@ const Header = () => {
             style={{ cursor: "pointer" }}
           />
         </div>
-        <button
-          className="login-button non"
-          onClick={handlelogout}
-          style={{ cursor: "pointer" }}
-        >
-          Logout
-        </button>
+        {currentUser?.email ? (
+          <button
+            className="login-button non"
+            onClick={(e) => handleLogin(e, "logout")}
+            style={{ cursor: "pointer" }}
+          >
+            Logout
+          </button>
+        ) : (
+          <button
+            className="login-button non"
+            onClick={(e) => handleLogin(e, "login")}
+            style={{ cursor: "pointer" }}
+          >
+            Login
+          </button>
+        )}
       </div>
 
       <div className="mobile-menu" onClick={handleClick}>

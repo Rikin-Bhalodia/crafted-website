@@ -87,11 +87,16 @@ const LogInWrapper = styled.div`
       .link {
         border-top: 1px solid #ebeaea;
         text-decoration: underline;
-        /* color: #0764e3; */
+        color: #0764e3;
         display: flex;
         align-items: flex-end;
         height: 50px;
-        margin-top: 30px;
+        margin-top: 15px;
+      }
+      .signup-move {
+        text-align: center;
+        color: #0764e3;
+        cursor: pointer;
       }
     }
   }
@@ -137,7 +142,7 @@ const LogIn = () => {
     e.preventDefault();
     if (loginData.email && loginData.password) {
       await login(loginData.email, loginData.password);
-      router.push("/");
+      router.push("/webapp");
     } else {
       toast("please fill the data ");
     }
@@ -186,9 +191,14 @@ const LogIn = () => {
           </a>
           <br />
 
-          <Link href="/forget" className="link">
+          <a href="/forget" className="link">
             Forgot your password?
-          </Link>
+          </a>
+
+          <br />
+          <div className="signup-move" onClick={() => router.push("/signup")}>
+            You don't have account please signup here !!
+          </div>
         </div>
       </div>
       <ToastContainer />
