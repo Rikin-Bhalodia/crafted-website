@@ -136,6 +136,9 @@ const WebAppWrapper = styled.div`
     border: 1px solid #000000;
     border-radius: 30px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
   }
 
   .productImg {
@@ -417,8 +420,6 @@ const WebApp = () => {
     });
   }, [color, category]);
 
-  console.log(selectedProduct, "product");
-
   const onSelect = (data) => {
     if (color.includes(data)) {
       setColor((prev) => prev.filter((color) => color !== data));
@@ -629,16 +630,16 @@ const WebApp = () => {
                           <div
                             className="box"
                             style={
-                              color.includes(data[0])
+                              color.includes(data.code[0])
                                 ? {
                                     border: "4px solid black",
-                                    background: data,
+                                    background: data.code,
                                     cursor: "pointer",
                                   }
-                                : { background: data, cursor: "pointer" }
+                                : { background: data.code, cursor: "pointer" }
                             }
-                            onClick={() => onSelect(data[0])}
-                          ></div>
+                            onClick={() => onSelect(data.code[0])}
+                          >{data.color}</div>
                         </div>
                       );
                     })}
