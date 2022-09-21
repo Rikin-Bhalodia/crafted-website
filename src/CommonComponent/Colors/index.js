@@ -8,7 +8,6 @@ export const Colors = [
   { code: ["#191970"], color: "Midnight Blue" },
   { code: ["#353B5B"], color: "Gulf Blue" },
   { code: ["#9bc3eb"], color: "Light Sky Blue" },
-  // { code: ["#89C4FF"], color: "" },
   { code: ["#FF0000"], color: "Red" },
   { code: ["#9D0C2B"], color: "Maroon" },
   { code: ["#9A0C29"], color: "Carmine" },
