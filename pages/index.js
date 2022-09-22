@@ -6,6 +6,7 @@ import MatchComponent from "../src/Components/HomePage/StepComponent";
 import HomeBlogSlider from "../src/CommonComponent/Swiper/HomeBlogSlider";
 import FooterContact from "../src/CommonComponent/Footer/FooterContact";
 import ReviewSlider from "../src/Components/review-slider/ReviewSlider";
+import DiffCard from "../src/Components/HomePage/CommonCard/diffrentCard";
 
 const MainAppWrapper = styled.div`
   position: relative;
@@ -97,7 +98,7 @@ const MainAppWrapper = styled.div`
   }
 
   .title-cus {
-    margin: 50px 0px 0px 50px;
+    margin: 150px 0px 0px 50px;
     font-weight: 700;
     font-size: 30px;
     color: #183b56;
@@ -356,7 +357,7 @@ export default function Home() {
           <button className="know-how-btn">Know how?</button>
         </div>
       </div>
-      {/* <DiffCard /> */}
+      <DiffCard />
       <div className="customer-section">
         <div className="title-cus">What our customers say</div>
         <div className="review">

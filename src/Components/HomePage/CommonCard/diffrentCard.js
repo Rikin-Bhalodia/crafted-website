@@ -5,7 +5,7 @@ import BackGround from "/public/svg/background.svg";
 import OurStory from "/public/svg/ourstory.svg";
 import Community from "/public/svg/community.svg";
 import AboutCrafted from "/public/svg/about-crafted.svg";
-import Link from "next/link";
+// import Link from "next/link";
 import { useRouter } from "next/router";
 
 const CommonCard = styled.div`

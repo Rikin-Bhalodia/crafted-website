@@ -12,7 +12,6 @@ const CommonContent2Wrapper = styled.div`
       .img {
         width: 700px;
         height: 700px;
-        background: #979797;
         border: 10px solid #ffffff;
         border-radius: 8px;
       }
@@ -166,7 +165,7 @@ const CommonContent2 = (props) => {
             <p>{props.para3}</p>
           </div>
           <div className="content-img">
-            <div className="img"></div>
+            <img src={props?.image?.src} alt="image" className="img" />
           </div>
         </div>
       </CommonContent2Wrapper>
