@@ -157,22 +157,25 @@ const Cart = () => {
     };
     var rzp1 = new window.Razorpay(options);
     rzp1.open();
-    await fetch("http://localhost:1337/verification", {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    // await fetch("http://localhost:1337/verification", {
+    //   method: "POST",
+    //   mode: "cors",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
 
-    await fetch("http://localhost:1337/order-details", {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(orderItemsDetails),
-    });
+    // await fetch("http://localhost:1337/order-details", {
+    //   method: "POST",
+    //   mode: "cors",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(orderItemsDetails),
+    // });
+    setTimeout(() => {
+      setCurrent(current + 1);
+    }, 5000);
   };
 
   const next = (key) => {

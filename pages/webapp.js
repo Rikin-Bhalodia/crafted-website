@@ -465,16 +465,16 @@ const WebApp = () => {
       if (cartProducts.includes(ele.id.toString())) {
         toast(`Your ${ele.name} is already in Cart !!`);
       } else {
-        if (currentUser?.email) {
-          set(ref(db, "cartItem/" + ele.id), {
-            cartData: ele,
-            uid: currentUser?.uid || "",
-          });
-          toast("Your Item is added in Cart");
-          router.push("/cart");
-        } else {
-          toast("Please Login!!");
-        }
+        // if (currentUser?.email) {
+        set(ref(db, "cartItem/" + ele.id), {
+          cartData: ele,
+          uid: currentUser?.uid || "",
+        });
+        toast("Your Item is added in Cart");
+        router.push("/cart");
+        // } else {
+        //   toast("Please Login!!");
+        // }
       }
     });
   };

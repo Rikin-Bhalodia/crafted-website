@@ -247,7 +247,7 @@ const ShoppingCart = () => {
               ? cartItemData[0]?.cartData?.totalUserItem - 1
               : 1,
           },
-          uid: currentUser.uid,
+          uid: currentUser?.uid || "",
         })
       : set(ref(db, "cartItem/" + id), {
           cartData: {
@@ -256,7 +256,7 @@ const ShoppingCart = () => {
               ? cartItemData[0]?.cartData?.totalUserItem + 1
               : 1,
           },
-          uid: currentUser.uid,
+          uid: currentUser?.uid || "",
         });
   };
 
@@ -310,10 +310,10 @@ const ShoppingCart = () => {
                     </a>
                   </div>
                   <div>
-                    $ {product.cartData?.mrp * product?.cartData?.totalUserItem}
+                    ₹{product.cartData?.mrp * product?.cartData?.totalUserItem}
                   </div>
                   <div>
-                    ${product.cartData?.mrp * product?.cartData?.totalUserItem}
+                    ₹{product.cartData?.mrp * product?.cartData?.totalUserItem}
                   </div>
                   <div
                     className="close"
@@ -335,7 +335,7 @@ const ShoppingCart = () => {
           <p>Total</p>
 
           <h5>
-            $
+            ₹
             {array &&
               array.reduce(
                 (previousValue, currentValue) => previousValue + currentValue,
