@@ -14,13 +14,13 @@ import Link from "next/link";
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 85px;
+  height: 75px;
   width: 100%;
   align-items: center;
 
   .logo-container {
     height: 50px !important;
-    width: 280px !important;
+    width: 220px !important;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -85,8 +85,8 @@ const HeaderWrapper = styled.div`
     justify-content: center;
   }
   .logo {
-    width: 45px;
-    height: 45px;
+    width: 35px !important;
+    height: 35px !important;
   }
   .nav-options {
     padding-left: 25px;
@@ -103,8 +103,8 @@ const HeaderWrapper = styled.div`
   }
   @media screen and (max-width: 1140px) {
     .logo {
-      width: 45px;
-      height: 45px;
+      width: 35px !important;
+      height: 35px !important;
     }
     .nav-options {
       display: flex;
@@ -121,7 +121,7 @@ const HeaderWrapper = styled.div`
     }
     .nav-options.active {
       left: 0;
-      height: 380px;
+      height: 450px;
       background: #fff;
       opacity: 1;
       transition: all 0.5s ease;
@@ -190,8 +190,7 @@ const HeaderWrapper = styled.div`
     }
     .logo-container {
       height: 50px !important;
-      width: 280px !important;
-      padding-right: 100px;
+      width: 200px !important;
       padding-left: 3%;
     }
   }
@@ -265,9 +264,12 @@ const Header = () => {
           <li className="option" onClick={closeMobileMenu}>
             <Link href="/blog">Blog</Link>
           </li>
+          <li className="option" onClick={closeMobileMenu}>
+            <Link href="/reseller"> Associate Partner</Link>
+          </li>
         </div>
         <li className="option mobile-option" onClick={closeMobileMenu}>
-          <input placeholder="Search " className="search" style={{}} />
+          {/* <input placeholder="Search " className="search" style={{}} /> */}
           <div className="search-icon">
             <Image
               src={SearchIcon}
@@ -286,7 +288,7 @@ const Header = () => {
       </ul>
 
       <div className="right-side-part">
-        <input placeholder="Search" className="search non" />
+        {/* <input placeholder="Search" className="search non" /> */}
         <div className="search-icon non">
           <Image
             src={SearchIcon}
@@ -331,9 +333,9 @@ const Header = () => {
 
       <div className="mobile-menu" onClick={handleClick}>
         {click ? (
-          <AiOutlineClose className="menu-icon" />
+          <AiOutlineClose className="menu-icon" style={{ cursor: "pointer" }} />
         ) : (
-          <AiOutlineMenu className="menu-icon" />
+          <AiOutlineMenu className="menu-icon" style={{ cursor: "pointer" }} />
         )}
       </div>
     </HeaderWrapper>

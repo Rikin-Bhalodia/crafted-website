@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Sweater from "/public/svg/sweater.svg";
+import { whiteImage } from "../../utils/other";
+import { images } from "../../utils/other";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
@@ -184,6 +185,7 @@ export default function App() {
     winWidth: window.innerWidth,
     winHeight: window.innerHeight,
   });
+  const [id, setId] = useState("");
 
   const detectSize = () => {
     detectHW({
@@ -212,6 +214,13 @@ export default function App() {
     }
   }, [windowDimenion.winWidth]);
 
+  const MouseOver = (id) => {
+    if (id) {
+      setId(id);
+    }
+  };
+
+  const whiteImages = whiteImage.find((data) => data.id === id);
   return (
     <SliderWrapper>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
@@ -220,7 +229,7 @@ export default function App() {
             <video src={videoURL} autoPlay={true} loop={true} muted />
           </div>
           <div className="content">
-            <div className="name">World's First</div>
+            <div className="name">India's First</div>
             <div className="desc">Online Matching Centre</div>
             <div className="match-btn" style={{ cursor: "pointer" }}>
               Match Now{" "}
@@ -233,19 +242,34 @@ export default function App() {
           <Swiper
             slidesPerView={4}
             centeredSlides={true}
-            grabCursor={true}
             spaceBetween={15}
             className="small-swiper"
           >
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => {
+            {images.map((data, i) => {
               return (
                 <SwiperSlide
                   className="small-slider"
-                  key={i}
+                  key={data.id}
                   onClick={() => router.push("/question")}
+                  onMouseEnter={() => MouseOver(data.id)}
+                  style={
+                    id === data.id
+                      ? { background: "#393D46" }
+                      : { background: "white" }
+                  }
                 >
-                  <Image src={Sweater} alt="sweater" width={60} />
-                  <div>Poplin Cotton Fabric</div>
+                  <Image
+                    src={id === data?.id ? whiteImages.img : data.img}
+                    alt="sweater"
+                    width={60}
+                  />
+                  <div
+                    style={
+                      id === data.id ? { color: "white" } : { color: "#393D46" }
+                    }
+                  >
+                    Poplin Cotton Fabric
+                  </div>
                 </SwiperSlide>
               );
             })}
