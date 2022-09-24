@@ -14,6 +14,8 @@ import { Colors } from "../src/CommonComponent/Colors";
 import { images } from "../src/CommonComponent/BlankImages";
 import { getAllProducts } from "../src/utils";
 import { colors } from "../src/utils/other";
+import colorRight from "/public/svg/color-right.svg";
+import colorLeft from "/public/svg/color-left.svg";
 
 const WebAppWrapper = styled.div`
   .section {
@@ -131,14 +133,15 @@ const WebAppWrapper = styled.div`
   }
   .box {
     width: 130px;
-    height: 60px;
+    height: 70px;
     background: #d9d9d9;
-    border: 1px solid #000000;
-    border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
+    font-size: 10px;
+    position: relative;
+    overflow: hidden;
   }
 
   .productImg {
@@ -197,6 +200,18 @@ const WebAppWrapper = styled.div`
     position: absolute;
     left: -35px;
   }
+  .color-image-left {
+    position: absolute;
+    left: -3px;
+    height: 60px;
+    width: 10px;
+  }
+  .color-image-right {
+    position: absolute;
+    right: -3px;
+    height: 60px;
+    width: 10px;
+  }
 
   @media screen and (max-width: 1400px) {
     .match-color-box {
@@ -213,6 +228,12 @@ const WebAppWrapper = styled.div`
     }
     .box {
       width: 100px;
+      height: 50px;
+    }
+    .color-image-left {
+      height: 50px;
+    }
+    .color-image-right {
       height: 50px;
     }
   }
@@ -246,6 +267,7 @@ const WebAppWrapper = styled.div`
     .box {
       width: 80px;
       height: 40px;
+      font-size: 8px;
     }
     .container {
       gap: 10px;
@@ -268,6 +290,14 @@ const WebAppWrapper = styled.div`
     .dummy-image-1 {
       height: 300px;
       width: 300px;
+    }
+    .color-image-left {
+      height: 40px;
+      left: -4px;
+    }
+    .color-image-right {
+      height: 40px;
+      right: -4px;
     }
   }
   @media screen and (max-width: 800px) {
@@ -406,6 +436,7 @@ const WebApp = () => {
     getAllProducts(setProducts);
   }, []);
 
+  console.log(colorLeft, colorRight, "lll");
   const selectedProduct = useMemo(() => {
     return products?.filter((ele) => {
       return ele.category === category &&
@@ -641,7 +672,7 @@ const WebApp = () => {
                             style={
                               color.includes(data.code[0])
                                 ? {
-                                    border: "4px solid black",
+                                    color: "black",
                                     background: data.code,
                                     cursor: "pointer",
                                   }
@@ -649,7 +680,17 @@ const WebApp = () => {
                             }
                             onClick={() => onSelect(data.code[0])}
                           >
+                            <img
+                              src={colorLeft.src}
+                              alt="whitespace"
+                              className="color-image-left"
+                            />
                             {data.color}
+                            <img
+                              src={colorRight.src}
+                              alt="whitespace"
+                              className="color-image-right"
+                            />
                           </div>
                         </div>
                       );

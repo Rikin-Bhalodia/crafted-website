@@ -17,7 +17,7 @@ const QuestionWrapper = styled.div`
   text-align: center;
   .que-head {
     h3 {
-      font-size: 40px;
+      font-size: 36px;
       font-weight: 500;
     }
   }
