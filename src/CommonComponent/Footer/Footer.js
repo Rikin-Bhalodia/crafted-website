@@ -16,7 +16,7 @@ const FooterWrapper = styled.div`
   }
   .head {
     font-weight: 700;
-    font-size: 36px;
+    font-size: 30px;
     color: #cccccc;
   }
   .para {
@@ -38,21 +38,20 @@ const FooterWrapper = styled.div`
     display: flex;
     width: 700px;
     position: relative;
-    ${"" /* right: 50px; */}
     margin-top: 30px;
     justify-content: center;
     gap: 80px;
   }
   .title {
     font-weight: 700;
-    font-size: 25px;
+    font-size: 18px;
     color: #cccccc;
     margin: 25px 0px;
   }
   .data {
     margin-top: 20px;
     color: #959ead;
-    font-size: 16px;
+    font-size: 14px;
   }
   .wishes {
     display: flex;
@@ -73,7 +72,7 @@ const FooterWrapper = styled.div`
   }
   .copy-right {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     color: #cccccc;
     padding-top: 10px;
   }
@@ -106,17 +105,11 @@ const FooterWrapper = styled.div`
     }
   }
   @media screen and (max-width: 1100px) {
-    .all-footer-content {
-      flex-direction: column;
-      align-items: center;
-      margin-top: 0px;
-      gap: 0px;
-    }
     .head-logo {
       margin-left: 50px;
     }
     .head {
-      font-size: 30px;
+      font-size: 26px;
     }
     .para {
       font-size: 20px;
@@ -126,24 +119,30 @@ const FooterWrapper = styled.div`
     }
   }
   @media screen and (max-width: 799px) {
+    .all-footer-content {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0px;
+      gap: 0px;
+    }
     .all-footer-content > div {
       width: 350px;
       padding: 20px 0px;
     }
     .title {
-      font-size: 25px;
+      font-size: 16px;
     }
     .data {
-      font-size: 15px;
+      font-size: 13px;
     }
     .head {
-      font-size: 28px;
+      font-size: 24px;
     }
     .para {
-      font-size: 18px;
+      font-size: 16px;
     }
     .copy-right {
-      font-size: 19px;
+      font-size: 16px;
     }
   }
   @media screen and (max-width: 630px) {
