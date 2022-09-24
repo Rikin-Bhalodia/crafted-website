@@ -203,14 +203,14 @@ const WebAppWrapper = styled.div`
   .color-image-left {
     position: absolute;
     left: -4px;
-    height: 60px;
-    width: 13px;
+    height: 70px;
+    width: 15px;
   }
   .color-image-right {
     position: absolute;
     right: -4px;
-    height: 60px;
-    width: 13px;
+    height: 70px;
+    width: 15px;
   }
 
   @media screen and (max-width: 1400px) {
@@ -232,11 +232,11 @@ const WebAppWrapper = styled.div`
     }
     .color-image-left {
       height: 50px;
-      left: -5px;
+      left: -6px;
     }
     .color-image-right {
       height: 50px;
-      right: -5px;
+      right: -6px;
     }
   }
   @media screen and (max-width: 1200px) {
