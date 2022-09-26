@@ -4,7 +4,6 @@ import { Select } from "antd";
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
 import "antd/dist/antd.variable.min.css";
-import Circle from "@uiw/react-color-circle";
 
 const { Option } = Select;
 const PoplinCottonFabricWrapper = styled.div`

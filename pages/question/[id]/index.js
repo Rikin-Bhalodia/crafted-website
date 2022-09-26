@@ -5,7 +5,6 @@ import PatialaSalwar from "../../../src/Components/question/PatialaSalwar";
 import FullPatialaSalwar from "../../../src/Components/question/FullPatialaSalwar";
 import SemiPatialaSalwar from "../../../src/Components/question/SemiPatialaSalwar";
 import PoplinCottonFabric from "../../../src/Components/question/PoplinCottonFabric";
-import { Select } from "antd";
 import "antd/dist/antd.variable.min.css";
 import { TCOMaCPageImage } from "../../../src/utils/other";
 import { useRouter } from "next/router";

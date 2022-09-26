@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import Footer from "../src/CommonComponent/Footer/FooterContact";
 import "antd/dist/antd.css";
-import { Select } from "antd";
 import { Breadcrumb } from "antd";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
