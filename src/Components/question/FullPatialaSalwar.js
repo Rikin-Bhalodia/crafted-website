@@ -175,11 +175,11 @@ const FullPatialaSalwar = () => {
                   value={size}
                   onChange={onSizeChange}
                 >
-                  <Option value="s">S</Option>
+                  {/* <Option value="s">S</Option>
                   <Option value="m">M</Option>
                   <Option value="l">L</Option>
                   <Option value="xl">XL</Option>
-                  <Option value="xxl">XXL</Option>
+                  <Option value="xxl">XXL</Option> */}
                   <Option value="free-size">Free Size</Option>
                 </Select>
               </p>

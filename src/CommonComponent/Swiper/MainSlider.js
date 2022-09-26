@@ -37,7 +37,7 @@ const SliderWrapper = styled.div`
   }
   .desc {
     font-weight: 700;
-    font-size: 100px;
+    font-size: 90px;
     line-height: 100%;
     width: 300px;
     font-family: "Playfair Display";
@@ -66,7 +66,8 @@ const SliderWrapper = styled.div`
     background: #ffffff;
     border-radius: 25px;
     div {
-      font-size: 18px;
+      padding-top: 15px;
+      font-size: 17px;
     }
   }
   .small-swiper {
@@ -267,6 +268,7 @@ export default function App() {
                     style={
                       id === data.id ? { color: "white" } : { color: "#393D46" }
                     }
+                    className="slider-name"
                   >
                     Poplin Cotton Fabric
                   </div>

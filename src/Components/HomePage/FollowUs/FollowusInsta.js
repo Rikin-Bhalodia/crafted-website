@@ -13,7 +13,7 @@ const FollowUsWraapper = styled.div`
   padding: 0px;
   .follow {
     font-weight: 700;
-    font-size: 30px;
+    font-size: 26px;
   }
   .slug {
     font-weight: 400;
@@ -29,11 +29,11 @@ const FollowUsWraapper = styled.div`
   .button {
     background: #e07171;
     border-radius: 45px;
-    width: 180px;
-    height: 50px;
+    width: 160px;
+    height: 40px;
     border: none;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     color: #ffffff;
     margin-top: 30px;
   }

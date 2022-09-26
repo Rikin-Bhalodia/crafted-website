@@ -4,6 +4,7 @@ import { Select } from "antd";
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
 import "antd/dist/antd.variable.min.css";
+import Circle from "@uiw/react-color-circle";
 
 const { Option } = Select;
 const PoplinCottonFabricWrapper = styled.div`
@@ -26,11 +27,25 @@ const PoplinCottonFabricWrapper = styled.div`
       }
     }
   }
+  .color-back {
+    background: #2e526d;
+    height: 50px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .color-tab {
+    height: 40px;
+    width: 400px;
+    border-radius: 20px;
+  }
 `;
 
 const PoplinCottonFabric = () => {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+  const [hex, setHex] = useState("");
 
   const handleChange = (value) => {
     setColor(value);
@@ -51,6 +66,24 @@ const PoplinCottonFabric = () => {
       toast("please fill the data ");
     }
   };
+
+  const colors = [
+    { color: "#0000FF", name: "Blue" },
+    { color: "#FF0000", name: "Red" },
+    { color: "#00FF00", name: "Green" },
+    { color: "#FFFF00", name: "Yellow" },
+    { color: "#FF8C00", name: "Orange" },
+    { color: "#FFFFFF", name: "White" },
+    { color: "#E30B5C", name: "Pink" },
+    { color: "#E54D5C", name: "Gajri" },
+    { color: "#821762", name: "Purple" },
+    { color: "#FFFDD0", name: "Cream" },
+    { color: "#6D7A86", name: "Grey" },
+    { color: "#7F4534", name: "Brown" },
+    { color: "#74823D", name: "Mahendi" },
+    { color: "#C97A30", name: "Metal" },
+    { color: "#000000", name: "Black" },
+  ];
   return (
     <>
       <PoplinCottonFabricWrapper>
@@ -58,6 +91,18 @@ const PoplinCottonFabric = () => {
           <div className="body">
             <div>
               <h5>1. What is the basic color you need?</h5>
+              <div className="color-back">
+                {colors.map((ele) => {
+                  return (
+                    <>
+                      <div
+                        style={{ background: ele.color }}
+                        className="color-tab"
+                      ></div>
+                    </>
+                  );
+                })}
+              </div>
               <p>
                 <Select
                   defaultValue="Select Color"

@@ -660,7 +660,7 @@ const WebApp = () => {
               <div className="match-color-box">
                 <div className="label2">
                   Choose your desired colors -{" "}
-                  <span>max upto 4 colors for discounted price </span>
+                  <span>max upto 3 colors for discounted price </span>
                 </div>
                 <div className="container">
                   {renderColors &&

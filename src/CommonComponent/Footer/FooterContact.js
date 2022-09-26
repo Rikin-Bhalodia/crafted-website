@@ -50,7 +50,7 @@ const FooterWrapper = styled.div`
     width: 620px;
   }
   .heading {
-    font-size: 34px;
+    font-size: 30px;
     font-style: normal;
     color: #fff;
     font-weight: 400;
@@ -59,7 +59,7 @@ const FooterWrapper = styled.div`
     width: 400px;
     background: #ffffff;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
     color: #5a7184;
     height: 48px;
     padding: 20px;
@@ -73,7 +73,7 @@ const FooterWrapper = styled.div`
     border: none;
     margin-left: 20px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 15px;
     color: #fff;
   }
   .description {

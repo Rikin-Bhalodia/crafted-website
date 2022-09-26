@@ -35,7 +35,7 @@ const HeaderWrapper = styled.div`
     padding-right: 50px;
   }
   .tabs .option a {
-    font-size: 18px;
+    font-size: 16px;
     color: #393d46 !important;
   }
   .right-side-part {
