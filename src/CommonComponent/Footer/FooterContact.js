@@ -11,7 +11,7 @@ const FooterWrapper = styled.div`
     background: rgba(0, 0, 0, 0.8);
     display: flex;
     position: relative;
-    top: -5.2px;
+    top: -1px;
   }
   .article-card {
     width: 500px;
@@ -187,7 +187,7 @@ const FooterWrapper = styled.div`
 const FooterContact = () => {
   return (
     <FooterWrapper>
-      <Image src={WaveImage} alt="wave-icon" />
+      <Image src={WaveImage} alt="wave-icon" layout="responsive" />
       <div className="container">
         <div className="add-details">
           <div className="heading">
