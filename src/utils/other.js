@@ -29,6 +29,12 @@ import whiteComingsoon from "/public/svg/category-slider/white-comingsoon.svg";
 import whiteLaptop from "/public/svg/category-slider/white-laptop.svg";
 import whiteSweater from "/public/svg/category-slider/white-sweater.svg";
 
+import TCFiber from "/public/svg/tcomacImage/fiber.svg";
+import TCPatiala from "/public/svg/tcomacImage/patiala.svg";
+import TCPatticoat from "/public/svg/tcomacImage/patticoat.svg";
+import TCSemiPatiala from "/public/svg/tcomacImage/semi-patiala.svg";
+import TCTShirt from "/public/svg/tcomacImage/t-shirt.svg";
+
 export const colors = [
   { data: red, key: "red" },
   { data: blue, key: "blue" },
@@ -122,5 +128,44 @@ export const images = [
   {
     id: 9,
     img: Comingsoon,
+  },
+];
+
+export const TCOMaCPageImage = [
+  {
+    id: 1,
+    icon: TCFiber,
+    name: "Poplin Cotton Fabric",
+    category: "poplin-cotton",
+  },
+  {
+    id: 2,
+    icon: TCPatiala,
+    name: "Patiala Salwar",
+    category: "patiala",
+  },
+  {
+    id: 3,
+    icon: TCPatticoat,
+    name: "Saree Petticoat",
+    category: "petticoat",
+  },
+  {
+    id: 4,
+    icon: TCSemiPatiala,
+    name: "Semi Patiala Salwar",
+    category: "semi-patiala",
+  },
+  {
+    id: 5,
+    icon: TCTShirt,
+    name: "T-Shirt",
+    category: "t-shirt",
+  },
+  {
+    id: 6,
+    icon: "",
+    name: "more",
+    category: "mpre",
   },
 ];

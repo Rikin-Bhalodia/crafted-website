@@ -16,6 +16,7 @@ import { getAllProducts } from "../src/utils";
 import { colors } from "../src/utils/other";
 import colorRight from "/public/svg/color-right.svg";
 import colorLeft from "/public/svg/color-left.svg";
+import { TCOMaCPageImage } from "../src/utils/other";
 
 const WebAppWrapper = styled.div`
   .section {
@@ -33,12 +34,13 @@ const WebAppWrapper = styled.div`
   .label {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-weight: 400;
     font-size: 16px;
-    padding-left: 50px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-top: 10px;
     width: 450px;
+    gap: 13px;
   }
   .label2 {
     font-weight: 700;
@@ -104,7 +106,7 @@ const WebAppWrapper = styled.div`
     justify-content: space-between;
     width: 100%;
     gap: 20px;
-    padding: 20px 30px;
+    padding: 10px 30px;
   }
   .button-add {
     background: #d9d9d9;
@@ -212,6 +214,21 @@ const WebAppWrapper = styled.div`
     height: 70px;
     width: 15px;
   }
+  .tc-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    height: 65px;
+    width: 90px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+  }
+  .tc-img {
+    height: 40px;
+    width: 40px;
+  }
 
   @media screen and (max-width: 1400px) {
     .match-color-box {
@@ -252,6 +269,11 @@ const WebAppWrapper = styled.div`
       width: 140px;
       font-size: 13px;
     }
+    .tc-image {
+      height: 60px;
+      width: 70px;
+      font-size: 11px;
+    }
   }
   @media screen and (max-width: 1100px) {
     .match-color-box {
@@ -264,7 +286,6 @@ const WebAppWrapper = styled.div`
     }
     .btn {
       width: 350px;
-      margin-bottom: 10px;
     }
     .box {
       width: 80px;
@@ -275,7 +296,7 @@ const WebAppWrapper = styled.div`
       gap: 10px;
     }
     .label {
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
     .label2 {
       width: 400px;
@@ -298,6 +319,15 @@ const WebAppWrapper = styled.div`
     }
     .color-image-right {
       height: 40px;
+    }
+    .tc-image {
+      height: 40px;
+      width: 50px;
+      font-size: 9px;
+    }
+    .tc-img {
+      height: 30px;
+      width: 25px;
     }
   }
   @media screen and (max-width: 800px) {
@@ -328,6 +358,9 @@ const WebAppWrapper = styled.div`
       right: 70px;
       top: 420px;
       width: 250px;
+    }
+    .dummy-image-1 {
+      height: 280px;
     }
   }
   @media screen and (max-width: 400px) {
@@ -366,6 +399,9 @@ const WebAppWrapper = styled.div`
       padding-top: 20px;
       height: 230px;
       width: 240px;
+    }
+    .btn {
+      padding: 0px 10px;
     }
   }
 
@@ -426,6 +462,7 @@ const WebApp = () => {
   const [colorTag] = useState(router.query.color || "" || []);
   const [checkColor, setCheckColor] = useState(false);
   const [cartProduct, setCartProduct] = useState([]);
+  const [id, setId] = useState("");
   const { currentUser } = useAuth();
 
   const handleSelectChange = (value) => {
@@ -552,6 +589,12 @@ const WebApp = () => {
       </div>
     );
   }
+
+  const onMouse = (id, category) => {
+    setId(id);
+    setCategory(category);
+  };
+  console.log(id, "id");
   return (
     <>
       <Breadcrumb separator=">" style={{ marginLeft: "120px" }}>
@@ -567,7 +610,34 @@ const WebApp = () => {
             <section className="sec-toc1">
               <div className="match-color-box">
                 <div className="label">
-                  <div className="labell">Select a Product</div>{" "}
+                  {TCOMaCPageImage.map((ele) => {
+                    return (
+                      <div
+                        className="tc-image"
+                        onClick={() => onMouse(ele.id, ele.category)}
+                        style={
+                          id === ele.id
+                            ? { background: "#393D46", color: "white" }
+                            : { background: "#ededed" }
+                        }
+                      >
+                        {ele.icon ? (
+                          ele.id === id ? (
+                            <div>{ele.name}</div>
+                          ) : (
+                            <img
+                              src={ele.icon.src}
+                              alt="image"
+                              className="tc-img"
+                            />
+                          )
+                        ) : (
+                          <div>more</div>
+                        )}
+                      </div>
+                    );
+                  })}
+                  {/* <div className="labell">Select a Product</div>{" "}
                   &nbsp;&nbsp;&nbsp;
                   <Select
                     style={{
@@ -581,7 +651,7 @@ const WebApp = () => {
                     <Option value="patiala">Patiala Salwar</Option>
                     <Option value="full-patiala">Full Patiala Salwar</Option>
                     <Option value="semi-patiala">Semi Patiala Salwar</Option>
-                  </Select>
+                  </Select> */}
                 </div>
                 <div className="color-shade">
                   {selectedProduct.length ? (
