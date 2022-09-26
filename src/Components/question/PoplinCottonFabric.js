@@ -91,7 +91,7 @@ const PoplinCottonFabric = () => {
           <div className="body">
             <div>
               <h5>1. What is the basic color you need?</h5>
-              <div className="color-back">
+              {/* <div className="color-back">
                 {colors.map((ele) => {
                   return (
                     <>
@@ -102,7 +102,7 @@ const PoplinCottonFabric = () => {
                     </>
                   );
                 })}
-              </div>
+              </div> */}
               <p>
                 <Select
                   defaultValue="Select Color"

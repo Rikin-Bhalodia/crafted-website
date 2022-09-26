@@ -17,6 +17,7 @@ import { colors } from "../src/utils/other";
 import colorRight from "/public/svg/color-right.svg";
 import colorLeft from "/public/svg/color-left.svg";
 import { TCOMaCPageImage } from "../src/utils/other";
+import Tcomac from "/public/svg/tcomacImage/tcomac.svg";
 
 const WebAppWrapper = styled.div`
   .section {
@@ -311,7 +312,7 @@ const WebAppWrapper = styled.div`
       width: 280px;
     }
     .dummy-image-1 {
-      height: 300px;
+      height: 272px;
       width: 300px;
     }
     .color-image-left {
@@ -462,18 +463,12 @@ const WebApp = () => {
   const [colorTag] = useState(router.query.color || "" || []);
   const [checkColor, setCheckColor] = useState(false);
   const [cartProduct, setCartProduct] = useState([]);
-  const [id, setId] = useState("");
   const { currentUser } = useAuth();
-
-  const handleSelectChange = (value) => {
-    setCategory(value);
-  };
 
   useEffect(() => {
     getAllProducts(setProducts);
   }, []);
 
-  console.log(colorLeft, colorRight, "lll");
   const selectedProduct = useMemo(() => {
     return products?.filter((ele) => {
       return ele.category === category &&
@@ -547,8 +542,6 @@ const WebApp = () => {
     });
   };
 
-  const { Option } = Select;
-
   const Colors = colors.find((data) => {
     if (data.key === router?.query?.color) {
       return checkColor ? "" : data;
@@ -590,11 +583,9 @@ const WebApp = () => {
     );
   }
 
-  const onMouse = (id, category) => {
-    setId(id);
+  const onMouse = (category) => {
     setCategory(category);
   };
-  console.log(id, "id");
   return (
     <>
       <Breadcrumb separator=">" style={{ marginLeft: "120px" }}>
@@ -604,7 +595,8 @@ const WebApp = () => {
       <WebAppWrapper>
         <div>
           <div className="heading-section">
-            TCOMaC - The Crafted Online Matching Center
+            <img src={Tcomac.src} alt="tcomac" height={35} /> | The Crafted
+            Online Matching Center
           </div>
           <div className="section">
             <section className="sec-toc1">
@@ -614,15 +606,15 @@ const WebApp = () => {
                     return (
                       <div
                         className="tc-image"
-                        onClick={() => onMouse(ele.id, ele.category)}
+                        onClick={() => onMouse(ele.category)}
                         style={
-                          id === ele.id
+                          category === ele.category
                             ? { background: "#393D46", color: "white" }
                             : { background: "#ededed" }
                         }
                       >
                         {ele.icon ? (
-                          ele.id === id ? (
+                          category === ele.category ? (
                             <div>{ele.name}</div>
                           ) : (
                             <img
@@ -637,21 +629,6 @@ const WebApp = () => {
                       </div>
                     );
                   })}
-                  {/* <div className="labell">Select a Product</div>{" "}
-                  &nbsp;&nbsp;&nbsp;
-                  <Select
-                    style={{
-                      width: "50%",
-                    }}
-                    value={category}
-                    onChange={handleSelectChange}
-                  >
-                    <Option value="petticoat">Saree Petticoat</Option>
-                    <Option value="poplin-cotton">Poplin Cotton Fabric</Option>
-                    <Option value="patiala">Patiala Salwar</Option>
-                    <Option value="full-patiala">Full Patiala Salwar</Option>
-                    <Option value="semi-patiala">Semi Patiala Salwar</Option>
-                  </Select> */}
                 </div>
                 <div className="color-shade">
                   {selectedProduct.length ? (

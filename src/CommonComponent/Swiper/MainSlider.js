@@ -251,11 +251,11 @@ export default function App() {
                 <SwiperSlide
                   className="small-slider"
                   key={data.id}
-                  onClick={() => router.push("/question")}
+                  onClick={() => router.push(`/question/${data.category}`)}
                   onMouseEnter={() => MouseOver(data.id)}
                   style={
                     id === data.id
-                      ? { background: "#393D46" }
+                      ? { background: "#393D46", cursor: "pointer" }
                       : { background: "white" }
                   }
                 >
@@ -270,7 +270,7 @@ export default function App() {
                     }
                     className="slider-name"
                   >
-                    Poplin Cotton Fabric
+                    {data.name}
                   </div>
                 </SwiperSlide>
               );

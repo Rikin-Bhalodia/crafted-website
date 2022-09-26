@@ -34,6 +34,7 @@ import TCPatiala from "/public/svg/tcomacImage/patiala.svg";
 import TCPatticoat from "/public/svg/tcomacImage/patticoat.svg";
 import TCSemiPatiala from "/public/svg/tcomacImage/semi-patiala.svg";
 import TCTShirt from "/public/svg/tcomacImage/t-shirt.svg";
+// import TCComingsoon from "/public/svg/tcomacImage/coming-soon.svg";
 
 export const colors = [
   { data: red, key: "red" },
@@ -96,38 +97,55 @@ export const images = [
   {
     id: 1,
     img: Sweater,
+    name: "Sweater",
   },
   {
     id: 2,
     img: Pant,
+    name: "Pant",
+    category: "",
   },
   {
     id: 3,
     img: Patticoat,
+    name: "Patticoat",
+    category: "petticoat",
   },
   {
     id: 4,
     img: Salwar,
+    name: "Salwar",
+    category: "patiala",
   },
   {
     id: 5,
     img: Laptop,
+    name: "Laptop",
+    category: "",
   },
   {
     id: 6,
     img: Comingsoon,
+    name: "Comingsoon",
+    category: "",
   },
   {
     id: 7,
     img: Comingsoon,
+    name: "Comingsoon",
+    category: "",
   },
   {
     id: 8,
     img: Comingsoon,
+    name: "Comingsoon",
+    category: "",
   },
   {
     id: 9,
     img: Comingsoon,
+    name: "Comingsoon",
+    category: "",
   },
 ];
 
