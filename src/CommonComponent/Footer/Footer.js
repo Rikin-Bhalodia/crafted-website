@@ -3,6 +3,8 @@ import React from "react";
 import styled from "styled-components";
 import HeartImg from "/public/svg/heart-icon.svg";
 import Link from "next/link";
+import { HiHeart } from "react-icons/hi";
+
 const FooterWrapper = styled.div`
   background: #303030;
   height: 100%;
@@ -317,7 +319,8 @@ const Footer = () => {
             <Image src={HeartImg} alt="heart-img" />
           </div>
           <div className="copy-right">
-            Copyright © The Crafted 2022 . Crafted with love in India.
+            Copyright © The Crafted 2022 . Crafted with{" "}
+            <HiHeart style={{ color: "red" }} /> in India.
           </div>
         </div>
       </div>

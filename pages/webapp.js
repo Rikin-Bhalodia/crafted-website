@@ -21,12 +21,12 @@ import Tcomac from "/public/svg/tcomacImage/tcomac.svg";
 const WebAppWrapper = styled.div`
   .section {
     display: flex;
-    margin-top: 80px;
+    margin-top: 30px;
     justify-content: center;
   }
   .heading-section {
     font-weight: 700;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
@@ -65,7 +65,7 @@ const WebAppWrapper = styled.div`
   .match-color-box {
     background: #fff;
     mix-blend-mode: normal;
-    border: 1px solid #000000;
+    border: 1px solid #fefefe;
     box-shadow: 0px 8px 19px rgba(0, 0, 0, 0.35);
     border-radius: 20px;
     height: 535px;
@@ -110,7 +110,7 @@ const WebAppWrapper = styled.div`
   }
   .button-add {
     background: #d9d9d9;
-    border: 1px solid #000000;
+    border: 1px solid #999999;
     border-radius: 45px;
     height: 60px;
     font-weight: 500;
@@ -594,7 +594,7 @@ const WebApp = () => {
       <WebAppWrapper>
         <div>
           <div className="heading-section">
-            <img src={Tcomac.src} alt="tcomac" height={35} /> | The Crafted
+            <img src={Tcomac.src} alt="tcomac" height={35} /> <br /> The Crafted
             Online Matching Center
           </div>
           <div className="section">
@@ -705,8 +705,7 @@ const WebApp = () => {
               )}
               <div className="match-color-box">
                 <div className="label2">
-                  Choose your desired colors -{" "}
-                  <span>max upto 3 colors for discounted price </span>
+                  Choose your desired colors - <span>max upto 3 colors </span>
                 </div>
                 <div className="container">
                   {renderColors &&

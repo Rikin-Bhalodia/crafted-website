@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import Oval from "../../../public/svg/oval.svg";
 import Dot from "../../../public/svg/dot.svg";
+import Link from "next/link";
 
 const AboutTcomacWrapper = styled.div`
   position: relative;
@@ -43,7 +44,7 @@ const AboutTcomacWrapper = styled.div`
         color: #5a7184;
         margin-bottom: 60px;
       }
-      .btn {
+      a {
         border: 2px solid #333333;
         border-radius: 2000px;
         font-weight: 700;
@@ -243,7 +244,7 @@ const AboutTcomacWrapper = styled.div`
           font-size: 30px;
           line-height: 40px;
         }
-        .btn {
+        a {
           font-size: 14px;
           padding: 10px 100px;
         }
@@ -340,7 +341,7 @@ const AboutTcomacWrapper = styled.div`
     .about-tcomac {
       .about-desc {
         width: 50%;
-        .btn {
+        a {
           font-size: 14px;
           padding: 10px 60px;
         }
@@ -491,7 +492,9 @@ const AboutTcomac = (data) => {
             <h6>{data.shead}</h6>
             <h4>{data.mhead}</h4>
             <p>{data.para}</p>
-            <button className="btn">{data.btn}</button>
+            <Link href="/webapp" className="btn">
+              {data.btn}
+            </Link>
           </div>
           <div className="about-img">
             <div className="item item1"></div>

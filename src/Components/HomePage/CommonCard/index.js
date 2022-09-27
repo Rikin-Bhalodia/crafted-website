@@ -22,7 +22,7 @@ const CommonCardWrapper = styled.div`
     display: flex;
     background: #f6f7fb;
     box-shadow: 0px 16px 50px rgba(0, 0, 0, 0.1);
-    border-radius: 45px;
+    border-radius: 30px;
     align-items: center;
     ${"" /* margin-right: 30px; */}
   }
@@ -111,10 +111,12 @@ const CommonCardWrapper = styled.div`
     }
     .card-content {
       padding: 10px 0px;
+      margin-left: 10px;
+      height: 100%;
     }
     .card {
       width: 600px;
-      height: 330px;
+      height: 210px !important;
     }
   }
   @media screen and (max-width: 700px) {
@@ -176,7 +178,7 @@ const CommonCard = () => {
           return (
             <div className="card" key={_}>
               <div className="card-content">
-                <Image src={ProductImg} alt="product" />
+                <Image src={ProductImg} alt="product" className="deal-img" />
                 <button>Add to Cart</button>
               </div>
               <div style={{ margin: "0 0 0 20px" }}>
