@@ -4,6 +4,7 @@ import { Select } from "antd";
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
 import "antd/dist/antd.variable.min.css";
+import { QUColors } from "../../utils/other";
 
 const { Option } = Select;
 const PoplinCottonFabricWrapper = styled.div`
@@ -25,6 +26,38 @@ const PoplinCottonFabricWrapper = styled.div`
         }
       }
     }
+    .tc-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      border-radius: 5px;
+      height: 250px;
+      width: 500px;
+      font-size: 13px;
+      color: white;
+      gap: 15px;
+      font-weight: 500;
+      background: #ededed;
+    }
+    .color-box {
+      height: 50px;
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    }
+    .input2 {
+      height: 40px;
+      width: 20px;
+    }
+    .label1 {
+      font-size: 16px;
+      padding-left: 10px;
+      position: relative;
+      top: -14px;
+    }
   }
   .color-back {
     background: #2e526d;
@@ -39,15 +72,21 @@ const PoplinCottonFabricWrapper = styled.div`
     width: 400px;
     border-radius: 20px;
   }
+  @media screen and (max-width: 500px) {
+    .questions {
+      .tc-image {
+        width: 370px;
+      }
+    }
+  }
 `;
 
 const PoplinCottonFabric = () => {
-  const [color, setColor] = useState("");
+  const [colorName, setColorName] = useState("");
   const [size, setSize] = useState("");
-  const [hex, setHex] = useState("");
 
   const handleChange = (value) => {
-    setColor(value);
+    setColorName(value);
   };
   const onSizeChange = (e) => {
     setSize(e.target.value);
@@ -56,33 +95,16 @@ const PoplinCottonFabric = () => {
   const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (color && size) {
+    if (colorName && size) {
       router.push({
         pathname: "/webapp",
-        query: { type: "poplin-cotton", color: color, size: size },
+        query: { type: "poplin-cotton", color: colorName, size: size },
       });
     } else {
       toast("please fill the data ");
     }
   };
 
-  const colors = [
-    { color: "#0000FF", name: "Blue" },
-    { color: "#FF0000", name: "Red" },
-    { color: "#00FF00", name: "Green" },
-    { color: "#FFFF00", name: "Yellow" },
-    { color: "#FF8C00", name: "Orange" },
-    { color: "#FFFFFF", name: "White" },
-    { color: "#E30B5C", name: "Pink" },
-    { color: "#E54D5C", name: "Gajri" },
-    { color: "#821762", name: "Purple" },
-    { color: "#FFFDD0", name: "Cream" },
-    { color: "#6D7A86", name: "Grey" },
-    { color: "#7F4534", name: "Brown" },
-    { color: "#74823D", name: "Mahendi" },
-    { color: "#C97A30", name: "Metal" },
-    { color: "#000000", name: "Black" },
-  ];
   return (
     <>
       <PoplinCottonFabricWrapper>
@@ -90,120 +112,28 @@ const PoplinCottonFabric = () => {
           <div className="body">
             <div>
               <h5>1. What is the basic color you need?</h5>
-              {/* <div className="color-back">
-                {colors.map((ele) => {
-                  return (
-                    <>
-                      <div
-                        style={{ background: ele.color }}
-                        className="color-tab"
-                      ></div>
-                    </>
-                  );
-                })}
-              </div> */}
+
               <p>
-                <Select
-                  defaultValue="Select Color"
-                  style={{
-                    width: "200px",
-                  }}
-                  id="color"
-                  name="color"
-                  value={color}
-                  onChange={handleChange}
-                >
-                  <Option
-                    value="blue"
-                    style={{ background: "blue", color: "black" }}
-                  >
-                    Blue
-                  </Option>
-                  <Option
-                    value="red"
-                    style={{ background: "red", color: "black" }}
-                  >
-                    Red
-                  </Option>
-                  <Option
-                    value="green"
-                    style={{ background: "green", color: "black" }}
-                  >
-                    Green
-                  </Option>
-                  <Option
-                    value="yellow"
-                    style={{ background: "yellow", color: "black" }}
-                  >
-                    Yellow
-                  </Option>
-                  <Option
-                    value="orange"
-                    style={{ background: "orange", color: "black" }}
-                  >
-                    Orange
-                  </Option>
-                  <Option
-                    value="white"
-                    style={{ background: "white", color: "black" }}
-                  >
-                    White
-                  </Option>
-                  <Option
-                    value="pink"
-                    style={{ background: "#E30B5C", color: "black" }}
-                  >
-                    Pink
-                  </Option>
-                  <Option
-                    value="gajri"
-                    style={{ background: "#D12F49", color: "black" }}
-                  >
-                    Gajri
-                  </Option>
-                  <Option
-                    value="purple"
-                    style={{ background: "purple", color: "black" }}
-                  >
-                    Purple
-                  </Option>
-                  <Option
-                    value="cream"
-                    style={{ background: "#FFFDD0", color: "black" }}
-                  >
-                    Cream
-                  </Option>
-                  <Option
-                    value="grey"
-                    style={{ background: "#6D7A86", color: "black" }}
-                  >
-                    Grey
-                  </Option>
-                  <Option
-                    value="brown"
-                    style={{ background: "#7F4534", color: "black" }}
-                  >
-                    Brown
-                  </Option>
-                  <Option
-                    value="mehendi"
-                    style={{ background: "#74823D", color: "black" }}
-                  >
-                    Mehendi
-                  </Option>
-                  <Option
-                    value="metal"
-                    style={{ background: "#C97A30", color: "black" }}
-                  >
-                    Metal
-                  </Option>
-                  <Option
-                    value="black"
-                    style={{ background: "#000000", color: "white" }}
-                  >
-                    Black
-                  </Option>
-                </Select>
+                <div className="tc-image">
+                  {QUColors.map((color) => {
+                    return (
+                      <div
+                        style={
+                          colorName === color.name
+                            ? {
+                                background: color.color,
+                                border: "2px solid black",
+                              }
+                            : { background: color.color, color: "black" }
+                        }
+                        className="color-box"
+                        onClick={() => handleChange(color.name)}
+                      >
+                        {color.name}
+                      </div>
+                    );
+                  })}
+                </div>
               </p>
             </div>
             <div>

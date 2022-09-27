@@ -253,19 +253,19 @@ const MainAppWrapper = styled.div`
 const dummyData = [
   {
     name: "Checkered Jacket",
-    price: "$299",
+    price: "₹299",
   },
   {
     name: " Blue Woman Denim",
-    price: "$299",
+    price: "₹299",
   },
   {
     name: "Orange Jeans",
-    price: "$299",
+    price: "₹299",
   },
   {
     name: "Classic Watch",
-    price: "$299",
+    price: "₹299",
   },
 ];
 
