@@ -102,119 +102,120 @@ export const blue = [
   { code: ["#9bc3eb"], id: "9", color: "Light Sky Blue" },
 ];
 export const red = [
-  { code: ["#FF0000"], id: "89", color: "Red" },
-  { code: ["#9D0C2B"], id: "89", color: "Maroon" },
-  { code: ["#9A0C29"], id: "89", color: "Carmine" },
-  { code: ["#843138"], id: "89", color: "Old Brick" },
+  { code: ["#FF0000"], id: "10", color: "Red" },
+  { code: ["#9D0C2B"], id: "11", color: "Maroon" },
+  { code: ["#9A0C29"], id: "12", color: "Carmine" },
+  { code: ["#843138"], id: "13", color: "Old Brick" },
 ];
 export const green = [
-  { code: ["#00FF00"], id: "89", color: "Parrot Green" },
-  { code: ["#259797"], id: "89", color: "Sea Green" },
-  { code: ["#1AB385"], id: "89", color: "Light Green" },
-  { code: ["#166032"], id: "89", color: "Crusoe" },
-  { code: ["#4F7C33"], id: "89", color: "Green Leaf" },
-  { code: ["#218268"], id: "89", color: "Elf Green" },
-  { code: ["#66F4C3"], id: "89", color: "Aquamarine" },
-  { code: ["#167E65"], id: "89", color: "Deep Sea" },
-  { code: ["#1F881F"], id: "89", color: "Spring Green" },
-  { code: ["#1B4B35"], id: "89", color: "Country Green" },
-  { code: ["#A4EA9D"], id: "89", color: "Granny Smith Apple" },
-  { code: ["#C9E589"], id: "89", color: "Sulu" },
-  { code: ["#166461"], id: "89", color: "Blue Stone" },
-  { code: ["#80A084"], id: "89", color: "Envy" },
-  { code: ["#75A87A"], id: "89", color: "Oxley" },
+  { code: ["#00FF00"], id: "14", color: "Parrot Green" },
+  { code: ["#259797"], id: "15", color: "Sea Green" },
+  { code: ["#1AB385"], id: "16", color: "Light Green" },
+  { code: ["#166032"], id: "17", color: "Crusoe" },
+  { code: ["#4F7C33"], id: "18", color: "Green Leaf" },
+  { code: ["#218268"], id: "19", color: "Elf Green" },
+  { code: ["#66F4C3"], id: "20", color: "Aquamarine" },
+  { code: ["#167E65"], id: "21", color: "Deep Sea" },
+  { code: ["#1F881F"], id: "22", color: "Spring Green" },
+  { code: ["#1B4B35"], id: "23", color: "Country Green" },
+  { code: ["#A4EA9D"], id: "24", color: "Granny Smith Apple" },
+  { code: ["#C9E589"], id: "25", color: "Sulu" },
+  { code: ["#166461"], id: "26", color: "Blue Stone" },
+  { code: ["#80A084"], id: "27", color: "Envy" },
+  { code: ["#75A87A"], id: "28", color: "Oxley" },
 ];
 
 export const yellow = [
-  { code: ["#FFFF00"], id: "89", color: "Lemon" },
-  { code: ["#FFEEA3"], id: "89", color: "Cream Brulee" },
-  { code: ["#FFC768"], id: "89", color: "Grandis" },
-  { code: ["#DAC01A"], id: "89", color: "Sunflower" },
-  { code: ["#FFFF99"], id: "89", color: "Canary" },
-  { code: ["#FFD67B"], id: "89", color: "Salomie" },
+  { code: ["#FFFF00"], id: "29", color: "Lemon" },
+  { code: ["#FFEEA3"], id: "30", color: "Cream Brulee" },
+  { code: ["#FFC768"], id: "31", color: "Grandis" },
+  { code: ["#DAC01A"], id: "32", color: "Sunflower" },
+  { code: ["#FFFF99"], id: "33", color: "Canary" },
+  { code: ["#FFD67B"], id: "34", color: "Salomie" },
 ];
 export const orange = [
-  { code: ["#FF5900"], id: "89", color: "Dark Orange" },
-  { code: ["#FF8C00"], id: "89", color: "Light Orange" },
+  { code: ["#FF5900"], id: "35", color: "Dark Orange" },
+  { code: ["#FF8C00"], id: "36", color: "Light Orange" },
 ];
 export const white = [
-  { code: ["#FFFFFF"], id: "89", color: "White" },
-  { code: ["#F4EFE0"], id: "89", color: "Bianca" },
+  { code: ["#FFFFFF"], id: "37", color: "White" },
+  { code: ["#F4EFE0"], id: "38", color: "Bianca" },
 ];
 
 export const pink = [
-  { code: ["#E30B5C"], id: "89", color: "Pink" },
-  { code: ["#F4869A"], id: "89", color: "Wewak" },
-  { code: ["#AA3365"], id: "89", color: "Lipstick" },
-  { code: ["#FFC1E4"], id: "89", color: "Cotton Candy" },
-  { code: ["#CD526C"], id: "89", color: "Cabaret" },
-  { code: ["#D671AC"], id: "89", color: "Pale Violet Red" },
-  { code: ["#FFA38C"], id: "89", color: "Mona Lisa" },
-  { code: ["#F7AFBF"], id: "89", color: "Cupid" },
-  { code: ["#BF5D7A"], id: "89", color: "Royal Heath" },
-  { code: ["#B23971"], id: "89", color: "Rouge" },
-  { code: ["#DE3163"], id: "89", color: "Cerise" },
+  { code: ["#E30B5C"], id: "39", color: "Pink" },
+  { code: ["#F4869A"], id: "40", color: "Wewak" },
+  { code: ["#AA3365"], id: "41", color: "Lipstick" },
+  { code: ["#FFC1E4"], id: "42", color: "Cotton Candy" },
+  { code: ["#CD526C"], id: "43", color: "Cabaret" },
+  { code: ["#D671AC"], id: "44", color: "Pale Violet Red" },
+  { code: ["#FFA38C"], id: "45", color: "Mona Lisa" },
+  { code: ["#F7AFBF"], id: "46", color: "Cupid" },
+  { code: ["#BF5D7A"], id: "47", color: "Royal Heath" },
+  { code: ["#B23971"], id: "48", color: "Rouge" },
+  { code: ["#DE3163"], id: "49", color: "Cerise" },
 ];
 
 export const gajri = [
-  { code: ["#E54D5C"], id: "89", color: "Gajri" },
-  { code: ["#C45655"], id: "89", color: "Fuzzy Wuzzy Brown" },
-  { code: ["#E56D75"], id: "89", color: "Froly" },
-  { code: ["#FEAB9A"], id: "89", color: "Rose Bud" },
+  { code: ["#E54D5C"], id: "50", color: "Gajri" },
+  { code: ["#C45655"], id: "51", color: "Fuzzy Wuzzy Brown" },
+  { code: ["#E56D75"], id: "52", color: "Froly" },
+  { code: ["#FEAB9A"], id: "53", color: "Rose Bud" },
 ];
 
 export const purple = [
-  { code: ["#821762"], id: "89", color: "Dark Purple" },
-  { code: ["#A42AAA"], id: "89", color: "Dark Orchid" },
-  { code: ["#AD0082"], id: "89", color: "Egg Plant" },
-  { code: ["#88078E"], id: "89", color: "Dark Violet Purple" },
-  { code: ["#6A1F44"], id: "89", color: "Pampadour" },
-  { code: ["#633477"], id: "89", color: "Kingfisher Daisy" },
-  { code: ["#372D52"], id: "89", color: "Cherry Pie" },
-  { code: ["#492293"], id: "89", color: "Persian Indigo" },
-  { code: ["#6A4DAF"], id: "89", color: "Blue Marquerite" },
-  { code: ["#361556"], id: "89", color: "Christalle" },
-  { code: ["#4B2D72"], id: "89", color: "Blue Diamond" },
+  { code: ["#821762"], id: "54", color: "Dark Purple" },
+  { code: ["#A42AAA"], id: "55", color: "Dark Orchid" },
+  { code: ["#AD0082"], id: "56", color: "Egg Plant" },
+  { code: ["#88078E"], id: "57", color: "Dark Violet Purple" },
+  { code: ["#6A1F44"], id: "58", color: "Pampadour" },
+  { code: ["#633477"], id: "59", color: "Kingfisher Daisy" },
+  { code: ["#372D52"], id: "60", color: "Cherry Pie" },
+  { code: ["#492293"], id: "61", color: "Persian Indigo" },
+  { code: ["#6A4DAF"], id: "62", color: "Blue Marquerite" },
+  { code: ["#361556"], id: "63", color: "Christalle" },
+  { code: ["#4B2D72"], id: "64", color: "Blue Diamond" },
 ];
 
 export const cream = [
-  { code: ["#DBB985"], id: "89", color: "Raven Gold " },
-  { code: ["#FCFAE0"], id: "89", color: "Early Dawn" },
-  { code: ["#F1F1C6"], id: "89", color: "Spring Sun" },
-  { code: ["#EFD8B6"], id: "89", color: "Champagne" },
-  { code: ["#CCB388"], id: "89", color: "Straw" },
-  { code: ["#FFF1C6"], id: "89", color: "Blanched Almond" },
+  { code: ["#FFFDD0"], id: "65", color: "Wheat" },
+  { code: ["#DBB985"], id: "66", color: "Raven Gold " },
+  { code: ["#FCFAE0"], id: "67", color: "Early Dawn" },
+  { code: ["#F1F1C6"], id: "68", color: "Spring Sun" },
+  { code: ["#EFD8B6"], id: "69", color: "Champagne" },
+  { code: ["#CCB388"], id: "70", color: "Straw" },
+  { code: ["#FFF1C6"], id: "71", color: "Blanched Almond" },
 ];
 
 export const grey = [
-  { code: ["#6D7A86"], id: "89", color: "Slate Grey" },
-  { code: ["#2E526D"], id: "89", color: "Blumine" },
+  { code: ["#6D7A86"], id: "72", color: "Slate Grey" },
+  { code: ["#2E526D"], id: "73", color: "Blumine" },
 ];
 
 export const brown = [
-  { code: ["#5D1F1E"], id: "89", color: "Coke" },
-  { code: ["#7F4534"], id: "89", color: "Peanut" },
-  { code: ["#8E4D3E"], id: "89", color: "Mule Fawn" },
+  { code: ["#5D1F1E"], id: "74", color: "Coke" },
+  { code: ["#7F4534"], id: "75", color: "Peanut" },
+  { code: ["#8E4D3E"], id: "76", color: "Mule Fawn" },
 ];
 
 export const mehendi = [
-  { code: ["#74823D"], id: "89", color: "Wasabi" },
-  { code: ["#7C673A"], id: "89", color: "Shingle Fawn" },
-  { code: ["#63532C"], id: "89", color: "Dallas" },
-  { code: ["#75602C"], id: "89", color: "Himalaya" },
-  { code: ["#545429"], id: "89", color: "Saragota" },
-  { code: ["#636D24"], id: "89", color: "Fizi Green" },
+  { code: ["#74823D"], id: "77", color: "Wasabi" },
+  { code: ["#7C673A"], id: "78", color: "Shingle Fawn" },
+  { code: ["#63532C"], id: "79", color: "Dallas" },
+  { code: ["#75602C"], id: "80", color: "Himalaya" },
+  { code: ["#545429"], id: "81", color: "Saragota" },
+  { code: ["#636D24"], id: "82", color: "Fizi Green" },
 ];
 
 export const metal = [
-  { code: ["#C97A30"], id: "89", color: "Bronze" },
-  { code: ["#DAB160"], id: "89", color: "Equator" },
-  { code: ["#C69371"], id: "89", color: "Fallow" },
-  { code: ["#D37F5B"], id: "89", color: "Burning Sand" },
-  { code: ["#CE7259"], id: "89", color: "Japonica" },
+  { code: ["#C97A30"], id: "83", color: "Bronze" },
+  { code: ["#DAB160"], id: "84", color: "Equator" },
+  { code: ["#C69371"], id: "85", color: "Fallow" },
+  { code: ["#D37F5B"], id: "86", color: "Burning Sand" },
+  { code: ["#CE7259"], id: "87", color: "Japonica" },
 ];
 
 export const black = [
-  { code: ["#000000"], id: "89", color: "Black" },
+  { code: ["#000000"], id: "88", color: "Black" },
   { code: ["#190000"], id: "89", color: "Eclipse" },
 ];
