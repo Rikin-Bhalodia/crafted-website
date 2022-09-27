@@ -45,7 +45,6 @@ const Cart = () => {
   const { currentUser } = useAuth();
   const [cartProduct, setCartProduct] = useState([]);
 
-  console.log(cartProduct, "kkkk");
   useEffect(() => {
     CartItems(setCartProduct);
   }, []);

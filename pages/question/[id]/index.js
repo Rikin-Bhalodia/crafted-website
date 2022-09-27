@@ -35,7 +35,7 @@ const QuestionWrapper = styled.div`
     font-size: 16px;
     margin-bottom: 5px;
     margin-top: 10px;
-    width: 450px;
+    width: 500px;
     gap: 13px;
   }
   .tc-image {

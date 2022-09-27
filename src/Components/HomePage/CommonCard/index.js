@@ -199,8 +199,8 @@ const CommonCard = () => {
                   The Crafted Premium Petticoat (Equator Slate Grey)
                 </div>
                 <div style={{ display: "flex" }}>
-                  <div className="main-price">$598</div>
-                  <div className="discount-price">$399</div>
+                  <div className="main-price">₹598</div>
+                  <div className="discount-price">₹399</div>
                 </div>
               </div>
             </div>
