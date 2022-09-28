@@ -30,6 +30,8 @@ const WebAppWrapper = styled.div`
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
   }
   .label {
     display: flex;
@@ -411,6 +413,9 @@ const WebAppWrapper = styled.div`
     .productImg {
       width: 150px;
     }
+    .heading-section {
+      flex-direction: column;
+    }
   }
   @media screen and (max-width: 700px) {
     .productImg {
@@ -419,6 +424,9 @@ const WebAppWrapper = styled.div`
     }
     .product-name {
       font-size: 16px;
+    }
+    .none {
+      display: none;
     }
   }
   @media screen and (max-width: 520px) {
@@ -594,8 +602,11 @@ const WebApp = () => {
       <WebAppWrapper>
         <div>
           <div className="heading-section">
-            <img src={Tcomac.src} alt="tcomac" height={35} /> <br /> The Crafted
-            Online Matching Center
+            <img src={Tcomac.src} alt="tcomac" height={35} />
+            <h3 className="none">&nbsp;|&nbsp;</h3>
+            <div style={{ paddingBottom: "12px" }}>
+              The Crafted Online Matching Center
+            </div>
           </div>
           <div className="section">
             <section className="sec-toc1">
