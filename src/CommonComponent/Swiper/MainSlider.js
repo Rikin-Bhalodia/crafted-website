@@ -246,7 +246,7 @@ export default function App() {
             spaceBetween={15}
             className="small-swiper"
           >
-            {images.map((data, i) => {
+            {images.map((data) => {
               return (
                 <SwiperSlide
                   className="small-slider"
@@ -259,10 +259,10 @@ export default function App() {
                       : { background: "white" }
                   }
                 >
-                  <Image
-                    src={id === data?.id ? whiteImages.img : data.img}
+                  <img
+                    src={id === data?.id ? whiteImages.img : data.img.src}
                     alt="sweater"
-                    width={60}
+                    width={40}
                   />
                   <div
                     style={

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Select } from "antd";
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
 import "antd/dist/antd.variable.min.css";
-import { colors, QUColors } from "../../utils/other";
+import { QUColors } from "../../utils/other";
 
-const { Option } = Select;
 const SareePetticoatWrapper = styled.div`
   .questions {
     .body {

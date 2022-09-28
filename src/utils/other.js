@@ -16,17 +16,16 @@ import {
   yellow,
 } from "../CommonComponent/Colors";
 
-import Sweater from "/public/svg/category-slider/sweater.svg";
-import Pant from "/public/svg/category-slider/pant.svg";
-import Patticoat from "/public/svg/category-slider/patticoat.svg";
-import Salwar from "/public/svg/category-slider/salwar.svg";
-import Comingsoon from "/public/svg/category-slider/comingsoon.svg";
-import Laptop from "/public/svg/category-slider/laptop.svg";
+import Fabric from "/public/svg/category-slider/fabricnew.png";
+import Patticoat from "/public/svg/category-slider/petticoat2.png";
+import SemiSalwar from "/public/svg/category-slider/semi-patiala.png";
+import FullPatiala from "/public/svg/category-slider/full-patialanew.png";
+import TShirt from "/public/svg/category-slider/t-shirt.png";
+import Comingsoon from "/public/svg/category-slider/coming-soon.png";
 import whitePant from "/public/svg/category-slider/white-pant.svg";
 import whitePatticoat from "/public/svg/category-slider/white-patticoat.svg";
 import whiteSalwar from "/public/svg/category-slider/white-salwar.svg";
 import whiteComingsoon from "/public/svg/category-slider/white-comingsoon.svg";
-import whiteLaptop from "/public/svg/category-slider/white-laptop.svg";
 import whiteSweater from "/public/svg/category-slider/white-sweater.svg";
 
 import TCFiber from "/public/svg/tcomacImage/fiber.svg";
@@ -73,7 +72,7 @@ export const whiteImage = [
   },
   {
     id: 5,
-    img: whiteLaptop,
+    img: "",
   },
   {
     id: 6,
@@ -81,14 +80,6 @@ export const whiteImage = [
   },
   {
     id: 7,
-    img: whiteComingsoon,
-  },
-  {
-    id: 8,
-    img: whiteComingsoon,
-  },
-  {
-    id: 9,
     img: whiteComingsoon,
   },
 ];
@@ -96,31 +87,32 @@ export const whiteImage = [
 export const images = [
   {
     id: 1,
-    img: Sweater,
-    name: "Sweater",
+    img: Fabric,
+    name: "Cotton Poplin Fabric",
+    category: "poplin-cotton",
   },
   {
     id: 2,
-    img: Pant,
-    name: "Pant",
-    category: "",
-  },
-  {
-    id: 3,
     img: Patticoat,
     name: "Patticoat",
     category: "petticoat",
   },
   {
+    id: 3,
+    img: SemiSalwar,
+    name: "Semi Patiala Salwar",
+    category: "semi-patiala",
+  },
+  {
     id: 4,
-    img: Salwar,
-    name: "Salwar",
-    category: "patiala",
+    img: FullPatiala,
+    name: "Full Patiala Salwar",
+    category: "full-patiala",
   },
   {
     id: 5,
-    img: Laptop,
-    name: "Laptop",
+    img: TShirt,
+    name: "t-shirt",
     category: "",
   },
   {
@@ -131,18 +123,6 @@ export const images = [
   },
   {
     id: 7,
-    img: Comingsoon,
-    name: "Comingsoon",
-    category: "",
-  },
-  {
-    id: 8,
-    img: Comingsoon,
-    name: "Comingsoon",
-    category: "",
-  },
-  {
-    id: 9,
     img: Comingsoon,
     name: "Comingsoon",
     category: "",
