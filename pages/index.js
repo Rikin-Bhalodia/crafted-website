@@ -7,6 +7,8 @@ import HomeBlogSlider from "../src/CommonComponent/Swiper/HomeBlogSlider";
 import FooterContact from "../src/CommonComponent/Footer/FooterContact";
 import ReviewSlider from "../src/Components/review-slider/ReviewSlider";
 import DiffCard from "../src/Components/HomePage/CommonCard/diffrentCard";
+import { useEffect, useState } from "react";
+import { getAllProducts, newArrivalProducts } from "../src/utils";
 
 const MainAppWrapper = styled.div`
   position: relative;
@@ -43,9 +45,9 @@ const MainAppWrapper = styled.div`
     font-weight: 700;
   }
   .small-box {
-    width: 80px;
-    height: 80px;
-    background: #cdcfd1;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
     margin-right: 25px;
   }
   .card-details {
@@ -55,7 +57,8 @@ const MainAppWrapper = styled.div`
     align-items: center;
   }
   .text {
-    font-size: 20px;
+    font-size: 16px;
+    cursor: pointer;
   }
   .woman-empowers {
     margin-top: 200px;
@@ -250,26 +253,30 @@ const MainAppWrapper = styled.div`
   }
 `;
 
-const dummyData = [
-  {
-    name: "Checkered Jacket",
-    price: "₹299",
-  },
-  {
-    name: " Blue Woman Denim",
-    price: "₹299",
-  },
-  {
-    name: "Orange Jeans",
-    price: "₹299",
-  },
-  {
-    name: "Classic Watch",
-    price: "₹299",
-  },
-];
+// const dummyData = [
+//   {
+//     name: "Checkered Jacket",
+//     price: "₹299",
+//   },
+//   {
+//     name: " Blue Woman Denim",
+//     price: "₹299",
+//   },
+//   {
+//     name: "Orange Jeans",
+//     price: "₹299",
+//   },
+//   {
+//     name: "Classic Watch",
+//     price: "₹299",
+//   },
+// ];
 
 export default function Home() {
+  const [products, setProducts] = useState();
+  useEffect(() => {
+    newArrivalProducts(setProducts);
+  }, []);
   return (
     <MainAppWrapper>
       <MainSlider />
@@ -279,13 +286,13 @@ export default function Home() {
         <div className="main-container">
           <div className="main-heading">New Arrival</div>
           <div className="box-container">
-            {dummyData.map((data) => {
+            {products?.map((data) => {
               return (
-                <div className="card-details" key={data}>
-                  <div className="small-box"></div>
+                <div className="card-details" key={data.id}>
+                  <img src={data.image[0]} alt="image" className="small-box" />
                   <div className="card-data">
                     <div className="text">{data.name}</div>
-                    <div className="text">{data.price}</div>
+                    <div className="text">₹{data.sale_price}</div>
                   </div>
                 </div>
               );
@@ -314,13 +321,13 @@ export default function Home() {
         <div className="main-container main2">
           <div className="main-heading">Popular This Week</div>
           <div className="box-container">
-            {dummyData.map((data) => {
+            {products?.map((data) => {
               return (
-                <div className="card-details" key={data}>
-                  <div className="small-box"></div>
+                <div className="card-details" key={data.id}>
+                  <img src={data.image[0]} alt="image" className="small-box" />
                   <div className="card-data">
                     <div className="text">{data.name}</div>
-                    <div className="text">{data.price}</div>
+                    <div className="text">₹{data.sale_price}</div>
                     <div></div>
                   </div>
                 </div>

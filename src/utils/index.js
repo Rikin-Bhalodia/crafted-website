@@ -10,6 +10,12 @@ export const getAllProducts = async (setProducts) => {
   setProducts(data.docs.map((data) => ({ ...data.data(), id: data.id })));
 };
 
+export const newArrivalProducts = async (setProducts) => {
+  const data = await getDocs(productsCollection);
+  const AllData = data.docs.map((data) => ({ ...data.data(), id: data.id }));
+
+  setProducts(AllData.slice(120, 124));
+};
 export const CartItems = (setCartProduct) => {
   const db = getDatabase();
   const starCountRef = ref(db, "cartItem/");
