@@ -21,29 +21,46 @@ import { getAllProducts } from "../../../src/utils";
 const SingleProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  .main-product {
+  .product-section {
+    padding: 70px 150px 50px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 670px;
-    width: 90%;
-    height: 423px;
-  }
-  section {
-    display: flex;
-    max-width: 670px;
-    width: 90%;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 20px;
+    gap: 50px;
   }
   .left-part {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    justify-content: center;
-    align-items: end;
+    width: 45%;
+    gap: 20px;
   }
+  .main-product {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    img {
+      height: 450px;
+      width: 450px;
+    }
+  }
+  section {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    justify-content: center;
+    gap: 20px;
+
+    img {
+      width: 150px;
+      height: 150px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+  }
+
   .variance {
     background: #cdcfd1;
     width: 125px;
@@ -59,31 +76,37 @@ const SingleProductWrapper = styled.div`
   .right-part {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 55%;
     align-items: flex-start;
   }
   .title {
     font-weight: 700;
     font-size: 40px;
-    padding-top: 25px;
+    padding-top: 10px;
+    line-height: 55px;
   }
   .route {
     font-weight: 500;
     font-size: 18px;
     color: #9f9f9f;
-    max-width: 700px;
-    width: 90%;
+    line-height: 28px;
+    text-align: justify;
+  }
+  .route-1 {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #cdcfd1;
   }
   .amount {
     color: #9f9f9f;
     font-weight: 400;
     font-size: 30px;
-    padding-top: 40px;
+    padding-top: 25px;
   }
   .quantity {
     font-weight: 500;
     color: #393d46;
-    margin-top: 50px;
+    margin-top: 35px;
     font-size: 18px;
     .btn-minus {
       border: 1px solid #f6f7fb;
@@ -93,9 +116,10 @@ const SingleProductWrapper = styled.div`
       margin-left: 15px;
     }
     input {
-      width: 80px;
+      width: 60px;
       border: 1px solid #f6f7fb;
       height: 40px;
+      text-align: center;
     }
     .btn-plus {
       height: 40px;
@@ -270,15 +294,10 @@ const SingleProduct = () => {
               (item) => item.id === product.id
             );
             return (
-              <div style={{ display: "flex", margin: "0 0 50px 0" }}>
+              <div className="product-section">
                 <div className="left-part">
                   <div className="main-product">
-                    <img
-                      src={product?.image[0]}
-                      layout="responsive"
-                      height={300}
-                      width={350}
-                    />
+                    <img src={product?.image[0]} layout="responsive" />
                   </div>
                   <section>
                     <img
@@ -308,9 +327,7 @@ const SingleProduct = () => {
                   </div>
                   <div className="title">{product?.name}</div>
                   <div className="amount">${product?.mrp}</div>
-                  <div className="route" style={{ padding: "55px 0 0 0" }}>
-                    {product?.description}
-                  </div>
+                  <div className="route route-1">{product?.description}</div>
                   <div className="quantity">
                     Quantity{" "}
                     <button
