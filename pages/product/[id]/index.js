@@ -31,6 +31,7 @@ const SingleProductWrapper = styled.div`
     height: 450px;
     object-fit: cover;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
     img {
       height: 450px;
       width: 450px;
@@ -145,20 +146,68 @@ const SingleProductWrapper = styled.div`
     column-gap: 30px;
   }
   .tools {
-    justify-content: center;
-    display: flex;
     width: 100%;
-    position: relative;
+    position: absolute;
     gap: 15px;
+    right: 15px;
+    top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     button {
       height: 40px;
-      width: 100px;
+      width: 40px;
+      border: none;
+      padding: 0px;
+    }
+    .f-20 {
+      font-size: 20px;
     }
   }
+  @media (max-width: 1400px) {
+    .product-section {
+      padding: 50px;
+    }
+  }
+  @media (max-width: 1000px) {
+    .product-section {
+      padding: 50px 150px;
+      display: flex;
+      gap: 50px;
+      flex-direction: column;
+      align-items: center;
+    }
+    .right-part {
+      width: 100%;
+    }
+    .left-part {
+      width: 100%;
+    }
+    .title {
+      font-size: 30px;
+      line-height: 45px;
+    }
+    .amount {
+      font-size: 25px;
+      text-align: left;
+    }
+    .route {
+      font-size: 15px;
+      line-height: 23px;
+      text-align: left;
+    }
+    .quantity,
+    .cart-btn {
+      text-align: left;
+    }
+  }
+
   @media screen and (max-width: 700px) {
     .main-section {
       flex-direction: column;
-      align-items: center;
+    }
+    .product-section {
+      padding: 50px;
     }
     .main-product {
       width: 100%;
@@ -174,38 +223,46 @@ const SingleProductWrapper = styled.div`
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
     }
-    .route {
-      padding-top: 30px;
-      padding-left: 50px;
-    }
-    .title {
-      width: 100%;
-      text-align: center;
-    }
+
     .similar-product {
       width: 100%;
       padding: 20px 0 0 40px;
       text-align: left;
     }
+    .quantity {
+      font-size: 15px;
+      margin-top: 30px;
+    }
+    .btn-minus {
+      height: 25px;
+      width: 25px;
+    }
+    input {
+      width: 40px;
+      height: 25px;
+    }
+    .btn-plus {
+      height: 25px;
+      width: 25px;
+    }
+    .cart-btn {
+      width: 150px;
+      height: 40px;
+      font-size: 15px;
+      margin-top: 30px;
+    }
+    .route-1 {
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    .amount {
+      padding-top: 15px;
+    }
   }
   @media screen and (max-width: 500px) {
     .main-section {
       flex-direction: column;
-      align-items: center;
-    }
-    .main-product {
-      width: 100%;
-      height: 350px;
-    }
-    section {
-      width: 100%;
-    }
-    .left-part {
-      width: 100%;
-      max-width: 350px;
-      height: 450px;
     }
     .variance {
       width: 100px;
@@ -214,6 +271,44 @@ const SingleProductWrapper = styled.div`
     .variance1 {
       width: 100px;
       height: 100px;
+    }
+    section {
+      gap: 10px;
+      height: 100px;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .main-product {
+      width: 100%;
+      height: 350px;
+      img {
+        height: 350px;
+        width: 350px;
+      }
+    }
+    .product-section {
+      gap: 20px;
+      padding: 20px;
+    }
+    .title {
+      font-size: 25px;
+      line-height: 40px;
+    }
+    .amount {
+      font-size: 20px;
+      text-align: left;
+    }
+    .route {
+      font-size: 12px;
+      line-height: 20px;
+      text-align: left;
+    }
+    .quantity,
+    .cart-btn {
+      text-align: left;
     }
   }
 `;
@@ -300,14 +395,18 @@ const SingleProduct = () => {
                   <TransformWrapper initialScale={1}>
                     {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                       <React.Fragment>
-                        <div className="tools">
-                          <button onClick={() => zoomIn()}>Zoom +</button>
-                          <button onClick={() => zoomOut()}>Zoom -</button>
-                          <button onClick={() => resetTransform()}>
-                            Reset Zoom
-                          </button>
-                        </div>
                         <div className="main-product">
+                          <div className="tools">
+                            <button className="f-20" onClick={() => zoomIn()}>
+                              +
+                            </button>
+                            <button className="f-20" onClick={() => zoomOut()}>
+                              -
+                            </button>
+                            <button onClick={() => resetTransform()}>
+                              Reset
+                            </button>
+                          </div>
                           <TransformComponent>
                             <img src={product?.image[0]} layout="responsive" />
                           </TransformComponent>
