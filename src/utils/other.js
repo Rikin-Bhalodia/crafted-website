@@ -41,7 +41,7 @@ export const colors = [
   { data: cream, key: "cream" },
   { data: green, key: "green" },
   { data: yellow, key: "yellow" },
-  { data: grey, key: "gray" },
+  { data: grey, key: "grey" },
   { data: white, key: "white" },
   { data: black, key: "black" },
   { data: mehendi, key: "mehendi" },

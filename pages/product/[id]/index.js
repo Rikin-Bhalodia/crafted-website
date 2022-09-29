@@ -4,18 +4,9 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import ProductSlider from "../../../src/CommonComponent/Swiper/ProductSlider";
 import CartImage from "/public/svg/cart-white.svg";
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  updateDoc,
-} from "firebase/firestore";
-import { db } from "../../../src/Firebase";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { getDatabase, ref, set } from "firebase/database";
 import { ColorRing } from "react-loader-spinner";
-import useDebounce from "../../../src/CommonComponent/CustomHooks";
 import { getAllProducts } from "../../../src/utils";
 
 const SingleProductWrapper = styled.div`
@@ -40,7 +31,6 @@ const SingleProductWrapper = styled.div`
     height: 450px;
     object-fit: cover;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
     img {
       height: 450px;
       width: 450px;
@@ -153,6 +143,17 @@ const SingleProductWrapper = styled.div`
     display: flex;
     flex-direction: column;
     column-gap: 30px;
+  }
+  .tools {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    position: relative;
+    gap: 15px;
+    button {
+      height: 40px;
+      width: 100px;
+    }
   }
   @media screen and (max-width: 700px) {
     .main-section {
@@ -296,9 +297,24 @@ const SingleProduct = () => {
             return (
               <div className="product-section">
                 <div className="left-part">
-                  <div className="main-product">
-                    <img src={product?.image[0]} layout="responsive" />
-                  </div>
+                  <TransformWrapper initialScale={1}>
+                    {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+                      <React.Fragment>
+                        <div className="tools">
+                          <button onClick={() => zoomIn()}>Zoom +</button>
+                          <button onClick={() => zoomOut()}>Zoom -</button>
+                          <button onClick={() => resetTransform()}>
+                            Reset Zoom
+                          </button>
+                        </div>
+                        <div className="main-product">
+                          <TransformComponent>
+                            <img src={product?.image[0]} layout="responsive" />
+                          </TransformComponent>
+                        </div>
+                      </React.Fragment>
+                    )}
+                  </TransformWrapper>
                   <section>
                     <img
                       src={product?.image[1]}
