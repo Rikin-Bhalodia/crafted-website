@@ -22,11 +22,12 @@ import SemiSalwar from "/public/svg/category-slider/semi-patiala.png";
 import FullPatiala from "/public/svg/category-slider/full-patialanew.png";
 import TShirt from "/public/svg/category-slider/t-shirt.png";
 import Comingsoon from "/public/svg/category-slider/coming-soon.png";
-import whitePant from "/public/svg/category-slider/white-pant.svg";
-import whitePatticoat from "/public/svg/category-slider/white-patticoat.svg";
-import whiteSalwar from "/public/svg/category-slider/white-salwar.svg";
-import whiteComingsoon from "/public/svg/category-slider/white-comingsoon.svg";
-import whiteSweater from "/public/svg/category-slider/white-sweater.svg";
+import whiteFabric from "/public/svg/category-slider/fabricnew-white.png";
+import whitePatticoat from "/public/svg/category-slider/petticoat2-white.png";
+import whiteSemiPatiala from "/public/svg/category-slider/semi-patiala-white.png";
+import whiteComingsoon from "/public/svg/category-slider/coming-soon-white.png";
+import whiteFullPatiala from "/public/svg/category-slider/full-patialanew-white.png";
+import WhiteTShirt from "/public/svg/category-slider/t-shirt-white.png";
 
 import TCFiber from "/public/svg/tcomacImage/fiber.svg";
 import TCPatiala from "/public/svg/tcomacImage/patiala.svg";
@@ -56,23 +57,23 @@ export const colors = [
 export const whiteImage = [
   {
     id: 1,
-    img: whiteSweater,
+    img: whiteFabric,
   },
   {
     id: 2,
-    img: whitePant,
-  },
-  {
-    id: 3,
     img: whitePatticoat,
   },
   {
+    id: 3,
+    img: whiteSemiPatiala,
+  },
+  {
     id: 4,
-    img: whiteSalwar,
+    img: whiteFullPatiala,
   },
   {
     id: 5,
-    img: "",
+    img: WhiteTShirt,
   },
   {
     id: 6,

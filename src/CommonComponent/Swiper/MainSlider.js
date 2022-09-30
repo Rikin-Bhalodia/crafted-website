@@ -67,7 +67,7 @@ const SliderWrapper = styled.div`
     border-radius: 25px;
     div {
       padding-top: 15px;
-      font-size: 17px;
+      font-size: 16px;
     }
   }
   .small-swiper {
@@ -78,6 +78,9 @@ const SliderWrapper = styled.div`
     width: 100vw;
     object-fit: cover;
     height: 750px;
+  }
+  .main-slider-images {
+    width: 40px;
   }
 
   @media screen and (max-width: 1400px) {
@@ -105,11 +108,15 @@ const SliderWrapper = styled.div`
       height: 130px;
       width: 120px !important;
       div {
-        font-size: 15px;
+        font-size: 14px;
       }
     }
     .small-swiper {
       bottom: 160px;
+    }
+    .main-slider-images {
+      width: 35px;
+      height: 45px;
     }
   }
   @media screen and (max-width: 850px) {
@@ -169,9 +176,6 @@ const SliderWrapper = styled.div`
     .small-slider {
       height: 110px;
       width: 100px !important;
-      div {
-        font-size: 12px;
-      }
     }
     .small-swiper {
       bottom: 140px;
@@ -222,6 +226,7 @@ export default function App() {
   };
 
   const whiteImages = whiteImage.find((data) => data.id === id);
+  console.log(whiteImages, "whhiteimage");
   return (
     <SliderWrapper>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
@@ -260,9 +265,9 @@ export default function App() {
                   }
                 >
                   <img
-                    src={id === data?.id ? whiteImages.img : data.img.src}
-                    alt="sweater"
-                    width={40}
+                    src={id === data?.id ? whiteImages.img.src : data.img.src}
+                    alt="images"
+                    className="main-slider-images"
                   />
                   <div
                     style={
