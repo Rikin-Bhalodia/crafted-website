@@ -44,7 +44,7 @@ const CommonCard = styled.div`
   @media screen and (max-width: 1330px) {
     .container {
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 0px;
       padding: 30px;
     }
   }

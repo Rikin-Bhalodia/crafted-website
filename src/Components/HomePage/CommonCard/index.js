@@ -18,7 +18,7 @@ const CommonCardWrapper = styled.div`
   }
   .card {
     width: 680px;
-    height: 330px;
+    height: 310px;
     display: flex;
     background: #f6f7fb;
     box-shadow: 0px 16px 50px rgba(0, 0, 0, 0.1);
@@ -32,6 +32,9 @@ const CommonCardWrapper = styled.div`
     align-items: center;
     margin-left: 20px;
     gap: 15px;
+    .deal-img {
+      height: 200px;
+    }
   }
   .limited {
     font-weight: 400;
@@ -62,7 +65,7 @@ const CommonCardWrapper = styled.div`
     margin-top: 10px;
   }
   button {
-    width: 150px;
+    width: 100%;
     height: 40px;
     color: #ffffff;
     font-weight: 700;
@@ -100,7 +103,12 @@ const CommonCardWrapper = styled.div`
     }
     .card {
       width: 100%;
-      height: 300px;
+      height: 280px;
+    }
+    .card-content {
+      .deal-img {
+        height: 160px;
+      }
     }
   }
   @media screen and (max-width: 1000px) {
@@ -111,12 +119,16 @@ const CommonCardWrapper = styled.div`
     }
     .card-content {
       padding: 10px 0px;
-      margin-left: 10px;
-      height: 100%;
+      margin-left: 20px;
     }
     .card {
       width: 600px;
-      height: 210px !important;
+      height: 270px;
+    }
+    .card-content {
+      .deal-img {
+        height: 180px;
+      }
     }
   }
   @media screen and (max-width: 700px) {
@@ -128,7 +140,12 @@ const CommonCardWrapper = styled.div`
     }
     .card {
       width: 100%;
-      height: 100%;
+    }
+    .card-content {
+      margin-left: 10px;
+      .deal-img {
+        height: 160px;
+      }
     }
   }
 
@@ -160,6 +177,15 @@ const CommonCardWrapper = styled.div`
       top: 48px;
       left: 35px;
     }
+    .card {
+      width: 100%;
+      height: 210px;
+    }
+    .card-content {
+      .deal-img {
+        height: 110px;
+      }
+    }
   }
 `;
 
@@ -178,7 +204,7 @@ const CommonCard = () => {
           return (
             <div className="card" key={_}>
               <div className="card-content">
-                <Image src={ProductImg} alt="product" className="deal-img" />
+                <img src={ProductImg.src} alt="product" className="deal-img" />
                 <button>Add to Cart</button>
               </div>
               <div style={{ margin: "0 0 0 20px" }}>

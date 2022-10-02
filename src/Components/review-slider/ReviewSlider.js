@@ -10,7 +10,7 @@ const ReviewSliderWrapper = styled.div`
   padding: 0px 30px;
   .team-slider {
     height: 500px;
-    margin: 30px 0px 70px;
+    margin: 30px 0px 50px;
     .slider {
       display: flex;
       background: #f6f7fb;
@@ -60,6 +60,13 @@ const ReviewSliderWrapper = styled.div`
   }
   @media screen and (max-width: 500px) {
     padding: 0 20px;
+    .team-slider {
+      .slider {
+        .review-data {
+          padding: 30px 10px 30px 0;
+        }
+      }
+    }
   }
 `;
 
