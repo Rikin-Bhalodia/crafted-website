@@ -24,8 +24,9 @@ const OurServicesWrapper = styled.div`
     }
     h4 {
       width: 80%;
-      font-size: 48px;
-      line-height: 62px;
+      font-size: 38px;
+      line-height: 52px;
+      font-weight: 400;
       letter-spacing: -1px;
       color: #262729;
       margin: 20px 0px 60px;
@@ -55,7 +56,7 @@ const OurServicesWrapper = styled.div`
       background: #f3f4f6;
       border-radius: 15px;
       display: flex;
-      padding: 20px 30px;
+      padding: 0px 30px;
       align-items: center;
       gap: 30px;
       margin-bottom: 20px;
@@ -63,6 +64,7 @@ const OurServicesWrapper = styled.div`
       h5 {
         font-size: 21px;
         line-height: 30px;
+        font-weight: 400;
         display: flex;
         align-items: center;
         color: #262729;
@@ -70,7 +72,7 @@ const OurServicesWrapper = styled.div`
       }
       .para {
         font-weight: 400;
-        font-size: 18px;
+        font-size: 16px;
         line-height: 25px;
         display: flex;
         color: #262729;
@@ -104,8 +106,8 @@ const OurServicesWrapper = styled.div`
       display: grid;
       align-items: center;
       h4 {
-        font-size: 38px;
-        line-height: 52px;
+        font-size: 25px;
+        line-height: 42px;
       }
     }
   }
@@ -123,7 +125,7 @@ const OurServicesWrapper = styled.div`
     }
     .services-data {
       p {
-        font-size: 18px;
+        font-size: 15px;
         line-height: 28px;
         text-align: center;
       }
@@ -131,8 +133,9 @@ const OurServicesWrapper = styled.div`
         flex-direction: column;
         align-items: center;
         gap: 10px;
+        padding: 20px;
         h5 {
-          text-align: center;
+          justify-content: center;
         }
       }
     }
@@ -142,18 +145,18 @@ const OurServicesWrapper = styled.div`
 const services = [
   {
     img: <Image src={services1} width={80} layout="fixed" />,
-    head: "Website Design & Development",
-    para: "Refresh old out dated website or bring your business online with your first website.",
+    head: "Manufacturing Partners",
+    para: "To become The Crafted Manufacturer you can register with us and can earn by selling your products under our brand name through our website.",
   },
   {
     img: <Image src={services2} width={80} layout="fixed" />,
-    head: "Search Engine Optimisation (SEO)",
-    para: "Start bringing new visitors to your website with an SEO  !",
+    head: "Reselling Partners",
+    para: "Women Entrepreneur can join as The Crafted Selling Partners and sell our products directly to customers and also in bulk to retailers and earn with us.",
   },
   {
     img: <Image src={services3} width={80} layout="fixed" />,
-    head: "Google Ads Management (PPC)",
-    para: "Appear on the top first pages of Google and generate instant traffic to your website.",
+    head: "Stitching Partners",
+    para: "Local women can join us as The Crafted Stitching Partners netwrok and stitch our quality products  and earn with in the comfort of their home.",
   },
 ];
 
@@ -162,19 +165,21 @@ const OurServices = () => {
     <>
       <OurServicesWrapper>
         <div className="services-heading">
-          <p>Our Services</p>
+          <p>The Crafted Associate Partner</p>
           <h4>
-            Get better conversion with user-friendly and mobile optimized
-            websites
+            Welcome to one of the world’s best Associate Partnership program.{" "}
           </h4>
+          <h4>Join now and become The Crafted Associate Partner.</h4>
           <Link href="#" className="btn">
-            Learn More
+            Sign Up
           </Link>
         </div>
         <div className="services-data">
           <p>
-            If you don’t have a website or can’t be found on the first page of
-            Google then you are missing out on potential visitors and sales.
+            Join our Associate Partnership program and sales network. Be a part
+            of our huge and continuously growing community of Manufacturers,
+            Selling Partners, Stitching partners and Customers across India and
+            subsequently worldwide.
           </p>
           {services.map((data) => {
             return (

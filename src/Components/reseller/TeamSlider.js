@@ -11,6 +11,7 @@ import {
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import { AiFillStar } from "react-icons/ai";
 
 const TeamSliderWrapper = styled.div`
   padding: 100px 0px 150px;
@@ -32,8 +33,13 @@ const TeamSliderWrapper = styled.div`
       letter-spacing: -1px;
       text-align: center;
       color: #262729;
-      margin: 20px 0px 50px;
+      margin: 10px 0px 0px;
       width: 35%;
+    }
+    h5 {
+      font-size: 38px;
+      line-height: 52px;
+      margin-top: 25px;
     }
   }
   .team-slider {
@@ -144,8 +150,15 @@ const TeamSliderWrapper = styled.div`
     .team-heading {
       h4 {
         width: 100%;
-        font-size: 33px;
+        font-size: 30px;
         line-height: 45px;
+        margin-bottom: 15px;
+        margin-top: 10px;
+      }
+      h5 {
+        font-size: 30px;
+        margin-top: 0px;
+        margin-bottom: 10px;
       }
     }
   }
@@ -156,8 +169,16 @@ const TeamSlider = () => {
     <>
       <TeamSliderWrapper>
         <div className="team-heading">
-          <p>Our Team</p>
-          <h4>Meet the minds shaping your digital business</h4>
+          <p>What our customers say</p>
+          <h4>Our customers love us</h4>
+          <h5>
+            4.8 stars &nbsp;&nbsp;
+            <AiFillStar style={{ marginBottom: "-7px", color: "#F5CC47" }} />
+            <AiFillStar style={{ marginBottom: "-7px", color: "#F5CC47" }} />
+            <AiFillStar style={{ marginBottom: "-7px", color: "#F5CC47" }} />
+            <AiFillStar style={{ marginBottom: "-7px", color: "#F5CC47" }} />
+            <AiFillStar style={{ marginBottom: "-7px", color: "#F5CC47" }} />
+          </h5>
         </div>
         <div className="team-slider">
           <Swiper

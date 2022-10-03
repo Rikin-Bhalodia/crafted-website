@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-
+import achive from "../../../public/svg/reseller_achive.svg";
 const OurMissionWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -9,25 +9,21 @@ const OurMissionWrapper = styled.div`
   align-items: flex-start;
   gap: 100px;
   padding: 100px 150px;
+  align-items: center;
   .mission-heading {
     width: 100%;
-    .para {
-      font-size: 16px;
-      line-height: 28px;
-      color: #fd346e;
-      margin: 0px;
-    }
     p {
       font-weight: 400;
       font-size: 18px;
       line-height: 32px;
       color: #262729;
       opacity: 0.7;
-      margin: 0px 0px 50px;
+      margin: 0px 0px 20px;
     }
     h4 {
-      font-size: 48px;
-      line-height: 62px;
+      font-size: 40px;
+      line-height: 60px;
+      font-weight: 500;
       letter-spacing: -1px;
       color: #262729;
       margin: 15px 0px 20px;
@@ -44,12 +40,9 @@ const OurMissionWrapper = styled.div`
   .mission-img {
     display: flex;
     gap: 20px;
-    div {
-      width: 300px;
-      height: 400px;
-      background: #c4c4c4;
-      border-radius: 5px;
-      transform: skew(-14deg);
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
   @media screen and (max-width: 1440px) {
@@ -66,25 +59,19 @@ const OurMissionWrapper = styled.div`
     }
   }
   @media screen and (max-width: 864px) {
-    padding: 50px 30px;
+    padding: 25px 30px;
     .mission-heading {
       width: 100%;
 
       h4 {
-        font-size: 38px;
-        line-height: 52px;
+        font-size: 30px;
+        line-height: 50px;
       }
     }
     .mission-img {
       display: flex;
       justify-content: center;
       align-items: center;
-
-      div {
-        transform: skew(-8deg);
-        width: 100%;
-        height: 300px;
-      }
     }
   }
 `;
@@ -94,18 +81,23 @@ const OurMission = () => {
     <>
       <OurMissionWrapper>
         <div className="mission-heading">
-          <p className="para">Our Mission</p>
-          <h4>Create recognition for businesses online</h4>
+          <h4>
+            Why is it a win-win situation to join the Crafted Associate Partner
+            Program and The Crafted community?
+          </h4>
           <p>
-            Business advisory service advises current and future businesses
-            prospects of a client, with the aim of advancing their business or
-            company.
+            The Crafted is world's first brand to introduce an online colour
+            matching tech tool to help customers find a colour match for their
+            costumes.
+          </p>
+          <p style={{ marginBottom: "50px" }}>
+            Joining us will help you to work with a completely new niche concept
+            and increase your market reach by targeting a specific audience.
           </p>
           <Link href="#">Get started</Link>
         </div>
         <div className="mission-img">
-          <div></div>
-          <div></div>
+          <img src={achive.src} />
         </div>
       </OurMissionWrapper>
     </>

@@ -1,16 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import chooseUs from "../../../public/svg/reseller_chooseus.svg";
 
 const ChooseUsWrapper = styled.div`
   background: #f3f4f6;
   display: flex;
   justify-content: flex-end;
   text-align: right;
-  align-items: flex-start;
+  align-items: center;
   gap: 100px;
   padding: 100px 150px;
   .choose-data {
-    width: 100%;
+    width: 50%;
     p {
       font-size: 16px;
       line-height: 28px;
@@ -78,11 +79,12 @@ const ChooseUsWrapper = styled.div`
     }
   }
   .choose-video {
-    width: 100%;
+    width: 50%;
 
-    div {
-      width: 650px;
-      height: 530px;
+    img {
+      width: 100%;
+      /* width: 650px; */
+      /* height: 530px; */
       background: #c4c4c4;
       border-radius: 15px;
     }
@@ -90,7 +92,7 @@ const ChooseUsWrapper = styled.div`
 
   @media screen and (max-width: 1571px) {
     .choose-video {
-      width: 100%;
+      width: 50%;
       div {
         width: 100%;
       }
@@ -103,14 +105,20 @@ const ChooseUsWrapper = styled.div`
   @media screen and (max-width: 1240px) {
     gap: 20px;
     flex-direction: column;
+    .choose-video {
+      width: 100%;
+    }
+    .choose-data {
+      width: 100%;
+    }
   }
   @media screen and (max-width: 686px) {
     padding: 50px 30px;
     .choose-data {
       width: 100%;
       h4 {
-        font-size: 38px;
-        line-height: 52px;
+        font-size: 30px;
+        line-height: 50px;
       }
       .para {
         margin: 30px 0px 50px;
@@ -155,32 +163,35 @@ const ChooseUs = () => {
       <ChooseUsWrapper>
         <div className="choose-data">
           <p>Why Choose Us</p>
-          <h4>We are in the business of helping you grow yours</h4>
+          <h4>
+            The Crafted helping their Associate Partners build and grow their
+            own businesses.
+          </h4>
           <div className="line1"></div>
           <p className="para">
-            Stay up to date with Google company news and products. Discover
-            stories about our culture, philosophy, and how Google technology is
-            impacting others.
+            The Crafted through its tech product TCOMaC web colour matching tool
+            provides manufacturers, resellers a platform and an opportunity to
+            list and sell their products online.
           </p>
           <div className="counter-data">
             <div className="data">
-              <div className="number">576</div>
-              <div className="name">Successful projects done</div>
+              <div className="number">25+</div>
+              <div className="name">Manufacturers and Resellers Onboard</div>
             </div>
             <div className="line2"></div>
             <div className="data">
-              <div className="number">93%</div>
-              <div className="name">Increased conversion rate</div>
+              <div className="number">50+</div>
+              <div className="name">Stitching Partners Onboard</div>
             </div>
             <div className="line2"></div>
             <div className="data">
-              <div className="number">300+</div>
+              <div className="number">5000+</div>
               <div className="name">Returning Happy customer</div>
             </div>
           </div>
         </div>
         <div className="choose-video">
-          <div></div>
+          <img src={chooseUs.src} />
         </div>
       </ChooseUsWrapper>
     </>

@@ -27,11 +27,11 @@ const ContactSecWrapper = styled.div`
       text-align: center;
       letter-spacing: -1px;
       color: #ffffff;
-      width: 50%;
+      width: 100%;
       margin: 0px;
     }
     p {
-      width: 35%;
+      width: 60%;
       font-weight: 400;
       font-size: 18px;
       line-height: 32px;
@@ -70,12 +70,13 @@ const ContactSecWrapper = styled.div`
   @media screen and (max-width: 775px) {
     .contact-section {
       h4 {
-        font-size: 28px;
+        font-size: 24px;
         line-height: 38px;
         width: 80%;
       }
       p {
         width: 66%;
+        font-size: 15px;
       }
       a {
         padding: 8px 50px;
@@ -99,10 +100,16 @@ const ContactSec = () => {
     <>
       <ContactSecWrapper>
         <div className="contact-section">
-          <h4>Find out how we’ll build your digital presence</h4>
+          <h4>The Crafted supports their Associate Partners 24/7</h4>
+          <p style={{ marginBottom: "0px" }}>
+            The Crafted Associate Partner support is available 24/7 to help you
+            solve all your issues after you join The Crafted online community as
+            an associate partner.
+          </p>
+
           <p>
-            Don’t miss out the potential visitors and sales for the absence of
-            your digital presence.
+            We are just a text or a call away. Get started now to become The
+            Crafted Associate Parner.
           </p>
           <Link href="#">Get started</Link>
         </div>
