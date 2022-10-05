@@ -35,7 +35,7 @@ const HomeBlogWrapper = styled.div`
     background: #848484;
     border-radius: 16px 0px 0px 16px;
     width: 50%;
-    height: 400px;
+    /* height: 400px; */
     z-index: 0;
     right: -1px;
     margin-right: 50px;
@@ -47,6 +47,7 @@ const HomeBlogWrapper = styled.div`
   }
   .parts {
     display: flex;
+    height: 100%;
   }
   .btn-feature {
     background: rgb(54, 179, 126, 0.1);
@@ -170,7 +171,6 @@ const HomeBlogWrapper = styled.div`
       height: 30px;
     }
     .des-part {
-      width: 550px;
       height: 100% !important;
       padding-right: 20px;
     }

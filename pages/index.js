@@ -187,6 +187,10 @@ const MainAppWrapper = styled.div`
       text-align: center;
       margin: 50px 0 0;
     }
+    .customer-section {
+      position: relative;
+      padding-top: 50px;
+    }
   }
   @media screen and (max-width: 627px) {
     .main-container {
