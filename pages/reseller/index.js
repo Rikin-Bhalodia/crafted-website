@@ -130,27 +130,34 @@ const ResellerWrapper = styled.div`
 const Reseller = () => {
   const form = useRef();
   const router = useRouter();
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_m0vqwp5",
-        "template_tzutlla",
-        form.current,
-        "_Byn7_FXweaYyAMpl"
-      )
-      .then(
-        (result) => {
-          toast(
-            "your message we received from we will contact you in short time wait for that Thank you!!"
-          );
-        },
-        (error) => {
-          toast("opps something went wrong please retry after some time");
-        }
-      );
-    router.push("/");
+    if (
+      form.current[0].value &&
+      form.current[1].value &&
+      form.current[2].value
+    ) {
+      emailjs
+        .sendForm(
+          "service_m0vqwp5",
+          "template_tzutlla",
+          form.current,
+          "_Byn7_FXweaYyAMpl"
+        )
+        .then(
+          (result) => {
+            toast(
+              "your message we received from we will contact you in short time wait for that Thank you!!"
+            );
+          },
+          (error) => {
+            toast("opps something went wrong please retry after some time");
+          }
+        );
+      router.push("/");
+    } else {
+      toast("Please fill all the details");
+    }
   };
   return (
     <>
