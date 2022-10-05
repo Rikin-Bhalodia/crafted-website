@@ -25,6 +25,8 @@ const QuestionWrapper = styled.div`
   .que-body {
     .que-category {
       padding-bottom: 50px;
+      display: flex;
+      justify-content: center;
     }
   }
   .label {

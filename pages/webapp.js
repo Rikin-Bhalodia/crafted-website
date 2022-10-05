@@ -185,6 +185,17 @@ const WebAppWrapper = styled.div`
     right: 20px;
     top: -60px;
   }
+  .reset-all {
+    background: #d9d9d9;
+    border-radius: 25px;
+    border: none;
+    height: 35px;
+    font-weight: 500;
+    font-size: 15px;
+    width: 150px;
+    position: relative;
+    left: 30px;
+  }
   .dummy-image {
     height: 370px;
     width: 360px;
@@ -717,6 +728,13 @@ const WebApp = () => {
               <div className="match-color-box">
                 <div className="label2">
                   Choose your desired colors - <span>max upto 3 colors </span>
+                  <button
+                    className="reset-all"
+                    onClick={() => setColor([])}
+                    style={{ cursor: "pointer" }}
+                  >
+                    Clear selection
+                  </button>
                 </div>
                 <div className="container">
                   {renderColors &&
