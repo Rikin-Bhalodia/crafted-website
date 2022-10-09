@@ -223,7 +223,7 @@ const WebAppWrapper = styled.div`
   }
   .color-image-right {
     position: absolute;
-    right: -4px;
+    right: -5px;
     height: 70px;
     width: 15px;
   }
@@ -241,6 +241,9 @@ const WebAppWrapper = styled.div`
   .tc-img {
     height: 40px;
     width: 40px;
+  }
+  .name {
+    font-size: 14px;
   }
 
   @media screen and (max-width: 1400px) {
@@ -267,6 +270,9 @@ const WebAppWrapper = styled.div`
     .color-image-right {
       height: 50px;
       right: -6px;
+    }
+    .name {
+      font-size: 12px;
     }
   }
   @media screen and (max-width: 1200px) {
@@ -342,6 +348,9 @@ const WebAppWrapper = styled.div`
       height: 30px;
       width: 25px;
     }
+    .name {
+      font-size: 10px;
+    }
   }
   @media screen and (max-width: 800px) {
     .section {
@@ -415,6 +424,9 @@ const WebAppWrapper = styled.div`
     }
     .btn {
       padding: 0px 10px;
+    }
+    .name {
+      font-size: 9px;
     }
   }
 
@@ -759,7 +771,9 @@ const WebApp = () => {
                               alt="whitespace"
                               className="color-image-left"
                             />
-                            {data.color}
+                            <div className="name">
+                              {data.id}. &nbsp; {data.color}
+                            </div>
                             <img
                               src={colorRight.src}
                               alt="whitespace"
