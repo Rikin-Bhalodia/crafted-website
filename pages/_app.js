@@ -4,8 +4,6 @@ import "../styles/globals.css";
 import { useRouter } from "next/router";
 import AuthProvider from "../src/auth/AuthContext";
 import ProtectedRoute from "../src/auth/ProtectedRoute";
-// import { store } from "./app/store";
-// import { Provider } from "react-redux";
 
 const noAuthPages = ["/login", "/signup", "/resetpassword"];
 

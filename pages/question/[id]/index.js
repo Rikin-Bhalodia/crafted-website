@@ -55,6 +55,28 @@ const QuestionWrapper = styled.div`
     height: 40px;
     width: 40px;
   }
+  @media screen and (max-width: 550px) {
+    .tc-image {
+      height: 50px;
+      width: 55px;
+      font-size: 10px;
+    }
+    .tc-img {
+      height: 30px;
+      width: 30px;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .tc-image {
+      height: 40px;
+      width: 40px;
+      font-size: 8px;
+    }
+    .tc-img {
+      height: 20px;
+      width: 20px;
+    }
+  }
 `;
 
 const Question = () => {

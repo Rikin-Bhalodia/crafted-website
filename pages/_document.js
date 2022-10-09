@@ -1,4 +1,4 @@
-import Document, { Html,Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import Helmet from "react-helmet";
 
@@ -44,7 +44,7 @@ export default class extends Document {
   }
 
   get helmetJsx() {
-    const title = "Hello next.js Real World!";
+    const title = "Building The Crafted India";
     return (
       <Helmet>
         <title>{title}</title>
@@ -60,6 +60,7 @@ export default class extends Document {
         <Head>
           {this.helmetJsx}
           {this.helmetHeadComponents}
+          <link rel="shortcut icon" href="/favicon.png" />
         </Head>
         <body {...this.helmetBodyAttrComponents}>
           <Main />
