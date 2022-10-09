@@ -95,7 +95,7 @@ export const images = [
   {
     id: 2,
     img: Patticoat,
-    name: "Patticoat",
+    name: "Petticoat",
     category: "petticoat",
   },
   {
