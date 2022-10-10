@@ -177,12 +177,20 @@ const Reseller = () => {
 
             <input type="email" id="email" name="email" placeholder="Email*" />
             <br />
-            <input
+            <select name="join" id="join">
+              <option value="" hidden>
+                Join Us as a
+              </option>
+              <option value="manufacturer">Manufacturer</option>
+              <option value="resellers">Resellers</option>
+              <option value="stitching-partners">Stitching Partners</option>
+            </select>
+            {/* <input
               type="text"
               id="join"
               name="join"
               placeholder="Join The Crafted Family as a*"
-            />
+            /> */}
             <br />
             <button className="btn" type="submit">
               Get Started

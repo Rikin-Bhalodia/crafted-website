@@ -16,7 +16,7 @@ const ReviewSliderWrapper = styled.div`
       background: #f6f7fb;
       box-shadow: 0px 16px 25px rgba(0, 0, 0, 0.1);
       border-radius: 45px;
-      height: 100%;
+      height: 300px;
       margin: 30px 10px 30px 20px;
       .review-img {
         padding: 30px 15px 20px 20px;
@@ -54,6 +54,16 @@ const ReviewSliderWrapper = styled.div`
           line-height: 22px;
           color: #183b56;
           margin: 15px 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        h6:hover {
+          display: -webkit-flex;
+        }
+        h6:hover .slider {
+          height: 400px;
         }
       }
     }
@@ -106,7 +116,7 @@ const ReviewSlider = () => {
                       <div></div>
                     </div>
                     <div className="review-data">
-                      <h5>svedha.r</h5>
+                      <h5>Jaichand</h5>
                       <div>
                         <GoStar size={20} />
                         &nbsp;
@@ -118,13 +128,120 @@ const ReviewSlider = () => {
                         &nbsp;
                         <GoStar size={20} />
                       </div>
-                      <h5>Comfortin</h5>
-                      <p>Reviewed in India on 14 June 2021</p>
-                      <p>Reviewed in India on 14 June 2021</p>
+                      <h5>Pure cotton</h5>
+                      <p>Reviewed in India on 5 June 2021</p>
                       <h6>
-                        It was soft and suits for summer , thanks for the
-                        product which satisfies my mom expectations with a
-                        reasonable price and more comfortable.
+                        Colour: OxleyVerified Purchase Pure cotton, comfortable
+                        design & fit.
+                      </h6>
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="slider">
+                    <div className="review-img">
+                      <div></div>
+                    </div>
+                    <div className="review-data">
+                      <h5>Amazon Customer</h5>
+                      <div>
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                      </div>
+                      <h5>Good material, fine stitching, right size</h5>
+                      <p>Reviewed in India on 5 February 2021</p>
+                      <h6>
+                        Colour: White CokeVerified Purchase Good material, fine
+                        stitching, right size.
+                      </h6>
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="slider">
+                    <div className="review-img">
+                      <div></div>
+                    </div>
+                    <div className="review-data">
+                      <h5>Noor Saba</h5>
+                      <div>
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                      </div>
+                      <h5>Loved it .</h5>
+                      <p>Reviewed in India on 28 May 2022</p>
+                      <h6>
+                        Verified Purchase The quality of the product is amazing
+                        with the most reasonable price ..must try ..
+                      </h6>
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="slider">
+                    <div className="review-img">
+                      <div></div>
+                    </div>
+                    <div className="review-data">
+                      <h5>Sulata Hansda</h5>
+                      <div>
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                      </div>
+                      <h5>Soft and reasonable price.</h5>
+                      <p>Reviewed in India on 27 November 2021</p>
+                      <h6>
+                        Colour: Dark Purple Country GreenVerified Purchase
+                        Product is good and reasonable price.
+                      </h6>
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="slider">
+                    <div className="review-img">
+                      <div></div>
+                    </div>
+                    <div className="review-data">
+                      <h5>Dr Payal Panda</h5>
+                      <div>
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                        &nbsp;
+                        <GoStar size={20} />
+                      </div>
+                      <h5> 👍👍</h5>
+                      <p>Reviewed in India on 26 December 2020</p>
+                      <h6>
+                        Colour: Bianca Wheat Got a white and baby pink set.
+                        Perfect fit. Go for it. Cloth quality 👍. Go for it.
+                        Planning for more colours
                       </h6>
                     </div>
                   </div>
@@ -149,7 +266,6 @@ const ReviewSlider = () => {
                       </div>
                       <h5>Comfortin</h5>
                       <p>Reviewed in India on 14 June 2021</p>
-                      <p>Reviewed in India on 14 June 2021</p>
                       <h6>
                         It was soft and suits for summer , thanks for the
                         product which satisfies my mom expectations with a
@@ -164,7 +280,7 @@ const ReviewSlider = () => {
                       <div></div>
                     </div>
                     <div className="review-data">
-                      <h5>svedha.r</h5>
+                      <h5>Savithri</h5>
                       <div>
                         <GoStar size={20} />
                         &nbsp;
@@ -176,100 +292,14 @@ const ReviewSlider = () => {
                         &nbsp;
                         <GoStar size={20} />
                       </div>
-                      <h5>Comfortin</h5>
-                      <p>Reviewed in India on 14 June 2021</p>
-                      <p>Reviewed in India on 14 June 2021</p>
+                      <h5>True to size .value for money.</h5>
+                      <p>Reviewed in India on 5 March 2022</p>
                       <h6>
-                        It was soft and suits for summer , thanks for the
-                        product which satisfies my mom expectations with a
-                        reasonable price and more comfortable.
-                      </h6>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="slider">
-                    <div className="review-img">
-                      <div></div>
-                    </div>
-                    <div className="review-data">
-                      <h5>svedha.r</h5>
-                      <div>
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                      </div>
-                      <h5>Comfortin</h5>
-                      <p>Reviewed in India on 14 June 2021</p>
-                      <p>Reviewed in India on 14 June 2021</p>
-                      <h6>
-                        It was soft and suits for summer , thanks for the
-                        product which satisfies my mom expectations with a
-                        reasonable price and more comfortable.
-                      </h6>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="slider">
-                    <div className="review-img">
-                      <div></div>
-                    </div>
-                    <div className="review-data">
-                      <h5>svedha.r</h5>
-                      <div>
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                      </div>
-                      <h5>Comfortin</h5>
-                      <p>Reviewed in India on 14 June 2021</p>
-                      <p>Reviewed in India on 14 June 2021</p>
-                      <h6>
-                        It was soft and suits for summer , thanks for the
-                        product which satisfies my mom expectations with a
-                        reasonable price and more comfortable.
-                      </h6>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="slider">
-                    <div className="review-img">
-                      <div></div>
-                    </div>
-                    <div className="review-data">
-                      <h5>svedha.r</h5>
-                      <div>
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                        &nbsp;
-                        <GoStar size={20} />
-                      </div>
-                      <h5>Comfortin</h5>
-                      <p>Reviewed in India on 14 June 2021</p>
-                      <p>Reviewed in India on 14 June 2021</p>
-                      <h6>
-                        It was soft and suits for summer , thanks for the
-                        product which satisfies my mom expectations with a
-                        reasonable price and more comfortable.
+                        Colour: White Wheat Verified Purchase The cloth was good
+                        .Nice cotton and the feel is good. Apt for Indian
+                        summer. The flair was as promised. The measurements
+                        given in the description box was absolutely correct. One
+                        can buy this without any hesitation.
                       </h6>
                     </div>
                   </div>

@@ -46,7 +46,7 @@ const WebAppWrapper = styled.div`
   }
   .label2 {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 12px;
     text-align: center;
     margin-top: 20px;
 
@@ -189,12 +189,11 @@ const WebAppWrapper = styled.div`
     background: #d9d9d9;
     border-radius: 25px;
     border: none;
-    height: 35px;
+    height: 30px;
     font-weight: 500;
-    font-size: 15px;
-    width: 150px;
-    position: relative;
-    left: 30px;
+    font-size: 10px;
+    width: 90px;
+    margin-left: 50px;
   }
   .dummy-image {
     height: 370px;
@@ -296,7 +295,7 @@ const WebAppWrapper = styled.div`
   }
   @media screen and (max-width: 1100px) {
     .match-color-box {
-      width: 400px;
+      width: 420px;
       height: 400px;
     }
     .color-shade {
@@ -316,6 +315,9 @@ const WebAppWrapper = styled.div`
     }
     .label {
       margin-bottom: 10px;
+    }
+    .reset-all {
+      margin-left: 20px;
     }
     .label2 {
       width: 400px;
@@ -439,6 +441,19 @@ const WebAppWrapper = styled.div`
     .heading-section {
       flex-direction: column;
     }
+    .none {
+      display: none;
+    }
+    .label2 {
+      font-weight: 600;
+      font-size: 11px;
+    }
+    .reset-all {
+      height: 20px;
+      font-weight: 500;
+      font-size: 8px;
+      width: 70px;
+    }
   }
   @media screen and (max-width: 700px) {
     .productImg {
@@ -447,9 +462,6 @@ const WebAppWrapper = styled.div`
     }
     .product-name {
       font-size: 16px;
-    }
-    .none {
-      display: none;
     }
   }
   @media screen and (max-width: 520px) {

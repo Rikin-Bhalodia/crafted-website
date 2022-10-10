@@ -21,16 +21,25 @@ const ProductWrapper = styled.div`
     height: 200px;
   }
   .productImg {
-    height: 150px;
-    width: 180px;
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    img {
+      width: 120px;
+      height: 120px;
+    }
   }
   .product-name {
     padding-top: 15px;
     font-weight: 500;
     font-size: 18px;
     color: #393d46;
+    text-align: center;
+    padding: 0 30px;
+    display: -webkit-box;
     -webkit-line-clamp: 2;
-    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .product-price {
     padding-top: 5px;
@@ -46,40 +55,18 @@ const ProductWrapper = styled.div`
       width: 150px;
     }
     .productImg {
-      width: 150px;
-    }
-  }
-  @media screen and (max-width: 700px) {
-    .productImg {
-      width: 130px;
-      height: 130px;
-    }
-    .product-name {
-      font-size: 14px;
-    }
-  }
-  @media screen and (max-width: 520px) {
-    .productImg {
       width: 100px;
       height: 100px;
+      img {
+        width: 100px;
+        height: 100px;
+      }
     }
     .product-name {
-      font-size: 12px;
+      font-size: 15x;
     }
     .product-price {
-      font-size: 14px;
-    }
-  }
-  @media screen and (max-width: 400px) {
-    .productImg {
-      width: 60px;
-      height: 60px;
-    }
-    .product-name {
-      font-size: 10px;
-    }
-    .product-price {
-      font-size: 12px;
+      font-size: 15px;
     }
   }
 `;
@@ -96,7 +83,27 @@ export default function ProductSlider({ category }) {
   }, []);
   return (
     <ProductWrapper>
-      <Swiper slidesPerView={4} grabCursor={true} spaceBetween={15}>
+      <Swiper
+        breakpoints={{
+          // 0: {
+          //   slidesPerView: 1,
+          //   spaceBetween: 10,
+          // },
+          450: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1075: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          1500: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+        }}
+        grabCursor={true}
+      >
         {products &&
           products.map((ele, i) => {
             return (
@@ -110,7 +117,7 @@ export default function ProductSlider({ category }) {
                     <img src={ele?.image} height={60} width={80} />
                   </div>
                   <div className="product-name">{ele.name}</div>
-                  <div className="product-price">${ele.mrp}</div>
+                  <div className="product-price">₹{ele.mrp}</div>
                 </SwiperSlide>
               )
             );

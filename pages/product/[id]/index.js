@@ -87,6 +87,13 @@ const SingleProductWrapper = styled.div`
     padding-top: 20px;
     margin-top: 20px;
     border-top: 1px solid #cdcfd1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .route-1:hover {
+    display: -webkit-flex;
   }
   .amount {
     color: #9f9f9f;
@@ -441,7 +448,7 @@ const SingleProduct = () => {
                     Featured {">"} Purple Warm Jacket
                   </div>
                   <div className="title">{product?.name}</div>
-                  <div className="amount">${product?.mrp}</div>
+                  <div className="amount">₹{product?.mrp}</div>
                   <div className="route route-1">{product?.description}</div>
                   <div className="quantity">
                     Quantity{" "}
