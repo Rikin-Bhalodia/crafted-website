@@ -59,6 +59,15 @@ const MainAppWrapper = styled.div`
   .text {
     font-size: 16px;
     cursor: pointer;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .text-2 {
+    font-size: 17px;
+    padding-top: 10px;
+    font-weight: 700;
   }
   .woman-empowers {
     margin-top: 200px;
@@ -110,6 +119,7 @@ const MainAppWrapper = styled.div`
     position: relative;
     top: 10px;
   }
+
   @media screen and (max-width: 1400px) {
     .main-container {
       height: 300px;
@@ -277,7 +287,7 @@ export default function Home() {
                   <img src={data.image[0]} alt="image" className="small-box" />
                   <div className="card-data">
                     <div className="text">{data.name}</div>
-                    <div className="text">₹{data.sale_price}</div>
+                    <div className="text-2">₹{data.sale_price}</div>
                   </div>
                 </div>
               );
@@ -312,7 +322,7 @@ export default function Home() {
                   <img src={data.image[0]} alt="image" className="small-box" />
                   <div className="card-data">
                     <div className="text">{data.name}</div>
-                    <div className="text">₹{data.sale_price}</div>
+                    <div className="text-2">₹{data.sale_price}</div>
                     <div></div>
                   </div>
                 </div>
