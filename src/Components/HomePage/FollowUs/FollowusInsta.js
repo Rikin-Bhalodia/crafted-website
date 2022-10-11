@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import InstagramEmbed from "react-instagram-embed";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const FollowUsWraapper = styled.div`
   width: 100%;
@@ -25,6 +26,8 @@ const FollowUsWraapper = styled.div`
     border-radius: 25px;
     height: 180px;
     width: 240px;
+    object-fit: cover;
+    cursor: pointer;
   }
   .button {
     background: #e07171;
@@ -64,6 +67,24 @@ const FollowUsWraapper = styled.div`
 `;
 
 const FollowUs = () => {
+  const [instaFeed, setInstaFeed] = useState([]);
+  const router = useRouter();
+  const fields = "id,media_url,permalink,children{media_url}";
+  const access_token =
+    "IGQVJXYktwNkE3RjdPb28zejVzQmtwcEdGa0ZASTEVYcUI3ZA1dQWUQ1emVkcDhYcnJyaGpGSndPbnhxbW8wRk01VVZAwQU5PNUNaNFlWOU9vYTMtZAFE5ZAXk0RHVqWll6VVA3SDVnWWlYOTJrckdvN2JEVgZDZD";
+  useEffect(() => {
+    const fetchInstaFeed = async () => {
+      const { data } = await axios.get(
+        `https://graph.instagram.com/me/media?fields=${fields}&access_token=${access_token}`
+      );
+      setInstaFeed(data.data);
+    };
+    fetchInstaFeed();
+  }, []);
+
+  const handleClick = (link) => {
+    router.push(link);
+  };
   return (
     <FollowUsWraapper>
       <div className="follow">FOLLOW US ON INSTAGRAM</div>
@@ -76,26 +97,16 @@ const FollowUs = () => {
           justifyContent: "center",
         }}
       >
-        <div className="box">
-          <InstagramEmbed
-            url="https://www.instagram.com/p/CawHewPp2g0/"
-            // clientAccessToken="123|456"
-            // maxWidth={0}
-            // hideCaption={false}
-            // containerTagName="div"
-            // protocol=""
-            // injectScript
-            // onLoading={() => {}}
-            // onSuccess={() => {}}
-            // onAfterRender={() => {}}
-            // onFailure={() => {}}
-          />
-        </div>
-        <div className="box"></div>
-        <div className="box"></div>
-        <div className="box"></div>
-        <div className="box"></div>
-        <div className="box"></div>
+        {(instaFeed || []).slice(0, 6).map(({ media_url, permalink }) => {
+          return (
+            <img
+              className="box"
+              src={media_url}
+              alt="media url"
+              onClick={() => handleClick(permalink)}
+            />
+          );
+        })}
       </div>
       <Link href="https://www.instagram.com/robo.party/" target="_blank">
         <button className="button" style={{ cursor: "pointer" }}>
