@@ -138,6 +138,30 @@ const PatialaSalwarWrapper = styled.div`
         width: 72%;
       }
     }
+    @media screen and (max-width: 385px) {
+      .questions {
+        .container {
+          right: 12px;
+        }
+        .free-size {
+          width: 80px;
+          height: 90px;
+          font-size: 24px;
+        }
+        .box {
+          width: 120px;
+          height: 60px;
+        }
+        .color-image-left {
+          height: 60px;
+          width: 13px;
+        }
+        .color-image-right {
+          height: 60px;
+          width: 13px;
+        }
+      }
+    }
   }
 `;
 

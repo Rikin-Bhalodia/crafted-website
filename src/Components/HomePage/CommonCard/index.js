@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Countdown from "react-countdown";
 import styled from "styled-components";
 import BackGround from "/public/svg/background.svg";
 import ProductImg from "/public/svg/product.svg";
@@ -235,6 +236,7 @@ const CommonCard = () => {
           );
         })}
       </div>
+      <Countdown />
     </CommonCardWrapper>
   );
 };

@@ -94,7 +94,7 @@ const Question = () => {
     <>
       <QuestionWrapper>
         <div className="que-head">
-          <h3>Some Question</h3>
+          <h3>Help us find you perfect match!</h3>
         </div>
         <div className="que-body">
           <div className="que-category">
