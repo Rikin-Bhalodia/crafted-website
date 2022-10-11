@@ -8,7 +8,7 @@ import FooterContact from "../src/CommonComponent/Footer/FooterContact";
 import ReviewSlider from "../src/Components/review-slider/ReviewSlider";
 import DiffCard from "../src/Components/HomePage/CommonCard/diffrentCard";
 import { useEffect, useState } from "react";
-import { getAllProducts, newArrivalProducts } from "../src/utils";
+import { getAllProducts } from "../src/utils";
 
 const MainAppWrapper = styled.div`
   position: relative;

@@ -1,32 +1,21 @@
 import Footer from "../src/CommonComponent/Footer/Footer";
 import Header from "../src/CommonComponent/Header/Header";
 import "../styles/globals.css";
-import { useRouter } from "next/router";
 import AuthProvider from "../src/auth/AuthContext";
-import ProtectedRoute from "../src/auth/ProtectedRoute";
-
-const noAuthPages = ["/login", "/signup", "/resetpassword"];
+import { QueryClient, QueryClientProvider } from "react-query";
+// import { ReactQueryDevtools } from "react-query/devtools";
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
+  const queryClient = new QueryClient();
+
   return (
     <>
       <AuthProvider>
-        {router.pathname === "/login" ||
-        router.pathname === "/signup" ? null : (
-          <Header />
-        )}
-        {noAuthPages.includes(router.pathname) ? (
+        <Header />
+        <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
-        ) : (
-          <ProtectedRoute>
-            <Component {...pageProps} />
-          </ProtectedRoute>
-        )}
-        {router.pathname === "/login" ||
-        router.pathname === "/signup" ? null : (
-          <Footer />
-        )}
+        </QueryClientProvider>
+        <Footer />
       </AuthProvider>
     </>
   );

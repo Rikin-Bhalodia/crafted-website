@@ -108,7 +108,7 @@ const FollowUs = () => {
           );
         })}
       </div>
-      <Link href="https://www.instagram.com/robo.party/" target="_blank">
+      <Link href="https://www.instagram.com/ithecrafted/" target="_blank">
         <button className="button" style={{ cursor: "pointer" }}>
           FOLLOW NOW
         </button>

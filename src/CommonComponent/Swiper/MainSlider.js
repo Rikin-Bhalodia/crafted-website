@@ -241,7 +241,7 @@ export default function App() {
   };
 
   const whiteImages = whiteImage.find((data) => data.id === id);
-  console.log(whiteImages, "whhiteimage");
+
   return (
     <SliderWrapper>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
