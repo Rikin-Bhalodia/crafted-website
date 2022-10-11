@@ -38,8 +38,11 @@ const loadScript = (src) => {
   });
 };
 
-// const __DEV__ = document?.domain === "localhost";
-
+const __DEV__ =
+  document?.domain === "localhost"
+    ? "http://localhost:1337"
+    : "https://crafted-backend.vercel.app";
+console.log(document?.domain, "document?.domain");
 const Cart = () => {
   const [current, setCurrent] = useState(0);
   const { currentUser } = useAuth();
@@ -116,7 +119,7 @@ const Cart = () => {
   };
 
   const displayRezorPay = async () => {
-    const data = await fetch("http://localhost:1337/razorpay", {
+    const data = await fetch(`${__DEV__}/razorpay`, {
       method: "POST",
       mode: "cors",
       headers: {
@@ -156,22 +159,22 @@ const Cart = () => {
     };
     var rzp1 = new window.Razorpay(options);
     rzp1.open();
-    // await fetch("http://localhost:1337/verification", {
-    //   method: "POST",
-    //   mode: "cors",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
+    await fetch(`${__DEV__}/verification`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-    // await fetch("http://localhost:1337/order-details", {
-    //   method: "POST",
-    //   mode: "cors",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(orderItemsDetails),
-    // });
+    await fetch(`${__DEV__}/order-details`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderItemsDetails),
+    });
     setTimeout(() => {
       setCurrent(current + 1);
     }, 5000);

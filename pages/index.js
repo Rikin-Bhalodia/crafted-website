@@ -270,18 +270,19 @@ const MainAppWrapper = styled.div`
 export default function Home() {
   const [products, setProducts] = useState();
   useEffect(() => {
-    newArrivalProducts(setProducts);
+    getAllProducts(setProducts);
   }, []);
+
   return (
     <MainAppWrapper>
       <MainSlider />
       <MatchComponent />
-      <CommonCard />
+      <CommonCard products={products} />
       <div className="main">
         <div className="main-container">
           <div className="main-heading">New Arrival</div>
           <div className="box-container">
-            {products?.map((data) => {
+            {products?.slice(105, 109)?.map((data) => {
               return (
                 <div className="card-details" key={data.id}>
                   <img src={data.image[0]} alt="image" className="small-box" />
@@ -316,7 +317,7 @@ export default function Home() {
         <div className="main-container main2">
           <div className="main-heading">Popular This Week</div>
           <div className="box-container">
-            {products?.map((data) => {
+            {products?.slice(105, 109)?.map((data) => {
               return (
                 <div className="card-details" key={data.id}>
                   <img src={data.image[0]} alt="image" className="small-box" />

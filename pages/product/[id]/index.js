@@ -8,6 +8,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { getDatabase, ref, set } from "firebase/database";
 import { ColorRing } from "react-loader-spinner";
 import { getAllProducts } from "../../../src/utils";
+import Timer from "../../../src/CommonComponent/CustomHooks/timer";
 
 const SingleProductWrapper = styled.div`
   display: flex;
@@ -490,6 +491,9 @@ const SingleProduct = () => {
           >
             View all
           </span>
+        </div>
+        <div>
+          <Timer />
         </div>
         <div>
           <ProductSlider category={category} />

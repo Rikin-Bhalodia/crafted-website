@@ -1,7 +1,8 @@
 import Image from "next/image";
-import React from "react";
+import React, { useMemo } from "react";
 import Countdown from "react-countdown";
 import styled from "styled-components";
+import Timer from "../../../CommonComponent/CustomHooks/timer";
 import BackGround from "/public/svg/background.svg";
 import ProductImg from "/public/svg/product.svg";
 
@@ -79,6 +80,7 @@ const CommonCardWrapper = styled.div`
     font-weight: 700;
     font-size: 20px;
     margin-top: 10px;
+    padding: 0 20px;
   }
   .main-price {
     text-decoration: line-through;
@@ -190,7 +192,10 @@ const CommonCardWrapper = styled.div`
   }
 `;
 
-const CommonCard = () => {
+const CommonCard = ({ products }) => {
+  const limitedDealData = useMemo(() => {
+    return products?.filter((data) => data.type === "limited");
+  });
   return (
     <CommonCardWrapper>
       <Image
@@ -201,42 +206,26 @@ const CommonCard = () => {
       />
       <div className="title">Today’s The Crafted Deal</div>
       <div className="container">
-        {[1, 2].map((_) => {
+        {limitedDealData?.map(({ id, image, name, mrp, sale_price }) => {
           return (
-            <div className="card" key={_}>
+            <div className="card" key={id}>
               <div className="card-content">
-                <img src={ProductImg.src} alt="product" className="deal-img" />
+                <img src={image[0]} alt="product" className="deal-img" />
                 <button>Add to Cart</button>
               </div>
               <div style={{ margin: "0 0 0 20px" }}>
                 <div className="limited">Limited Deals</div>
-                <div className="time">
-                  <div className="time-table">
-                    <div>08</div>
-                    <div>Hours</div>
-                  </div>
-                  <div className="time-table">
-                    <div>58</div>
-                    <div>Minutes</div>
-                  </div>
-                  <div className="time-table">
-                    <div>18</div>
-                    <div>Seconds</div>
-                  </div>
-                </div>
-                <div className="des">
-                  The Crafted Premium Petticoat (Equator Slate Grey)
-                </div>
-                <div style={{ display: "flex" }}>
-                  <div className="main-price">₹598</div>
-                  <div className="discount-price">₹399</div>
+                <Timer />
+                <div className="des">{name}</div>
+                <div style={{ display: "flex", padding: "0 20px" }}>
+                  <div className="main-price">₹{mrp}</div>
+                  <div className="discount-price">₹{sale_price}</div>
                 </div>
               </div>
             </div>
           );
         })}
       </div>
-      <Countdown />
     </CommonCardWrapper>
   );
 };
