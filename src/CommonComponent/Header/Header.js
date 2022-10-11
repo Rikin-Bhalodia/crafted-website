@@ -111,7 +111,7 @@ const HeaderWrapper = styled.div`
       width: 100%;
       height: 350px;
       position: absolute;
-      top: 68px;
+      top: 58px;
       left: -100%;
       opacity: 0;
       transition: all 0.5s ease;

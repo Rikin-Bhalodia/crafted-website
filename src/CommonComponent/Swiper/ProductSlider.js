@@ -9,7 +9,7 @@ import { db } from "../../Firebase";
 const ProductWrapper = styled.div`
   display: flex;
   margin: 0 60px;
-  height: 300px;
+  height: 350px;
   justify-content: center;
   align-items: center;
   .swiperSlide {
@@ -24,15 +24,17 @@ const ProductWrapper = styled.div`
     height: 120px;
     width: 120px;
     object-fit: cover;
+    margin-bottom: 10px;
     img {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
     }
   }
   .product-name {
-    padding-top: 15px;
+    /* padding-top: 15px; */
     font-weight: 500;
     font-size: 18px;
+    line-height: 20px;
     color: #393d46;
     text-align: center;
     padding: 0 30px;
@@ -44,8 +46,8 @@ const ProductWrapper = styled.div`
   .product-price {
     padding-top: 5px;
     color: #9f9f9f;
-    font-weight: 500;
-    font-size: 18px;
+    font-weight: 600;
+    font-size: 20px;
   }
   @media screen and (max-width: 1000px) {
     margin: 0;
@@ -66,7 +68,7 @@ const ProductWrapper = styled.div`
       font-size: 15x;
     }
     .product-price {
-      font-size: 15px;
+      font-size: 17px;
     }
   }
 `;

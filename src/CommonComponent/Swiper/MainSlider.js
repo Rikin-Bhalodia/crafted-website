@@ -82,6 +82,11 @@ const SliderWrapper = styled.div`
   .main-slider-images {
     width: 40px;
   }
+  .right-arrow {
+    font-size: 40px;
+    margin-left: 15px;
+    top: 2px !important;
+  }
 
   @media screen and (max-width: 1400px) {
     height: 540px;
@@ -150,6 +155,11 @@ const SliderWrapper = styled.div`
     .small-swiper {
       bottom: 140px;
     }
+    .right-arrow {
+      font-size: 30px;
+      margin-left: 10px;
+      top: 1px !important;
+    }
   }
   @media screen and (max-width: 550px) {
     height: 450px;
@@ -179,6 +189,11 @@ const SliderWrapper = styled.div`
     }
     .small-swiper {
       bottom: 140px;
+    }
+    .right-arrow {
+      font-size: 25px;
+      margin-left: 10px;
+      top: 2px !important;
     }
   }
 `;
@@ -240,8 +255,8 @@ export default function App() {
             <div className="match-btn" style={{ cursor: "pointer" }}>
               Match Now{" "}
               <BsArrowRight
-                size={40}
-                style={{ marginBottom: "15px", marginLeft: "20px" }}
+                // size={40}
+                className="right-arrow"
               />
             </div>
           </div>

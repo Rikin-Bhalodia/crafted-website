@@ -65,7 +65,7 @@ const MainAppWrapper = styled.div`
     overflow: hidden;
   }
   .text-2 {
-    font-size: 17px;
+    font-size: 15px;
     padding-top: 10px;
     font-weight: 700;
   }
@@ -142,8 +142,8 @@ const MainAppWrapper = styled.div`
       width: 100%;
     }
     .small-box {
-      width: 70px;
-      height: 70px;
+      width: 90px;
+      height: 90px;
       margin-right: 15px;
     }
     .card-details {
@@ -170,8 +170,8 @@ const MainAppWrapper = styled.div`
       width: 600px;
     }
     .small-box {
-      width: 80px;
-      height: 80px;
+      width: 90px;
+      height: 90px;
       margin-right: 25px;
     }
     .card-details {
@@ -207,8 +207,8 @@ const MainAppWrapper = styled.div`
       width: 400px;
     }
     .small-box {
-      width: 60px;
-      height: 60px;
+      width: 80px;
+      height: 80px;
       margin-right: 15px;
     }
     .card-details {
@@ -231,6 +231,11 @@ const MainAppWrapper = styled.div`
       font-size: 18px;
       padding-right: 0px;
     }
+    .text-2 {
+      font-size: 12px;
+      padding-top: 5px;
+      font-weight: 700;
+    }
   }
   @media screen and (max-width: 460px) {
     .main-container {
@@ -240,8 +245,8 @@ const MainAppWrapper = styled.div`
       font-size: 18px;
     }
     .small-box {
-      width: 50px;
-      height: 50px;
+      width: 70px;
+      height: 70px;
       margin-right: 5px;
     }
     .card-details {

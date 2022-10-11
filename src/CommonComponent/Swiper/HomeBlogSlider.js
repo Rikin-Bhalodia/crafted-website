@@ -327,7 +327,7 @@ const HomeBlogWrapper = styled.div`
     height: 100%;
     padding: 0 10px;
     .mySwiper {
-      width: 350px;
+      width: 100%;
       height: 100%;
     }
     .des-title {

@@ -59,11 +59,19 @@ const ReviewSliderWrapper = styled.div`
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
-        h6:hover {
+        /* h6:hover {
           display: -webkit-flex;
-        }
-        h6:hover .slider {
-          height: 400px;
+        } */
+      }
+    }
+  }
+  @media screen and (max-width: 900px) {
+    padding: 0 20px;
+    .team-slider {
+      .slider {
+        height: 350px;
+        .review-data {
+          padding: 30px 10px 30px 0;
         }
       }
     }
