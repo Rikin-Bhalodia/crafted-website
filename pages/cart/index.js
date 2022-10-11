@@ -39,10 +39,9 @@ const loadScript = (src) => {
 };
 
 const __DEV__ =
-  document?.domain === "localhost"
+  window?.location?.hostname === "localhost"
     ? "http://localhost:1337"
     : "https://crafted-backend.vercel.app";
-console.log(document?.domain, "document?.domain");
 const Cart = () => {
   const [current, setCurrent] = useState(0);
   const { currentUser } = useAuth();
