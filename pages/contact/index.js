@@ -4,6 +4,7 @@ import "antd/dist/antd.css";
 import { ToastContainer, toast } from "react-toastify";
 import { Breadcrumb } from "antd";
 import emailjs from "@emailjs/browser";
+import Contact from "/public/png/Contact Us.png";
 
 const ContactPageWrapper = styled.div`
   padding: 50px 130px;
@@ -22,8 +23,12 @@ const ContactPageWrapper = styled.div`
     gap: 130px;
     .contact-img {
       width: 100%;
-      background: #cccccc;
       border-radius: 45px;
+      object-fit: cover;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
     .contact-form {
       width: 100%;
@@ -124,7 +129,7 @@ const ContactPageWrapper = styled.div`
     }
   }
   @media screen and (max-width: 778px) {
-    padding: 10px 30px;
+    padding: 10px 30px 50px;
     .contact-page-heading {
       padding: 0px 0px 10px;
       h3 {
@@ -196,7 +201,9 @@ const ContactPage = () => {
           <h3>Contact Us</h3>
         </div>
         <div className="contact-area">
-          <div className="contact-img"></div>
+          <div className="contact-img">
+            <img src={Contact?.src} alt="" />
+          </div>
           <div className="contact-form">
             <h4>We are here for you</h4>
             <p>
