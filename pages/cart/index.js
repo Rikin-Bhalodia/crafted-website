@@ -38,11 +38,11 @@ const loadScript = (src) => {
   });
 };
 
-const __DEV__ =
-  window?.location?.hostname === "localhost"
-    ? "http://localhost:1337"
-    : "https://crafted-backend.vercel.app";
 const Cart = () => {
+  const __DEV__ =
+    window?.location?.hostname === "localhost"
+      ? "http://localhost:1337"
+      : "https://crafted-backend.vercel.app";
   const [current, setCurrent] = useState(0);
   const { currentUser } = useAuth();
   const [cartProduct, setCartProduct] = useState([]);
