@@ -2,26 +2,18 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
 import logo2 from "/public/svg/login-logo.svg";
-import { useAuth } from "../../src/auth/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import { useAuth } from "../../auth/AuthContext";
 
 const SignUpWrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 821px;
-
-  .blank {
-    width: 40%;
-  }
 
   .signup-area {
-    width: 60%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,11 +29,13 @@ const SignUpWrapper = styled.div`
       border-radius: 40px;
       padding: 10px 40px;
 
+      .Crafted-logo {
+        width: 100px;
+        height: 100px;
+      }
       p {
         font-weight: 600;
         font-size: 24px;
-        line-height: 32px;
-        letter-spacing: 0.3125px;
         color: #595959;
         margin-bottom: 5px;
       }
@@ -170,7 +164,7 @@ const SignUpWrapper = styled.div`
         width: 100%;
 
         h4 {
-          font-size: 28px;
+          font-size: 23px;
         }
 
         p {
@@ -180,22 +174,35 @@ const SignUpWrapper = styled.div`
     }
   }
 
-  @media screen and (max-width: 470px) {
-    height: 900px !important;
-
-    .signup-form {
-      height: 600px !important;
+  @media screen and (max-width: 510px) {
+    .signup-area .signup-form {
+      height: 400px;
+      .Crafted-logo {
+        width: 70px;
+        height: 70px;
+      }
+      h4 {
+        font-size: 20px;
+      }
+      p {
+        font-size: 15px;
+      }
+      input {
+        height: 30px;
+      }
+      .btn {
+        height: 30px;
+      }
     }
-    .btn2 {
+    .signup-btn .btn2 {
       width: 100% !important;
-      font-weight: 500 !important;
-      font-size: 20px !important;
+      font-size: 18px !important;
       padding: 0px 30px;
     }
   }
 `;
 
-const SignUp = () => {
+const SignUp = ({ setToggle }) => {
   const [signupData, setSignupData] = useState({
     name: "",
     email: "",
@@ -224,23 +231,15 @@ const SignUp = () => {
     e.preventDefault();
     await signInWithGoogle();
   };
-  // const handleLoginWithFacebook = async (e) => {
-  //   e.preventDefault();
-  //   await signInWithFacebook();
-  // };
 
   return (
     <SignUpWrapper>
-      <div className="blank"></div>
       <div className="signup-area">
         <div className="signup-form">
-          <Image
-            src={logo2}
+          <img
+            src={logo2.src}
             alt="main-slider-icon"
             className="Crafted-logo"
-            layout="fixed"
-            width={100}
-            height={100}
           />
           <h4>Welcome to The Crafted</h4>
           <p>
@@ -290,10 +289,6 @@ const SignUp = () => {
             &nbsp;&nbsp;&nbsp;&nbsp;Sign in with Google
           </a>
           <br />
-          {/* <a href="#" className="btn2" onClick={handleLoginWithFacebook}>
-            <FaFacebook size={30} />
-            &nbsp;&nbsp;&nbsp;Continue with Facebook
-          </a> */}
         </div>
         <div className="terms">
           <p>
@@ -305,7 +300,7 @@ const SignUp = () => {
             Already have account?
           </a>
           &nbsp;&nbsp;&nbsp;
-          <a href="/login" className="link2">
+          <a href="#" className="link2" onClick={() => setToggle(false)}>
             Login here
           </a>
         </div>

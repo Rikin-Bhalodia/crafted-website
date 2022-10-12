@@ -20,6 +20,7 @@ const QuestionWrapper = styled.div`
     h3 {
       font-size: 36px;
       font-weight: 500;
+      width: 100vw;
     }
   }
   .que-body {
@@ -55,6 +56,20 @@ const QuestionWrapper = styled.div`
     height: 40px;
     width: 40px;
   }
+  @media screen and (max-width: 1000px) {
+    .que-head {
+      h3 {
+        font-size: 30px;
+      }
+    }
+  }
+  @media screen and (max-width: 850px) {
+    .que-head {
+      h3 {
+        font-size: 26px;
+      }
+    }
+  }
   @media screen and (max-width: 550px) {
     .tc-image {
       height: 50px;
@@ -75,6 +90,11 @@ const QuestionWrapper = styled.div`
     .tc-img {
       height: 20px;
       width: 20px;
+    }
+    .que-head {
+      h3 {
+        font-size: 21px;
+      }
     }
   }
 `;

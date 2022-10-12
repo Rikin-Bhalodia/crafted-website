@@ -1,0 +1,43 @@
+.login_modal {
+width: 700px !important;
+}
+.ant-modal-content{
+width: 700px !important;
+    
+}
+.ant-modal-body {
+    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ebeaea;
+}
+
+@media screen and (max-width:750px){
+    .login_modal {
+        width: 600px !important;
+    }
+    .ant-modal-content{
+        width: 600px !important;
+            
+        }
+}
+
+@media screen and (max-width:650px){
+    .login_modal {
+        width: 500px !important;
+    }
+    .ant-modal-content{
+        width: 500px !important;
+    }
+}
+
+@media screen and (max-width:500px){
+    .login_modal {
+        width: 370px !important;
+    }
+    .ant-modal-content{
+        width: 370px !important;
+            
+        }
+}

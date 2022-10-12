@@ -5,10 +5,13 @@ import styled from "styled-components";
 import ProductSlider from "../../../src/CommonComponent/Swiper/ProductSlider";
 import CartImage from "/public/svg/cart-white.svg";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 import { ColorRing } from "react-loader-spinner";
 import { getAllProducts } from "../../../src/utils";
 import Timer from "../../../src/CommonComponent/CustomHooks/timer";
+import { useAuth } from "../../../src/auth/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SingleProductWrapper = styled.div`
   display: flex;
@@ -327,6 +330,8 @@ const SingleProduct = () => {
   const [query] = useState(router?.query?.ids);
   const [category] = useState(router?.query?.category);
   const [totalProduct, setTotalProduct] = useState([]);
+  const [cartProduct, setCartProduct] = useState([]);
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     getAllProducts(setProducts);
@@ -355,15 +360,38 @@ const SingleProduct = () => {
     }
   };
 
-  const AddToCart = (product, id) => {
-    const checkProduct = totalProduct.find((item) => item.id === id);
+  useEffect(() => {
     const db = getDatabase();
-    set(ref(db, "cartItem/" + id), {
-      cartData: {
-        ...product,
-        totalUserItem: checkProduct.quantity,
-      },
+    const starCountRef = ref(db, "cartItem/");
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        setCartProduct(Object.entries(data));
+      }
     });
+  }, []);
+
+  const cartProducts =
+    cartProduct &&
+    cartProduct.map(([key]) => {
+      return Object.values(key).join("");
+    });
+
+  const AddToCart = (product, id) => {
+    const db = getDatabase();
+    if (cartProducts.includes(id.toString())) {
+      toast(`Your ${product.name} is already in Cart !!`);
+      return;
+    } else {
+      set(ref(db, "cartItem/" + id), {
+        cartData: {
+          ...product,
+          totalUserItem: totalProduct?.quantity || 1,
+          uid: currentUser?.uid || "",
+        },
+      });
+      toast("Your Item is added in Cart");
+    }
   };
 
   if (!products?.length) {
@@ -499,6 +527,7 @@ const SingleProduct = () => {
           <ProductSlider category={category} />
         </div>
       </div>
+      <ToastContainer />
     </SingleProductWrapper>
   );
 };

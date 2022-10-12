@@ -6,6 +6,8 @@ import "antd/dist/antd.variable.min.css";
 import { QUColors } from "../../utils/other";
 import colorRight from "/public/svg/color-right.svg";
 import colorLeft from "/public/svg/color-left.svg";
+import { useAuth } from "../../auth/AuthContext";
+import LoginModal from "../../CommonComponent/LoginModal";
 
 const SareePetticoatWrapper = styled.div`
   .questions {
@@ -171,8 +173,9 @@ const SareePetticoat = () => {
     color: "",
   });
   const [size, setSize] = useState("free-size");
+  const [flag, setFlag] = useState(false);
   const router = useRouter();
-
+  const { currentUser } = useAuth();
   const handleClick = (value, color) => {
     setColorName({ value, color });
   };
@@ -180,14 +183,19 @@ const SareePetticoat = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (colorName.value && size) {
-      router.push({
-        pathname: "/webapp",
-        query: {
-          type: "petticoat",
-          color: colorName.value.toLowerCase(),
-          size: size,
-        },
-      });
+      if (currentUser?.email) {
+        router.push({
+          pathname: "/webapp",
+          query: {
+            type: "petticoat",
+            color: colorName.value.toLowerCase(),
+            size: size,
+          },
+        });
+      } else {
+        toast("Please Login!");
+        setFlag(true);
+      }
     } else {
       toast("please fill the data ");
     }
@@ -283,6 +291,7 @@ const SareePetticoat = () => {
           </div>
         </div>
       </SareePetticoatWrapper>
+      <LoginModal flag={flag} setFlag={setFlag} />
       <ToastContainer />
     </>
   );
