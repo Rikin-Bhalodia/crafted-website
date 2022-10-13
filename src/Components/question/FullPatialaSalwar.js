@@ -122,7 +122,7 @@ const PatialaSalwarWrapper = styled.div`
   @media screen and (max-width: 520px) {
     .questions {
       .container {
-        width: 370px;
+        width: 350px;
       }
       .popup {
         right: 65px;
@@ -132,7 +132,7 @@ const PatialaSalwarWrapper = styled.div`
     @media screen and (max-width: 385px) {
       .questions {
         .container {
-          right: 12px;
+          margin: 10px;
         }
         .free-size {
           width: 80px;
@@ -140,8 +140,8 @@ const PatialaSalwarWrapper = styled.div`
           font-size: 24px;
         }
         .box {
-          width: 120px;
-          height: 60px;
+          width: 90px;
+          height: 50px;
         }
         .color-image-left {
           height: 60px;

@@ -120,18 +120,34 @@ const PoplinCottonFabricWrapper = styled.div`
       align-items: center;
     }
   }
-
+  .choose-size {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .choose-size > div {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: #ededed;
+    line-height: 29px;
+  }
   @media screen and (max-width: 650px) {
     .questions {
-      .container {
-        width: 500px;
+    .body {
+      div {
+        h5 {
+          font-size: 18px;
+          font-weight: 600;
+          padding-top: 30px;
+        }
       }
     }
   }
   @media screen and (max-width: 520px) {
     .questions {
       .container {
-        width: 370px;
+        width: 350px;
       }
       .popup {
         right: 65px;
@@ -141,7 +157,7 @@ const PoplinCottonFabricWrapper = styled.div`
     @media screen and (max-width: 385px) {
       .questions {
         .container {
-          right: 12px;
+          margin: 10px;
         }
         .free-size {
           width: 80px;
@@ -149,8 +165,8 @@ const PoplinCottonFabricWrapper = styled.div`
           font-size: 24px;
         }
         .box {
-          width: 120px;
-          height: 60px;
+          width: 85px;
+          height: 45px;
         }
         .color-image-left {
           height: 60px;
@@ -279,14 +295,13 @@ const PoplinCottonFabric = () => {
             </div>
             <div>
               <h5>2. How many meter fabric you require?</h5>
-              <p>
-                <input
-                  type="number"
-                  id="size"
-                  value={size}
-                  onChange={handleChange}
-                />
-              </p>
+              <div className="choose-size">
+                <div className="size-2">2</div>
+                <div className="size-4">4</div>
+                <div className="size-6">6</div>
+                <div className="size-8">8</div>
+                <div className="size-10">10</div>
+              </div>
             </div>
             <div>
               <button onClick={handleSubmit}>Next</button>
