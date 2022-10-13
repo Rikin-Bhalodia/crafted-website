@@ -222,7 +222,7 @@ const SignUp = ({ setToggle }) => {
     e.preventDefault();
     if (signupData.name && signupData?.email && signupData.password) {
       await signup(signupData.email, signupData.password);
-      router.push("/login");
+      setToggle(false);
     } else {
       toast("please fill the data ");
     }
