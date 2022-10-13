@@ -71,6 +71,7 @@ const QuestionWrapper = styled.div`
     }
   }
   @media screen and (max-width: 550px) {
+    padding: 40px 20px;
     .tc-image {
       height: 50px;
       width: 55px;
@@ -79,6 +80,17 @@ const QuestionWrapper = styled.div`
     .tc-img {
       height: 30px;
       width: 30px;
+    }
+    .que-head {
+      h3 {
+        font-size: 24px;
+        font-weight: 500;
+      }
+    }
+    .que-head {
+      h3 {
+        font-size: 22px;
+      }
     }
   }
   @media screen and (max-width: 450px) {
