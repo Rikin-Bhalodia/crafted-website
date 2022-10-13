@@ -7,7 +7,7 @@ import CartImage from "/public/svg/cart-white.svg";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { getDatabase, onValue, ref, set } from "firebase/database";
 import { ColorRing } from "react-loader-spinner";
-import { getAllProducts } from "../../../src/utils";
+import { CartItems, getAllProducts } from "../../../src/utils";
 import Timer from "../../../src/CommonComponent/CustomHooks/timer";
 import { useAuth } from "../../../src/auth/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
@@ -362,35 +362,35 @@ const SingleProduct = () => {
 
   useEffect(() => {
     const db = getDatabase();
-    const starCountRef = ref(db, "cartItem/");
+    const starCountRef = ref(db, `cartItem/${currentUser?.uid}/`);
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      if (data) {
-        setCartProduct(Object.entries(data));
+      let cartDatalist = [];
+      for (let id in data) {
+        cartDatalist.push(data[id]);
+      }
+      if (cartDatalist.length) {
+        setCartProduct(cartDatalist);
+      } else {
+        setCartProduct([]);
       }
     });
   }, []);
 
-  const cartProducts =
-    cartProduct &&
-    cartProduct.map(([key]) => {
-      return Object.values(key).join("");
-    });
-
   const AddToCart = (product, id) => {
     const db = getDatabase();
-    if (cartProducts.includes(id.toString())) {
+    if (cartProduct.find((data) => data.id === id)) {
       toast(`Your ${product.name} is already in Cart !!`);
       return;
     } else {
-      set(ref(db, "cartItem/" + id), {
-        cartData: {
-          ...product,
-          totalUserItem: totalProduct?.quantity || 1,
-          uid: currentUser?.uid || "",
-        },
+      set(ref(db, `cartItem/${currentUser.uid}/${id}/`), {
+        ...product,
+        totalUserItem:
+          totalProduct?.find((data) => data.id === id)?.quantity || 1,
+        uid: currentUser?.uid || "",
       });
       toast("Your Item is added in Cart");
+      router.push("/cart");
     }
   };
 
@@ -421,7 +421,7 @@ const SingleProduct = () => {
     <SingleProductWrapper>
       <div className="main-section">
         {specialProducts &&
-          specialProducts.map((product, i) => {
+          specialProducts.map((product) => {
             const totalItems = totalProduct.filter(
               (item) => item.id === product.id
             );
@@ -520,9 +520,7 @@ const SingleProduct = () => {
             View all
           </span>
         </div>
-        <div>
-          <Timer />
-        </div>
+
         <div>
           <ProductSlider category={category} />
         </div>

@@ -549,37 +549,33 @@ const WebApp = () => {
 
   useEffect(() => {
     const db = getDatabase();
-    const starCountRef = ref(db, "cartItem/");
+    const starCountRef = ref(db, `cartItem/${currentUser?.uid}/`);
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      if (data) {
-        setCartProduct(Object.entries(data));
+      let cartDatalist = [];
+      for (let id in data) {
+        cartDatalist.push(data[id]);
+      }
+      if (cartDatalist.length) {
+        setCartProduct(cartDatalist);
+      } else {
+        setCartProduct([]);
       }
     });
   }, []);
 
-  const cartProducts =
-    cartProduct &&
-    cartProduct.map(([key]) => {
-      return Object.values(key).join("");
-    });
-
   const addToCart = () => {
     const db = getDatabase();
     selectedProduct?.map((ele) => {
-      if (cartProducts.includes(ele.id.toString())) {
+      if (cartProduct.includes(ele.id.toString())) {
         toast(`Your ${ele.name} is already in Cart !!`);
       } else {
-        // if (currentUser?.email) {
-        set(ref(db, "cartItem/" + ele.id), {
-          cartData: ele,
+        set(ref(db, `cartItem/${currentUser.uid}/${ele.id}/`), {
+          ...ele,
           uid: currentUser?.uid || "",
         });
         toast("Your Item is added in Cart");
         router.push("/cart");
-        // } else {
-        //   toast("Please Login!!");
-        // }
       }
     });
   };

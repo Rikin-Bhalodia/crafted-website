@@ -1,4 +1,3 @@
-import { getDatabase, onValue, ref } from "firebase/database";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../Firebase";
 
@@ -10,15 +9,20 @@ export const getAllProducts = async (setProducts) => {
   setProducts(data.docs.map((data) => ({ ...data.data(), id: data.id })));
 };
 
-export const CartItems = (setCartProduct) => {
-  const db = getDatabase();
-  const starCountRef = ref(db, "cartItem/");
-  onValue(starCountRef, (snapshot) => {
-    const data = snapshot.val();
-    if (data !== null) {
-      setCartProduct(Object.entries(data));
-    } else {
-      setCartProduct([]);
-    }
-  });
-};
+// export const CartItems = (setCartProduct) => {
+//   const db = getDatabase();
+//   console.log(currentUser, "currentUser?.uid");
+//   const starCountRef = ref(db, `cartItem/${currentUser?.uid}`);
+//   onValue(starCountRef, (snapshot) => {
+//     const data = snapshot.val();
+//     let cartDatalist = [];
+//     for (let id in data) {
+//       cartDatalist.push(data[id]);
+//     }
+//     if (cartDatalist.length) {
+//       setCartProduct(cartDatalist);
+//     } else {
+//       setCartProduct([]);
+//     }
+//   });
+// };

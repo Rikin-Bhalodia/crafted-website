@@ -8,7 +8,7 @@ import styled from "styled-components";
 import Logo from "/public/svg/logo.svg";
 import UniqId from "uniqid";
 import { useAuth } from "../../src/auth/AuthContext";
-import { CartItems } from "../../src/utils";
+import { getDatabase, onValue, ref } from "firebase/database";
 
 const CartWrapper = styled.div`
   padding: 0px 100px 100px;
@@ -48,25 +48,34 @@ const Cart = () => {
   const [cartProduct, setCartProduct] = useState([]);
 
   useEffect(() => {
-    CartItems(setCartProduct);
+    const db = getDatabase();
+    const starCountRef = ref(db, `cartItem/${currentUser?.uid}/`);
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      let cartDatalist = [];
+      for (let id in data) {
+        cartDatalist.push(data[id]);
+      }
+      if (cartDatalist.length) {
+        setCartProduct(cartDatalist);
+      } else {
+        setCartProduct([]);
+      }
+    });
   }, []);
 
-  const cartItems = cartProduct.map(([key, value]) => {
-    return value;
-  });
-
-  const productDetails = cartItems.map((data) => {
+  const productDetails = cartProduct.map((data) => {
     return {
-      category: data.cartData.category,
-      color: data.cartData.color,
-      id: data.cartData.id,
-      mrp: data.cartData.mrp,
-      name: data.cartData.name,
-      sale_price: data.cartData.sale_price,
-      size: data.cartData.size,
-      sku: data.cartData.sku,
-      tag: data.cartData.tag,
-      totalUserItem: data.cartData.totalUserItem,
+      category: data.category || "",
+      color: data.color || "",
+      id: data.id || "",
+      mrp: data.mrp || "",
+      name: data.name || "",
+      sale_price: data.sale_price || "",
+      size: data.size || "",
+      sku: data.sku || "",
+      tag: data.tag || "",
+      totalUserItem: data.totalUserItem || "",
     };
   });
   const [details, setDetails] = useState({
@@ -101,8 +110,8 @@ const Cart = () => {
     },
   ];
 
-  const array = cartItems?.map((data) => {
-    return Number(data?.cartData?.mrp) * data?.cartData?.totalUserItem;
+  const array = cartProduct?.map((data) => {
+    return Number(data?.mrp) * data?.totalUserItem;
   });
 
   const totalAmount = array.reduce(

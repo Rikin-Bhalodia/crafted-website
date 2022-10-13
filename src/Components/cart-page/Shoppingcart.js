@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CgClose } from "react-icons/cg";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import { getDatabase, set, ref, onValue, remove } from "firebase/database";
+import { getDatabase, set, ref, remove, onValue } from "firebase/database";
 import { useAuth } from "../../auth/AuthContext";
 
 const ShoppingCartWrapper = styled.div`
@@ -41,6 +41,10 @@ const ShoppingCartWrapper = styled.div`
         height: 150px;
         width: 150px;
         border: 1px solid #cdcfd1;
+        .product-image {
+          width: 150px;
+          height: 150px;
+        }
         div {
           margin: 9px 0px 0px 9px;
           height: 130px;
@@ -124,11 +128,19 @@ const ShoppingCartWrapper = styled.div`
     }
   }
 
+  @media screen and (max-width: 1400px) {
+    p {
+      font-size: 20px !important;
+    }
+  }
   @media screen and (max-width: 1271px) {
     .products {
       flex-direction: column;
       align-items: flex-start !important;
       gap: 30px !important;
+    }
+    p {
+      font-size: 20px !important;
     }
   }
   @media screen and (max-width: 810px) {
@@ -143,6 +155,10 @@ const ShoppingCartWrapper = styled.div`
       div {
         height: 100px !important;
         width: 100px !important;
+        .product-image {
+          width: 100px !important;
+          height: 100px !important;
+        }
         div {
           height: 80px !important;
           width: 80px !important;
@@ -200,8 +216,15 @@ const ShoppingCartWrapper = styled.div`
         div {
           height: 70px !important;
           width: 70px !important;
+          .product-image {
+            width: 70px !important;
+            height: 70px !important;
+          }
         }
       }
+    }
+    p {
+      font-size: 12px !important;
     }
   }
 `;
@@ -210,19 +233,17 @@ const ShoppingCart = () => {
   const [cartProduct, setCartProduct] = useState("");
   const { currentUser } = useAuth();
 
-  const cartItems =
-    cartProduct &&
-    cartProduct.map(([key, value]) => {
-      return value;
-    });
-
   useEffect(() => {
     const db = getDatabase();
-    const starCountRef = ref(db, "cartItem/");
+    const starCountRef = ref(db, `cartItem/${currentUser?.uid}/`);
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      if (data !== null) {
-        setCartProduct(Object.entries(data));
+      let cartDatalist = [];
+      for (let id in data) {
+        cartDatalist.push(data[id]);
+      }
+      if (cartDatalist.length) {
+        setCartProduct(cartDatalist);
       } else {
         setCartProduct([]);
       }
@@ -230,39 +251,31 @@ const ShoppingCart = () => {
   }, []);
 
   const array =
-    cartItems &&
-    cartItems?.map((data) => {
-      const { cartData } = data;
-      return Number(cartData?.mrp) * cartData?.totalUserItem;
+    cartProduct &&
+    cartProduct?.map((data) => {
+      return Number(data?.mrp) * data?.totalUserItem;
     });
 
   const handleChangeQuantity = (type, id) => {
     const db = getDatabase();
-    const cartItemData = cartItems?.filter((data) => data?.cartData?.id === id);
-    type === "minus"
-      ? set(ref(db, "cartItem/" + id), {
-          cartData: {
-            ...cartItemData[0].cartData,
-            totalUserItem: cartItemData[0]?.cartData?.totalUserItem
-              ? cartItemData[0]?.cartData?.totalUserItem - 1
-              : 1,
-          },
-          uid: currentUser?.uid || "",
-        })
-      : set(ref(db, "cartItem/" + id), {
-          cartData: {
-            ...cartItemData[0].cartData,
-            totalUserItem: cartItemData[0]?.cartData?.totalUserItem
-              ? cartItemData[0]?.cartData?.totalUserItem + 1
-              : 1,
-          },
-          uid: currentUser?.uid || "",
-        });
+    const cartItemData = cartProduct?.filter((data) => data?.id === id);
+    const quantity = {
+      ...cartItemData[0],
+      totalUserItem:
+        type === "minus"
+          ? cartItemData[0]?.totalUserItem
+            ? cartItemData[0]?.totalUserItem - 1
+            : 1
+          : cartItemData[0]?.totalUserItem
+          ? cartItemData[0]?.totalUserItem + 1
+          : 1,
+    };
+    set(ref(db, `cartItem/${currentUser?.uid}/${id}/`), quantity);
   };
 
   const deleteCartItem = (id) => {
     const db = getDatabase();
-    remove(ref(db, "cartItem/" + id));
+    remove(ref(db, `cartItem/${currentUser?.uid}/${id}/`));
   };
 
   return (
@@ -274,55 +287,44 @@ const ShoppingCart = () => {
         <p>Price</p>
       </div>
       <div className="shop-product">
-        {cartItems &&
-          cartItems?.map((product) => {
-            return (
+        {cartProduct &&
+          cartProduct?.map((product) => {
+            return product.uid === currentUser.uid ? (
               <>
-                <div className="select-product" key={product.cartData?.id}>
+                <div className="select-product" key={product.id}>
                   <div className="products">
                     <div>
                       <img
-                        src={product?.cartData?.image}
+                        src={product?.image}
                         alt="product-image"
-                        style={{ height: "100%", width: "100%" }}
+                        className="product-image"
                       />
                     </div>
-                    <p>{product.cartData?.name}</p>
+                    <p>{product.name}</p>
                   </div>
                   <div className="add-item">
                     <a
-                      onClick={() =>
-                        handleChangeQuantity("minus", product.cartData?.id)
-                      }
+                      onClick={() => handleChangeQuantity("minus", product.id)}
                     >
                       <BiMinus />
                     </a>
-                    <input
-                      type="text"
-                      value={product?.cartData?.totalUserItem}
-                    />
-                    <a
-                      onClick={() =>
-                        handleChangeQuantity("add", product.cartData?.id)
-                      }
-                    >
+                    <input type="text" value={product?.totalUserItem} />
+                    <a onClick={() => handleChangeQuantity("add", product.id)}>
                       <BiPlus />
                     </a>
                   </div>
-                  <div>
-                    ₹{product.cartData?.mrp * product?.cartData?.totalUserItem}
-                  </div>
-                  <div>
-                    ₹{product.cartData?.mrp * product?.cartData?.totalUserItem}
-                  </div>
+                  <div>₹{product.mrp * product?.totalUserItem}</div>
+                  <div>₹{product.mrp * product?.totalUserItem}</div>
                   <div
                     className="close"
-                    onClick={() => deleteCartItem(product?.cartData?.id)}
+                    onClick={() => deleteCartItem(product?.id)}
                   >
                     <CgClose size={30} />
                   </div>
                 </div>
               </>
+            ) : (
+              <></>
             );
           })}
       </div>
