@@ -134,24 +134,25 @@ const PoplinCottonFabricWrapper = styled.div`
   }
   @media screen and (max-width: 650px) {
     .questions {
-    .body {
-      div {
-        h5 {
-          font-size: 18px;
-          font-weight: 600;
-          padding-top: 30px;
+      .body {
+        div {
+          h5 {
+            font-size: 18px;
+            font-weight: 600;
+            padding-top: 30px;
+          }
         }
       }
     }
-  }
-  @media screen and (max-width: 520px) {
-    .questions {
-      .container {
-        width: 350px;
-      }
-      .popup {
-        right: 65px;
-        width: 72%;
+    @media screen and (max-width: 520px) {
+      .questions {
+        .container {
+          width: 350px;
+        }
+        .popup {
+          right: 65px;
+          width: 72%;
+        }
       }
     }
     @media screen and (max-width: 385px) {

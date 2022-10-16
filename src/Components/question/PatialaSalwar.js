@@ -120,28 +120,45 @@ const PatialaSalwarWrapper = styled.div`
       align-items: center;
     }
   }
-
+  .choose-size {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .choose-size > div {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: #ededed;
+    line-height: 29px;
+  }
   @media screen and (max-width: 650px) {
     .questions {
-      .container {
-        width: 500px;
+      .body {
+        div {
+          h5 {
+            font-size: 18px;
+            font-weight: 600;
+            padding-top: 30px;
+          }
+        }
       }
     }
-  }
-  @media screen and (max-width: 520px) {
-    .questions {
-      .container {
-        width: 370px;
-      }
-      .popup {
-        right: 65px;
-        width: 72%;
+    @media screen and (max-width: 520px) {
+      .questions {
+        .container {
+          width: 350px;
+        }
+        .popup {
+          right: 65px;
+          width: 72%;
+        }
       }
     }
     @media screen and (max-width: 385px) {
       .questions {
         .container {
-          right: 12px;
+          margin: 10px;
         }
         .free-size {
           width: 80px;
@@ -149,8 +166,8 @@ const PatialaSalwarWrapper = styled.div`
           font-size: 24px;
         }
         .box {
-          width: 120px;
-          height: 60px;
+          width: 85px;
+          height: 45px;
         }
         .color-image-left {
           height: 60px;

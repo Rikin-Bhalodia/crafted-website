@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Link from "next/link";
 
 const PrivacyPolicyWrapper = styled.div`
-  padding: 0 200px;
+  padding: 0 200px 50px;
   .heading {
     width: 100%;
     height: 300px;
@@ -13,15 +13,20 @@ const PrivacyPolicyWrapper = styled.div`
     align-items: center;
     color: #535155;
     font-style: italic;
+    line-height: 76px;
+    text-align: center;
   }
   p {
-    font-size: 16px;
+    font-size: 20px;
     font-family: "Open Sans", sans-serif;
     line-height: 1.5em;
     letter-spacing: 0.5px;
   }
   a {
     color: blue;
+  }
+  ul li {
+    font-size: 20px;
   }
   div {
     padding-top: 20px;
@@ -30,16 +35,17 @@ const PrivacyPolicyWrapper = styled.div`
     color: #535155;
   }
   @media screen and (max-width: 1000px) {
-    padding: 0 150px;
+    padding: 0 150px 40px;
     .heading {
       font-size: 45px;
+      line-height: 55px;
     }
     div {
       font-size: 30px;
     }
   }
   @media screen and (max-width: 800px) {
-    padding: 0 100px;
+    padding: 0 100px 40px;
     .heading {
       font-size: 40px;
       height: 200px;
@@ -49,16 +55,21 @@ const PrivacyPolicyWrapper = styled.div`
     }
   }
   @media screen and (max-width: 600px) {
-    padding: 0 70px;
+    padding: 0 70px 30px;
     .heading {
       font-size: 35px;
+      line-height: 40px;
     }
     div {
       font-size: 25px;
     }
+    ul li,
+    p {
+      font-size: 16px;
+    }
   }
   @media screen and (max-width: 450px) {
-    padding: 0 50px;
+    padding: 0 20px 20px;
     .heading {
       font-size: 25px;
       height: 170px;
