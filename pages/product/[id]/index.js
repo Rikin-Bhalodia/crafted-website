@@ -12,6 +12,7 @@ import Timer from "../../../src/CommonComponent/CustomHooks/timer";
 import { useAuth } from "../../../src/auth/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LoginModal from "../../../src/CommonComponent/LoginModal";
 
 const SingleProductWrapper = styled.div`
   display: flex;
@@ -331,6 +332,8 @@ const SingleProduct = () => {
   const [category] = useState(router?.query?.category);
   const [totalProduct, setTotalProduct] = useState([]);
   const [cartProduct, setCartProduct] = useState([]);
+  const [flag, setFlag] = useState(false);
+
   const { currentUser } = useAuth();
 
   useEffect(() => {
@@ -378,6 +381,10 @@ const SingleProduct = () => {
   }, []);
 
   const AddToCart = (product, id) => {
+    if (!currentUser?.uid) {
+      setFlag(true);
+      return;
+    }
     const db = getDatabase();
     if (cartProduct.find((data) => data.id === id)) {
       toast(`Your ${product.name} is already in Cart !!`);
@@ -526,6 +533,7 @@ const SingleProduct = () => {
         </div>
       </div>
       <ToastContainer />
+      <LoginModal flag={flag} setFlag={setFlag} />
     </SingleProductWrapper>
   );
 };

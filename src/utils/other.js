@@ -170,7 +170,7 @@ export const TCOMaCPageImage = [
 ];
 
 export const QUColors = [
-  { name: "Bule", color: "blue" },
+  { name: "Blue", color: "blue" },
   { name: "Red", color: "red" },
   { name: "Green", color: "green" },
   { name: "Yellow", color: "yellow" },

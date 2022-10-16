@@ -61,6 +61,21 @@ export default class extends Document {
           {this.helmetJsx}
           {this.helmetHeadComponents}
           <link rel="shortcut icon" href="/favicon.png" />
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-GBMN81E732"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments)}
+            gtag('js', new Date()); 
+            gtag('config', 'G-GBMN81E732',{
+              page_path:window.location.pathname,
+            }) `,
+            }}
+          />
         </Head>
         <body {...this.helmetBodyAttrComponents}>
           <Main />

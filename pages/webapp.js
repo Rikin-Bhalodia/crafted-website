@@ -17,6 +17,7 @@ import colorRight from "/public/svg/color-right.svg";
 import colorLeft from "/public/svg/color-left.svg";
 import { TCOMaCPageImage } from "../src/utils/other";
 import Tcomac from "/public/svg/tcomacImage/tcomac.svg";
+import LoginModal from "../src/CommonComponent/LoginModal";
 
 const WebAppWrapper = styled.div`
   .section {
@@ -505,6 +506,8 @@ const WebApp = () => {
   const [colorTag] = useState(router.query.color || "" || []);
   const [checkColor, setCheckColor] = useState(false);
   const [cartProduct, setCartProduct] = useState([]);
+  const [flag, setFlag] = useState(false);
+
   const { currentUser } = useAuth();
 
   useEffect(() => {
@@ -566,8 +569,12 @@ const WebApp = () => {
 
   const addToCart = () => {
     const db = getDatabase();
+    if (!currentUser?.uid) {
+      setFlag(true);
+      return;
+    }
     selectedProduct?.map((ele) => {
-      if (cartProduct.includes(ele.id.toString())) {
+      if (cartProduct.find((data) => data.id === ele.id)) {
         toast(`Your ${ele.name} is already in Cart !!`);
       } else {
         set(ref(db, `cartItem/${currentUser.uid}/${ele.id}/`), {
@@ -796,6 +803,7 @@ const WebApp = () => {
             </section>
           </div>
         </div>
+        <LoginModal flag={flag} setFlag={setFlag} />
       </WebAppWrapper>
       <Footer />
       <ToastContainer />
