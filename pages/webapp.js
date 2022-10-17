@@ -507,6 +507,7 @@ const WebApp = () => {
   const [checkColor, setCheckColor] = useState(false);
   const [cartProduct, setCartProduct] = useState([]);
   const [flag, setFlag] = useState(false);
+  const [hoverColor, setHoverColor] = useState("");
 
   const { currentUser } = useAuth();
 
@@ -780,6 +781,7 @@ const WebApp = () => {
                                 : { background: data.code, cursor: "pointer" }
                             }
                             onClick={() => onSelect(data.code[0])}
+                            onMouseEnter={() => setHoverColor(data.code[0])}
                           >
                             <img
                               src={colorLeft.src}
@@ -787,7 +789,10 @@ const WebApp = () => {
                               className="color-image-left"
                             />
                             <div className="name">
-                              {data.id}. &nbsp; {data.color}
+                              {color?.includes(data?.code[0]) ||
+                              hoverColor === data.code[0]
+                                ? data.color
+                                : data.id}
                             </div>
                             <img
                               src={colorRight.src}

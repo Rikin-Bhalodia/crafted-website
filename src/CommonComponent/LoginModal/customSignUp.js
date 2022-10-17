@@ -208,7 +208,6 @@ const SignUp = ({ setToggle }) => {
     email: "",
     password: "",
   });
-  const router = useRouter();
   const { signup, signInWithGoogle } = useAuth();
 
   const handleChange = (e) => {
