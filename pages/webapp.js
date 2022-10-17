@@ -782,6 +782,7 @@ const WebApp = () => {
                             }
                             onClick={() => onSelect(data.code[0])}
                             onMouseEnter={() => setHoverColor(data.code[0])}
+                            onMouseLeave={() => setHoverColor("")}
                           >
                             <img
                               src={colorLeft.src}
