@@ -13,6 +13,12 @@ import { useAuth } from "../../../src/auth/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginModal from "../../../src/CommonComponent/LoginModal";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
 const SingleProductWrapper = styled.div`
   display: flex;
@@ -324,8 +330,12 @@ const SingleProductWrapper = styled.div`
     }
   }
 `;
+import { FreeMode, Navigation, Thumbs } from "swiper";
 
 const SingleProduct = () => {
+  const [thumbsSwiper, setThumbsSwiper] = useState(
+    "https://swiperjs.com/demos/images/nature-1.jpg"
+  );
   const router = useRouter();
   const [products, setProducts] = useState([]);
   const [query] = useState(router?.query?.ids);
@@ -438,7 +448,50 @@ const SingleProduct = () => {
                   <TransformWrapper initialScale={1}>
                     {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                       <React.Fragment>
-                        <div className="main-product">
+                        <Swiper
+                          style={{
+                            "--swiper-navigation-color": "#fff",
+                            "--swiper-pagination-color": "#fff",
+                          }}
+                          spaceBetween={10}
+                          navigation={true}
+                          thumbs={{ swiper: thumbsSwiper }}
+                          modules={[FreeMode, Navigation, Thumbs]}
+                          className="mySwiper2"
+                        >
+                          <SwiperSlide>
+                            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+                          </SwiperSlide>
+                        </Swiper>
+
+                        {/* <div className="main-product">
                           <div className="tools">
                             <button className="f-20" onClick={() => zoomIn()}>
                               +
@@ -453,12 +506,52 @@ const SingleProduct = () => {
                           <TransformComponent>
                             <img src={product?.image[0]} layout="responsive" />
                           </TransformComponent>
-                        </div>
+                        </div> */}
                       </React.Fragment>
                     )}
                   </TransformWrapper>
                   <section>
-                    <img
+                    <Swiper
+                      onSwiper={setThumbsSwiper}
+                      spaceBetween={10}
+                      slidesPerView={4}
+                      freeMode={true}
+                      watchSlidesProgress={true}
+                      modules={[FreeMode, Navigation, Thumbs]}
+                      className="mySwiper"
+                    >
+                      <SwiperSlide>
+                        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+                      </SwiperSlide>
+                    </Swiper>
+                    {/* <img
                       src={product?.image[1]}
                       layout="responsive"
                       height={100}
@@ -475,7 +568,7 @@ const SingleProduct = () => {
                       layout="responsive"
                       height={100}
                       width={100}
-                    />
+                    /> */}
                   </section>
                 </div>
                 <div className="right-part">

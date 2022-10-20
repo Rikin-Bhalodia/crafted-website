@@ -115,6 +115,10 @@ export default class extends Document {
             />`,
             }}
           />
+          <meta
+            name="facebook-domain-verification"
+            content="ieuzfrsmi9x51sf7h5qoyk14bfrxfo"
+          />
         </Head>
         <body {...this.helmetBodyAttrComponents}>
           <Main />
