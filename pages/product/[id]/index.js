@@ -14,11 +14,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginModal from "../../../src/CommonComponent/LoginModal";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/css";
+// import "swiper/css/free-mode";
+// import "swiper/css/navigation";
+// import "swiper/css/thumbs";
 
 const SingleProductWrapper = styled.div`
   display: flex;
@@ -330,12 +330,12 @@ const SingleProductWrapper = styled.div`
     }
   }
 `;
-import { FreeMode, Navigation, Thumbs } from "swiper";
+// import { FreeMode, Navigation, Thumbs } from "swiper";
 
 const SingleProduct = () => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(
-    "https://swiperjs.com/demos/images/nature-1.jpg"
-  );
+  // const [thumbsSwiper, setThumbsSwiper] = useState(
+  //   "https://swiperjs.com/demos/images/nature-1.jpg"
+  // );
   const router = useRouter();
   const [products, setProducts] = useState([]);
   const [query] = useState(router?.query?.ids);
@@ -448,7 +448,7 @@ const SingleProduct = () => {
                   <TransformWrapper initialScale={1}>
                     {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                       <React.Fragment>
-                        <Swiper
+                        {/* <Swiper
                           style={{
                             "--swiper-navigation-color": "#fff",
                             "--swiper-pagination-color": "#fff",
@@ -489,9 +489,9 @@ const SingleProduct = () => {
                           <SwiperSlide>
                             <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
                           </SwiperSlide>
-                        </Swiper>
+                        </Swiper> */}
 
-                        {/* <div className="main-product">
+                        <div className="main-product">
                           <div className="tools">
                             <button className="f-20" onClick={() => zoomIn()}>
                               +
@@ -506,12 +506,12 @@ const SingleProduct = () => {
                           <TransformComponent>
                             <img src={product?.image[0]} layout="responsive" />
                           </TransformComponent>
-                        </div> */}
+                        </div>
                       </React.Fragment>
                     )}
                   </TransformWrapper>
                   <section>
-                    <Swiper
+                    {/* <Swiper
                       onSwiper={setThumbsSwiper}
                       spaceBetween={10}
                       slidesPerView={4}
@@ -550,8 +550,8 @@ const SingleProduct = () => {
                       <SwiperSlide>
                         <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
                       </SwiperSlide>
-                    </Swiper>
-                    {/* <img
+                    </Swiper> */}
+                    <img
                       src={product?.image[1]}
                       layout="responsive"
                       height={100}
@@ -568,7 +568,7 @@ const SingleProduct = () => {
                       layout="responsive"
                       height={100}
                       width={100}
-                    /> */}
+                    />
                   </section>
                 </div>
                 <div className="right-part">
