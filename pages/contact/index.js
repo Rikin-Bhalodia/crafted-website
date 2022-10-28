@@ -32,6 +32,12 @@ const ContactPageWrapper = styled.div`
     }
     .contact-form {
       width: 100%;
+      .urgent-connect{
+        margin-top:20px
+      }
+      .details{
+        font-size:18px
+      }
       h4 {
         font-weight: 500;
         font-size: 33px;
@@ -87,6 +93,7 @@ const ContactPageWrapper = styled.div`
     }
   }
 
+ 
   @media screen and (max-width: 1676px) {
     padding: 50px 100px;
     .contact-area {
@@ -239,7 +246,13 @@ const ContactPage = () => {
               <br />
               <button type="submit">Send message</button>
             </form>
+          <h5 className="urgent-connect">For urgent issue Contact us directly at:-</h5>
+          <div className="details"><b>Phone No.</b> +91-7317029723</div>
+          <div  className="details"><b>Email ID:</b> TheCraftedYou@gmail.com</div>
+          <div className="details"><b>Operational Address:</b> Crafted Neem Tree Pvt. Ltd., 386 Sheikhwara, Unnao - 209801</div>
+
           </div>
+
         </div>
       </ContactPageWrapper>
       <ToastContainer />

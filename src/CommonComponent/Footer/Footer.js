@@ -245,23 +245,6 @@ const Footer = () => {
                 Referral Program
               </div>
             </div>
-            <div>
-              <div className="title" style={{ cursor: "pointer" }}>
-                Services
-              </div>
-              <div className="data" style={{ cursor: "pointer" }}>
-                Partners
-              </div>
-              <div className="data" style={{ cursor: "pointer" }}>
-                Design
-              </div>
-              <div className="data" style={{ cursor: "pointer" }}>
-                Themes
-              </div>
-              <div className="data" style={{ cursor: "pointer" }}>
-                Illustrations
-              </div>
-            </div>
           </div>
           <div className="end">
             <div>
@@ -293,15 +276,31 @@ const Footer = () => {
               <div className="title" style={{ cursor: "pointer" }}>
                 More
               </div>
+              <Link href='/privacy-policy'>
               <div className="data" style={{ cursor: "pointer" }}>
-                Terms
+              Privacy Policy
               </div>
+              </Link>
+              <Link href="/terms-condition">
               <div className="data" style={{ cursor: "pointer" }}>
-                Privacy Policy
+              Terms and Conditions
               </div>
+              </Link>
+              <Link href="/refund-policy">
               <div className="data" style={{ cursor: "pointer" }}>
-                Caree
+              Cancellation Return and Refund
               </div>
+              </Link>
+              <Link href="/delivery-policy">
+              <div className="data" style={{ cursor: "pointer" }}>
+              Shipping & Delivery Policy
+              </div>
+              </Link>
+              <Link href="/contact">
+              <div className="data" style={{ cursor: "pointer" }}>
+              Contact Us
+              </div>
+              </Link>
             </div>
           </div>
         </div>
