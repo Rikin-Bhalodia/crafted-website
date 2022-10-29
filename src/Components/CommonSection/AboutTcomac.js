@@ -492,7 +492,7 @@ const AboutTcomac = (data) => {
             <h6>{data.shead}</h6>
             <h4>{data.mhead}</h4>
             <p>{data.para}</p>
-            <Link href="/webapp" className="btn">
+            <Link href="/TCOMaC" className="btn">
               {data.btn}
             </Link>
           </div>

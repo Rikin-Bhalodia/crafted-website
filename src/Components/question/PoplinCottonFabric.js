@@ -198,7 +198,7 @@ const PoplinCottonFabric = () => {
     e.preventDefault();
     if (colorName && size) {
       router.push({
-        pathname: "/webapp",
+        pathname: "/TCOMaC",
         query: {
           type: "poplin-cotton",
           color: colorName.value.toLowerCase(),

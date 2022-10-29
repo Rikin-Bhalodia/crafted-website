@@ -256,7 +256,7 @@ const Header = () => {
             <Link href="/about">About Us</Link>
           </li>
           <li className="option" onClick={closeMobileMenu}>
-            <Link href="webapp">TCOMaC</Link>
+            <Link href="/TCOMaC">TCOMaC</Link>
           </li>
           <li className="option" onClick={closeMobileMenu}>
             <Link href="/think-social">Think Social</Link>
@@ -265,7 +265,7 @@ const Header = () => {
             <Link href="/blog">Blog</Link>
           </li>
           <li className="option" onClick={closeMobileMenu}>
-            <Link href="/reseller"> Associate Partner</Link>
+            <Link href="/AssociatePartners"> Associate Partner</Link>
           </li>
         </div>
         <li className="option mobile-option" onClick={closeMobileMenu}>

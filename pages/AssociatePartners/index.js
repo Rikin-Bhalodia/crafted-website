@@ -10,7 +10,7 @@ import ContactSec from "../../src/Components/reseller/Contact";
 import AboutUs from "../../src/Components/reseller/AboutUs";
 import OurMission from "../../src/Components/reseller/OurMission";
 import TeamSlider from "../../src/Components/reseller/TeamSlider";
-import banner from "../../public/svg/reseller-banner.svg";
+import banner from "/public/svg/reseller-banner.svg";
 import Image from "next/image";
 
 const ResellerWrapper = styled.div`

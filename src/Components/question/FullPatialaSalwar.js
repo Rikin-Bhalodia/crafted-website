@@ -198,7 +198,7 @@ const FullPatialaSalwar = () => {
     e.preventDefault();
     if (colorName && size) {
       router.push({
-        pathname: "/webapp",
+        pathname: "/TCOMaC",
         query: { type: "full-patiala", color: colorName.value, size: size },
       });
     } else {

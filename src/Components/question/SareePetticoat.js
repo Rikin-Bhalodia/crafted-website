@@ -199,7 +199,7 @@ const SareePetticoat = () => {
     e.preventDefault();
     if (colorName.value && size) {
       router.push({
-        pathname: "/webapp",
+        pathname: "/TCOMaC",
         query: {
           type: "petticoat",
           color: colorName.value.toLowerCase(),

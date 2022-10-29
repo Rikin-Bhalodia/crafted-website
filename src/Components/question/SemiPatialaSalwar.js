@@ -198,7 +198,7 @@ const SemiPatialaSalwar = () => {
     e.preventDefault();
     if (colorName && size) {
       router.push({
-        pathname: "/webapp",
+        pathname: "/TCOMaC",
         query: {
           type: "semi-patiala",
           color: colorName.value.toLowerCase(),

@@ -230,7 +230,7 @@ const Footer = () => {
               <div className="title" style={{ cursor: "pointer" }}>
                 Product
               </div>
-              <Link href="/webapp">
+              <Link href="/TCOMaC">
                 <div className="data" style={{ cursor: "pointer" }}>
                   TCOMaC
                 </div>

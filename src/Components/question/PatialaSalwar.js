@@ -198,7 +198,7 @@ const PatialaSalwar = () => {
     e.preventDefault();
     if (colorName && size) {
       router.push({
-        pathname: "/webapp",
+        pathname: "/TCOMaC",
         query: {
           type: "patiala",
           color: colorName.value.toLowerCase(),

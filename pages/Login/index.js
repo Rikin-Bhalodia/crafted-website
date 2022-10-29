@@ -142,7 +142,7 @@ const LogIn = () => {
     e.preventDefault();
     if (loginData.email && loginData.password) {
       await login(loginData.email, loginData.password);
-      router.push("/webapp");
+      router.push("/TCOMaC");
     } else {
       toast("please fill the data ");
     }
