@@ -9,6 +9,7 @@ import ReviewSlider from "../src/Components/review-slider/ReviewSlider";
 import DiffCard from "../src/Components/HomePage/CommonCard/diffrentCard";
 import { useEffect, useState } from "react";
 import { getAllProducts } from "../src/utils";
+import { useRouter } from "next/router";
 
 const MainAppWrapper = styled.div`
   position: relative;
@@ -104,6 +105,7 @@ const MainAppWrapper = styled.div`
     background: #ffffff;
     border: 1px solid #18a0fb;
     border-radius: 6px;
+    cursor:pointer;
   }
   .customer-section {
     position: relative;
@@ -273,6 +275,7 @@ const MainAppWrapper = styled.div`
 `;
 
 export default function Home() {
+  const router = useRouter()
   const [products, setProducts] = useState();
   useEffect(() => {
     getAllProducts(setProducts);
@@ -361,8 +364,8 @@ export default function Home() {
           The Crafted empowers women and help them grow.
         </div>
         <div className="woman-empowers-btn">
-          <button className="signup-button">Sign Up Today</button>
-          <button className="know-how-btn">Know how?</button>
+          {/* <button className="signup-button">Sign Up Today</button> */}
+          <button className="know-how-btn" onClick={()=>router.push("/AssociatePartners")}>Know how?</button>
         </div>
       </div>
       <DiffCard />

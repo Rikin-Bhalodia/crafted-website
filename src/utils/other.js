@@ -71,10 +71,10 @@ export const whiteImage = [
     id: 4,
     img: whiteFullPatiala,
   },
-  {
-    id: 5,
-    img: WhiteTShirt,
-  },
+  // {
+  //   id: 5,
+  //   img: WhiteTShirt,
+  // },
   {
     id: 6,
     img: whiteComingsoon,
@@ -110,12 +110,12 @@ export const images = [
     name: "Full Patiala Salwar",
     category: "full-patiala",
   },
-  {
-    id: 5,
-    img: TShirt,
-    name: "t-shirt",
-    category: "",
-  },
+  // {
+  //   id: 5,
+  //   img: TShirt,
+  //   name: "t-shirt",
+  //   category: "",
+  // },
   {
     id: 6,
     img: Comingsoon,
@@ -124,6 +124,12 @@ export const images = [
   },
   {
     id: 7,
+    img: Comingsoon,
+    name: "Comingsoon",
+    category: "",
+  },
+  {
+    id: 8,
     img: Comingsoon,
     name: "Comingsoon",
     category: "",
@@ -155,12 +161,12 @@ export const TCOMaCPageImage = [
     name: "Semi Patiala Salwar",
     category: "semi-patiala",
   },
-  {
-    id: 5,
-    icon: TCTShirt,
-    name: "T-Shirt",
-    category: "t-shirt",
-  },
+  // {
+  //   id: 5,
+  //   icon: TCTShirt,
+  //   name: "T-Shirt",
+  //   category: "t-shirt",
+  // },
   {
     id: 6,
     icon: "",

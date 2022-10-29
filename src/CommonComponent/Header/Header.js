@@ -261,9 +261,9 @@ const Header = () => {
           <li className="option" onClick={closeMobileMenu}>
             <Link href="/think-social">Think Social</Link>
           </li>
-          <li className="option" onClick={closeMobileMenu}>
+          {/* <li className="option" onClick={closeMobileMenu}>
             <Link href="/blog">Blog</Link>
-          </li>
+          </li> */}
           <li className="option" onClick={closeMobileMenu}>
             <Link href="/AssociatePartners"> Associate Partner</Link>
           </li>
