@@ -148,7 +148,7 @@ const Cart = () => {
     }
 
     const orderItemsDetails = {
-      productDetails: { ...productDetails },
+      ...productDetails,
       order_id: data?.id,
       user_id: currentUser?.uid || "",
     };
