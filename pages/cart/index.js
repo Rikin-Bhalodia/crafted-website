@@ -153,7 +153,7 @@ const Cart = () => {
       user_id: currentUser?.uid || "",
     };
     const options = {
-      key: "rzp_test_NJRQ7mstGJ8A8J",
+      key: "rzp_live_JxIiJ0bff0o2SD",
       name: "The Crafted",
       description: "We are happy to make connection with you !!",
       amount: amount,
