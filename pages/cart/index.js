@@ -41,7 +41,7 @@ const loadScript = (src) => {
 const Cart = () => {
   const __DEV__ =
     window?.location?.hostname === "localhost"
-      ? "http://localhost:1337"
+      ? "http://localhost:3001"
       : "https://crafted-backend.vercel.app";
   const [current, setCurrent] = useState(0);
   const { currentUser } = useAuth();
@@ -148,7 +148,7 @@ const Cart = () => {
     }
 
     const orderItemsDetails = {
-      productDetails,
+      productDetails: { ...productDetails },
       order_id: data?.id,
       user_id: currentUser?.uid || "",
     };
