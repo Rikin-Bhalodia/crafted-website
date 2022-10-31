@@ -180,6 +180,7 @@ const SingleProductWrapper = styled.div`
     }
     .f-20 {
       font-size: 20px;
+      cursor: pointer;
     }
   }
   @media (max-width: 1400px) {
@@ -343,6 +344,7 @@ const SingleProduct = () => {
   const [totalProduct, setTotalProduct] = useState([]);
   const [cartProduct, setCartProduct] = useState([]);
   const [flag, setFlag] = useState(false);
+  const [image, setImage] = useState("");
 
   const { currentUser } = useAuth();
 
@@ -448,49 +450,6 @@ const SingleProduct = () => {
                   <TransformWrapper initialScale={1}>
                     {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                       <React.Fragment>
-                        {/* <Swiper
-                          style={{
-                            "--swiper-navigation-color": "#fff",
-                            "--swiper-pagination-color": "#fff",
-                          }}
-                          spaceBetween={10}
-                          navigation={true}
-                          thumbs={{ swiper: thumbsSwiper }}
-                          modules={[FreeMode, Navigation, Thumbs]}
-                          className="mySwiper2"
-                        >
-                          <SwiperSlide>
-                            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                          </SwiperSlide>
-                        </Swiper> */}
-
                         <div className="main-product">
                           <div className="tools">
                             <button className="f-20" onClick={() => zoomIn()}>
@@ -499,76 +458,40 @@ const SingleProduct = () => {
                             <button className="f-20" onClick={() => zoomOut()}>
                               -
                             </button>
-                            <button onClick={() => resetTransform()}>
+                            <button
+                              onClick={() => resetTransform()}
+                              style={{ cursor: "pointer" }}
+                            >
                               Reset
                             </button>
                           </div>
                           <TransformComponent>
-                            <img src={product?.image[0]} layout="responsive" />
+                            <img
+                              src={
+                                product.id === image.id
+                                  ? image.image
+                                  : product.image[0]
+                              }
+                              layout="responsive"
+                            />
                           </TransformComponent>
                         </div>
                       </React.Fragment>
                     )}
                   </TransformWrapper>
                   <section>
-                    {/* <Swiper
-                      onSwiper={setThumbsSwiper}
-                      spaceBetween={10}
-                      slidesPerView={4}
-                      freeMode={true}
-                      watchSlidesProgress={true}
-                      modules={[FreeMode, Navigation, Thumbs]}
-                      className="mySwiper"
-                    >
-                      <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                      </SwiperSlide>
-                    </Swiper> */}
-                    <img
-                      src={product?.image[1]}
-                      layout="responsive"
-                      height={100}
-                      width={100}
-                    />
-                    <img
-                      src={product?.image[2]}
-                      layout="responsive"
-                      height={100}
-                      width={100}
-                    />
-                    <img
-                      src={product?.image[3]}
-                      layout="responsive"
-                      height={100}
-                      width={100}
-                    />
+                    {product.image.slice(0, 4).map((image) => {
+                      return (
+                        <img
+                          src={image}
+                          layout="responsive"
+                          height={100}
+                          width={100}
+                          onClick={() => setImage({ image, id: product.id })}
+                          style={{ cursor: "pointer" }}
+                        />
+                      );
+                    })}
                   </section>
                 </div>
                 <div className="right-part">
