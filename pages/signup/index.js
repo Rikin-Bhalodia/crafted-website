@@ -215,7 +215,7 @@ const SignUp = () => {
     e.preventDefault();
     if (signupData.name && signupData?.email && signupData.password) {
       await signup(signupData.email, signupData.password);
-      router.push("/login");
+      router.push("/Login");
     } else {
       toast("please fill the data ");
     }
@@ -305,7 +305,7 @@ const SignUp = () => {
             Already have account?
           </a>
           &nbsp;&nbsp;&nbsp;
-          <a href="/login" className="link2">
+          <a href="/Login" className="link2">
             Login here
           </a>
         </div>

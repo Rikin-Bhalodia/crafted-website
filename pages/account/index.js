@@ -258,7 +258,7 @@ const AccountDetails = () => {
     if (id === "2") {
       if (accountData.email) {
         await updateUserEmail(accountData.email);
-        router.push("/login");
+        router.push("/Login");
       }
       setId("");
     }

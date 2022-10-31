@@ -231,7 +231,7 @@ const Header = () => {
     if (type === "logout") {
       await logout();
     } else {
-      router.push("/login");
+      router.push("/Login");
     }
   };
 

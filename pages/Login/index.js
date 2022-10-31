@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../src/auth/AuthContext";
-import Link from "next/link";
 
 const LogInWrapper = styled.div`
   display: flex;

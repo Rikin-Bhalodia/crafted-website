@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
 
   const resetPassword = (email) => {
     return sendPasswordResetEmail(auth, email, {
-      url: "http://localhost:8000/login",
+      url: "http://localhost:8000/Login",
     });
   };
 
