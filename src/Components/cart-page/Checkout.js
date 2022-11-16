@@ -119,7 +119,7 @@ const CheckOutWrapper = styled.div`
   }
 `;
 
-const CheckOut = ({ handleChange, details }) => {
+const CheckOut = ({ handleChange, details, displayRezorPay }) => {
   return (
     <CheckOutWrapper>
       <form action="post">
@@ -243,13 +243,19 @@ const CheckOut = ({ handleChange, details }) => {
         <div className="form2">
           <p>Payment Method</p>
           <div className="choose-btn" style={{ paddingTop: "15px" }}>
-            <a href="/" style={{ marginRight: "32px" }}>
+            <a
+              style={{ marginRight: "32px" }}
+              onClick={() => displayRezorPay()}
+            >
               <BsCreditCard2Back size={30} /> &nbsp;&nbsp; Card
             </a>
-            <a href="/" style={{ marginRight: "32px" }}>
+            <a
+              style={{ marginRight: "32px" }}
+              onClick={() => displayRezorPay()}
+            >
               <BiTransfer size={30} /> &nbsp;&nbsp; UPI
             </a>
-            <a href="/">
+            <a onClick={() => displayRezorPay()}>
               <TbBrandPaypal size={30} /> &nbsp;&nbsp; COD
             </a>
             <br />

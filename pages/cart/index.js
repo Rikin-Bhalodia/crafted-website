@@ -95,20 +95,6 @@ const Cart = () => {
   };
 
   const { Step } = Steps;
-  const steps = [
-    {
-      title: "Shopping Cart",
-      content: <ShoppingCart />,
-    },
-    {
-      title: "Checkout",
-      content: <CheckOut handleChange={handleChange} details={details} />,
-    },
-    {
-      title: "Thank You",
-      content: <ThankYou />,
-    },
-  ];
 
   const array = cartProduct?.map((data) => {
     return Number(data?.mrp) * data?.totalUserItem;
@@ -187,6 +173,27 @@ const Cart = () => {
       setCurrent(current + 1);
     }, 5000);
   };
+
+  const steps = [
+    {
+      title: "Shopping Cart",
+      content: <ShoppingCart />,
+    },
+    {
+      title: "Checkout",
+      content: (
+        <CheckOut
+          handleChange={handleChange}
+          details={details}
+          displayRezorPay={displayRezorPay}
+        />
+      ),
+    },
+    {
+      title: "Thank You",
+      content: <ThankYou />,
+    },
+  ];
 
   const next = (key) => {
     key === 0 ? setCurrent(current + 1) : displayRezorPay();
